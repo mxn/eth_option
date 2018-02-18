@@ -2,31 +2,31 @@
 
 ## Preface
 
-Currently it seems that there is no suitable analog for "off-chain" option contracts in Ethereum blockchain, although due to numbers of tokens and market volatility, there are much requirements for them. Here is an attempt to implement one. General information about option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article. Below there are some specific things about Ethereum smart contract based implementation. First some concepts
+Currently it seems that there is no suitable analog for "off-chain" option contracts in Ethereum blockchain, although, due to numbers of tokens and market volatility, there are much requirements for them. Here is an attempt to implement one. General information about option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article. Below there are some specific things about implementation, based on Ethereum smart contracts.
 
 ## Contracts
 
-Option Contract. Gives its owner a right to get specified underlying (ERC20) tokens in exchange for basis ERC20 tokens during the period before expiration at the specified price (strike price). The transaction, which uses this right is called "exercise"
+*Option Contract*. Gives its owner a right to get specified underlying (ERC20) tokens in exchange for basis ERC20 tokens during the period before expiration at the specified price (strike price). The transaction, which uses this right is called "exercise"
 
-Anti-Option Contract. Gives a right to get "non-exercised" part of deposited underlying and “exercised” part of basis token after the expiration date, or, if combined with Option Contract, to get the corresponding token amount before the expiration date.
+*Anti-Option Contract*. Gives a right to get "non-exercised" part of deposited underlying and “exercised” part of basis token after the expiration date, or, if combined with *Option Contract*, to get the corresponding token amount before the expiration date.
 
 ## Actors
 
-1. Option House: owner the contracts, defines the fee policy.
+1. *Option House*: owner the generating contracts, defines the fee policy.
 
-2. Actor: Option "Line" Creator: creates the “meta” option contract, which specifies ERC20 token pair (underlying and basis),, strike price  and expiration date. As compensation she receives e.g. 15/16 of each fee paid by Option Writer (s. below).
+2. *Option "Line" Creator*: creates the “meta” option contract, which specifies ERC20 token pair (underlying and basis), strike price  and expiration date. As compensation she receives part (e.g. 15/16) of fee paid by *Option Writer* (s. below).
 
-3. Actor: Option Writer. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by Option Line. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction Option Writer pays fee.
+3. *Option Writer*. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by Option Line. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction *Option Writer* pays fee.
 
-4. Actor: Option Buyer. Buys Option Contracts e.g. on exchanges (they are fully ERC20-compatible) via 0xd protocol etc.
+4. *Option Buyer*. Buys *Option Contracts* e.g. on exchanges (the *Option Contracts* are fully ERC20-compatible), via 0x protocol etc.
 
-5. Anti-Option Buyer. As option writer side is tokenized too, one can sell / buy the Option Writer right to withdraw the deposit after expire time too.
+5. *Anti-Option Buyer*. As *Option Writer* side of contracts is tokenized, one can sell / buy the *Option Writer* right to withdraw the deposit after expiration time too.
 
 ## Example 1
 
 Ann creates "meta" option contract with the underlying WETH (wrapped Ethereum, to make it ERC20-compatible) and basis DAI, with the strike price 3000 and expiration date 31.12.2018 (current price at the time of writing is about  900 DAI per WETH).
 
-Bob "writes" 10 option contracts. That is he deposits 10 WETH and get 10 Option (OPT_WETH_DAI_2018_12_31) and 10 Anti-Option contracts (A_OPT_WETH_DAI_2018_12_31).  At this point the fee are taken, 0.016 per contract, that is 0.16 ETH. 0.15 ETH went to Ann and 0.01 ETH to Option House. Note in the tables below the fees are not considered!
+Bob "writes" 10 option contracts. That is he deposits 10 WETH and get 10 Option (OPT_WETH_DAI_2018_12_31) and 10 Anti-Option contracts (A_OPT_WETH_DAI_2018_12_31).  At this point the fee are taken, 0.016 per contract, that is 0.16 ETH. 0.15 ETH went to Ann, as *Option Line Creator* and 0.01 ETH to *Option House* (preliminary split fee taker split ratio). Note in the tables below the fees are not considered!
 
 <table>
   <tr>
@@ -61,7 +61,7 @@ AI_2018_12_31</td>
 </table>
 
 
-Bob sells 7  OPT_WETH_DAI_31_12_2018 contracts to Clair for 50 DAI (actually could be any token)
+Bob sells 7  OPT_WETH_DAI_31_12_2018 contracts to Clair for 50 DAI (actually could be any asset)
 
 <table>
   <tr>
@@ -96,14 +96,13 @@ AI_2018_12_31</td>
 </table>
 
 
-At 01.09.2018 Bob will get back some WETH. He "annihilates" the remaining 3 OPT_WETH_DAI_2018_12_31 with 3 anti-option contracts (A_OPT_WETH_DAI_2018_12_31) and gets 3 from WETH back
+At 01.09.2018 Bob will get back some WETH. He "annihilates" the remaining 3 OPT_1_WETH_3000_DAI_2018_12_31 with 3 anti-option contracts (A_OPT_1_WETH_3000_DAI_2018_12_31) and gets 3 from WETH back
 
 <table>
   <tr>
     <td></td>
-    <td>OPT_WETH_DAI_2018_12_31</td>
-    <td>A_OPT_WETH_D
-AI_2018_12_31</td>
+    <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
+    <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
     <td>WETH</td>
     <td>DAI</td>
   </tr>
@@ -131,16 +130,16 @@ AI_2018_12_31</td>
 </table>
 
 
-The price of Ethereum went up and per 2018-11-01 the price reaches 4000 DAI per WETH. Clair decides to exercise 5 of her options. So she borrows and transfers 5 * 3000 (strike price) to meta-option contract and get back 5 WETH. These 5 WETH she sells on exchange at 4000 to make 5000 (5 * (4000 - 3000) ) DAI . Two option contracts she would like to hold for further growth.
+The price of Ethereum went up and per 2018-11-01 the price reaches 4000 DAI per WETH. Clair decides to exercise 5 of her options. So she borrows and transfers 5 * 3000 (strike price) to meta-option contract and get back 5 WETH. These 5 WETH she sells on exchange at 4000 to make 5000 (5 * (4000 - 3000) ) DAI. Two option contracts she would like to hold for further growth.
 
 <table>
-  <tr>
-    <td></td>
-    <td>OPT_WETH_DAI_2018_12_31</td>
-    <td>A_OPT_WETH_D
-AI_2018_12_31</td>
-    <td>WETH</td>
-    <td>DAI</td>
+<tr>
+  <td></td>
+  <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>WETH</td>
+  <td>DAI</td>
+</tr>
   </tr>
   <tr>
     <td>Meta-Option Contract</td>
@@ -167,14 +166,13 @@ AI_2018_12_31</td>
 
 
 <table>
-  <tr>
-    <td></td>
-    <td>OPT_WETH_DAI_2018_12_31</td>
-    <td>A_OPT_WETH_D
-AI_2018_12_31</td>
-    <td>WETH</td>
-    <td>DAI</td>
-  </tr>
+<tr>
+  <td></td>
+  <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>WETH</td>
+  <td>DAI</td>
+</tr>
   <tr>
     <td>Meta-Option Contract</td>
     <td></td>
@@ -199,19 +197,18 @@ AI_2018_12_31</td>
 </table>
 
 
-Suddenly the price drops for 2000 DAI (below strike) per WETH and remains till expiration date. After expiration date Bob can withdraw the remaining 2 WETH (10 initial - 3 annihilated - 5 exercised) and 15000 DAI (from exercised part)
+Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below the strike price till expiration date. After expiration date Bob can withdraw the remaining 2 WETH (10 initial - 3 annihilated - 5 exercised) and 15000 DAI (from exercised part)
 
 
 
 <table>
-  <tr>
-    <td></td>
-    <td>OPT_WETH_DAI_2018_12_31</td>
-    <td>A_OPT_WETH_D
-AI_2018_12_31</td>
-    <td>WETH</td>
-    <td>DAI</td>
-  </tr>
+<tr>
+  <td></td>
+  <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>WETH</td>
+  <td>DAI</td>
+</tr>
   <tr>
     <td>Meta-Option Contract</td>
     <td></td>
@@ -240,7 +237,7 @@ AI_2018_12_31</td>
 
 * Put option contract
 
-    * There is no need for them: just swap underlying and base token.
+    * There is no need for them: just swap underlying and base token. In this case Ann needs to create line with underlying DAI, base WETH, e.g. 1 WETH per 500 DAI
 
 * Differences to "normal" option contract
 
