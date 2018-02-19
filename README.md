@@ -31,9 +31,8 @@ Bob "writes" 10 option contracts. That is he deposits 10 WETH and get 10 Option 
 <table>
   <tr>
     <td></td>
-    <td>OPT_WETH_DAI_2018_12_31</td>
-    <td>A_OPT_WETH_D
-AI_2018_12_31</td>
+    <td>Options</td>
+    <td>Anti-Options</td>
     <td>WETH</td>
     <td>DAI</td>
   </tr>
@@ -64,14 +63,13 @@ AI_2018_12_31</td>
 Bob sells 7  OPT_WETH_DAI_31_12_2018 contracts to Clair for 50 DAI (actually could be any asset)
 
 <table>
-  <tr>
-    <td></td>
-    <td>OPT_WETH_DAI_2018_12_31</td>
-    <td>A_OPT_WETH_D
-AI_2018_12_31</td>
-    <td>WETH</td>
-    <td>DAI</td>
-  </tr>
+<tr>
+  <td></td>
+  <td>Options</td>
+  <td>Anti-Options</td>
+  <td>WETH</td>
+  <td>DAI</td>
+</tr>
   <tr>
     <td>Meta-Option Contract</td>
     <td></td>
@@ -99,13 +97,13 @@ AI_2018_12_31</td>
 At 01.09.2018 Bob will get back some WETH. He "annihilates" the remaining 3 OPT_1_WETH_3000_DAI_2018_12_31 with 3 anti-option contracts (A_OPT_1_WETH_3000_DAI_2018_12_31) and gets 3 from WETH back
 
 <table>
-  <tr>
-    <td></td>
-    <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
-    <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
-    <td>WETH</td>
-    <td>DAI</td>
-  </tr>
+<tr>
+  <td></td>
+  <td>Options</td>
+  <td>Anti-Options</td>
+  <td>WETH</td>
+  <td>DAI</td>
+</tr>
   <tr>
     <td>Meta-Option Contract</td>
     <td></td>
@@ -135,8 +133,8 @@ The price of Ethereum went up and per 2018-11-01 the price reaches 4000 DAI per 
 <table>
 <tr>
   <td></td>
-  <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
-  <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>Options</td>
+  <td>Anti-Options</td>
   <td>WETH</td>
   <td>DAI</td>
 </tr>
@@ -168,8 +166,8 @@ The price of Ethereum went up and per 2018-11-01 the price reaches 4000 DAI per 
 <table>
 <tr>
   <td></td>
-  <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
-  <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>Options</td>
+  <td>Anti-Options</td>
   <td>WETH</td>
   <td>DAI</td>
 </tr>
@@ -204,8 +202,8 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
 <table>
 <tr>
   <td></td>
-  <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
-  <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
+  <td>Options</td>
+  <td>Anti-Options</td>
   <td>WETH</td>
   <td>DAI</td>
 </tr>
