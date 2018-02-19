@@ -4,11 +4,11 @@
 
 Currently it seems that there is no suitable analog for "off-chain" option contracts in Ethereum blockchain, although, due to numbers of tokens and market volatility, there are much requirements for them. Here is an attempt to implement one. General information about option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article. Below there are some specific things about implementation, based on Ethereum smart contracts.
 
-## Contracts
+## Some Terminology
 
 *Option Contract*. Gives its owner a right to get specified underlying (ERC20) tokens in exchange for basis ERC20 tokens during the period before expiration at the specified price (strike price). The transaction, which uses this right is called "exercise"
 
-*Anti-Option Contract*. Gives a right to get "non-exercised" part of deposited underlying and “exercised” part of basis token after the expiration date, or, if combined with *Option Contract*, to get the corresponding token amount before the expiration date.
+*Anti-Option Contract*. Gives a right to get "non-exercised" part of deposited underlying and “exercised” part of basis token after the expiration date, or, if combined with *Option Contract*, to get the corresponding tokens' amount before the expiration date.
 
 ## Actors
 
@@ -16,24 +16,23 @@ Currently it seems that there is no suitable analog for "off-chain" option contr
 
 2. *Option "Line" Creator*: creates the “meta” option contract, which specifies ERC20 token pair (underlying and basis), strike price  and expiration date. As compensation she receives part (e.g. 15/16) of fee paid by *Option Writer* (s. below).
 
-3. *Option Writer*. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by Option Line. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction *Option Writer* pays fee.
+3. *Option Writer*. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by *Option Line*. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction *Option Writer* pays fee.
 
-4. *Option Buyer*. Buys *Option Contracts* e.g. on exchanges (the *Option Contracts* are fully ERC20-compatible), via 0x protocol etc.
+4. *Option Buyer*. Buys *Option Contracts* e.g. on exchanges (*Option Contracts* are fully ERC20-compatible), via 0x protocol etc.
 
-5. *Anti-Option Buyer*. As *Option Writer* side of contracts is tokenized, one can sell / buy the *Option Writer* right to withdraw the deposit after expiration time too.
+5. *Anti-Option Buyer*. As *Option Writer* side of contracts is tokenized, one can sell / buy the *Option Writer* right to withdraw the unlocked deposit too.
 
 ## Example 1
 
-Ann creates "meta" option contract with the underlying WETH (wrapped Ethereum, to make it ERC20-compatible) and basis DAI, with the strike price 3000 and expiration date 31.12.2018 (current price at the time of writing is about  900 DAI per WETH).
+Ann creates "meta" option contract with the underlying WETH (ERC20-compatible, wrapped Ethereum, token) and basis DAI, with the strike price 3000 and expiration date 2018-12-31 (current price at the time of writing is about  900 DAI per WETH).
 
-Bob "writes" 10 option contracts. That is he deposits 10 WETH and get 10 Option (OPT_WETH_DAI_2018_12_31) and 10 Anti-Option contracts (A_OPT_WETH_DAI_2018_12_31).  At this point the fee are taken, 0.016 per contract, that is 0.16 ETH. 0.15 ETH went to Ann, as *Option Line Creator* and 0.01 ETH to *Option House* (preliminary split fee taker split ratio). Note in the tables below the fees are not considered!
+Bob "writes" 10 option contracts. That is he deposits 10 WETH and get 10 Option (OPT_1_WETH_3000_DAI_2018_12_31) and 10 Anti-Option contracts (A_OPT_1_WETH_3000_DAI_2018_12_31).  At this point the fee are taken, 0.016 per contract, that is 0.16 ETH. 0.15 ETH went to Ann, as *Option Line Creator* and 0.01 ETH to *Option House* (preliminary split fee taker split ratio). Note in the tables below the fees are not considered!
 
 <table>
   <tr>
     <td></td>
-    <td>OPT_WETH_DAI_2018_12_31</td>
-    <td>A_OPT_WETH_D
-AI_2018_12_31</td>
+    <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
+    <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
     <td>WETH</td>
     <td>DAI</td>
   </tr>
@@ -66,9 +65,8 @@ Bob sells 7  OPT_WETH_DAI_31_12_2018 contracts to Clair for 50 DAI (actually cou
 <table>
   <tr>
     <td></td>
-    <td>OPT_WETH_DAI_2018_12_31</td>
-    <td>A_OPT_WETH_D
-AI_2018_12_31</td>
+    <td>OPT_1_WETH_3000_DAI_2018_12_31</td>
+    <td>A_OPT_1_WETH_3000_DAI_2018_12_31</td>
     <td>WETH</td>
     <td>DAI</td>
   </tr>
