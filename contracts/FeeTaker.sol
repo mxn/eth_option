@@ -10,8 +10,10 @@ import './OptionPair.sol';
 
 contract FeeTaker is Ownable {
   using SafeERC20 for ERC20;
+  using SafeMath for uint;
   FeeCalculator public feeCalculator;
-
+  uint public FRACTION_NOMINATOR = 7;
+  uint public FRACTION_DENOMINATOR = 8;
 
   function FeeTaker (address _feeCalculator) public
     Ownable()
@@ -41,7 +43,7 @@ contract FeeTaker is Ownable {
   function takeFee (address _optionPair, uint _optionQty, address _writer) public {
     uint fee = feeCalculator.calcFee(_optionPair, _optionQty);
     ERC20 feeToken = ERC20(feeCalculator.feeToken());
-    uint feeForOptionPairOwner = fee * 3 / 4;
+    uint feeForOptionPairOwner = fee.mul(FRACTION_NOMINATOR).div(FRACTION_DENOMINATOR);
     feeToken.safeTransferFrom(_writer, OptionPair(_optionPair).owner(), feeForOptionPairOwner);
     feeToken.safeTransferFrom(_writer, this, fee - feeForOptionPairOwner);
   }
