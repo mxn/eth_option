@@ -223,7 +223,7 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
   </tr>
   <tr>
     <td>Clair</td>
-    <td>2 (expired)</td>
+    <td>2 (useless as expired)</td>
     <td>0</td>
     <td>0</td>
     <td>5000</td>
@@ -235,11 +235,11 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
 
 * Put option contract
 
-    * There is no need for them: just swap underlying and base token. In this case Ann needs to create line with underlying DAI, base WETH, e.g. 1 WETH per 500 DAI
+    * There is no need for them: just swap underlying and base token. In this case Ann needs to create option line with underlying DAI and base WETH, e.g. 1 WETH per 500 DAI
 
 * Differences to "normal" option contract
 
-    * Due to tokenissation of the writer part of the contracts, the exercised and not-execrisced part of the contracts are shared among all writers. E.g if Bob writes 10 options by deposiing 10 WETH, Dan writed 30 options (30 WETH) and only 10 of them were executed for strike 3000 DAI, after expiration date Bob can withfraw 7.5 WETH plus 2.5 * 3000 DAI and Dan can withdraw 22.5 WETH and 7.5 * 3000 DAI
+    * Due to tokenisation of the writer part of the contracts, the exercised and not-execrisced part of the contracts are shared among all writers. E.g if Bob writes 10 options by deposiing 10 WETH, Dan writed 30 options (30 WETH) and only 10 of them were executed for strike 3000 DAI, after expiration date Bob can withfraw 7.5 WETH plus 2.5 * 3000 DAI and Dan can withdraw 22.5 WETH and 7.5 * 3000 DAI
 
 
 
@@ -247,4 +247,4 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
 
 As POC the smart contracts with pluggable fee taker mechanism are implemented, and partially tested (code audit is needed). I believe that one needs to make some community  and option line creator (in the example Ann) should be chosen on one hand via auction, on the other should be paid back with some governance tokens. This governance mechanism should be more thoroughly thought and implemented. European style option could be implemented relatively easily.
 
-The implementation was in my spare time, I am now a little under stress on my main job. Generally I would like to find some partners and investors to proceed with the things further with more dedicated time for it and for further development (I have a couple other ideas).
+The implementation is being made in my spare time, I am now a little under stress on my main job. Generally I would like to find some partners and investors to proceed with the things further with more dedicated time for it as well as for further development in this area (I have a couple other ideas).
