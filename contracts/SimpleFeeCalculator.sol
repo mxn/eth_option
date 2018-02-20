@@ -7,7 +7,7 @@ contract SimpleFeeCalculator is FeeCalculator {
   uint public coef;
   uint public optionCreationFee;
 
-  address private addrFeeToken; //retrived by method
+  address addrFeeToken; //retrived by method
 
   function SimpleFeeCalculator(ERC20 _feeToken, uint _coef, uint _optionCreationFee) public {
     addrFeeToken = _feeToken;
@@ -27,5 +27,3 @@ contract SimpleFeeCalculator is FeeCalculator {
       return optionCreationFee;
     }
 }
-
-

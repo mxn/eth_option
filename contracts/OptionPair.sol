@@ -23,7 +23,6 @@ contract OptionPair is ReentrancyGuard {
   uint public strike;
   uint public underlyingQty;
   uint public expireTime;
-//  string public name;
 
   address feeTaker;
 
@@ -172,5 +171,3 @@ contract OptionPair is ReentrancyGuard {
   }
 
 }
-
-
