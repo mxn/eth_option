@@ -1,0 +1,24 @@
+@startuml
+:Writer: as Writer
+(Write Options) as (write)
+(generate Options ERC20 Tokens) as (genOpts)
+(generate Anti-Options ERC20 Tokens) as (genAntiOpts)
+
+Writer --> (write): deposit and lock underlying
+
+(write) -left-> (genOpts)
+
+(write) -right-> (genAntiOpts)
+
+
+(genOpts) ...> Writer: belongs to
+(genAntiOpts) ...> Writer: belongs to
+(genOpts) ..up.> (Exchange): could be exchanged as ERC20-standard token
+(genAntiOpts) ..up.> (Exchange)
+
+Buyer -right-> (Exchange): buy
+
+
+
+
+@enduml

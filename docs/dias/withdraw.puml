@@ -1,0 +1,9 @@
+@startuml
+:Anti-Option Holder: as Holder
+(withdraw: ONLY AFTER EXPIRE!) as (withdraw)
+
+Holder -> (withdraw): put anti-option tokens
+
+(withdraw) -> Holder: get corresponding share amount of underlying and basis (from execution) tokens
+
+@enduml

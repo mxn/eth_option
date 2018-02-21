@@ -1,0 +1,9 @@
+@startuml
+:Option and Anti-Option Holder: as Holder
+(execute: ONLY BEFORE EXPIRE!) as (annihilate)
+
+Holder-> (annihilate): post option equal amount of option and anti-option tokens
+
+(annihilate) -> Holder: get from deposit corresponding amount of underlying tokens
+
+@enduml

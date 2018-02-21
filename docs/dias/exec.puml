@@ -1,0 +1,9 @@
+@startuml
+:Option Holder: as Buyer
+(execute: ONLY BEFORE EXPIRE!) as (exec)
+
+Buyer -> (exec): post option tokens and corresponding amount of basis tokens
+
+(exec) -> Buyer: get from smart contract corresponding amount of underlying tokens
+
+@enduml
