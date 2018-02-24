@@ -1,6 +1,6 @@
 @startuml
 :Option Holder: as Buyer
-(execute: ONLY BEFORE EXPIRE!) as (exec)
+(exercise: ONLY BEFORE EXPIRE!) as (exec)
 
 Buyer -> (exec): post option tokens and corresponding amount of basis tokens
 

@@ -4,6 +4,7 @@
 
 Currently it seems that there is no suitable analog for "off-chain" option contracts in Ethereum blockchain, although, due to numbers of tokens and market volatility, there are much requirements for them. Here is an attempt to implement one. General information about option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article. Below there are some specific things about implementation, based on Ethereum smart contracts.
 
+
 ## Contracts
 
 *Option Contract*. Gives its owner a right to get specified underlying (ERC20) tokens in exchange for basis ERC20 tokens during the period before expiration at the specified price (strike price). The transaction, which uses this right is called "exercise"
@@ -14,19 +15,32 @@ Currently it seems that there is no suitable analog for "off-chain" option contr
 
 1. *Option House*: owner the generating contracts, defines the fee policy.
 
-2. *Option "Line" Creator*: creates the “meta” option contract, which specifies ERC20 token pair (underlying and basis), strike price  and expiration date. As compensation she receives part (e.g. 15/16) of fee paid by *Option Writer* (s. below).
+1. *Option "Line" Creator*: creates the “meta” option contract, which specifies ERC20 token pair (underlying and basis), strike price  and expiration date.
 
-3. *Option Writer*. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by Option Line. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction *Option Writer* pays fee.
+1. *Option Writer*. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by Option Line. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction *Option Writer* pays fee.
 
-4. *Option Buyer*. Buys *Option Contracts* e.g. on exchanges (the *Option Contracts* are fully ERC20-compatible), via 0x protocol etc.
+1. *Option Buyer*. Buys *Option Contracts* e.g. on exchanges (the *Option Contracts* are fully ERC20-compatible), via 0x protocol etc.
 
-5. *Anti-Option Buyer*. As *Option Writer* side of contracts is tokenized, one can sell / buy the *Option Writer* right to withdraw the deposit after expiration time too.
+1. *Anti-Option Buyer*. As *Option Writer* side of contracts is tokenized, one can sell / buy the *Option Writer* right to withdraw the deposit after expiration time too.
+
+## Use Cases
+1. *Option writing*
+Described above:![Option Writing](docs/dias/write.png)
+
+1. *Option Exercise:*
+Owner of *option contract* can *exercise option contract* **before** *expiration time*. To exercise the owner
+should supply corresponding amount of basis tokens : ![Option Writing](docs/dias/exec.png)
+1. *Withdraw:*
+Owner of *anti-option* contract can withdraw corresponding amount of underlying tokens and corresponding amount of exercised basis tokens **after** *expiration time*![Option Writing](docs/dias/withdraw.png)
+1. *Annihilate:*
+The same amount of *option* and *anti-option* contracts can be "annihilated" **before** the *expiration time*. In this case the owner of the *annihilated* contracts gets the corresponding (as in case of *withdraw*) amount of the underlying and basis tokens![Option Writing](docs/dias/annihilate.png)
+
 
 ## Example 1
 
 Ann creates "meta" option contract with the underlying WETH (wrapped Ethereum, to make it ERC20-compatible) and basis DAI, with the strike price 3000 and expiration date 31.12.2018 (current price at the time of writing is about  900 DAI per WETH).
 
-Bob "writes" 10 option contracts. That is he deposits 10 WETH and get 10 Option (OPT_WETH_DAI_2018_12_31) and 10 Anti-Option contracts (A_OPT_WETH_DAI_2018_12_31).  At this point the fee are taken, 0.016 per contract, that is 0.16 ETH. 0.15 ETH went to Ann, as *Option Line Creator* and 0.01 ETH to *Option House* (preliminary split fee taker split ratio). Note in the tables below the fees are not considered!
+Bob "writes" 10 option contracts. That is he deposits 10 WETH and get 10 Option (OPT_WETH_DAI_2018_12_31) and 10 Anti-Option contracts (A_OPT_WETH_DAI_2018_12_31).  At this point the fee are taken, 0.016 per contract, that is 0.16 ETH. 0.15 ETH went to Ann, as *Option Line Creator* and 0.01 ETH to *Option House* (preliminary split fee taker split ratio). Note in the tables below the fees are not Mconsidered!
 
 <table>
   <tr>

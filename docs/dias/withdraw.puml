@@ -4,6 +4,6 @@
 
 Holder -> (withdraw): put anti-option tokens
 
-(withdraw) -> Holder: get corresponding share amount of underlying and basis (from execution) tokens
+(withdraw) -> Holder: get corresponding share amount of underlying and basis (from exercised) tokens
 
 @enduml
