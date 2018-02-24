@@ -6,7 +6,9 @@ import "./FeeTaker.sol";
 
 contract MockOptionFactory is OptionFactory {
 
-  function MockOptionFactory(address _feeTaker) public
+  function MockOptionFactory(address _feeTaker)
+    public
+    onlyOwner
    OptionFactory (_feeTaker) {}
      /*
      Need to copy logic from parent class as refactoring brings problem with the gas

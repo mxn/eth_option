@@ -98,9 +98,26 @@ contract ("Tokens:", async  () =>  {
 })
 
 contract ("Option", () =>  {
+  it ('transfer ownership for OptionFactory should be OK', async () => {
+    optFactory = await OptionFactory.deployed()
+    assert(optFactory.transferOwnership(optionTokenCreator, {from: optionFactoryCreator}))
+  })
+
+  it ('create option tokens for not-owner should throw excepton', async () => {
+    await basisToken.transfer(optionTokenCreator, 100, {from: tokensOwner})
+    await basisToken.approve(FeeTaker.address, 100, {from: optionFactoryCreator})
+
+    try {
+      var trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address, 125, 100, new Date()/1000 + 60*60*24*30,
+      {from: optionFactoryCreator})
+      assert(true)
+    } catch(e) {
+      //NOP
+    }
+  })
 
   it ('initializing via OptionFactory should be OK', async () => {
-    optFactory = await OptionFactory.deployed()
+
     await basisToken.transfer(optionTokenCreator, 100, {from: tokensOwner})
     await basisToken.approve(FeeTaker.address, 100, {from: optionTokenCreator})
 

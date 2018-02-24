@@ -2,8 +2,9 @@ pragma solidity ^0.4.18;
 
 import "./FeeTaker.sol";
 import "./OptionPair.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
-contract OptionFactory {
+contract OptionFactory is Ownable {
 
   address public feeTaker;
 
@@ -16,7 +17,9 @@ contract OptionFactory {
   }
 
   function createOptionPairContract(address _underlying, address _basisToken,
-   uint _strike, uint _underlyingQty, uint _expireTime) public
+   uint _strike, uint _underlyingQty, uint _expireTime)
+   public
+   onlyOwner
    returns(address) {
     address opAddr =  address(new OptionPair (
         _underlying,
