@@ -15,7 +15,9 @@ Currently it seems that there is no suitable analog for "off-chain" option contr
 
 1. *Option House*: owner the generating contracts, defines the fee policy.
 
-1. *Option "Line" Creator*: creates the “meta” option contract, which specifies ERC20 token pair (underlying and basis), strike price  and expiration date.
+1. *Option Tokens Creator*: creates the 2 ERC20 compatible token contracts
+ (option an anti-option, s. later), which specifies ERC20 token pair
+ (underlying and basis), strike price  and expiration date.
 
 1. *Option Writer*. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by Option Line. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction *Option Writer* pays fee.
 
