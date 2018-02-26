@@ -1,9 +1,9 @@
 @startuml
-:Option and Anti-Option Holder: as Holder
-(execute: ONLY BEFORE EXPIRE!) as (annihilate)
+Actor "Option and Anti-Option Holder" as Holder
+participant "Smart Contract\nAnnihilate: ONLY BEFORE EXPIRATION" as annihilate
 
-Holder-> (annihilate): post option equal amount of option and anti-option tokens
+Holder-> annihilate: post option equal amount of option and anti-option tokens
+annihilate -> Holder: get from deposit corresponding amount of underlying tokens
 
-(annihilate) -> Holder: get from deposit corresponding amount of underlying tokens
-
+hide footbox
 @enduml

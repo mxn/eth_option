@@ -1,9 +1,9 @@
 @startuml
-:Option Holder: as Buyer
-(exercise: ONLY BEFORE EXPIRE!) as (exec)
+actor Buyer
+participant "Smart Contract\nExercise: ONLY BEFORE EXPIRATION " as exec
 
-Buyer -> (exec): post option tokens and corresponding amount of basis tokens
+Buyer -> exec: post option tokens and corresponding amount basis tokens
+exec -> Buyer: get from smart contract corresponding amount of underlying tokens
 
-(exec) -> Buyer: get from smart contract corresponding amount of underlying tokens
-
+hide footbox
 @enduml

@@ -1,9 +1,9 @@
 @startuml
-:Anti-Option Holder: as Holder
-(withdraw: ONLY AFTER EXPIRE!) as (withdraw)
+Actor "Anti-Option Holder" as Holder
+participant "Smart Contract\nWithdraw: ONLY AFTER EXPIRATION" as withdraw
 
-Holder -> (withdraw): put anti-option tokens
+Holder -> withdraw: put anti-option tokens
+withdraw -> Holder: get corresponding share amount of underlying and basis (from exercised) tokens
 
-(withdraw) -> Holder: get corresponding share amount of underlying and basis (from exercised) tokens
-
+hide footbox
 @enduml
