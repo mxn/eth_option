@@ -26,7 +26,12 @@ Currently it seems that there is no suitable analog for "off-chain" option contr
 1. *Anti-Option Buyer*. As *Option Writer* side of contracts is tokenized, one can sell / buy the *Option Writer* right to withdraw the deposit after expiration time too.
 
 ## Use Cases
+1. *Creation Option Token Contracts:*
+Creates 2 new ERC20 compatible *Option* and *Anti-Option* contracts
+
 1. *Option writing*
+creates (or mint) *Option* and *Anti-Option* contracts by depositing the specified
+in the contract underlying ERC20-compatible tokens
 Described above:![Option Writing](docs/dias/write.png)
 
 1. *Option Exercise:*
@@ -40,9 +45,9 @@ The same amount of *option* and *anti-option* contracts can be "annihilated" **b
 
 ## Example 1
 
-Ann creates "meta" option contract with the underlying WETH (wrapped Ethereum, to make it ERC20-compatible) and basis DAI, with the strike price 3000 and expiration date 31.12.2018 (current price at the time of writing is about  900 DAI per WETH).
+Ann creates 2 (Option and Anti-Option) ERC20-compatible contracts which specify as underlying WETH (wrapped Ethereum, to make it ERC20-compatible) and basis DAI tokens, with the strike price 3000 and expiration date 31.12.2018 (current price at the time of writing is about  900 DAI per WETH).
 
-Bob "writes" 10 option contracts. That is he deposits 10 WETH and get 10 Option (OPT_WETH_DAI_2018_12_31) and 10 Anti-Option contracts (A_OPT_WETH_DAI_2018_12_31).  At this point the fee are taken, 0.016 per contract, that is 0.16 ETH. 0.15 ETH went to Ann, as *Option Line Creator* and 0.01 ETH to *Option House* (preliminary split fee taker split ratio). Note in the tables below the fees are not Mconsidered!
+Bob "writes" 10 option contracts. That is he deposits 10 WETH and get (or mint) 10 Option (OPT_WETH_DAI_2018_12_31) and 10 Anti-Option contracts (A_OPT_WETH_DAI_2018_12_31).  At this point the fee could be taken. Note in the tables below the fees are not considered!
 
 <table>
   <tr>
@@ -247,6 +252,7 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
 </table>
 
 
+
 ## Others
 
 * Put option contract
@@ -255,7 +261,7 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
 
 * Differences to "normal" option contract
 
-    * Due to tokenissation of the writer part of the contracts, the exercised and not-execrisced part of the contracts are shared among all writers. E.g if Bob writes 10 options by deposiing 10 WETH, Dan writed 30 options (30 WETH) and only 10 of them were executed for strike 3000 DAI, after expiration date Bob can withfraw 7.5 WETH plus 2.5 * 3000 DAI and Dan can withdraw 22.5 WETH and 7.5 * 3000 DAI
+    * Due to tokenisation of the writer part of the contracts, the exercised and not-exercised part of the contracts are shared among all writers. E.g if Bob writes 10 options by depositing 10 WETH, Dan writes 30 options (30 WETH) and only 10 of them were executed for strike 3000 DAI, after expiration date Bob can withdraw 7.5 WETH plus 2.5 * 3000 DAI and Dan can withdraw 22.5 WETH and 7.5 * 3000 DAI
 
 
 
