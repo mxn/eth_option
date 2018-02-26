@@ -221,6 +221,7 @@ contract ("Option", () =>  {
 
   it ('annihilate 2 options should be OK', async () => {
     const balUnderlyingWriter1Before = await underlyingToken.balanceOf(writer1).valueOf()
+    const balBasisWriter1Before = await underlyingToken.balanceOf(writer1).valueOf()
     const balOptWriter1Before = await tokenOption.balanceOf(writer1).valueOf()
     const balAntiOptWriter1Before = await tokenAntiOption.balanceOf(writer1).valueOf()
     //console.log("before annihilate: " + balUnderlyingWriter1Before + "; " + balOptWriter1Before + "; " + balAntiOptWriter1Before)
@@ -230,7 +231,8 @@ contract ("Option", () =>  {
     const balUnderlyingWriter1After = await underlyingToken.balanceOf(writer1).valueOf()
     const balOptWriter1After = await tokenOption.balanceOf(writer1).valueOf()
     const balAntiOptWriter1After = await tokenAntiOption.balanceOf(writer1).valueOf()
-    assert.equal(2 * 100, balUnderlyingWriter1After - balUnderlyingWriter1Before) //strikeQty * annihiletedQty
+    // as 2 options from 10 are executed corresponding underlying is 2 * (10 - 2)/10 * 100 = 160
+    assert.equal(2 * (10 - 2) / 10 * 100, balUnderlyingWriter1After - balUnderlyingWriter1Before) //strikeQty * annihiletedQty
     assert.equal(2, balOptWriter1Before - balOptWriter1After)
     assert.equal(2, balAntiOptWriter1Before - balAntiOptWriter1After)
     //console.log("after annihilate: " + balUnderlyingWriter1After + "; " + balOptWriter1After + "; " + balAntiOptWriter1After)
@@ -248,9 +250,10 @@ contract ("Option", () =>  {
   it ("withdrawAll should function if time is after expiration", async () => {
     const curTime = await optionPair.getCurrentTime.call()
     const beforeBalUnderlying = await underlyingToken.balanceOf(writer1).valueOf()
+    const beforeBalBasis = await basisToken.balanceOf(writer1).valueOf()
     const beforeBalAnti = await tokenAntiOption.balanceOf(writer1).valueOf()
-
-    assert.equal(600, await optionPair.getAvailableUnderlying(writer1, {from: writer1}).valueOf())
+    // 2 executed, for 8 anti-option one gets 8 * 100 * (10 - 2) / 10 = 640
+    assert.equal(640, await optionPair.getAvailableUnderlying(writer1, {from: writer1}).valueOf())
     await tokenAntiOption.approve(optionPair.address, beforeBalAnti, {from: writer1})
 
     let trans = await optionPair.updateMockTime( curTime  + 3600 * 24, {from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc'})
@@ -259,8 +262,10 @@ contract ("Option", () =>  {
 
     assert.ok (newCurTime  >=  curTime  + 3600 * 24)
     const afterBalWriter = await underlyingToken.balanceOf(writer1).valueOf()
-
-    assert.equal(600, afterBalWriter - beforeBalUnderlying) //available antiOption * qty
+    const afterBalBasis = await basisToken.balanceOf(writer1).valueOf()
+    // basisToken = 2 (executed) * 8 / 10 (share from all) * 125 (strike price) =
+    assert.equal(200, afterBalBasis - beforeBalBasis)
+    assert.equal(640, afterBalWriter - beforeBalUnderlying) //available antiOption * qty
   })
 
 

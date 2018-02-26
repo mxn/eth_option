@@ -87,20 +87,18 @@ contract OptionPair is ReentrancyGuard {
     return true;
   }
 
-  function annihilate(uint _qty) external nonReentrant {
-    _annihilateFor(msg.sender, _qty);
+  function annihilate(uint _qty) external nonReentrant returns (bool) {
+    return _annihilateFor(msg.sender, _qty);
   }
 
-  function _annihilateFor(address _holder, uint _qty) private {
+  function _annihilateFor(address _holder, uint _qty) private returns (bool) {
     TokenOption tokenOptionErc20 = TokenOption(tokenOption);
     TokenAntiOption tokenAntiOptionErc20 = TokenAntiOption(tokenAntiOption);
     require(tokenOptionErc20.balanceOf(_holder) >= _qty);
-    require(tokenAntiOptionErc20.balanceOf(_holder) >= _qty);
+    withdrawFor(_holder, _qty);
     tokenOptionErc20.safeTransferFrom(_holder, this, _qty); //first we transfer into OptionPair accounnt as only from this account the tokens can be burned
-    tokenAntiOptionErc20.safeTransferFrom(_holder, this, _qty);
     tokenOptionErc20.burn(_qty);
-    tokenAntiOptionErc20.burn(_qty);
-    ERC20(underlying).safeTransfer(_holder, underlyingQty.mul(_qty));
+    return true;
   }
 
   function getTotalOpenInterest() public view returns(uint res) {
@@ -127,15 +125,15 @@ contract OptionPair is ReentrancyGuard {
     return true;
   }
 
-  function withdrawAll () external nonReentrant returns (bool) {
+  function withdrawAll () external nonReentrant onlyAfterExpiration returns (bool) {
     return withdrawFor(msg.sender, TokenAntiOption(tokenAntiOption).balanceOf(msg.sender));
   }
 
-  function withdraw (uint _qty) external nonReentrant returns (bool) {
+  function withdraw (uint _qty) external nonReentrant onlyAfterExpiration returns (bool) {
     return withdrawFor(msg.sender, _qty);
   }
 
-  function withdrawFor(address _writer, uint _qty) private onlyAfterExpiration returns (bool) {
+  function withdrawFor(address _writer, uint _qty) private  returns (bool) {
     TokenAntiOption tokenAntiOptionObj = TokenAntiOption(tokenAntiOption);
     require (tokenAntiOptionObj.balanceOf(_writer) >= _qty);
     require(ERC20(underlying).balanceOf(this).mul(_qty) >= 0); //to prevent oveflows
