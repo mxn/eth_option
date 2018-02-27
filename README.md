@@ -288,7 +288,9 @@ The implementation was in my spare time, I am now a little under stress on my ma
 If you are interesting in supporting the project, please use the contact form
 
 <form action="http://formspree.io/sub.mxn@gmail.com">
-<input type="email" name="_replyto">
-<textarea name="body">
+Your mail:
+<input type="email" name="_replyto" size="60">
+Your message:
+<textarea name="body" rows=10 cols=60>
 </textarea><input type="submit" value="Send">
 </form>
