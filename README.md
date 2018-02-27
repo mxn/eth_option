@@ -286,3 +286,9 @@ As POC the smart contracts with pluggable fee taker mechanism are implemented, a
 The implementation was in my spare time, I am now a little under stress on my main job. Generally I would be glad to find some partners / investors to proceed with the things further with more dedicated time for the development (I have a couple other ideas to monetise the stuff).
 
 If you are interesting in supporting the project, please use the contact form
+
+<form action="http://formspree.io/sub.mxn@gmail.com">
+<input type="email" name="_replyto">
+<textarea name="body">
+</textarea><input type="submit" value="Send">
+</form>
