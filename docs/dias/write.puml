@@ -4,21 +4,22 @@
 (generate Options ERC20 Tokens) as (genOpts)
 (generate Anti-Options ERC20 Tokens) as (genAntiOpts)
 
-Writer --> (write): deposit and lock underlying
+Writer -down-> (write): deposit and \nlock underlying
 
 (write) -left-> (genOpts)
 
 (write) -right-> (genAntiOpts)
 
+(genOpts) .up..> Writer: belongs to
+(genAntiOpts) .up..> Writer: belongs to
 
-(genOpts) ...> Writer: belongs to
-(genAntiOpts) ...> Writer: belongs to
-(genOpts) ..up.> (Exchange): could be exchanged as ERC20-standard token
-(genAntiOpts) ..up.> (Exchange)
+(Sell Option Tokens) as sellOpts
+(Sell Anti-Options Tokens) as sellAntiOpts
 
-Buyer -right-> (Exchange): buy
-
-
+Writer -left-> sellOpts
+sellOpts <-left- Buyer: get the rights to buy of underlying tokens\n at strike price before expiration
+Writer -right-> sellAntiOpts
+sellAntiOpts <-right- :Anti Option Buyer: :  gets the rights for\nthe locked underlying tokens
 
 
 @enduml
