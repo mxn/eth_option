@@ -2,7 +2,10 @@
 
 ## Preface
 
-Currently it seems that there is no suitable analog for "off-chain" option contracts in Ethereum blockchain, although, due to numbers of tokens and market volatility, there are much requirements for them. Here is an attempt to implement one. General information about option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article. Below there are some specific things about implementation, based on Ethereum smart contracts.
+In the crypto-currency world the number of tokens be traded and trading volume increased dramatically since the last time. The volatility of the market and increased trading activity implies significant demand for the derivative instruments. There are several projects which are active in the creation of them. Here is an attempt to implement ERC20-compatible option contracts (which allows them relatively easily to be traded via numerous Ethereum based exchanges and protocols) based on Ethereum smart contracts.
+
+General information about option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article.
+Below there are some specific things about implementation, based on Ethereum smart contracts.
 
 
 ## Contracts
