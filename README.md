@@ -159,7 +159,6 @@ The price of Ethereum went up and per 2018-11-01 the price reaches 4000 DAI per 
   <td>WETH</td>
   <td>DAI</td>
 </tr>
-  </tr>
   <tr>
     <td>Meta-Option Contract</td>
     <td></td>
