@@ -265,10 +265,24 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
 
     * Due to tokenisation of the writer part of the contracts, the exercised and not-exercised part of the contracts are shared among all writers. E.g if Bob writes 10 options by depositing 10 WETH, Dan writes 30 options (30 WETH) and only 10 of them were executed for strike 3000 DAI, after expiration date Bob can withdraw 7.5 WETH plus 2.5 * 3000 DAI and Dan can withdraw 22.5 WETH and 7.5 * 3000 DAI
 
-
+## Installation
+Pre-requisite: *truffle* installation. To install run:
+```
+npm install -g truffle
+```
+To test clone repo and run tests with the help of  *truffle* run the next snippet
+```
+git clone https://github.com/mxn/eth_option.git
+cd eth_option
+npm install
+truffle test
+```
+The usage of the contracts can be seen under *test/* directory
 
 ## Current State
 
 As POC the smart contracts with pluggable fee taker mechanism are implemented, and partially tested (code audit is needed). I believe that one needs to make some community  and option line creator (in the example Ann) should be chosen on one hand via auction, on the other should be paid back with some governance tokens. This governance mechanism should be more thoroughly thought and implemented. European style option could be implemented relatively easily.
 
-The implementation was in my spare time, I am now a little under stress on my main job. Generally I would be glad to find some partners and investors to proceed with the things further with more dedicated time for it and for further development (I have a couple other ideas).
+The implementation was in my spare time, I am now a little under stress on my main job. Generally I would be glad to find some partners / investors to proceed with the things further with more dedicated time for the development (I have a couple other ideas to monetise the stuff).
+
+If you are interesting in supporting the project, please use the contact form
