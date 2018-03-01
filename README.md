@@ -2,7 +2,10 @@
 
 ## Preface
 
-In the crypto-currency world the number of tokens be traded and trading volume increased dramatically since the last time. The volatility of the market and increased trading activity implies significant demand for the derivative instruments. There are several projects which are active in the creation of them. Here is an attempt to implement ERC20-compatible option contracts (which allows them relatively easily to be traded via numerous Ethereum based exchanges and protocols) based on Ethereum smart contracts.
+In the crypto-currency world the number of traded tokens and their trading volume increased dramatically since the last time. The volatility of the market and increased trading activity implies significant demand for the derivative instruments. There are several projects which are active in the creation of them, but there is still in my opinion not many production-ready solutions. Generally it was a motivation for the option implementation (along with the desire to "dive in" into Smart Contract world), as I tried to find in vain some instrument similar to "normal" call/put options.
+
+
+As a result I implemented ERC20-compatible option contracts (which allows them, contrary to other implementations, relatively easily to be traded via numerous Ethereum based exchanges and protocols) based on Ethereum smart contracts.
 
 General information about option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article.
 Below there are some specific things about implementation, based on Ethereum smart contracts.
