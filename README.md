@@ -3,9 +3,9 @@
 ## Preface
 In the crypto-currency world the number of traded tokens and their trading volume increased dramatically since the last time. The volatility of the market and increased trading activity implies significant demand for the derivative instruments. There are several projects which are active in the creation of them, but there are still not many production-ready solutions. Failure to find some instrument similar to "normal" call/put options was a motivation for me (along with the desire to "dive in" into Smart Contract world) to create one.
 
-As a result I implemented ERC20-compatible option contracts (which allows them, contrary to other implementations, relatively easily to be traded via numerous Ethereum based exchanges and protocols) based on Ethereum smart contracts.
+As a result I implemented creation ERC20-compatible option contracts (which allows them, contrary to other implementations, relatively easily to be traded via numerous Ethereum based exchanges and protocols).
 
-General information about "normal", "off-chain" option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article.
+General information about "normal", "off-chain" option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance) article.
 Below there are some specific things about implementation, based on Ethereum smart contracts.
 
 
@@ -21,7 +21,7 @@ Below there are some specific things about implementation, based on Ethereum sma
 
 1. *Option Pair Creator*: creates the 2 ERC20 compatible token contracts
  (option an anti-option, s. later), which specifies ERC20 token pair
- (underlying and basis), strike price  and expiration date. Additionally it creates a smart contract which check / performs "business logic". The creation of three contracts are relatively expensoive in Ethereum gas therms. The idea, that the creator can take part of fees, paid later by contract usage, namely during Option Writing.
+ (underlying and basis), strike price  and expiration date. Additionally it creates a smart contract which check / performs "business logic". The creation of three contracts are relatively expensive in Ethereum gas terms. The idea, that the creator can take part of fees, paid later by contract usage, namely during Option Writing.
 
 1. *Option Writer*. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by Option Line. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction *Option Writer* pays fee.
 
@@ -286,9 +286,9 @@ The usage of the contracts can be seen under *test/* directory
 
 ## Current State
 
-As POC the smart contracts with pluggable fee taker mechanism are implemented, and partially tested (code audit is needed). I believe that one needs to make some community  and option line creator (in the example Ann) should be chosen on one hand via auction, on the other should be paid back with some governance tokens. This governance mechanism should be more thoroughly thought and implemented. European style option could be implemented relatively easily.
+As POC the smart contracts with pluggable fee taker mechanism are implemented, and partially tested (code audit is needed). I think that the option pair creator should be chosen on one hand via auction, on the other should be paid back with some governance tokens. This governance mechanism should be more thoroughly thought and can support building and expanding community. European style option could be implemented relatively easily.
 
-The implementation was in my spare time. Generally I would be glad to find some partners / investors to proceed with the things further with more dedicated time for the development (I have a couple other ideas to monetise the stuff).
+The implementation was in my spare time. Generally I would be glad to find some support to proceed with the things further with more dedicated time for the development (I have a couple other ideas to monetise the solution).
 
 If you are interesting in supporting the project, please use the contact form
 
