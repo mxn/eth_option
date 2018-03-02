@@ -9,7 +9,7 @@ General information about "normal", "off-chain" option contracts one can read in
 Below there are some specific things about implementation, based on Ethereum smart contracts.
 
 
-## Contracts
+## Main Contracts
 
 *Option Contract*. Gives its owner the right to get the specified amount of  underlying (ERC20) tokens in exchange for basis ERC20 tokens during the period before expiration at the specified price (strike price). The transaction, which uses this right, is called "exercise"
 
@@ -282,7 +282,7 @@ cd eth_option
 npm install
 truffle test
 ```
-The usage of the contracts can be seen under *test/* directory
+The example of usage of the smart contracts can be seen under *test/* directory
 
 ## Current State
 
