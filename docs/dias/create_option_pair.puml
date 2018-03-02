@@ -1,0 +1,22 @@
+@startuml
+:Creator: as creator
+(create option pair) as cr_opt_pair
+(Create Option Token Contract) as cr_opt_contract
+(Create Anti-Option Token Contract) as cr_a_opt_contract
+creator -down-> cr_opt_pair: specify basis token, underlying token, \nstrike price, expiration date
+cr_opt_pair -left->  cr_opt_contract
+cr_opt_pair -right->  cr_a_opt_contract
+
+note bottom of cr_opt_pair
+OptionPair contract contains "business logic"
+end note
+
+note bottom of cr_opt_contract
+ERC20 Token Contract
+end note
+
+note bottom of cr_a_opt_contract
+ERC20 Token Contract
+end note
+
+@enduml
