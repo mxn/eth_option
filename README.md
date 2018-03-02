@@ -1,19 +1,17 @@
 # Option contracts as ERC20-compatible tokens
 
 ## Preface
-
-In the crypto-currency world the number of traded tokens and their trading volume increased dramatically since the last time. The volatility of the market and increased trading activity implies significant demand for the derivative instruments. There are several projects which are active in the creation of them, but there is still in my opinion not many production-ready solutions. Generally it was a motivation for the option implementation (along with the desire to "dive in" into Smart Contract world), as I tried to find in vain some instrument similar to "normal" call/put options.
-
+In the crypto-currency world the number of traded tokens and their trading volume increased dramatically since the last time. The volatility of the market and increased trading activity implies significant demand for the derivative instruments. There are several projects which are active in the creation of them, but there are still not many production-ready solutions. Failure to find some instrument similar to "normal" call/put options was a motivation for me (along with the desire to "dive in" into Smart Contract world) to create one.
 
 As a result I implemented ERC20-compatible option contracts (which allows them, contrary to other implementations, relatively easily to be traded via numerous Ethereum based exchanges and protocols) based on Ethereum smart contracts.
 
-General information about option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article.
+General information about "normal", "off-chain" option contracts one can read in Wikipedia [Option (finance)](https://en.wikipedia.org/wiki/Option_(finance)) article.
 Below there are some specific things about implementation, based on Ethereum smart contracts.
 
 
 ## Contracts
 
-*Option Contract*. Gives its owner a right to get specified underlying (ERC20) tokens in exchange for basis ERC20 tokens during the period before expiration at the specified price (strike price). The transaction, which uses this right is called "exercise"
+*Option Contract*. Gives its owner the right to get the specified amount of  underlying (ERC20) tokens in exchange for basis ERC20 tokens during the period before expiration at the specified price (strike price). The transaction, which uses this right, is called "exercise"
 
 *Anti-Option Contract*. Gives a right to get "non-exercised" part of deposited underlying and “exercised” part of basis token after the expiration date, or, if combined with *Option Contract*, to get the corresponding token amount before the expiration date.
 
@@ -21,9 +19,9 @@ Below there are some specific things about implementation, based on Ethereum sma
 
 1. *Option House*: owner the generating contracts, defines the fee policy.
 
-1. *Option Tokens Creator*: creates the 2 ERC20 compatible token contracts
+1. *Option Pair Creator*: creates the 2 ERC20 compatible token contracts
  (option an anti-option, s. later), which specifies ERC20 token pair
- (underlying and basis), strike price  and expiration date.
+ (underlying and basis), strike price  and expiration date. Additionally it creates a smart contract which check / performs "business logic". The creation of three contracts are relatively expensoive in Ethereum gas therms. The idea, that the creator can take part of fees, paid later by contract usage, namely during Option Writing.
 
 1. *Option Writer*. Deposits the  "underlying" ERC20-compatible tokens with minimum amount specified by by Option Line. in exchange she gets ERC20-compatible option contract  as well  as ERC20-compatible “anti-option” contract (s. later). For this transaction *Option Writer* pays fee.
 
@@ -34,8 +32,9 @@ Below there are some specific things about implementation, based on Ethereum sma
 ## Use Cases
 1. *Creation Option Token Contracts:*
 Creates 2 new ERC20 compatible *Option* and *Anti-Option* contracts
+![Option Writing](docs/dias/create_option_pair.png)
 
-1. *Option writing*
+1. *Option Writing*
 creates (or mint) *Option* and *Anti-Option* contracts by depositing the specified
 in the contract underlying ERC20-compatible tokens
 Described above:![Option Writing](docs/dias/write.png)
@@ -49,7 +48,7 @@ Owner of *anti-option* contract can withdraw corresponding amount of underlying 
 The same amount of *option* and *anti-option* contracts can be "annihilated" **before** the *expiration time*. In this case the owner of the *annihilated* contracts gets the corresponding (as in case of *withdraw*) amount of the underlying and basis tokens![Option Writing](docs/dias/annihilate.png)
 
 
-## Example 1
+## Example
 
 Ann creates 2 (Option and Anti-Option) ERC20-compatible contracts which specify as underlying WETH (wrapped Ethereum, to make it ERC20-compatible) and basis DAI tokens, with the strike price 3000 and expiration date 31.12.2018 (current price at the time of writing is about  900 DAI per WETH).
 
@@ -268,7 +267,10 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
 
     * Due to tokenisation of the writer part of the contracts, the exercised and not-exercised part of the contracts are shared among all writers. E.g if Bob writes 10 options by depositing 10 WETH, Dan writes 30 options (30 WETH) and only 10 of them were executed for strike 3000 DAI, after expiration date Bob can withdraw 7.5 WETH plus 2.5 * 3000 DAI and Dan can withdraw 22.5 WETH and 7.5 * 3000 DAI
 
-## Installation
+    * *Naked Options*: cannot be created
+
+
+## Installation, Testing
 Pre-requisite: *truffle* installation. To install run:
 ```
 npm install -g truffle
@@ -286,13 +288,15 @@ The usage of the contracts can be seen under *test/* directory
 
 As POC the smart contracts with pluggable fee taker mechanism are implemented, and partially tested (code audit is needed). I believe that one needs to make some community  and option line creator (in the example Ann) should be chosen on one hand via auction, on the other should be paid back with some governance tokens. This governance mechanism should be more thoroughly thought and implemented. European style option could be implemented relatively easily.
 
-The implementation was in my spare time, I am now a little under stress on my main job. Generally I would be glad to find some partners / investors to proceed with the things further with more dedicated time for the development (I have a couple other ideas to monetise the stuff).
+The implementation was in my spare time. Generally I would be glad to find some partners / investors to proceed with the things further with more dedicated time for the development (I have a couple other ideas to monetise the stuff).
 
 If you are interesting in supporting the project, please use the contact form
 
 <form action="https://formspree.io/sub.mxn@gmail.com" method="POST">
 Your mail address and message:<p/>
 <input type="email" name="_replyto" size="60" />
+<p/>
 <textarea name="body" rows="10" cols="60"></textarea>
+<p/>
 <input type="submit" value="Send" />
 </form>
