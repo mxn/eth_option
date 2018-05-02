@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "./FeeTaker.sol";
+import "./IFeeTaker.sol";
 
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
@@ -55,7 +55,7 @@ contract OptionPair is ReentrancyGuard {
       expireTime = _expireTime;
       feeTaker = _feeTaker;
 
-      FeeTaker feeTakerObj = FeeTaker(feeTaker);
+      IFeeTaker feeTakerObj = IFeeTaker(feeTaker);
       feeTakerObj.takeOptionPairCreationFee(_underlying, _basisToken,
         _strike, _underlyingQty, _expireTime, _owner);
 
@@ -84,7 +84,7 @@ contract OptionPair is ReentrancyGuard {
     require(underlyingErc20.balanceOf(_sponsor) >= calcUnderlyngQty);
 
     totalWritten = totalWritten.add(_qty);
-    FeeTaker(feeTaker).takeFee(this, _qty, _sponsor);
+    IFeeTaker(feeTaker).takeFee(this, _qty, _sponsor);
     underlyingErc20.safeTransferFrom(_sponsor, this, calcUnderlyngQty);
     TokenOption(tokenOption).mint(_writer, _qty);
     TokenAntiOption(tokenAntiOption).mint(_writer, _qty);

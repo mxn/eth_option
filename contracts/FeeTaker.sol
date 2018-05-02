@@ -8,7 +8,7 @@ import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
 import './OptionPair.sol';
 
-contract FeeTaker is Ownable {
+contract FeeTaker is Ownable, IFeeTaker {
   using SafeERC20 for ERC20;
   using SafeMath for uint;
   FeeCalculator public feeCalculator;
