@@ -97,6 +97,27 @@ contract ("Tokens:", async  () =>  {
     })
 })
 
+contract ("Option With Sponsor", async() => {
+  it ("writeOptionsFor should function", async () => {
+    const optFactory = await OptionFactory.deployed()
+    await basisToken.transfer(optionFactoryCreator, 1000, {from: tokensOwner})
+    await underlyingToken.transfer(optionFactoryCreator, 1000, {from: tokensOwner})
+    await basisToken.approve(FeeTaker.address, 100, {from: optionFactoryCreator})
+    await underlyingToken.approve(optFactory.address, 100, {from: optionFactoryCreator})
+    const trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address,
+      15, 10, new Date()/1000 + 60*60*24*30,
+    {from: optionFactoryCreator})
+    optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
+    await underlyingToken.approve(optionPair.address, 100, {from: optionFactoryCreator})
+    await optionPair.writeOptionsFor(10, writer1, {from: optionFactoryCreator})
+    assert.equal(900, (await underlyingToken.balanceOf(optionFactoryCreator)).toFixed())
+    const tokenOption = await TokenOption.at(await optionPair.tokenOption.call())
+    assert.equal(10, (await tokenOption.balanceOf(writer1)).toFixed())
+    const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenOption.call())
+    assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toFixed())
+  })
+})
+
 contract ("Option", () =>  {
   it ('transfer ownership for OptionFactory should be OK', async () => {
     optFactory = await OptionFactory.deployed()

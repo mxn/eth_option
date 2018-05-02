@@ -69,19 +69,23 @@ contract OptionPair is ReentrancyGuard {
   }
 
   function writeOptions(uint256 _qty) external nonReentrant returns (bool) {
-    return _writeOptionFor(_qty, msg.sender);
+    return _writeOptionFor(_qty, msg.sender, msg.sender);
   }
 
-  function _writeOptionFor(uint256 _qty, address _writer) onlyBeforeExpiration private returns (bool) {
+  function writeOptionsFor(uint256 _qty, address _writer) external nonReentrant returns (bool) {
+    return _writeOptionFor(_qty, _writer, msg.sender);
+  }
+
+  function _writeOptionFor(uint256 _qty, address _writer, address _sponsor) onlyBeforeExpiration private returns (bool) {
     require(_qty > 0);
     uint calcUnderlyngQty = _qty.mul(underlyingQty);
     ERC20 underlyingErc20 =  ERC20(underlying);
-    require(underlyingErc20.allowance(_writer, this) >= calcUnderlyngQty); //TODO
-    require(underlyingErc20.balanceOf(_writer) >= calcUnderlyngQty);
+    require(underlyingErc20.allowance(_sponsor, this) >= calcUnderlyngQty); //TODO
+    require(underlyingErc20.balanceOf(_sponsor) >= calcUnderlyngQty);
 
     totalWritten = totalWritten.add(_qty);
-    FeeTaker(feeTaker).takeFee(this, _qty, _writer);
-    underlyingErc20.safeTransferFrom(_writer, this, calcUnderlyngQty);
+    FeeTaker(feeTaker).takeFee(this, _qty, _sponsor);
+    underlyingErc20.safeTransferFrom(_sponsor, this, calcUnderlyngQty);
     TokenOption(tokenOption).mint(_writer, _qty);
     TokenAntiOption(tokenAntiOption).mint(_writer, _qty);
     return true;
