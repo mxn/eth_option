@@ -1,9 +1,9 @@
 pragma solidity ^0.4.18;
 
 import './TokenOption.sol';
-import './FeeCalculator.sol';
+import './IFeeCalculator.sol';
 
-contract SimpleFeeCalculator is FeeCalculator {
+contract SimpleFeeCalculator is IFeeCalculator {
   uint public coef;
   uint public optionCreationFee;
 

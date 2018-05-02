@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "./FeeCalculator.sol";
+import "./IFeeCalculator.sol";
 import "./TokenOption.sol";
 
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
@@ -11,7 +11,7 @@ import './OptionPair.sol';
 contract FeeTaker is Ownable, IFeeTaker {
   using SafeERC20 for ERC20;
   using SafeMath for uint;
-  FeeCalculator public feeCalculator;
+  IFeeCalculator public feeCalculator;
   uint public pairOwnerFeePartNominator;
   uint public pairOwnerFeePartDenominator;
 
@@ -20,12 +20,12 @@ contract FeeTaker is Ownable, IFeeTaker {
     Ownable()
   {
     require (_pairOwnerFeePartDenominator >= _pairOwnerFeePartNominator);
-    feeCalculator = FeeCalculator(_feeCalculator);
+    feeCalculator = IFeeCalculator(_feeCalculator);
     pairOwnerFeePartNominator = _pairOwnerFeePartNominator;
     pairOwnerFeePartDenominator = _pairOwnerFeePartDenominator;
   }
 
-  function setFeeCalculator(FeeCalculator _feeCalculator) public onlyOwner {
+  function setFeeCalculator(IFeeCalculator _feeCalculator) public onlyOwner {
     feeCalculator = _feeCalculator;
   }
 
