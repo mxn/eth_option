@@ -9,6 +9,7 @@ const TokenOption = artifacts.require('TokenOption')
 const TokenAntiOption = artifacts.require('TokenAntiOption')
 const SimpleFeeCalculator = artifacts.require('SimpleFeeCalculator')
 const ERC20 = artifacts.require('ERC20')
+const DAI = artifacts.require('DAI')
 
 //const EBOE = artifacts.require('EBOE')
 /* const OptionFactory = artifacts.require('MockOptionFactory')
@@ -98,6 +99,13 @@ contract ("Tokens:", async  () =>  {
      const  bal = await basisToken.balanceOf(writer1)
      assert.equal(transferAmount, bal)
     })
+})
+
+contract ("DAI", async () => {
+  it("should be created and caller owns the supply", async () => {
+    let dai = await DAI.new({from: tokensOwner})
+    assert.equal((await dai.balanceOf.call(tokensOwner)).toFixed(), (await dai.totalSupply.call()).toFixed())
+  })
 })
 
 contract ("Option With Sponsor", async() => {
