@@ -31,11 +31,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
 
   uint totalWritten;
 
-  event Debug(address sponsor, address owner, uint amount);
-  event DebugSponsorWriter(address sponsor, address writer, bool feeFromWriter);
-
-  //address public owner; //can not make Ownable,as deployment give out of gas
-
   modifier onlyBeforeExpiration() {
     require(getCurrentTime() < expireTime);
     _;
@@ -91,7 +86,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
 
     TokenOption(tokenOption).mint(_writer, _qty);
     TokenAntiOption(tokenAntiOption).mint(_writer, _qty);
-    DebugSponsorWriter(_sponsor, _writer, _feeFromWriter);
     if (_feeFromWriter) {
       takeFee(_qty, _writer);
     } else {
@@ -191,7 +185,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
       address feeToken;
       (feeToken, fee) = feeCalculatorObj.calcFee(address(this), _optionQty);
       ERC20 feeTokenObj = ERC20(feeToken);
-      Debug(_feePayer, owner, fee);
       feeTokenObj.safeTransferFrom(_feePayer, owner, fee);
     }
   }

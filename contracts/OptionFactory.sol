@@ -1,13 +1,14 @@
 pragma solidity ^0.4.18;
 
-import "./OptionPair.sol";
+import './OptionPair.sol';
+import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
 
 
-contract OptionFactory is Ownable {
+contract OptionFactory is Ownable, ReentrancyGuard {
 
   using SafeERC20 for ERC20;
   using SafeMath for uint256;
@@ -18,7 +19,10 @@ contract OptionFactory is Ownable {
       address indexed underlying, address indexed basisToken,
        uint strike, uint underlyingQty, uint expireTime,  address creator);
 
-  function OptionFactory (address _feeCalculator) public {
+  function OptionFactory (address _feeCalculator)
+  Ownable()
+  ReentrancyGuard()
+  public {
           feeCalculator = _feeCalculator;
   }
 
@@ -56,13 +60,17 @@ contract OptionFactory is Ownable {
    tokenErc20.safeTransfer(owner, _amount);
  }
 
- function _proxyTransfer(address _token, address _target, uint _amount) private {
+ function _proxyTransfer(address _token, address _target, uint _amount)
+ private {
    ERC20 erc20 =  ERC20(_token);
    erc20.safeTransferFrom(msg.sender, this, _amount);
    erc20.approve(_target, _amount);
  }
 
- function writeOptions(address _optionPair, uint _qty) external returns (bool) {
+ function writeOptions(address _optionPair, uint _qty)
+ external
+ nonReentrant
+ returns (bool) {
    OptionPair optionPairObj = OptionPair(_optionPair);
    uint underlyingQtyPerContract = optionPairObj.underlyingQty();
    address underlying = OptionPair(_optionPair).underlying();
