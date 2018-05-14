@@ -12,5 +12,8 @@ module.exports = function(deployer) {
   .then( () => deployer.deploy(TokenOption))
   .then( () => deployer.deploy(Weth))
   .then( () => deployer.deploy(Dai))
+  .then( dai =>
+   Promise.all(web3.eth.accounts.map((acc) =>
+   dai.transfer(acc, 1000*(10**18)))))
   .then( () => deployer.deploy(TokenAntiOption))
 }

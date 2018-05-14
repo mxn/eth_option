@@ -106,6 +106,13 @@ contract ("DAI", async () => {
     let dai = await DAI.new({from: tokensOwner})
     assert.equal((await dai.balanceOf.call(tokensOwner)).toFixed(), (await dai.totalSupply.call()).toFixed())
   })
+
+  it("deployed DAI should be ditributed over accounts", async () => {
+    let dai = await DAI.deployed()
+    let bals = await Promise.all(web3.eth.accounts
+      .map((acc) => dai.balanceOf(acc)))
+    assert(bals.every(bal => bal >= 1000*(10**18)))
+  })
 })
 
 contract ("Option With Sponsor", async() => {
