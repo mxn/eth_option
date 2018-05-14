@@ -9,4 +9,6 @@ contract BaseTokenOption is StandardToken, BurnableToken, MintableToken {
   function getOptionPair() public view returns (address) {
     return owner;
   }
+
+  function isAntiOption() public view returns(bool);
 }
