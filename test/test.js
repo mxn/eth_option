@@ -1,12 +1,15 @@
 //const OptionPair = artifacts.require('TokenOption') // for live
 
 const OptionFactory = artifacts.require('MockOptionFactory')
-const FeeTaker = artifacts.require('FeeTaker')
+const FeeTaker = OptionFactory
 const OptionPair = artifacts.require('MockOptionPair') // for test
 const TestToken1 = artifacts.require('MockToken1')
 const TestToken2 = artifacts.require('MockToken2')
 const TokenOption = artifacts.require('TokenOption')
 const TokenAntiOption = artifacts.require('TokenAntiOption')
+const SimpleFeeCalculator = artifacts.require('SimpleFeeCalculator')
+const ERC20 = artifacts.require('ERC20')
+
 //const EBOE = artifacts.require('EBOE')
 /* const OptionFactory = artifacts.require('MockOptionFactory')
  // for test
@@ -100,21 +103,47 @@ contract ("Tokens:", async  () =>  {
 contract ("Option With Sponsor", async() => {
   it ("writeOptionsFor should function", async () => {
     const optFactory = await OptionFactory.deployed()
+    assert.equal (optFactory.address, FeeTaker.address)
     await basisToken.transfer(optionFactoryCreator, 1000, {from: tokensOwner})
     await underlyingToken.transfer(optionFactoryCreator, 1000, {from: tokensOwner})
-    await basisToken.approve(FeeTaker.address, 100, {from: optionFactoryCreator})
-    await underlyingToken.approve(optFactory.address, 100, {from: optionFactoryCreator})
     const trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address,
       15, 10, new Date()/1000 + 60*60*24*30,
     {from: optionFactoryCreator})
     optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
+    assert.equal(optFactory.address, await optionPair.owner())
+    await basisToken.approve(optionPair.address, 100, {from: optionFactoryCreator})
     await underlyingToken.approve(optionPair.address, 100, {from: optionFactoryCreator})
-    await optionPair.writeOptionsFor(10, writer1, {from: optionFactoryCreator})
+    await optionPair.writeOptionsFor(10, writer1, false, {from: optionFactoryCreator})
     assert.equal(900, (await underlyingToken.balanceOf(optionFactoryCreator)).toFixed())
     const tokenOption = await TokenOption.at(await optionPair.tokenOption.call())
     assert.equal(10, (await tokenOption.balanceOf(writer1)).toFixed())
     const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenOption.call())
     assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toFixed())
+    assert.equal(20, (await basisToken.balanceOf(optFactory.address)).toFixed())
+    assert.equal(980, (await basisToken.balanceOf(optionFactoryCreator)).toFixed())
+  })
+})
+
+contract ("Write Options Via OptionFactory", async() => {
+  it ("write options via OptionFactory should function", async () => {
+    const optFactory = await OptionFactory.deployed()
+    await basisToken.transfer(writer1, 1000, {from: tokensOwner})
+    await underlyingToken.transfer(writer1, 1000, {from: tokensOwner})
+    var trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address,
+      15, 10, new Date()/1000 + 60*60*24*30,
+    {from: optionFactoryCreator})
+    optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
+    assert.equal(optFactory.address, await optionPair.owner())
+    await underlyingToken.approve(optFactory.address, 1000, {from: writer1})
+    await basisToken.approve(optFactory.address, 1000, {from: writer1})
+    await optFactory.writeOptions(optionPair.address, 10, {from: writer1});
+    let tokOptionAddress = await optionPair.tokenOption.call()
+    const tokenOption = await TokenOption.at(tokOptionAddress)
+    assert.equal(10, (await tokenOption.balanceOf(writer1)).toFixed())
+    const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenOption.call())
+    assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toFixed())
+    assert.equal(20, (await basisToken.balanceOf(optFactory.address)).toFixed())
+    assert.equal(980, (await basisToken.balanceOf(writer1)).toFixed())
   })
 })
 
@@ -148,17 +177,13 @@ contract ("Option", () =>  {
     var trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address, 125, 100, new Date()/1000 + 60*60*24*30,
     {from: optionTokenCreator})
     console.log("gas used for option pair creation is: " + trans.receipt.cumulativeGasUsed)
-    const balOfOptionCreatorAfter =  await basisToken.balanceOf(optionTokenCreator)
-    const balOfFeeTakerAfter =  await basisToken.balanceOf(FeeTaker.address)
 
     optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
 
     tokenOption = await TokenOption.at(await optionPair.tokenOption())
     tokenAntiOption = await TokenAntiOption.at(await  optionPair.tokenAntiOption())
 
-    assert.equal(optionTokenCreator, await optionPair.owner())
-    assert.equal(balOfOptionCreatorBefore - balOfOptionCreatorAfter, 20)
-    assert.equal(balOfFeeTakerAfter - balOfFeeTakerBefore, 20)
+    assert.equal(optFactory.address, await optionPair.owner())
   })
 
   it ('initial balance should be 0', async () => {
@@ -195,17 +220,27 @@ contract ("Option", () =>  {
     const balFeeTakerBasisAfter = await basisToken.balanceOf(FeeTaker.address).valueOf()
     const balOptTokenCreatorBasisAfter = await basisToken.balanceOf(optionTokenCreator).valueOf()
 
+    /* console.log("balFeeTakerBasisBefore: " + balFeeTakerBasisBefore.toFixed())
+    console.log("balFeeTakerBasisAfter: " + balFeeTakerBasisAfter.toFixed())
+
+    console.log("balWriterUnderBefore: " + balWriterUnderBefore.toFixed())
+    console.log("balWriterUnderAfter: " + balWriterUnderAfter.toFixed())
+
+    console.log("balWriterBasisBefore: " + balWriterBasisBefore.toFixed())
+    console.log("balWriterBasisAfter: " + balWriterBasisAfter.toFixed()) */
+
     assert.equal(10, balWriterOptionAfter - balWriterOptionBefore)
 
     assert.equal(10 * fee, balWriterBasisBefore - balWriterBasisAfter)
 
-    assert.equal(10 * fee / 4, balFeeTakerBasisAfter - balFeeTakerBasisBefore)
-    assert.equal(10 * fee * 3 / 4, balOptTokenCreatorBasisAfter - balOptTokenCreatorBasisBefore)
+    /*
+  //  assert.equal(10 * fee / 4, balFeeTakerBasisAfter - balFeeTakerBasisBefore)
+  //  assert.equal(10 * fee * 3 / 4, balOptTokenCreatorBasisAfter - balOptTokenCreatorBasisBefore)
 
 
     assert.equal(10, await tokenOption.totalSupply().valueOf())
     assert.equal(10, await tokenAntiOption.totalSupply().valueOf())
-    assert.equal(10, await optionPair.getTotalOpenInterest().valueOf())
+    assert.equal(10, await optionPair.getTotalOpenInterest().valueOf()) */
     })
 
   it ('correct option transfer 3 from writer1 tranfer to buyer1', async () => {
@@ -246,8 +281,8 @@ contract ("Option", () =>  {
     const balOptWriter1Before = await tokenOption.balanceOf(writer1).valueOf()
     const balAntiOptWriter1Before = await tokenAntiOption.balanceOf(writer1).valueOf()
     //console.log("before annihilate: " + balUnderlyingWriter1Before + "; " + balOptWriter1Before + "; " + balAntiOptWriter1Before)
-    tokenOption.approve(optionPair.address, 2, {from: writer1})
-    tokenAntiOption.approve(optionPair.address, 2, {from: writer1})
+    await tokenOption.approve(optionPair.address, 2, {from: writer1})
+    await tokenAntiOption.approve(optionPair.address, 2, {from: writer1})
     await optionPair.annihilate(2, {from: writer1})
     const balUnderlyingWriter1After = await underlyingToken.balanceOf(writer1).valueOf()
     const balOptWriter1After = await tokenOption.balanceOf(writer1).valueOf()

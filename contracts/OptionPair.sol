@@ -1,16 +1,16 @@
 pragma solidity ^0.4.18;
 
-import "./IFeeTaker.sol";
-
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
+import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
 import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 
+import './IFeeCalculator.sol';
 import './TokenOption.sol';
 import './TokenAntiOption.sol';
 
-contract OptionPair is ReentrancyGuard {
+contract OptionPair is Ownable, ReentrancyGuard {
   using SafeMath for uint256;
   using SafeERC20 for TokenOption;
   using SafeERC20 for ERC20;
@@ -24,14 +24,17 @@ contract OptionPair is ReentrancyGuard {
   uint public underlyingQty;
   uint public expireTime;
 
-  address feeTaker;
+  address feeCalculator;
 
   address public tokenOption;
   address public tokenAntiOption;
 
   uint totalWritten;
 
-  address public owner; //can not make Ownable,as deployment give out of gas
+  event Debug(address sponsor, address owner, uint amount);
+  event DebugSponsorWriter(address sponsor, address writer, bool feeFromWriter);
+
+  //address public owner; //can not make Ownable,as deployment give out of gas
 
   modifier onlyBeforeExpiration() {
     require(getCurrentTime() < expireTime);
@@ -44,24 +47,19 @@ contract OptionPair is ReentrancyGuard {
   }
 
   function OptionPair (address _underlying, address _basisToken,
-    uint _strike, uint _underlyingQty, uint _expireTime,  address _feeTaker, address _owner)
+    uint _strike, uint _underlyingQty, uint _expireTime,  address _feeCalculator)
+    Ownable()
+    ReentrancyGuard()
     public
     {
-
       underlying = _underlying;
       basisToken = _basisToken;
       strike = _strike;
       underlyingQty = _underlyingQty;
       expireTime = _expireTime;
-      feeTaker = _feeTaker;
-
-      IFeeTaker feeTakerObj = IFeeTaker(feeTaker);
-      feeTakerObj.takeOptionPairCreationFee(_underlying, _basisToken,
-        _strike, _underlyingQty, _expireTime, _owner);
-
+      feeCalculator = _feeCalculator;
       tokenOption = address(new TokenOption());
       tokenAntiOption = address(new TokenAntiOption());
-      owner = _owner;
   }
 
   function () public payable {
@@ -72,11 +70,15 @@ contract OptionPair is ReentrancyGuard {
     return _writeOptionFor(_qty, msg.sender, msg.sender);
   }
 
-  function writeOptionsFor(uint256 _qty, address _writer) external nonReentrant returns (bool) {
-    return _writeOptionFor(_qty, _writer, msg.sender);
+  function writeOptionsFor(uint256 _qty, address _writer, bool _feeFromWriter) external nonReentrant returns (bool) {
+    return _writeOptionFor(_qty, _writer, msg.sender, _feeFromWriter);
   }
 
-  function _writeOptionFor(uint256 _qty, address _writer, address _sponsor) onlyBeforeExpiration private returns (bool) {
+  function _writeOptionFor(uint256 _qty, address _writer, address _sponsor) private returns (bool) {
+    return _writeOptionFor(_qty, _writer, _sponsor, true);
+  }
+
+  function _writeOptionFor(uint256 _qty, address _writer, address _sponsor, bool _feeFromWriter) onlyBeforeExpiration private returns (bool) {
     require(_qty > 0);
     uint calcUnderlyngQty = _qty.mul(underlyingQty);
     ERC20 underlyingErc20 =  ERC20(underlying);
@@ -84,10 +86,18 @@ contract OptionPair is ReentrancyGuard {
     require(underlyingErc20.balanceOf(_sponsor) >= calcUnderlyngQty);
 
     totalWritten = totalWritten.add(_qty);
-    IFeeTaker(feeTaker).takeFee(this, _qty, _sponsor);
+
     underlyingErc20.safeTransferFrom(_sponsor, this, calcUnderlyngQty);
+
     TokenOption(tokenOption).mint(_writer, _qty);
     TokenAntiOption(tokenAntiOption).mint(_writer, _qty);
+    DebugSponsorWriter(_sponsor, _writer, _feeFromWriter);
+    if (_feeFromWriter) {
+      takeFee(_qty, _writer);
+    } else {
+      takeFee(_qty, _sponsor);
+    }
+
     return true;
   }
 
@@ -99,7 +109,9 @@ contract OptionPair is ReentrancyGuard {
     TokenOption tokenOptionErc20 = TokenOption(tokenOption);
     TokenAntiOption tokenAntiOptionErc20 = TokenAntiOption(tokenAntiOption);
     require(tokenOptionErc20.balanceOf(_holder) >= _qty);
-    withdrawFor(_holder, _qty);
+    require(tokenAntiOptionErc20.balanceOf(_holder) >= _qty);
+
+    withdrawFor(_holder, _qty); //anti-options are burned there
     tokenOptionErc20.safeTransferFrom(_holder, this, _qty); //first we transfer into OptionPair accounnt as only from this account the tokens can be burned
     tokenOptionErc20.burn(_qty);
     return true;
@@ -145,12 +157,12 @@ contract OptionPair is ReentrancyGuard {
 
     tokenAntiOptionObj.safeTransferFrom(_writer, this, _qty);
 
-    uint underlyingAvailableForAntiOption  =  ERC20(underlying).balanceOf(this).mul(_qty) / tokenAntiOptionObj.totalSupply(); // can not use safe div
+    uint underlyingAvailableForAntiOption  =  ERC20(underlying).balanceOf(this).mul(_qty).div(tokenAntiOptionObj.totalSupply()); // can not use safe div
     if (underlyingAvailableForAntiOption > 0) {
         ERC20(underlying).safeTransfer(_writer, underlyingAvailableForAntiOption);
     }
 
-    uint basisTokensAvailableForAntiOption  =  ERC20(basisToken).balanceOf(this).mul(_qty) / tokenAntiOptionObj.totalSupply(); // can not use safe div
+    uint basisTokensAvailableForAntiOption  =  ERC20(basisToken).balanceOf(this).mul(_qty).div(tokenAntiOptionObj.totalSupply()); // can not use safe div
     if (basisTokensAvailableForAntiOption > 0) {
       ERC20(basisToken).safeTransfer(_writer, basisTokensAvailableForAntiOption);
     }
@@ -161,7 +173,7 @@ contract OptionPair is ReentrancyGuard {
 
   function getAvailableUnderlying(address holder) public view returns(uint) {
     TokenAntiOption tokenAntiOptionObj = TokenAntiOption(tokenAntiOption);
-    return ERC20(underlying).balanceOf(this).mul(tokenAntiOptionObj.balanceOf(holder)) / tokenAntiOptionObj.totalSupply();
+    return ERC20(underlying).balanceOf(this).mul(tokenAntiOptionObj.balanceOf(holder)).div(tokenAntiOptionObj.totalSupply());
   }
 
   function getCurrentTime() public view returns (uint) { // made as function to be overridable for testing purposes
@@ -170,6 +182,18 @@ contract OptionPair is ReentrancyGuard {
 
   function updateMockTime(uint /* _mockTime */) public returns (bool) {
     revert();
+  }
+
+  function takeFee (uint _optionQty, address _feePayer) private {
+    if (_feePayer != owner) {
+      IFeeCalculator feeCalculatorObj =  IFeeCalculator(feeCalculator);
+      uint fee;
+      address feeToken;
+      (feeToken, fee) = feeCalculatorObj.calcFee(address(this), _optionQty);
+      ERC20 feeTokenObj = ERC20(feeToken);
+      Debug(_feePayer, owner, fee);
+      feeTokenObj.safeTransferFrom(_feePayer, owner, fee);
+    }
   }
 
 }
