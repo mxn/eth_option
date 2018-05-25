@@ -8,15 +8,17 @@ contract SimpleFeeCalculator is IFeeCalculator {
 
   using SafeMath for uint;
 
-  uint public coef;
+  uint public numerator;
+  uint public denominator;
   uint public optionCreationFee;
 
-  address addrFeeToken; //retrived by method
+  address private addrFeeToken; //not made as feeToken due to compilation
+  //problem
 
-  function SimpleFeeCalculator(address _feeToken, uint _coef, uint _optionCreationFee) public {
+  function SimpleFeeCalculator(address _feeToken, uint _numerator, uint _denominator) public {
     addrFeeToken = _feeToken;
-    coef = _coef;
-    optionCreationFee = _optionCreationFee;
+    numerator = _numerator;
+    denominator = _denominator;
   }
 
   function feeToken () public view returns (address)  {
@@ -24,7 +26,7 @@ contract SimpleFeeCalculator is IFeeCalculator {
   }
 
   function calcFee (address /* _tokenOption*/, uint _qty) public view returns (address, uint) {
-    return (addrFeeToken, coef.mul(_qty));
+    return (addrFeeToken, numerator.mul(_qty).div(denominator));
   }
 
 }

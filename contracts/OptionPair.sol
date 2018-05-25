@@ -24,7 +24,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
   uint public underlyingQty;
   uint public expireTime;
 
-  address feeCalculator;
+  address public feeCalculator;
 
   address public tokenOption;
   address public tokenAntiOption;

@@ -65,6 +65,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
    ERC20 erc20 =  ERC20(_token);
    erc20.safeTransferFrom(msg.sender, this, _amount);
    erc20.approve(_target, _amount);
+   require(erc20.allowance(this, _target) == _amount);
  }
 
  function writeOptions(address _optionPair, uint _qty)
@@ -73,13 +74,21 @@ contract OptionFactory is Ownable, ReentrancyGuard {
  returns (bool) {
    OptionPair optionPairObj = OptionPair(_optionPair);
    uint underlyingQtyPerContract = optionPairObj.underlyingQty();
-   address underlying = OptionPair(_optionPair).underlying();
+   address underlying = optionPairObj.underlying();
    uint underlyingQty = underlyingQtyPerContract.mul(_qty);
-   _proxyTransfer(underlying, _optionPair, underlyingQty);
+
    address feeToken;
    uint fee;
-   (feeToken,  fee) = IFeeCalculator(feeCalculator).calcFee(_optionPair, _qty);
-   _proxyTransfer(feeToken, _optionPair, fee);
+   address optionPairFeeCalculator = optionPairObj.feeCalculator();
+   (feeToken,  fee) = IFeeCalculator(optionPairFeeCalculator)
+    .calcFee(_optionPair, _qty);
+   if (feeToken == underlying) {
+     _proxyTransfer(underlying, _optionPair, fee + underlyingQty);
+   } else if (fee > 0) {
+     _proxyTransfer(underlying, _optionPair, underlyingQty);
+     _proxyTransfer(feeToken, _optionPair, fee);
+   }
+
    return optionPairObj.writeOptionsFor(_qty, msg.sender, false);
   }
 

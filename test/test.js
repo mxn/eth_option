@@ -1,6 +1,6 @@
 //const OptionPair = artifacts.require('TokenOption') // for live
-
 const OptionFactory = artifacts.require('MockOptionFactory')
+const OptionFactoryWeth = artifacts.require("MockWethOptionFactory")
 const FeeTaker = OptionFactory
 const OptionPair = artifacts.require('MockOptionPair') // for test
 const TestToken1 = artifacts.require('MockToken1')
@@ -10,6 +10,9 @@ const TokenAntiOption = artifacts.require('TokenAntiOption')
 const SimpleFeeCalculator = artifacts.require('SimpleFeeCalculator')
 const ERC20 = artifacts.require('ERC20')
 const DAI = artifacts.require('DAI')
+const Weth = artifacts.require('Weth')
+
+const DECIMAL_FACTOR = 10 ** 18
 
 //const EBOE = artifacts.require('EBOE')
 /* const OptionFactory = artifacts.require('MockOptionFactory')
@@ -147,6 +150,7 @@ contract ("Write Options Via OptionFactory", async() => {
     var trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address,
       15, 10, new Date()/1000 + 60*60*24*30,
     {from: optionFactoryCreator})
+    //console.log(trans)
     optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
     assert.equal(optFactory.address, await optionPair.owner())
     await underlyingToken.approve(optFactory.address, 1000, {from: writer1})
@@ -155,12 +159,42 @@ contract ("Write Options Via OptionFactory", async() => {
     let tokOptionAddress = await optionPair.tokenOption.call()
     const tokenOption = await TokenOption.at(tokOptionAddress)
     assert.equal(10, (await tokenOption.balanceOf(writer1)).toFixed())
-    const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenOption.call())
+    const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
     assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toFixed())
     assert.equal(20, (await basisToken.balanceOf(optFactory.address)).toFixed())
     assert.equal(980, (await basisToken.balanceOf(writer1)).toFixed())
   })
 })
+
+contract ("Options DAI/WETH", async () => {
+  it ("write options via OptionFactory for Weth/DAI should function", async () => {
+      const weth = await Weth.deployed()
+      const dai = await DAI.deployed()
+      var trans = await weth.deposit({from: writer1, value: 50 * DECIMAL_FACTOR})
+      assert.equal(50 * DECIMAL_FACTOR, (await weth.balanceOf(writer1)).toFixed())
+      //console.log(trans)
+      const optFactory = await OptionFactoryWeth.deployed()
+      trans = await  optFactory.createOptionPairContract(weth.address, dai.address,
+        15, 10, new Date()/1000 + 60*60*24*30,
+      {from: optionFactoryCreator})
+      const optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
+      assert.equal(optFactory.address, await optionPair.owner())
+      await weth.approve(optFactory.address, 1000 * DECIMAL_FACTOR, {from: writer1})
+
+      assert.equal(0, (await weth.balanceOf(optFactory.address)).toFixed())
+
+      await optFactory.writeOptions(optionPair.address, 2 * DECIMAL_FACTOR , {from: writer1});
+
+      assert.equal(optFactory.address, await optionPair.owner())
+      const tokenOption = await TokenOption.at(await optionPair.tokenOption.call() )
+      assert.equal(2 * DECIMAL_FACTOR, (await tokenOption.balanceOf(writer1)).toFixed())
+      const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
+      assert.equal(2 * DECIMAL_FACTOR, (await tokenAntiOption.balanceOf(writer1)).toFixed())
+      //check fee taking 3 is nunerator, 10000 is denominator, s. 4_options_factory.js in migrations
+      assert.equal(2 * DECIMAL_FACTOR * 3 / 10000, (await weth.balanceOf(optFactory.address)).toFixed())
+
+
+  })})
 
 contract ("Option", () =>  {
   it ('transfer ownership for OptionFactory should be OK', async () => {
