@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import './SimpleFeeCalculator.sol';
+import '../main/SimpleFeeCalculator.sol';
 
 contract SimpleFeeCalculatorTest is SimpleFeeCalculator {
   function SimpleFeeCalculatorTest(address _feeToken, uint _numerator,

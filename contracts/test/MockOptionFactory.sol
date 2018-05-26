@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "./OptionFactory.sol";
+import "../main/OptionFactory.sol";
 import "./MockOptionPair.sol";
 
 contract MockOptionFactory is OptionFactory {

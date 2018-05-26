@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "./OptionPair.sol";
+import "../main/OptionPair.sol";
 
 contract MockOptionPair is OptionPair  {
   uint mockTime  = 0;
