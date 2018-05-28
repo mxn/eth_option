@@ -87,9 +87,9 @@ contract OptionPair is Ownable, ReentrancyGuard {
     TokenOption(tokenOption).mint(_writer, _qty);
     TokenAntiOption(tokenAntiOption).mint(_writer, _qty);
     if (_feeFromWriter) {
-      takeFee(_qty, _writer);
+      _takeFee(_qty, _writer);
     } else {
-      takeFee(_qty, _sponsor);
+      _takeFee(_qty, _sponsor);
     }
 
     return true;
@@ -105,7 +105,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
     require(tokenOptionErc20.balanceOf(_holder) >= _qty);
     require(tokenAntiOptionErc20.balanceOf(_holder) >= _qty);
 
-    withdrawFor(_holder, _qty); //anti-options are burned there
+    _withdrawFor(_holder, _qty); //anti-options are burned there
     tokenOptionErc20.safeTransferFrom(_holder, this, _qty); //first we transfer into OptionPair accounnt as only from this account the tokens can be burned
     tokenOptionErc20.burn(_qty);
     return true;
@@ -121,29 +121,34 @@ contract OptionPair is Ownable, ReentrancyGuard {
 
   function execute(uint _qty) external nonReentrant
     returns (bool) {
-    return executeFor(msg.sender, _qty);
+    return _executeFor(msg.sender, msg.sender, _qty);
   }
 
-  function executeFor (address _buyer, uint _qty)  private onlyBeforeExpiration() returns (bool) {
+  function executeFor(address _buyer, uint _qty) external nonReentrant
+    returns (bool) {
+    return _executeFor(_buyer, msg.sender, _qty);
+  }
+
+  function _executeFor (address _buyer, address _sponsor,  uint _qty)  private onlyBeforeExpiration() returns (bool) {
     TokenOption tokenOptionObj =  TokenOption(tokenOption);
-    require (tokenOptionObj.balanceOf(_buyer) >= _qty);
+    require (tokenOptionObj.balanceOf(_sponsor) >= _qty);
     uint baseAmount = _qty.mul(strike);
-    ERC20(basisToken).safeTransferFrom(_buyer, this, baseAmount);
-    tokenOptionObj.safeTransferFrom(_buyer, this, _qty);
+    ERC20(basisToken).safeTransferFrom(_sponsor, this, baseAmount);
+    tokenOptionObj.safeTransferFrom(_sponsor, this, _qty);
     tokenOptionObj.burn(_qty);
     ERC20(underlying).safeTransfer(_buyer, _qty.mul(underlyingQty));
     return true;
   }
 
   function withdrawAll () external nonReentrant onlyAfterExpiration returns (bool) {
-    return withdrawFor(msg.sender, TokenAntiOption(tokenAntiOption).balanceOf(msg.sender));
+    return _withdrawFor(msg.sender, TokenAntiOption(tokenAntiOption).balanceOf(msg.sender));
   }
 
   function withdraw (uint _qty) external nonReentrant onlyAfterExpiration returns (bool) {
-    return withdrawFor(msg.sender, _qty);
+    return _withdrawFor(msg.sender, _qty);
   }
 
-  function withdrawFor(address _writer, uint _qty) private  returns (bool) {
+  function _withdrawFor(address _writer, uint _qty) private  returns (bool) {
     TokenAntiOption tokenAntiOptionObj = TokenAntiOption(tokenAntiOption);
     require (tokenAntiOptionObj.balanceOf(_writer) >= _qty);
     require(ERC20(underlying).balanceOf(this).mul(_qty) >= 0); //to prevent oveflows
@@ -178,7 +183,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
     revert();
   }
 
-  function takeFee (uint _optionQty, address _feePayer) private {
+  function _takeFee (uint _optionQty, address _feePayer) private {
     if (_feePayer != owner) {
       IFeeCalculator feeCalculatorObj =  IFeeCalculator(feeCalculator);
       uint fee;
