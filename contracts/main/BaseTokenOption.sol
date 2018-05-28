@@ -6,6 +6,8 @@ import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';
 
 contract BaseTokenOption is StandardToken, BurnableToken, MintableToken {
 
+  uint8 public constant decimals = 18;
+
   function getOptionPair() public view returns (address) {
     return owner;
   }
