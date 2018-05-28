@@ -129,12 +129,17 @@ contract OptionPair is Ownable, ReentrancyGuard {
     return _executeFor(_buyer, msg.sender, _qty);
   }
 
-  function _executeFor (address _buyer, address _sponsor,  uint _qty)  private onlyBeforeExpiration() returns (bool) {
+  //from client perspective it is easier to approve option tokens for pair,
+  // butr unerlyiung and basis for some "stable" address, e.g. OptionFactory
+  function _executeFor (address _buyer, address _sponsorBasisTokens,  uint _qty)
+    private
+    onlyBeforeExpiration()
+    returns (bool) {
     TokenOption tokenOptionObj =  TokenOption(tokenOption);
-    require (tokenOptionObj.balanceOf(_sponsor) >= _qty);
+    require (tokenOptionObj.balanceOf(_buyer) >= _qty);
     uint baseAmount = _qty.mul(strike);
-    ERC20(basisToken).safeTransferFrom(_sponsor, this, baseAmount);
-    tokenOptionObj.safeTransferFrom(_sponsor, this, _qty);
+    ERC20(basisToken).safeTransferFrom(_sponsorBasisTokens, this, baseAmount);
+    tokenOptionObj.safeTransferFrom(_buyer, this, _qty);
     tokenOptionObj.burn(_qty);
     ERC20(underlying).safeTransfer(_buyer, _qty.mul(underlyingQty));
     return true;

@@ -167,17 +167,24 @@ contract ("Write Options Via OptionFactory", async() => {
 })
 
 contract ("Options DAI/WETH", async () => {
+  const strike = 7777
+  const underlyingQty = 10
+  var optFactory,
+    optionPair,
+    tokenOption,
+    dai,
+    weth
   it ("write options via OptionFactory for Weth/DAI should function", async () => {
-      const weth = await Weth.deployed()
-      const dai = await DAI.deployed()
+      weth = await Weth.deployed()
+      dai = await DAI.deployed()
       var trans = await weth.deposit({from: writer1, value: 50 * DECIMAL_FACTOR})
       assert.equal(50 * DECIMAL_FACTOR, (await weth.balanceOf(writer1)).toFixed())
       //console.log(trans)
-      const optFactory = await OptionFactoryWeth.deployed()
+      optFactory = await OptionFactoryWeth.deployed()
       trans = await  optFactory.createOptionPairContract(weth.address, dai.address,
-        15, 10, new Date()/1000 + 60*60*24*30,
+        strike, underlyingQty, new Date()/1000 + 60*60*24*30,
       {from: optionFactoryCreator})
-      const optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
+      optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
       assert.equal(optFactory.address, await optionPair.owner())
       await weth.approve(optFactory.address, 1000 * DECIMAL_FACTOR, {from: writer1})
 
@@ -186,15 +193,33 @@ contract ("Options DAI/WETH", async () => {
       await optFactory.writeOptions(optionPair.address, 2 * DECIMAL_FACTOR , {from: writer1});
 
       assert.equal(optFactory.address, await optionPair.owner())
-      const tokenOption = await TokenOption.at(await optionPair.tokenOption.call() )
+      tokenOption = await TokenOption.at(await optionPair.tokenOption.call() )
       assert.equal(2 * DECIMAL_FACTOR, (await tokenOption.balanceOf(writer1)).toFixed())
       const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
       assert.equal(2 * DECIMAL_FACTOR, (await tokenAntiOption.balanceOf(writer1)).toFixed())
       //check fee taking 3 is nunerator, 10000 is denominator, s. 4_options_factory.js in migrations
       assert.equal(2 * DECIMAL_FACTOR * 3 / 10000, (await weth.balanceOf(optFactory.address)).toFixed())
+  })
 
+  it ("exercise options via OptionFactory should function", async() => {
+    const optionsToExercise = 2 * DECIMAL_FACTOR
+    await tokenOption.transfer(buyer1, optionsToExercise , {from: writer1})
+    assert.equal( optionsToExercise, (await  tokenOption.balanceOf(buyer1)).toFixed())
+    assert.ok(optionsToExercise * strike <= (await dai.balanceOf(buyer1)).toFixed(),
+     "should have enough basis tokens for execution")
 
-  })})
+    await tokenOption.approve(optionPair.address,  optionsToExercise, {from: buyer1})
+    await dai.approve(optFactory.address, strike * optionsToExercise, {from: buyer1})
+    assert.ok((await dai.allowance(buyer1, optFactory.address)).toFixed() >= strike * optionsToExercise)
+    assert.equal(0, (await weth.balanceOf(buyer1)).toFixed())
+
+    await optFactory.exerciseOptions(optionPair.address, optionsToExercise, {from: buyer1})
+
+    assert.equal(0, (await tokenOption.balanceOf(buyer1)).toFixed())
+    assert.equal(underlyingQty * optionsToExercise, (await weth.balanceOf(buyer1)).toFixed())
+  })
+})
+
 
 contract ("Option", () =>  {
   it ('transfer ownership for OptionFactory should be OK', async () => {
