@@ -99,6 +99,15 @@ contract OptionPair is Ownable, ReentrancyGuard {
     return _annihilateFor(msg.sender, _qty);
   }
 
+  function annihilateAllAvailable() external nonReentrant returns (bool) {
+    uint balanceOptions = ERC20(tokenOption).balanceOf(msg.sender);
+    uint balanceAntiOptions = ERC20(tokenAntiOption).balanceOf(msg.sender);
+    if (balanceOptions < balanceAntiOptions) {
+      return _annihilateFor(msg.sender, balanceOptions);
+    }
+    return _annihilateFor(msg.sender, balanceAntiOptions);
+  }
+
   function _annihilateFor(address _holder, uint _qty) private returns (bool) {
     TokenOption tokenOptionErc20 = TokenOption(tokenOption);
     TokenAntiOption tokenAntiOptionErc20 = TokenAntiOption(tokenAntiOption);

@@ -172,6 +172,7 @@ contract ("Options DAI/WETH", async () => {
   var optFactory,
     optionPair,
     tokenOption,
+    tokenAntiOption,
     dai,
     weth,
     optionsToWrite
@@ -197,7 +198,7 @@ contract ("Options DAI/WETH", async () => {
       assert.equal(optFactory.address, await optionPair.owner())
       tokenOption = await TokenOption.at(await optionPair.tokenOption.call() )
       assert.equal(optionsToWrite, (await tokenOption.balanceOf(writer1)).toFixed())
-      const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
+      tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
       assert.equal(optionsToWrite, (await tokenAntiOption.balanceOf(writer1)).toFixed())
       //check fee taking 3 is numerator, 10000 is denominator, s. 4_options_factory.js in migrations
       assert.equal(optionsToWrite * 3 / 10000, (await weth.balanceOf(optFactory.address)).toFixed())
@@ -225,6 +226,23 @@ contract ("Options DAI/WETH", async () => {
     assert.equal(0, (await tokenOption.balanceOf(buyer1)).toFixed())
     assert.equal(underlyingQty * optionsToWrite, (await weth.balanceOf(buyer1)).toFixed())
 
+
+  })
+
+  it ("annihilate all available options should function", async() => {
+    assert.equal(0, (await tokenOption.balanceOf(writer1)).toNumber())
+    assert.equal(optionsToWrite, (await tokenAntiOption.balanceOf(writer1)).toNumber())
+    let optionsToWrite2 = 1 * DECIMAL_FACTOR
+
+    await optFactory.writeOptions(optionPair.address, optionsToWrite2, {from: writer1});
+    assert.equal(optionsToWrite2, (await tokenOption.balanceOf(writer1)).toNumber())
+
+    await tokenOption.approve(optionPair.address, 1000 * DECIMAL_FACTOR, {from: writer1})
+    await tokenAntiOption.approve(optionPair.address, 1000 * DECIMAL_FACTOR, {from: writer1})
+    await optionPair.annihilateAllAvailable({from: writer1})
+    assert.equal(0, (await tokenOption.balanceOf(writer1)).toNumber())
+    assert.equal(optionsToWrite,
+      (await tokenAntiOption.balanceOf(writer1)).toNumber())
 
   })
 })
