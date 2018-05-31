@@ -92,7 +92,23 @@ contract OptionFactory is Ownable, ReentrancyGuard {
    return optionPairObj.writeOptionsFor(_qty, msg.sender, false);
   }
 
-  function exerciseOptions(address _optionPair, uint _qty) {
+  function exerciseOptions(address _optionPair, uint _qty)
+  external
+  nonReentrant {
+    _exerciseOptions(_optionPair, _qty);
+  }
+
+  function exerciseAllAvailabeOptions(address _optionPair)
+  external
+  nonReentrant
+  {
+    uint qty = ERC20(OptionPair(_optionPair).tokenOption()).balanceOf(msg.sender);
+    _exerciseOptions(_optionPair, qty);
+  }
+
+  function _exerciseOptions(address _optionPair, uint _qty)
+  private
+  {
     OptionPair optionPairObj = OptionPair(_optionPair);
     address basisToken = optionPairObj.basisToken();
     uint basisAmount = optionPairObj.strike().mul(_qty);
