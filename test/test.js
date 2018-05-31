@@ -221,7 +221,7 @@ contract ("Options DAI/WETH", async () => {
     assert.equal(optionsToWrite - optionsToExercise, (await tokenOption.balanceOf(buyer1)).toFixed())
     assert.equal(underlyingQty * optionsToExercise, (await weth.balanceOf(buyer1)).toFixed())
 
-    await optFactory.exerciseAllAvailabeOptions(optionPair.address, {from: buyer1})
+    await optFactory.exerciseAllAvailableOptions(optionPair.address, {from: buyer1})
 
     assert.equal(0, (await tokenOption.balanceOf(buyer1)).toFixed())
     assert.equal(underlyingQty * optionsToWrite, (await weth.balanceOf(buyer1)).toFixed())

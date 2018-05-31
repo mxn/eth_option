@@ -98,7 +98,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
     _exerciseOptions(_optionPair, _qty);
   }
 
-  function exerciseAllAvailabeOptions(address _optionPair)
+  function exerciseAllAvailableOptions(address _optionPair)
   external
   nonReentrant
   {
