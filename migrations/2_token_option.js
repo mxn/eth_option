@@ -6,14 +6,20 @@ var Weth = artifacts.require("Weth")
 var Dai = artifacts.require("DAI")
 
 
-module.exports = function(deployer) {
+module.exports = function(deployer, network) {
+  if (network === "ropsten") {
+    deployer.deploy(Dai)
+    .then(dai =>
+     web3.eth.getAccounts((e, accs) =>
+      accs.map(acc => dai.transfer(acc, 100000*(10**18)))))
+     return
+  }
   deployer.deploy(MockToken1)
   .then( () => deployer.deploy(MockToken2))
-  .then( () => deployer.deploy(TokenOption))
   .then( () => deployer.deploy(Weth))
   .then( () => deployer.deploy(Dai))
   .then( dai =>
-   Promise.all(web3.eth.accounts.map((acc) =>
+   web3.eth.getAccounts((e, accs) =>
+     accs.map((acc) =>
    dai.transfer(acc, 1000*(10**18)))))
-  .then( () => deployer.deploy(TokenAntiOption))
 }
