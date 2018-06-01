@@ -2,5 +2,5 @@ node_modules/
 build/
 .DS_Store
 .env
-temp*
-contracts/test/Oasis*
+temp_run.js
+contracts/test/Oas*
