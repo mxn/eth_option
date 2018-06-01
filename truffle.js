@@ -13,7 +13,7 @@ module.exports = {
   solc: {
   optimizer: {
     enabled: true,
-    runs: 3
+    runs: 200
   }
 }
 
