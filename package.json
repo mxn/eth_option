@@ -24,6 +24,7 @@
     "zeppelin-solidity": "1.6.0"
   },
   "devDependencies": {
+    "dotenv": "^6.0.0",
     "truffle-hdwallet-provider": "0.0.5"
   }
 }
