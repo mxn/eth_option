@@ -7,10 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -24,24 +21,6 @@
   },
   "homepage": "https://github.com/mxn/eth_option#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "dotenv": "^5.0.1",
-    "jquery": "^3.3.1",
-    "lodash": "^4.17.10",
-    "moment": "^2.22.1",
-    "pubsub-js": "^1.6.0",
-    "react": "^16.3.2",
-    "react-bootstrap": "^0.32.1",
-    "react-day-picker": "^7.0.7",
-    "react-dom": "^16.3.2",
-    "react-router": "^4.2.0",
-    "react-scripts": "1.0.17",
-    "react-web3": "^0.4.5",
-    "truffle-contract": "^3.0.5",
-    "web3": "^0.20.6",
     "zeppelin-solidity": "1.6.0"
-  },
-  "devDependencies": {
-    "truffle-hdwallet-provider": "0.0.5"
   }
 }
