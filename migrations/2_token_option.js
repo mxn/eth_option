@@ -5,21 +5,32 @@ var TokenAntiOption = artifacts.require("TokenAntiOption")
 var Weth = artifacts.require("Weth")
 var Dai = artifacts.require("DAI")
 
+function getTransactionObject(network) {
+  if (network === "kovan") {
+    return {from: "0xdE4eD43183CB7AF6E46b31E0f14F90d0452b6b78"}
+  } else {
+    return {}
+  }
+}
 
 module.exports = function(deployer, network) {
-  if (network === "ropsten") {
-    deployer.deploy(Dai)
-    .then(dai =>
+  switch (network) {
+    case "ropsten":
+    case "kovan":
+      deployer.deploy(Dai)
+      .then(dai =>
+       web3.eth.getAccounts((e, accs) =>
+        accs.map(acc => dai.transfer(acc, 100000*(10**18),
+        getTransactionObject(network)))))
+      break
+  default:
+    deployer.deploy(MockToken1)
+    .then( () => deployer.deploy(MockToken2))
+    .then( () => deployer.deploy(Weth))
+    .then( () => deployer.deploy(Dai))
+    .then( dai =>
      web3.eth.getAccounts((e, accs) =>
-      accs.map(acc => dai.transfer(acc, 100000*(10**18)))))
-     return
-  }
-  deployer.deploy(MockToken1)
-  .then( () => deployer.deploy(MockToken2))
-  .then( () => deployer.deploy(Weth))
-  .then( () => deployer.deploy(Dai))
-  .then( dai =>
-   web3.eth.getAccounts((e, accs) =>
-     accs.map((acc) =>
-   dai.transfer(acc, 1000*(10**18)))))
+       accs.map((acc) =>
+     dai.transfer(acc, 1000*(10**18)))))
+   }
 }

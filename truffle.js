@@ -11,8 +11,12 @@ module.exports = {
       network_id: "*" // match any network
     },
     ropsten: {
-      provider: new HDWalletProvider(process.env.DEPLOYER_PASSPHRASE, "https://ropsten.infura.io/"),
+      provider: new HDWalletProvider(process.env.DEPLOYER_PASSPHRASE, "https://ropsten.infura.io/" + process.env.INFURA_ACCESS_TOKEN),
       network_id: 3
+    },
+    kovan: {
+      provider: new HDWalletProvider(process.env.DEPLOYER_PASSPHRASE, "https://kovan.infura.io/" + process.env.INFURA_ACCESS_TOKEN),
+      network_id: 42
     }
   },
   solc: {
