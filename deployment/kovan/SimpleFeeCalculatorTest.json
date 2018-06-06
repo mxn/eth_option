@@ -1,0 +1,618 @@
+{
+  "contractName": "SimpleFeeCalculatorTest",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "_qty",
+          "type": "uint256"
+        }
+      ],
+      "name": "calcFee",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "optionCreationFee",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "feeToken",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "denominator",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "numerator",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_feeToken",
+          "type": "address"
+        },
+        {
+          "name": "_numerator",
+          "type": "uint256"
+        },
+        {
+          "name": "_denominator",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b506040516060806102c183398101604090815281516020830151919092015160038054600160a060020a03909416600160a060020a03199094169390931790925560005560015561025b806100666000396000f30060806040526004361061006c5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631d16c3ee81146100715780632a2b9932146100d2578063647846a5146100f957806396ce079514610137578063ce5f94541461014c575b600080fd5b34801561007d57600080fd5b506100a273ffffffffffffffffffffffffffffffffffffffff60043516602435610161565b6040805173ffffffffffffffffffffffffffffffffffffffff909316835260208301919091528051918290030190f35b3480156100de57600080fd5b506100e76101b4565b60408051918252519081900360200190f35b34801561010557600080fd5b5061010e6101ba565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561014357600080fd5b506100e76101d6565b34801561015857600080fd5b506100e76101dc565b600354600154600080549092839273ffffffffffffffffffffffffffffffffffffffff909116916101a9919061019d908763ffffffff6101e216565b9063ffffffff61021816565b915091509250929050565b60025481565b60035473ffffffffffffffffffffffffffffffffffffffff1690565b60015481565b60005481565b6000808315156101f55760009150610211565b5082820282848281151561020557fe5b041461020d57fe5b8091505b5092915050565b600080828481151561022657fe5b049493505050505600a165627a7a7230582074900776436fdbc1bb831b5a59fdf6811b905b899dba4b1966245660882647f20029",
+  "deployedBytecode": "0x60806040526004361061006c5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631d16c3ee81146100715780632a2b9932146100d2578063647846a5146100f957806396ce079514610137578063ce5f94541461014c575b600080fd5b34801561007d57600080fd5b506100a273ffffffffffffffffffffffffffffffffffffffff60043516602435610161565b6040805173ffffffffffffffffffffffffffffffffffffffff909316835260208301919091528051918290030190f35b3480156100de57600080fd5b506100e76101b4565b60408051918252519081900360200190f35b34801561010557600080fd5b5061010e6101ba565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561014357600080fd5b506100e76101d6565b34801561015857600080fd5b506100e76101dc565b600354600154600080549092839273ffffffffffffffffffffffffffffffffffffffff909116916101a9919061019d908763ffffffff6101e216565b9063ffffffff61021816565b915091509250929050565b60025481565b60035473ffffffffffffffffffffffffffffffffffffffff1690565b60015481565b60005481565b6000808315156101f55760009150610211565b5082820282848281151561020557fe5b041461020d57fe5b8091505b5092915050565b600080828481151561022657fe5b049493505050505600a165627a7a7230582074900776436fdbc1bb831b5a59fdf6811b905b899dba4b1966245660882647f20029",
+  "sourceMap": "69:224:15:-;;;129:162;8:9:-1;5:2;;;30:1;27;20:12;5:2;129:162:15;;;;;;;;;;;;;;;;;;;;;;;;;465:12:5;:24;;-1:-1:-1;;;;;465:24:5;;;-1:-1:-1;;;;;;465:24:5;;;;;;;;;;:12;495:22;465:24;523:26;69:224:15;;;;;;",
+  "deployedSourceMap": "69:224:15:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;644:162:5;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;644:162:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;247:29;;8:9:-1;5:2;;;30:1;27;20:12;5:2;247:29:5;;;;;;;;;;;;;;;;;;;;558:82;;8:9:-1;5:2;;;30:1;27;20:12;5:2;558:82:5;;;;;;;;;;;;;;;;;;;;;;;220:23;;8:9:-1;5:2;;;30:1;27;20:12;5:2;220:23:5;;;;195:21;;8:9:-1;5:2;;;30:1;27;20:12;5:2;195:21:5;;;;644:162;750:12;;;788:11;721:7;764:9;;721:7;;;;750:12;;;;;764:36;;788:11;764:19;;778:4;764:19;:13;:19;:::i;:::-;:23;:36;:23;:36;:::i;:::-;742:59;;;;644:162;;;;;:::o;247:29::-;;;;:::o;558:82::-;623:12;;;;558:82;:::o;220:23::-;;;;:::o;195:21::-;;;;:::o;203:173:18:-;261:7;;280:6;;276:35;;;303:1;296:8;;;;276:35;-1:-1:-1;328:5:18;;;332:1;328;:5;346;;;;;;;;:10;339:18;;;;370:1;363:8;;203:173;;;;;;:::o;458:265::-;516:7;605:9;621:1;617;:5;;;;;;;;;458:265;-1:-1:-1;;;;458:265:18:o",
+  "source": "pragma solidity ^0.4.18;\n\nimport '../main/SimpleFeeCalculator.sol';\n\ncontract SimpleFeeCalculatorTest is SimpleFeeCalculator {\n  function SimpleFeeCalculatorTest(address _feeToken, uint _numerator,\n    uint _denominator)\n  SimpleFeeCalculator(_feeToken, _numerator, _denominator)\n  public {}\n}\n",
+  "sourcePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/SimpleFeeCalculatorTest.sol",
+  "ast": {
+    "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/SimpleFeeCalculatorTest.sol",
+    "exportedSymbols": {
+      "SimpleFeeCalculatorTest": [
+        1660
+      ]
+    },
+    "id": 1661,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1641,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:15"
+      },
+      {
+        "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/SimpleFeeCalculator.sol",
+        "file": "../main/SimpleFeeCalculator.sol",
+        "id": 1642,
+        "nodeType": "ImportDirective",
+        "scope": 1661,
+        "sourceUnit": 1367,
+        "src": "26:41:15",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1643,
+              "name": "SimpleFeeCalculator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1366,
+              "src": "105:19:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SimpleFeeCalculator_$1366",
+                "typeString": "contract SimpleFeeCalculator"
+              }
+            },
+            "id": 1644,
+            "nodeType": "InheritanceSpecifier",
+            "src": "105:19:15"
+          }
+        ],
+        "contractDependencies": [
+          46,
+          1366
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1660,
+        "linearizedBaseContracts": [
+          1660,
+          1366,
+          46
+        ],
+        "name": "SimpleFeeCalculatorTest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1658,
+              "nodeType": "Block",
+              "src": "289:2:15",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 1659,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 1653,
+                    "name": "_feeToken",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1646,
+                    "src": "243:9:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1654,
+                    "name": "_numerator",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1648,
+                    "src": "254:10:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1655,
+                    "name": "_denominator",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1650,
+                    "src": "266:12:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 1656,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1652,
+                  "name": "SimpleFeeCalculator",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1366,
+                  "src": "223:19:15",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_SimpleFeeCalculator_$1366_$",
+                    "typeString": "type(contract SimpleFeeCalculator)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "223:56:15"
+              }
+            ],
+            "name": "SimpleFeeCalculatorTest",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1651,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1646,
+                  "name": "_feeToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1659,
+                  "src": "162:17:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1645,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "162:7:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1648,
+                  "name": "_numerator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1659,
+                  "src": "181:15:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1647,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "181:4:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1650,
+                  "name": "_denominator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1659,
+                  "src": "202:17:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1649,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "202:4:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "161:59:15"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1657,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "289:0:15"
+            },
+            "scope": 1660,
+            "src": "129:162:15",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1661,
+        "src": "69:224:15"
+      }
+    ],
+    "src": "0:294:15"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/SimpleFeeCalculatorTest.sol",
+    "exportedSymbols": {
+      "SimpleFeeCalculatorTest": [
+        1660
+      ]
+    },
+    "id": 1661,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1641,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:15"
+      },
+      {
+        "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/SimpleFeeCalculator.sol",
+        "file": "../main/SimpleFeeCalculator.sol",
+        "id": 1642,
+        "nodeType": "ImportDirective",
+        "scope": 1661,
+        "sourceUnit": 1367,
+        "src": "26:41:15",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1643,
+              "name": "SimpleFeeCalculator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1366,
+              "src": "105:19:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SimpleFeeCalculator_$1366",
+                "typeString": "contract SimpleFeeCalculator"
+              }
+            },
+            "id": 1644,
+            "nodeType": "InheritanceSpecifier",
+            "src": "105:19:15"
+          }
+        ],
+        "contractDependencies": [
+          46,
+          1366
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1660,
+        "linearizedBaseContracts": [
+          1660,
+          1366,
+          46
+        ],
+        "name": "SimpleFeeCalculatorTest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1658,
+              "nodeType": "Block",
+              "src": "289:2:15",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 1659,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 1653,
+                    "name": "_feeToken",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1646,
+                    "src": "243:9:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1654,
+                    "name": "_numerator",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1648,
+                    "src": "254:10:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1655,
+                    "name": "_denominator",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1650,
+                    "src": "266:12:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 1656,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1652,
+                  "name": "SimpleFeeCalculator",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1366,
+                  "src": "223:19:15",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_SimpleFeeCalculator_$1366_$",
+                    "typeString": "type(contract SimpleFeeCalculator)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "223:56:15"
+              }
+            ],
+            "name": "SimpleFeeCalculatorTest",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1651,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1646,
+                  "name": "_feeToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1659,
+                  "src": "162:17:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1645,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "162:7:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1648,
+                  "name": "_numerator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1659,
+                  "src": "181:15:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1647,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "181:4:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1650,
+                  "name": "_denominator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1659,
+                  "src": "202:17:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1649,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "202:4:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "161:59:15"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1657,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "289:0:15"
+            },
+            "scope": 1660,
+            "src": "129:162:15",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1661,
+        "src": "69:224:15"
+      }
+    ],
+    "src": "0:294:15"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-06-06T07:17:16.610Z"
+}
