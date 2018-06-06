@@ -6,14 +6,6 @@ var OptionFactory = artifacts.require("OptionFactory")
 var SimpleFeeCalculator = artifacts.require("SimpleFeeCalculator")
 var SimpleFeeCalculatorTest = artifacts.require("SimpleFeeCalculatorTest")
 
-function getTransactionObject(network) {
-  if (network === "kovan") {
-    return {from: "0xdE4eD43183CB7AF6E46b31E0f14F90d0452b6b78"}
-  } else {
-    return {}
-  }
-}
-
 function getWethAddress(network) {
   switch (network) {
     case "ropsten": return "0xc778417E063141139Fce010982780140Aa0cD5Ab"
@@ -26,10 +18,9 @@ module.exports = function(deployer, network) {
   switch(network) {
     case "ropsten":
     case "kovan":
-      deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000,
-      getTransactionObject(network))
-      .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address,
-        getTransactionObject(network)))
+      deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000)
+      .then(registry => new Promise(resolve => setTimeout(() => resolve(registry), 60000)))
+      .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address))
       break
     default:
       deployer.deploy(SimpleFeeCalculatorTest, Weth.address, 3, 10000)
