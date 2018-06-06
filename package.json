@@ -22,5 +22,8 @@
   "homepage": "https://github.com/mxn/eth_option#readme",
   "dependencies": {
     "zeppelin-solidity": "1.6.0"
+  },
+  "devDependencies": {
+    "truffle-hdwallet-provider": "0.0.5"
   }
 }
