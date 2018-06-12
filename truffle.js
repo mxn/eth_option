@@ -8,7 +8,7 @@ module.exports = {
     webtest: {
       host: "127.0.0.1",
       port: 8545,
-      network_id: "*" // match any network
+      network_id: 5777 // match any network
     },
     ropsten: {
       provider: new HDWalletProvider(process.env.DEPLOYER_PASSPHRASE, "https://ropsten.infura.io/" + process.env.INFURA_ACCESS_TOKEN),

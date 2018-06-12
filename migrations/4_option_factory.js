@@ -10,6 +10,7 @@ function getWethAddress(network) {
   switch (network) {
     case "ropsten": return "0xc778417E063141139Fce010982780140Aa0cD5Ab"
     case "kovan": return "0xd0a1e359811322d97991e03f863a0c30c2cf029c"
+    case "webtest": return Weth.address
     default: throw new Error("invalid network")
   }
 }
@@ -18,8 +19,9 @@ module.exports = function(deployer, network) {
   switch(network) {
     case "ropsten":
     case "kovan":
+    case "webtest":
       deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000)
-      .then(registry => new Promise(resolve => setTimeout(() => resolve(registry), 60000)))
+      .then(registry => new Promise(resolve => setTimeout(() => resolve(registry), network=="webtest"?1000:60000)))
       .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address))
       break
     default:
