@@ -4,6 +4,7 @@ var TokenOption = artifacts.require("TokenOption")
 var TokenAntiOption = artifacts.require("TokenAntiOption")
 var Weth = artifacts.require("Weth")
 var Dai = artifacts.require("DAI")
+var OptionSerieToken = artifacts.require("OptionSerieToken")
 
 module.exports = function(deployer, network) {
   switch (network) {
@@ -17,6 +18,7 @@ module.exports = function(deployer, network) {
       break
   default:
     deployer.deploy(MockToken1)
+    .then( () => deployer.deploy(OptionSerieToken))
     .then( () => deployer.deploy(MockToken2))
     .then( () => deployer.deploy(Weth))
     .then( () => deployer.deploy(Dai))
