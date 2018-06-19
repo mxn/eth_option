@@ -6,6 +6,7 @@ import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
+import 'zeppelin-solidity/contracts/token/ERC721/ERC721.sol';
 
 
 contract OptionFactory is Ownable, ReentrancyGuard {
@@ -14,16 +15,27 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   using SafeMath for uint256;
 
   address public feeCalculator;
+  address public optionLineOwnerToken;
 
   event OptionTokenCreated(address optionPair,
       address indexed underlying, address indexed basisToken,
        uint strike, uint underlyingQty, uint expireTime,  address creator);
 
-  function OptionFactory (address _feeCalculator)
+  modifier onlyTokenOwner(address _underlying, address _basisToken,
+   uint _strike, uint _underlyingQty, uint _expireTime) {
+     bytes32 optionLineHash = calcHash(_underlying, _basisToken,
+       _strike, _underlyingQty, _expireTime);
+     ERC721 erc721 = ERC721(optionLineOwnerToken);
+     require(erc721.ownerOf(uint(optionLineHash)) == msg.sender);
+     _;
+   }
+
+  function OptionFactory (address _feeCalculator, address _optionLineOwnerToken)
   Ownable()
   ReentrancyGuard()
   public {
           feeCalculator = _feeCalculator;
+          optionLineOwnerToken = _optionLineOwnerToken;
   }
 
   function () payable {
@@ -33,7 +45,8 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   function createOptionPairContract(address _underlying, address _basisToken,
    uint _strike, uint _underlyingQty, uint _expireTime)
    public
-   onlyOwner
+   onlyTokenOwner(_underlying, _basisToken,
+     _strike, _underlyingQty, _expireTime)
    returns(address) {
     address opAddr =  address(new OptionPair (
         _underlying,
@@ -114,6 +127,14 @@ contract OptionFactory is Ownable, ReentrancyGuard {
     uint basisAmount = optionPairObj.strike().mul(_qty);
     _proxyTransfer(basisToken, _optionPair, basisAmount);
     optionPairObj.executeFor(msg.sender, _qty);
+  }
+
+  function calcHash(address _underlying, address _basisToken,
+   uint _strike, uint _underlyingQty, uint _expireTime)
+   public view
+   returns (bytes32) {
+         return keccak256(_strike, _basisToken,
+            _underlyingQty, _underlying, _expireTime);
   }
 
 }

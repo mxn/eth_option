@@ -5,10 +5,10 @@ import "./MockOptionPair.sol";
 
 contract MockOptionFactory is OptionFactory {
 
-  function MockOptionFactory(address _feeCalculator)
+  function MockOptionFactory(address _feeCalculator, address _erc721token)
     public
     onlyOwner
-   OptionFactory (_feeCalculator) {}
+   OptionFactory (_feeCalculator, _erc721token) {}
      /*
      Need to copy logic from parent class as refactoring brings problem with the gas
      */
