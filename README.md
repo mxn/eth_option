@@ -284,11 +284,12 @@ truffle test
 ```
 The example of usage of the smart contracts can be seen under *test/* directory
 
+The web frontend is currently being developed in https://github.com/mxn/eth_option_ui.git repository.
+
 ## Current State
+MVP version of the contracts with the web-frontend deployed on the [http://www.erc20-options.com](http://www.erc20-options.com).
 
-As POC the smart contracts with pluggable fee taker mechanism are implemented, and partially tested (code audit is needed). I think that the option pair creator should be chosen on one hand via auction, on the other should be paid back with some governance tokens. This governance mechanism should be more thoroughly thought and can support building and expanding community. European style option could be implemented relatively easily.
-
-The implementation was in my spare time. Generally I would be glad to find some support to proceed with the things further with more dedicated time for the development (I have a couple other ideas to monetise the solution).
+The implementation is being made in my spare time. Generally I would be glad to find some support to proceed with the things further with more dedicated time for the development (I have a couple other ideas to monetise the solution).
 
 If you are interesting in supporting the project, please use the contact form
 
