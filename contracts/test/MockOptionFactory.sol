@@ -14,6 +14,8 @@ contract MockOptionFactory is OptionFactory {
      */
      function createOptionPairContract( address _underlying, address _basisToken,
       uint _strike, uint _underlyingQty, uint _expireTime) public
+      onlyTokenOwner(_underlying, _basisToken,
+        _strike, _underlyingQty, _expireTime)
       returns(address) {
         address opAddr =  address(new MockOptionPair(
            _underlying,

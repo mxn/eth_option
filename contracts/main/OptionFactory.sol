@@ -15,7 +15,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   using SafeMath for uint256;
 
   address public feeCalculator;
-  address public optionLineOwnerToken;
+  address public optionSerieOwnerToken;
 
   event OptionTokenCreated(address optionPair,
       address indexed underlying, address indexed basisToken,
@@ -23,19 +23,18 @@ contract OptionFactory is Ownable, ReentrancyGuard {
 
   modifier onlyTokenOwner(address _underlying, address _basisToken,
    uint _strike, uint _underlyingQty, uint _expireTime) {
-     bytes32 optionLineHash = calcHash(_underlying, _basisToken,
+     address tokenOwner = getOptionSerieOwner(_underlying, _basisToken,
        _strike, _underlyingQty, _expireTime);
-     ERC721 erc721 = ERC721(optionLineOwnerToken);
-     require(erc721.ownerOf(uint(optionLineHash)) == msg.sender);
+     require(tokenOwner == msg.sender);
      _;
    }
 
-  function OptionFactory (address _feeCalculator, address _optionLineOwnerToken)
+  function OptionFactory (address _feeCalculator, address _optionSerieOwnerToken)
   Ownable()
   ReentrancyGuard()
   public {
           feeCalculator = _feeCalculator;
-          optionLineOwnerToken = _optionLineOwnerToken;
+          optionSerieOwnerToken = _optionSerieOwnerToken;
   }
 
   function () payable {
@@ -135,6 +134,26 @@ contract OptionFactory is Ownable, ReentrancyGuard {
    returns (bytes32) {
          return keccak256(_strike, _basisToken,
             _underlyingQty, _underlying, _expireTime);
+  }
+
+  function getTokenId(address _underlying, address _basisToken,
+   uint _strike, uint _underlyingQty, uint _expireTime)
+   public
+   view
+   returns (uint)
+   {
+     bytes32 optionSerieHash = calcHash(_underlying, _basisToken, _strike, _underlyingQty,
+       _expireTime);
+     return uint(optionSerieHash);
+   }
+
+  function getOptionSerieOwner(address _underlying, address _basisToken,
+   uint _strike, uint _underlyingQty, uint _expireTime)
+   public view
+   returns (address) {
+        uint tokenId = getTokenId(_underlying, _basisToken,
+        _strike, _underlyingQty, _expireTime);
+        return ERC721(optionSerieOwnerToken).ownerOf(tokenId);
   }
 
 }
