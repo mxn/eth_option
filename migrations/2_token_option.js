@@ -18,7 +18,7 @@ module.exports = function(deployer, network) {
       break
   default:
     deployer.deploy(MockToken1)
-    .then( () => deployer.deploy(OptionSerieToken))
+    .then( () => deployer.deploy(OptionSerieToken, {from: "0x5aeda56215b167893e80b4fe645ba6d5bab767de"}))
     .then( () => deployer.deploy(MockToken2))
     .then( () => deployer.deploy(Weth))
     .then( () => deployer.deploy(Dai))
