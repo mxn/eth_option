@@ -211,7 +211,7 @@ contract ("Options DAI/WETH", async () => {
     assert.ok(optionsToExercise * strike <= (await dai.balanceOf(buyer1)).toFixed(),
      "should have enough basis tokens for execution")
 
-    await tokenOption.approve(optionPair.address,  optionsToWrite, {from: buyer1})
+    await tokenOption.approve(optFactory.address,  optionsToWrite, {from: buyer1})
     await dai.approve(optFactory.address, strike * optionsToWrite, {from: buyer1})
     assert.ok((await dai.allowance(buyer1, optFactory.address)).toFixed() >= strike * optionsToExercise)
     assert.equal(0, (await weth.balanceOf(buyer1)).toFixed())
@@ -220,12 +220,17 @@ contract ("Options DAI/WETH", async () => {
 
     assert.equal(optionsToWrite - optionsToExercise, (await tokenOption.balanceOf(buyer1)).toFixed())
     assert.equal(underlyingQty * optionsToExercise, (await weth.balanceOf(buyer1)).toFixed())
+  })
 
+  it ("excersise all available options should function", async () => {
+    let optionBalanceBuyer1 = await tokenOption.balanceOf(buyer1)
+    console.log(optionBalanceBuyer1.toNumber())
+    console.log(optionBalanceBuyer1.optionsToWrite())
+
+    await tokenOption.approve(optFactory.address,  optionsToWrite, {from: buyer1})
     await optFactory.exerciseAllAvailableOptions(optionPair.address, {from: buyer1})
-
     assert.equal(0, (await tokenOption.balanceOf(buyer1)).toFixed())
     assert.equal(underlyingQty * optionsToWrite, (await weth.balanceOf(buyer1)).toFixed())
-
 
   })
 

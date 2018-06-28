@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/mxn/eth_option#readme",
   "dependencies": {
+    "ethjs-abi": "^0.2.1",
     "zeppelin-solidity": "1.6.0"
   },
   "devDependencies": {

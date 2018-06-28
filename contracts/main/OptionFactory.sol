@@ -112,8 +112,10 @@ contract OptionFactory is Ownable, ReentrancyGuard {
     OptionPair optionPairObj = OptionPair(_optionPair);
     address basisToken = optionPairObj.basisToken();
     uint basisAmount = optionPairObj.strike().mul(_qty);
+    address tokenOption = optionPairObj.tokenOption();
     _proxyTransfer(basisToken, _optionPair, basisAmount);
-    optionPairObj.executeFor(msg.sender, _qty);
+    _proxyTransfer(tokenOption, _optionPair, _qty);
+    require(optionPairObj.executeFor(msg.sender, _qty));
   }
 
 }
