@@ -206,7 +206,7 @@ contract ("Options DAI/WETH", async () => {
 
   it ("exercise options via OptionFactory should function", async() => {
     const optionsToExercise = optionsToWrite / 4
-    await tokenOption.transfer(buyer1, optionsToWrite , {from: writer1})
+    await tokenOption.transfer(buyer1, optionsToWrite, {from: writer1})
     assert.equal( optionsToWrite, (await  tokenOption.balanceOf(buyer1)).toFixed())
     assert.ok(optionsToExercise * strike <= (await dai.balanceOf(buyer1)).toFixed(),
      "should have enough basis tokens for execution")
@@ -224,14 +224,22 @@ contract ("Options DAI/WETH", async () => {
 
   it ("excersise all available options should function", async () => {
     let optionBalanceBuyer1 = await tokenOption.balanceOf(buyer1)
-    console.log(optionBalanceBuyer1.toNumber())
-    console.log(optionBalanceBuyer1.optionsToWrite())
-
-    await tokenOption.approve(optFactory.address,  optionsToWrite, {from: buyer1})
+    assert.ok(optionBalanceBuyer1.mul(strike).toNumber() <= (await dai.balanceOf(buyer1)).toNumber(),
+     "should have enough basis tokens for execution")
+    await tokenOption.approve(optFactory.address,  optionBalanceBuyer1 , {from: buyer1})
+    let allowanceTokenOption = await tokenOption.allowance(buyer1, optFactory.address)
+    let startBalanceOfUnderlying = (await weth.balanceOf(buyer1)).toNumber()
+    assert.ok(allowanceTokenOption.toNumber() >= optionBalanceBuyer1.toNumber(), "sould have enough allowance for option")
+    await dai.approve(optFactory.address,  optionBalanceBuyer1.mul(strike), {from: buyer1})
+    let allowanceDai = await dai.allowance(buyer1, optFactory.address)
+    console.log("allowance dai")
+    console.log(allowanceDai.toNumber())
+    assert.ok(allowanceDai.toNumber() >= optionBalanceBuyer1.mul(strike).toNumber(), "should have enough dai allowance")
     await optFactory.exerciseAllAvailableOptions(optionPair.address, {from: buyer1})
-    assert.equal(0, (await tokenOption.balanceOf(buyer1)).toFixed())
-    assert.equal(underlyingQty * optionsToWrite, (await weth.balanceOf(buyer1)).toFixed())
-
+    assert.equal(0, (await tokenOption.balanceOf(buyer1)).toNumber())
+    assert.equal(underlyingQty * optionBalanceBuyer1,
+      (await weth.balanceOf(buyer1)).sub(startBalanceOfUnderlying),
+      "balance of underlying should correspondingly increased")
   })
 
   it ("annihilate all available options should function", async() => {
