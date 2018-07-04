@@ -16,8 +16,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
   using SafeERC20 for ERC20;
   using SafeERC20 for TokenAntiOption;
 
-  uint8 public decimals = 0; //we operate contracts at whole
-
   address public underlying;
   address public basisToken;
   uint public strike;
