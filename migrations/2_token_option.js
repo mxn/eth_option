@@ -23,6 +23,6 @@ module.exports = function(deployer, network) {
     .then( dai =>
      web3.eth.getAccounts((e, accs) =>
        accs.map((acc) =>
-     dai.transfer(acc, 1000*(10**18)))))
+     dai.transfer(acc, 100000*(10**18)))))
    }
 }

@@ -7,6 +7,7 @@ import 'zeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
 import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 
 import './IFeeCalculator.sol';
+import './IExchangeAdapter.sol';
 import './TokenOption.sol';
 import './TokenAntiOption.sol';
 
@@ -142,13 +143,23 @@ contract OptionPair is Ownable, ReentrancyGuard {
     private
     onlyBeforeExpiration()
     returns (bool) {
-    TokenOption tokenOptionObj =  TokenOption(tokenOption);
-    require (tokenOptionObj.balanceOf(_buyer) >= _qty);
+    require (_prepareExerciseSellerFor(_buyer, _qty));
+    ERC20(underlying).safeTransfer(_buyer, _qty.mul(underlyingQty));
     uint baseAmount = _qty.mul(strike);
     ERC20(basisToken).safeTransferFrom(_sponsorBasisTokens, this, baseAmount);
-    tokenOptionObj.safeTransferFrom(_buyer, this, _qty);
+    return true;
+  }
+
+  function _prepareExerciseSellerFor (address _buyer,  uint _qty)
+    private
+    onlyBeforeExpiration()
+    returns (bool) {
+    TokenOption tokenOptionObj =  TokenOption(tokenOption);
+    require (tokenOptionObj.balanceOf(_buyer) >= _qty);
+    if (_buyer != address(this)) {
+      tokenOptionObj.safeTransferFrom(_buyer, this, _qty);
+    }
     tokenOptionObj.burn(_qty);
-    ERC20(underlying).safeTransfer(_buyer, _qty.mul(underlyingQty));
     return true;
   }
 
@@ -204,6 +215,39 @@ contract OptionPair is Ownable, ReentrancyGuard {
       ERC20 feeTokenObj = ERC20(feeToken);
       feeTokenObj.safeTransferFrom(_feePayer, owner, fee);
     }
+  }
+
+  /**
+  The function allows for token Owner to exercise and sell underlying
+  without needs to have basisToken
+  */
+  function exerciseWithTrade (uint _qty, uint _limitAmount,
+    address _exchangeAdapter)
+    external
+    nonReentrant
+    {
+    uint basisAmount = strike.mul(_qty);
+    require(_limitAmount <= basisAmount);
+    _prepareExerciseSellerFor(msg.sender, _qty);
+
+    IExchangeAdapter exchangeAdapter = IExchangeAdapter(_exchangeAdapter);
+    uint underlyingQtyToSell = _qty.mul(underlyingQty);
+    ERC20(underlying).approve(_exchangeAdapter, underlyingQtyToSell);
+    uint basisBalanceBefore = ERC20(basisToken).balanceOf(this);
+    uint underlyingBalanceBefore = ERC20(underlying).balanceOf(this);
+    require(underlyingBalanceBefore >= underlyingQtyToSell);
+    exchangeAdapter
+      .sell(underlying, underlyingQtyToSell, basisToken, _limitAmount,
+      msg.sender);
+    uint underlyingBalanceAfter = ERC20(underlying).balanceOf(this);
+    require(underlyingBalanceBefore.sub(underlyingBalanceAfter) <=
+      underlyingQtyToSell);
+    uint basisBalanceAfter = ERC20(basisToken).balanceOf(this);
+    uint receivedBasisTokenAmount = basisBalanceAfter.sub(basisBalanceBefore);
+    ERC20(underlying).approve(_exchangeAdapter, 0);
+    require(receivedBasisTokenAmount >= _limitAmount);
+    uint basisAmountToTransfer = receivedBasisTokenAmount.sub(basisAmount);
+    ERC20(basisToken).safeTransfer(msg.sender, basisAmountToTransfer);
   }
 
 }

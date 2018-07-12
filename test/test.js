@@ -11,6 +11,8 @@ const SimpleFeeCalculator = artifacts.require('SimpleFeeCalculator')
 const ERC20 = artifacts.require('ERC20')
 const DAI = artifacts.require('DAI')
 const Weth = artifacts.require('Weth')
+const ExchangeAdapter = artifacts.require('MockExchangeAdapter')
+var BigNumber = require('bignumber.js')
 
 const DECIMAL_FACTOR = 10 ** 18
 
@@ -118,6 +120,52 @@ contract ("DAI", async () => {
   })
 })
 
+contract("Mocked Exchange should function", () => {
+  var weth, dai, exchange
+  it ("intialized", async () => {
+    weth = await Weth.deployed()
+    dai = await DAI.deployed()
+    exchange = await ExchangeAdapter.deployed()
+    await dai.transfer(exchange.address, 1000 * DECIMAL_FACTOR, {from: buyer1})
+    await weth.deposit({from: buyer1, value: 20 * DECIMAL_FACTOR})
+    await weth.approve(exchange.address, 20 * DECIMAL_FACTOR,
+      {from: buyer1})
+  })
+
+  it ("should fail if limit amount to get exceeds amount which exchange provides", async () => {
+    try {
+      await exchange.sell(weth.address, 5, dai.address, 120, buyer1, {from: buyer1})
+      assert(false) //should not be here
+    } catch (e) {
+      //NOP
+    }
+  })
+
+  it ("should correct exchage", async () => {
+
+    let startBalanceWethBuyer1 = await weth.balanceOf(buyer1)
+    let startBalanceDaiBuyer1 = await dai.balanceOf(buyer1)
+    let startBalanceWethExch = await weth.balanceOf(exchange.address)
+    let startBalanceDaiExch = await dai.balanceOf(exchange.address)
+
+    await exchange.sell(weth.address, 5, dai.address, 1, buyer1, {from: buyer1})
+    let endBalanceWethBuyer1 = await weth.balanceOf(buyer1)
+    let endBalanceDaiBuyer1 = await dai.balanceOf(buyer1)
+    let endBalanceWethExch = await weth.balanceOf(exchange.address)
+    let endBalanceDaiExch = await dai.balanceOf(exchange.address)
+
+    assert.ok(startBalanceWethBuyer1.sub(endBalanceWethBuyer1).toNumber() == 5,
+    "balance of weth for buyer1 should decreasem for sold amount")
+    assert.ok(endBalanceWethExch.sub(startBalanceWethExch).toNumber() == 5,
+    "balance of weth for exchange should decrease for sold amount")
+    assert.ok(endBalanceDaiBuyer1.sub(startBalanceDaiBuyer1).toNumber() == 5 * 110,
+    "balance of dai for buyer1 should increase for sold amount of weth multiply by exRate(110)")
+    assert.ok(startBalanceDaiExch.sub(endBalanceDaiExch).toNumber() == 5 * 110,
+    "balance of dai for buyer1 should increase for sold amount of weth multiply by exRate(110)")
+
+  })
+})
+
 contract ("Option With Sponsor", async() => {
   it ("writeOptionsFor should function", async () => {
     const optFactory = await OptionFactory.deployed()
@@ -167,8 +215,8 @@ contract ("Write Options Via OptionFactory", async() => {
 })
 
 contract ("Options DAI/WETH", async () => {
-  const strike = 77
-  const underlyingQty = 10
+  const strike = 150
+  const underlyingQty = 2
   var optFactory,
     optionPair,
     tokenOption,
@@ -206,6 +254,7 @@ contract ("Options DAI/WETH", async () => {
 
   it ("exercise options via OptionFactory should function", async() => {
     const optionsToExercise = optionsToWrite / 4
+    assert.ok(optionsToExercise > 0, "optionsToExercise should be than 0")
     await tokenOption.transfer(buyer1, optionsToWrite , {from: writer1})
     assert.equal( optionsToWrite, (await  tokenOption.balanceOf(buyer1)).toFixed())
     assert.ok(optionsToExercise * strike <= (await dai.balanceOf(buyer1)).toFixed(),
@@ -221,13 +270,65 @@ contract ("Options DAI/WETH", async () => {
     assert.equal(optionsToWrite - optionsToExercise, (await tokenOption.balanceOf(buyer1)).toFixed())
     assert.equal(underlyingQty * optionsToExercise, (await weth.balanceOf(buyer1)).toFixed())
 
-    await optFactory.exerciseAllAvailableOptions(optionPair.address, {from: buyer1})
-
-    assert.equal(0, (await tokenOption.balanceOf(buyer1)).toFixed())
-    assert.equal(underlyingQty * optionsToWrite, (await weth.balanceOf(buyer1)).toFixed())
-
 
   })
+
+  it ("should correctly exercised via an exchange", async () => {
+    //transfer some Weth to Exchange
+
+    var trans = await weth.deposit({from: tokensOwner, value: 50 * DECIMAL_FACTOR})
+    await weth.transfer(ExchangeAdapter.address, 40 * DECIMAL_FACTOR, {from: tokensOwner})
+    await dai.approve(optionPair.address, 0, {from: buyer1}) //dai should not be used
+    await dai.transfer(ExchangeAdapter.address, 10000 * DECIMAL_FACTOR,
+      {from: tokensOwner});
+    let balExchDai = await dai.balanceOf(ExchangeAdapter.address)
+
+    let startBalanceDai = await dai.balanceOf(buyer1)
+    let startBalanceWeth = await weth.balanceOf(buyer1)
+    let startBalanceToken = await tokenOption.balanceOf(buyer1)
+    assert.ok(startBalanceToken.toNumber() > 0, "option token balance should be greater than 0")
+    let optionsToExercise = startBalanceToken.div(4)
+
+    await tokenOption.approve(optionPair.address, optionsToExercise)
+    let limitDaiAmouunt = 1// lower thaa price
+    await optionPair.exerciseWithTrade (optionsToExercise,  limitDaiAmouunt,
+      ExchangeAdapter.address)
+    let endBalanceDai = await dai.balanceOf(buyer1)
+    let endBalanceWeth = await weth.balanceOf(buyer1)
+    let endBalanceToken = await tokenOption.balanceOf(buyer1)
+    //500 == exchange rate DAI per WETH
+    let exRate = 110 //see migrations
+    let daiShouldBe = optionsToExercise.mul(underlyingQty)
+      .mul(new BigNumber(exRate)
+      .sub((new BigNumber(strike)).div(underlyingQty)))
+    assert.ok(endBalanceDai.sub(startBalanceDai).equals(daiShouldBe), "Dai should incerease")
+    assert.ok( startBalanceToken.sub(endBalanceToken).equals(optionsToExercise), "option token aount should correspondingly decrease")
+    assert.ok(endBalanceWeth.equals(startBalanceWeth), "Underlying balanve should not change")
+  })
+
+  it ("should correctly exercise all availabale options", async () => {
+    //await dai.approve(optFactory.address, 100000000)
+    let startBalanceDai = await dai.balanceOf(buyer1)
+    let startBalanceWeth = await weth.balanceOf(buyer1)
+    let startBalanceToken = await tokenOption.balanceOf(buyer1)
+    assert.ok(startBalanceToken.toNumber() > 0, "should have some options on-hand")
+
+    await tokenOption.approve(optionPair.address, startBalanceToken)
+    await optFactory.exerciseAllAvailableOptions(optionPair.address, {from: buyer1})
+
+    let endBalanceDai = await dai.balanceOf(buyer1)
+    let endBalanceWeth = await weth.balanceOf(buyer1)
+    let endBalanceToken = await tokenOption.balanceOf(buyer1)
+
+
+    assert.equal(0, endBalanceToken.toNumber())
+    assert.equal(startBalanceToken.sub(endBalanceToken).mul(underlyingQty).toNumber(),
+      endBalanceWeth.sub(startBalanceWeth).toNumber())
+    assert.equal(startBalanceToken.sub(endBalanceToken).mul(strike).toNumber(),
+        startBalanceDai.sub(endBalanceDai).toNumber())
+
+  })
+
 
   it ("annihilate all available options should function", async() => {
     assert.equal(0, (await tokenOption.balanceOf(writer1)).toNumber())
