@@ -12,6 +12,9 @@ const ERC20 = artifacts.require('ERC20')
 const DAI = artifacts.require('DAI')
 const Weth = artifacts.require('Weth')
 const ExchangeAdapter = artifacts.require('MockExchangeAdapter')
+const ExchangeAdapterOasis = artifacts.require('ExchangeAdapterOasisImpl')
+const MockOasisDirect = artifacts.require('MockOasisDirect')
+
 var BigNumber = require('bignumber.js')
 
 const DECIMAL_FACTOR = 10 ** 18
@@ -122,7 +125,7 @@ contract ("DAI", async () => {
 
 contract("Mocked Exchange should function", () => {
   var weth, dai, exchange
-  it ("intialized", async () => {
+  it ("initialized", async () => {
     weth = await Weth.deployed()
     dai = await DAI.deployed()
     exchange = await ExchangeAdapter.deployed()
@@ -141,7 +144,7 @@ contract("Mocked Exchange should function", () => {
     }
   })
 
-  it ("should correct exchage", async () => {
+  it ("should correct exchange", async () => {
 
     let startBalanceWethBuyer1 = await weth.balanceOf(buyer1)
     let startBalanceDaiBuyer1 = await dai.balanceOf(buyer1)
@@ -165,6 +168,49 @@ contract("Mocked Exchange should function", () => {
 
   })
 })
+
+contract("Mocked Oasis.Direct Exchange should function", () => {
+  var weth, dai, exchange, mockOasisDirect
+  it ("initialized", async () => {
+    weth = await Weth.deployed()
+    dai = await DAI.deployed()
+    exchange = await ExchangeAdapterOasis.deployed()
+    mockOasisDirect = await MockOasisDirect.deployed()
+    await dai.transfer(mockOasisDirect.address, 1000 * DECIMAL_FACTOR, {from: buyer1})
+    await weth.deposit({from: buyer1, value: 20 * DECIMAL_FACTOR})
+    await weth.approve(exchange.address, 20 * DECIMAL_FACTOR,
+      {from: buyer1})
+  })
+
+  it ("should fail if limit amount to get exceeds amount which exchange provides", async () => {
+    try {
+      await exchange.sell(weth.address, 5, dai.address, 120, buyer1, {from: buyer1})
+      assert(false) //should not be here
+    } catch (e) {
+      //NOP
+    }
+  })
+
+  it ("should correct exchange", async () => {
+
+    let startBalanceWethBuyer1 = await weth.balanceOf(buyer1)
+    let startBalanceDaiBuyer1 = await dai.balanceOf(buyer1)
+    let startBalanceWethExch = await weth.balanceOf(exchange.address)
+    let startBalanceDaiExch = await dai.balanceOf(exchange.address)
+
+    await exchange.sell(weth.address, 5, dai.address, 1, buyer1, {from: buyer1})
+    let endBalanceWethBuyer1 = await weth.balanceOf(buyer1)
+    let endBalanceDaiBuyer1 = await dai.balanceOf(buyer1)
+    let endBalanceWethExch = await weth.balanceOf(exchange.address)
+    let endBalanceDaiExch = await dai.balanceOf(exchange.address)
+
+    assert.ok(startBalanceWethBuyer1.sub(endBalanceWethBuyer1).toNumber() == 5,
+    "balance of weth for buyer1 should decrease for sold amount")
+    assert.ok(endBalanceDaiBuyer1.sub(startBalanceDaiBuyer1).toNumber() == 5 * 110,
+    "balance of dai for buyer1 should increase for sold amount of weth multiply by exRate(110)")
+  })
+})
+
 
 contract ("Option With Sponsor", async() => {
   it ("writeOptionsFor should function", async () => {

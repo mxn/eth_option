@@ -7,6 +7,9 @@ var SimpleFeeCalculator = artifacts.require("SimpleFeeCalculator")
 var SimpleFeeCalculatorTest = artifacts.require("SimpleFeeCalculatorTest")
 var MockExchangeAdapter = artifacts.require("MockExchangeAdapter")
 var Dai = artifacts.require("DAI")
+var MockOasisDirect = artifacts.require("MockOasisDirect")
+var ExchangeAdapterOasisImpl = artifacts.require("ExchangeAdapterOasisImpl")
+
 
 function getWethAddress(network) {
   switch (network) {
@@ -38,5 +41,8 @@ module.exports = function(deployer, network) {
          {from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc'}))
        .then(() => deployer.deploy(MockExchangeAdapter,
          Dai.address, Weth.address, 220, 2)) //for unit testing purposes
+      .then(() => deployer.deploy(MockOasisDirect))
+      .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
+        MockOasisDirect.address))
   }
 }
