@@ -67,6 +67,7 @@ const fee = 2
 var optFactory
 var optionPair
 var tokenOption
+var optionSerieToken
 
 contract ("Tokens:", async  () =>  {
 
@@ -224,7 +225,8 @@ contract ("Option With Sponsor", async() => {
   it ("iniztialize", async () => {
     optFactory = await OptionFactory.deployed()
     assert.equal (optFactory.address, FeeTaker.address)
-    erc721tokenId = await optFactory.getTokenId(underlyingToken.address, basisToken.address,
+    optionSerieToken = await OptionSerieToken.deployed()
+    erc721tokenId = await optionSerieToken.getTokenId(underlyingToken.address, basisToken.address,
       strike, underlyingQty, expireTime)
     optionSerieToken = await OptionSerieToken.deployed()
     await optionSerieToken.mint(optionSerieCreator, erc721tokenId, {from: tokensOwner})
@@ -293,9 +295,9 @@ contract ("Write Options Via OptionFactory", async() => {
 
     assert.equal (optFactory.address, FeeTaker.address)
 
-    erc721tokenId = await optFactory.getTokenId(underlyingToken.address, basisToken.address,
-      strike, underlyingQty, expireTime)
     optionSerieToken = await OptionSerieToken.deployed()
+    erc721tokenId = await optionSerieToken.getTokenId(underlyingToken.address, basisToken.address,
+      strike, underlyingQty, expireTime)
     await optionSerieToken.mint(optionFactoryCreator, erc721tokenId,
       {from: tokensOwner})
 
@@ -338,9 +340,9 @@ contract ("Options DAI/WETH", async () => {
       //console.log(trans)
       optFactory = await OptionFactoryWeth.deployed()
 
-      erc721tokenId = await optFactory.getTokenId(weth.address, dai.address,
-        strike, underlyingQty, expireTime)
       optionSerieToken = await OptionSerieToken.deployed()
+      erc721tokenId = await optionSerieToken.getTokenId(weth.address, dai.address,
+        strike, underlyingQty, expireTime)
       await optionSerieToken.mint(optionFactoryCreator, erc721tokenId,
         {from: tokensOwner})
 
@@ -505,10 +507,11 @@ contract ("Option", () =>  {
     const underlyingQty = 100
     const expireTime = new Date()/1000 + 60*60*24*30
 
-    let erc721tokenId = await optFactory
+    let optionSerieToken = await OptionSerieToken.deployed()
+    let erc721tokenId = await optionSerieToken
       .getTokenId(underlyingToken.address, basisToken.address,strike,
         underlyingQty, expireTime)
-    let optionSerieToken = await OptionSerieToken.deployed()
+
     await optionSerieToken.mint(optionTokenCreator, erc721tokenId,
       {from: tokensOwner})
 

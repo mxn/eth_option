@@ -1,12 +1,13 @@
 pragma solidity ^0.4.18;
 
 import './OptionPair.sol';
+import './OptionSerieToken.sol';
 import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
-import 'zeppelin-solidity/contracts/token/ERC721/ERC721.sol';
+
 
 
 contract OptionFactory is Ownable, ReentrancyGuard {
@@ -15,7 +16,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   using SafeMath for uint256;
 
   address public feeCalculator;
-  address public optionSerieOwnerToken;
+  OptionSerieToken public optionSerieOwnerToken;
 
   mapping (uint => bool) solvedToken;
 
@@ -25,10 +26,10 @@ contract OptionFactory is Ownable, ReentrancyGuard {
 
   modifier onlyTokenOwner(address _underlying, address _basisToken,
    uint _strike, uint _underlyingQty, uint _expireTime) {
-     uint tokenId = getTokenId(_underlying, _basisToken,
+     uint tokenId = optionSerieOwnerToken.getTokenId(_underlying, _basisToken,
      _strike, _underlyingQty, _expireTime);
      require(!solvedToken[tokenId]);
-     address tokenOwner = ERC721(optionSerieOwnerToken).ownerOf(tokenId);
+     address tokenOwner = optionSerieOwnerToken.ownerOf(tokenId);
      require(tokenOwner == msg.sender);
      _;
   }
@@ -38,7 +39,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   ReentrancyGuard()
   public {
           feeCalculator = _feeCalculator;
-          optionSerieOwnerToken = _optionSerieOwnerToken;
+          optionSerieOwnerToken = OptionSerieToken(_optionSerieOwnerToken);
   }
 
   function () payable {
@@ -130,34 +131,6 @@ contract OptionFactory is Ownable, ReentrancyGuard {
     uint basisAmount = optionPairObj.strike().mul(_qty);
     _proxyTransfer(basisToken, _optionPair, basisAmount);
     optionPairObj.executeFor(msg.sender, _qty);
-  }
-
-  function calcHash(address _underlying, address _basisToken,
-   uint _strike, uint _underlyingQty, uint _expireTime)
-   public view
-   returns (bytes32) {
-         return keccak256(_strike, _basisToken,
-            _underlyingQty, _underlying, _expireTime);
-  }
-
-  function getTokenId(address _underlying, address _basisToken,
-   uint _strike, uint _underlyingQty, uint _expireTime)
-   public
-   view
-   returns (uint)
-   {
-     bytes32 optionSerieHash = calcHash(_underlying, _basisToken, _strike, _underlyingQty,
-       _expireTime);
-     return uint(optionSerieHash);
-   }
-
-  function getOptionSerieOwner(address _underlying, address _basisToken,
-   uint _strike, uint _underlyingQty, uint _expireTime)
-   public view
-   returns (address) {
-        uint tokenId = getTokenId(_underlying, _basisToken,
-        _strike, _underlyingQty, _expireTime);
-        return ERC721(optionSerieOwnerToken).ownerOf(tokenId);
   }
 
 }
