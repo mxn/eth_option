@@ -8,6 +8,7 @@ import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 
 import './IFeeCalculator.sol';
 import './IExchangeAdapter.sol';
+import './OptionSerieToken.sol';
 import './TokenOption.sol';
 import './TokenAntiOption.sol';
 
@@ -28,6 +29,8 @@ contract OptionPair is Ownable, ReentrancyGuard {
   address public tokenOption;
   address public tokenAntiOption;
 
+  address public optionSerieToken;
+
   uint totalWritten;
 
   modifier onlyBeforeExpiration() {
@@ -41,7 +44,8 @@ contract OptionPair is Ownable, ReentrancyGuard {
   }
 
   function OptionPair (address _underlying, address _basisToken,
-    uint _strike, uint _underlyingQty, uint _expireTime,  address _feeCalculator)
+    uint _strike, uint _underlyingQty, uint _expireTime,
+    address _feeCalculator, address _optionSerieToken)
     Ownable()
     ReentrancyGuard()
     public
@@ -54,6 +58,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
       feeCalculator = _feeCalculator;
       tokenOption = address(new TokenOption());
       tokenAntiOption = address(new TokenAntiOption());
+      optionSerieToken = _optionSerieToken;
   }
 
   function () public payable {

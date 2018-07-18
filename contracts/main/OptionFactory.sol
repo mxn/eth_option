@@ -58,7 +58,9 @@ contract OptionFactory is Ownable, ReentrancyGuard {
         _strike,
         _underlyingQty,
         _expireTime,
-        feeCalculator));
+        feeCalculator,
+        optionSerieOwnerToken
+        ));
     OptionTokenCreated(
         opAddr,
         _underlying,

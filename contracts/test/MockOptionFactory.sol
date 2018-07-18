@@ -23,7 +23,8 @@ contract MockOptionFactory is OptionFactory {
            _strike,
            _underlyingQty,
            _expireTime,
-            feeCalculator));
+            feeCalculator,
+            optionSerieOwnerToken));
       OptionTokenCreated(
            opAddr,
            _underlying,

@@ -29,4 +29,14 @@ contract OptionSerieToken is ERC721Token, Ownable {
      return uint(optionSerieHash);
    }
 
+   function getOwner (address _underlying, address _basisToken,
+    uint _strike, uint _underlyingQty, uint _expireTime)
+    public
+    view
+    returns (address) {
+      uint tokenId =  getTokenId(_underlying, _basisToken, _strike,
+        _underlyingQty, _expireTime);
+      return ownerOf(tokenId);
+    }
+
 }
