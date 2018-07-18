@@ -248,6 +248,22 @@ contract ("Option With Sponsor", async() => {
     optionPairAddress = trans.logs[0].args.optionPair
   })
 
+  it ("Use the same ERC721 token twice should fail", async () => {
+    try {
+      const trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address,
+        strike, underlyingQty, expireTime,
+      {from: optionSerieCreator})
+    //  optionPairAddress = trans.logs[0].args.optionPair
+      console.log("reached")
+      assert(false) //should not be there
+    } catch (e) {
+      //NOP
+    }
+
+  })
+
+
+
   it ("writeOptionsFor should function", async () => {
     optionPair = await OptionPair.at(optionPairAddress)
     assert.equal(optFactory.address, await optionPair.owner())

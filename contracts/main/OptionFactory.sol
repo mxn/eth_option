@@ -17,17 +17,21 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   address public feeCalculator;
   address public optionSerieOwnerToken;
 
+  mapping (uint => bool) solvedToken;
+
   event OptionTokenCreated(address optionPair,
       address indexed underlying, address indexed basisToken,
        uint strike, uint underlyingQty, uint expireTime,  address creator);
 
   modifier onlyTokenOwner(address _underlying, address _basisToken,
    uint _strike, uint _underlyingQty, uint _expireTime) {
-     address tokenOwner = getOptionSerieOwner(_underlying, _basisToken,
-       _strike, _underlyingQty, _expireTime);
+     uint tokenId = getTokenId(_underlying, _basisToken,
+     _strike, _underlyingQty, _expireTime);
+     require(!solvedToken[tokenId]);
+     address tokenOwner = ERC721(optionSerieOwnerToken).ownerOf(tokenId);
      require(tokenOwner == msg.sender);
      _;
-   }
+  }
 
   function OptionFactory (address _feeCalculator, address _optionSerieOwnerToken)
   Ownable()
