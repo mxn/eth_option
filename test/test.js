@@ -14,6 +14,7 @@ const Weth = artifacts.require('Weth')
 const ExchangeAdapter = artifacts.require('MockExchangeAdapter')
 const ExchangeAdapterOasis = artifacts.require('ExchangeAdapterOasisImpl')
 const MockOasisDirect = artifacts.require('MockOasisDirect')
+const OptionSerieToken = artifacts.require('OptionSerieToken')
 
 var BigNumber = require('bignumber.js')
 
@@ -32,6 +33,7 @@ const UnderlyingToken = TestToken1
 const buyer1 = '0x627306090abab3a6e1400e9345bc60c78a8bef57'
 const writer1 = '0xf17f52151ebef6c7334fad080c5704d77216b732'
 const buyer2 = '0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef'
+const optionSerieCreator = '0x0d1d4e623d10f9fba5db95830f7d3839406c6af2'
 
 const tokensOwner = '0x5aeda56215b167893e80b4fe645ba6d5bab767de'
 const optionFactoryCreator = '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc'
@@ -213,16 +215,44 @@ contract("Mocked Oasis.Direct Exchange should function", () => {
 
 
 contract ("Option With Sponsor", async() => {
-  it ("writeOptionsFor should function", async () => {
-    const optFactory = await OptionFactory.deployed()
+
+  var optFactory, optionPairAddress, optionSerieToken, erc721tokenId
+  const strike = 15
+  const underlyingQty = 10
+  const expireTime = new Date()/1000 + 60*60*24*30
+
+  it ("iniztialize", async () => {
+    optFactory = await OptionFactory.deployed()
     assert.equal (optFactory.address, FeeTaker.address)
+    erc721tokenId = await optFactory.getTokenId(underlyingToken.address, basisToken.address,
+      strike, underlyingQty, expireTime)
+    optionSerieToken = await OptionSerieToken.deployed()
+    await optionSerieToken.mint(optionSerieCreator, erc721tokenId, {from: tokensOwner})
+    assert.equal(await optionSerieToken.ownerOf(erc721tokenId),
+      optionSerieCreator, "owner should be option factory creator")
+  })
+
+  it ("second mint should fail", async () => {
+    try {
+      await optionSerieToken.mint(optionSerieCreator, erc721tokenId, {from: tokensOwner})
+      assert(false)
+    } catch (e) {
+      //NOP
+    }
+  })
+
+  it ("Option Line Creation should function", async () => {
+    const trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address,
+      strike, underlyingQty, expireTime,
+    {from: optionSerieCreator})
+    optionPairAddress = trans.logs[0].args.optionPair
+  })
+
+  it ("writeOptionsFor should function", async () => {
+    optionPair = await OptionPair.at(optionPairAddress)
+    assert.equal(optFactory.address, await optionPair.owner())
     await basisToken.transfer(optionFactoryCreator, 1000, {from: tokensOwner})
     await underlyingToken.transfer(optionFactoryCreator, 1000, {from: tokensOwner})
-    const trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address,
-      15, 10, new Date()/1000 + 60*60*24*30,
-    {from: optionFactoryCreator})
-    optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
-    assert.equal(optFactory.address, await optionPair.owner())
     await basisToken.approve(optionPair.address, 100, {from: optionFactoryCreator})
     await underlyingToken.approve(optionPair.address, 100, {from: optionFactoryCreator})
     await optionPair.writeOptionsFor(10, writer1, false, {from: optionFactoryCreator})
@@ -237,13 +267,25 @@ contract ("Option With Sponsor", async() => {
 })
 
 contract ("Write Options Via OptionFactory", async() => {
+  const strike = 15
+  const underlyingQty = 10
+  const expireTime = new Date()/1000 + 60*60*24*30
   it ("write options via OptionFactory should function", async () => {
     const optFactory = await OptionFactory.deployed()
     await basisToken.transfer(writer1, 1000, {from: tokensOwner})
     await underlyingToken.transfer(writer1, 1000, {from: tokensOwner})
-    var trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address,
-      15, 10, new Date()/1000 + 60*60*24*30,
-    {from: optionFactoryCreator})
+
+    assert.equal (optFactory.address, FeeTaker.address)
+
+    erc721tokenId = await optFactory.getTokenId(underlyingToken.address, basisToken.address,
+      strike, underlyingQty, expireTime)
+    optionSerieToken = await OptionSerieToken.deployed()
+    await optionSerieToken.mint(optionFactoryCreator, erc721tokenId,
+      {from: tokensOwner})
+
+    var trans = await  optFactory
+      .createOptionPairContract(underlyingToken.address, basisToken.address,
+        strike, underlyingQty, expireTime, {from: optionFactoryCreator})
     //console.log(trans)
     optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
     assert.equal(optFactory.address, await optionPair.owner())
@@ -263,6 +305,7 @@ contract ("Write Options Via OptionFactory", async() => {
 contract ("Options DAI/WETH", async () => {
   const strike = 150
   const underlyingQty = 2
+  const expireTime = new Date()/1000 + 60*60*24*30
   var optFactory,
     optionPair,
     tokenOption,
@@ -278,8 +321,15 @@ contract ("Options DAI/WETH", async () => {
       assert.equal(50 * DECIMAL_FACTOR, (await weth.balanceOf(writer1)).toFixed())
       //console.log(trans)
       optFactory = await OptionFactoryWeth.deployed()
+
+      erc721tokenId = await optFactory.getTokenId(weth.address, dai.address,
+        strike, underlyingQty, expireTime)
+      optionSerieToken = await OptionSerieToken.deployed()
+      await optionSerieToken.mint(optionFactoryCreator, erc721tokenId,
+        {from: tokensOwner})
+
       trans = await  optFactory.createOptionPairContract(weth.address, dai.address,
-        strike, underlyingQty, new Date()/1000 + 60*60*24*30,
+        strike, underlyingQty, expireTime,
       {from: optionFactoryCreator})
       optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
       assert.equal(optFactory.address, await optionPair.owner())
@@ -402,12 +452,25 @@ contract ("Option", () =>  {
   })
 
   it ('create option tokens for not-owner should throw excepton', async () => {
-    await basisToken.transfer(optionTokenCreator, 100, {from: tokensOwner})
+    await basisToken.transfer(optionFactoryCreator, 100, {from: tokensOwner})
     await basisToken.approve(FeeTaker.address, 100, {from: optionFactoryCreator})
 
     try {
       var trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address, 125, 100, new Date()/1000 + 60*60*24*30,
       {from: optionFactoryCreator})
+      assert(true)
+    } catch(e) {
+      //NOP
+    }
+  })
+
+  it ('create option tokens for owner but without erc721 token should throw excepton', async () => {
+    await basisToken.transfer(optionTokenCreator, 100, {from: tokensOwner})
+    await basisToken.approve(FeeTaker.address, 100, {from: optionTokenCreator})
+
+    try {
+      var trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address, 125, 100, new Date()/1000 + 60*60*24*30,
+      {from: optionTokenCreator})
       assert(true)
     } catch(e) {
       //NOP
@@ -422,8 +485,21 @@ contract ("Option", () =>  {
     const balOfOptionCreatorBefore =  await basisToken.balanceOf(optionTokenCreator)
     const balOfFeeTakerBefore =  await basisToken.balanceOf(FeeTaker.address)
 
-    var trans = await  optFactory.createOptionPairContract(underlyingToken.address, basisToken.address, 125, 100, new Date()/1000 + 60*60*24*30,
-    {from: optionTokenCreator})
+    const strike = 125
+    const underlyingQty = 100
+    const expireTime = new Date()/1000 + 60*60*24*30
+
+    let erc721tokenId = await optFactory
+      .getTokenId(underlyingToken.address, basisToken.address,strike,
+        underlyingQty, expireTime)
+    let optionSerieToken = await OptionSerieToken.deployed()
+    await optionSerieToken.mint(optionTokenCreator, erc721tokenId,
+      {from: tokensOwner})
+
+    var trans = await  optFactory
+      .createOptionPairContract(underlyingToken.address, basisToken.address,
+        strike, underlyingQty, expireTime,
+        {from: optionTokenCreator})
     console.log("gas used for option pair creation is: " + trans.receipt.cumulativeGasUsed)
 
     optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
