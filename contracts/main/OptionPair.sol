@@ -29,7 +29,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
   address public tokenOption;
   address public tokenAntiOption;
 
-  address public optionSerieToken;
+  OptionSerieToken public optionSerieToken;
 
   uint totalWritten;
 
@@ -58,7 +58,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
       feeCalculator = _feeCalculator;
       tokenOption = address(new TokenOption());
       tokenAntiOption = address(new TokenAntiOption());
-      optionSerieToken = _optionSerieToken;
+      optionSerieToken = OptionSerieToken(_optionSerieToken);
   }
 
   function () public payable {
@@ -212,13 +212,15 @@ contract OptionPair is Ownable, ReentrancyGuard {
   }
 
   function _takeFee (uint _optionQty, address _feePayer) private {
-    if (_feePayer != owner) {
+    address feeTaker =  optionSerieToken.getOwner (underlying, basisToken,
+     strike, underlyingQty, expireTime);
+    if (_feePayer != feeTaker) {
       IFeeCalculator feeCalculatorObj =  IFeeCalculator(feeCalculator);
       uint fee;
       address feeToken;
       (feeToken, fee) = feeCalculatorObj.calcFee(address(this), _optionQty);
       ERC20 feeTokenObj = ERC20(feeToken);
-      feeTokenObj.safeTransferFrom(_feePayer, owner, fee);
+      feeTokenObj.safeTransferFrom(_feePayer, feeTaker, fee);
     }
   }
 

@@ -34,6 +34,8 @@ const buyer1 = '0x627306090abab3a6e1400e9345bc60c78a8bef57'
 const writer1 = '0xf17f52151ebef6c7334fad080c5704d77216b732'
 const buyer2 = '0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef'
 const optionSerieCreator = '0x0d1d4e623d10f9fba5db95830f7d3839406c6af2'
+const optionSerieTokenBuyer = '0x2932b7a2355d6fecc4b5c0b6bd44cc31df247a2e'
+const writer2 = '0x2191ef87e392377ec08e7c08eb105ef5448eced5'
 
 const tokensOwner = '0x5aeda56215b167893e80b4fe645ba6d5bab767de'
 const optionFactoryCreator = '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc'
@@ -261,10 +263,7 @@ contract ("Option With Sponsor", async() => {
     } catch (e) {
       //NOP
     }
-
   })
-
-
 
   it ("writeOptionsFor should function", async () => {
     optionPair = await OptionPair.at(optionPairAddress)
@@ -279,7 +278,7 @@ contract ("Option With Sponsor", async() => {
     assert.equal(10, (await tokenOption.balanceOf(writer1)).toFixed())
     const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenOption.call())
     assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toFixed())
-    assert.equal(20, (await basisToken.balanceOf(optFactory.address)).toFixed())
+    assert.equal(20, (await basisToken.balanceOf(optionSerieCreator)).toNumber()) //fee went to token Owner
     assert.equal(980, (await basisToken.balanceOf(optionFactoryCreator)).toFixed())
   })
 })
@@ -315,7 +314,7 @@ contract ("Write Options Via OptionFactory", async() => {
     assert.equal(10, (await tokenOption.balanceOf(writer1)).toFixed())
     const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
     assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toFixed())
-    assert.equal(20, (await basisToken.balanceOf(optFactory.address)).toFixed())
+    assert.equal(20, (await basisToken.balanceOf(optionFactoryCreator)).toNumber()) //fee is taken by token owner
     assert.equal(980, (await basisToken.balanceOf(writer1)).toFixed())
   })
 })
@@ -363,7 +362,19 @@ contract ("Options DAI/WETH", async () => {
       tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
       assert.equal(optionsToWrite, (await tokenAntiOption.balanceOf(writer1)).toFixed())
       //check fee taking 3 is numerator, 10000 is denominator, s. 4_options_factory.js in migrations
-      assert.equal(optionsToWrite * 3 / 10000, (await weth.balanceOf(optFactory.address)).toFixed())
+      assert.equal(optionsToWrite * 3 / 10000, (await weth.balanceOf(optionFactoryCreator)).toNumber()) //fee goes to token owner
+  })
+
+  it ("after transfer option serie token, the fee for writing should be taken by new owner", async () => {
+    await optionSerieToken.approve(optionSerieTokenBuyer, erc721tokenId, {from: optionFactoryCreator})
+    assert.ok(await optionSerieToken.transfer(optionSerieTokenBuyer, erc721tokenId,  {from: optionFactoryCreator}))
+
+    var trans = await weth.deposit({from: writer2, value: 50 * DECIMAL_FACTOR})
+    assert.equal(50 * DECIMAL_FACTOR, (await weth.balanceOf(writer2)).toNumber())
+
+    await weth.approve(optFactory.address, 1000 * DECIMAL_FACTOR, {from: writer2})
+    await optFactory.writeOptions(optionPair.address, optionsToWrite , {from: writer2});
+    assert.equal(optionsToWrite * 3 / 10000, (await weth.balanceOf(optionSerieTokenBuyer)).toNumber())
   })
 
   it ("exercise options via OptionFactory should function", async() => {
