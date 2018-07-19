@@ -102,7 +102,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
    (feeToken,  fee) = IFeeCalculator(optionPairFeeCalculator)
     .calcFee(_optionPair, _qty);
    if (feeToken == underlying) {
-     _proxyTransfer(underlying, _optionPair, fee + underlyingQty);
+     _proxyTransfer(underlying, _optionPair, fee.add(underlyingQty));
    } else if (fee > 0) {
      _proxyTransfer(underlying, _optionPair, underlyingQty);
      _proxyTransfer(feeToken, _optionPair, fee);

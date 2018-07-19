@@ -81,7 +81,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
     require(_qty > 0);
     uint calcUnderlyngQty = _qty.mul(underlyingQty);
     ERC20 underlyingErc20 =  ERC20(underlying);
-    require(underlyingErc20.allowance(_sponsor, this) >= calcUnderlyngQty); //TODO
+    require(underlyingErc20.allowance(_sponsor, this) >= calcUnderlyngQty); //TODO approve and execute
     require(underlyingErc20.balanceOf(_sponsor) >= calcUnderlyngQty);
 
     totalWritten = totalWritten.add(_qty);
@@ -129,7 +129,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
   }
 
   function getTotalExecuted() public view returns(uint res) {
-    return totalWritten - ERC20(tokenOption).totalSupply();
+    return totalWritten.sub(ERC20(tokenOption).totalSupply());
   }
 
   function execute(uint _qty) external nonReentrant
