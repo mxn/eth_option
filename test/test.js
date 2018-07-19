@@ -116,7 +116,7 @@ contract ("Tokens:", async  () =>  {
 contract ("DAI", async () => {
   it("should be created and caller owns the supply", async () => {
     let dai = await DAI.new({from: tokensOwner})
-    assert.equal((await dai.balanceOf.call(tokensOwner)).toFixed(), (await dai.totalSupply.call()).toFixed())
+    assert.equal((await dai.balanceOf.call(tokensOwner)).toNumber(), (await dai.totalSupply.call()).toNumber())
   })
 
   it("deployed DAI should be ditributed over accounts", async () => {
@@ -271,13 +271,13 @@ contract ("Option With Sponsor", async() => {
     await basisToken.approve(optionPair.address, 100, {from: optionFactoryCreator})
     await underlyingToken.approve(optionPair.address, 100, {from: optionFactoryCreator})
     await optionPair.writeOptionsFor(10, writer1, false, {from: optionFactoryCreator})
-    assert.equal(900, (await underlyingToken.balanceOf(optionFactoryCreator)).toFixed())
+    assert.equal(900, (await underlyingToken.balanceOf(optionFactoryCreator)).toNumber())
     const tokenOption = await TokenOption.at(await optionPair.tokenOption.call())
-    assert.equal(10, (await tokenOption.balanceOf(writer1)).toFixed())
+    assert.equal(10, (await tokenOption.balanceOf(writer1)).toNumber())
     const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenOption.call())
-    assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toFixed())
+    assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toNumber())
     assert.equal(20, (await basisToken.balanceOf(optionSerieCreator)).toNumber()) //fee went to token Owner
-    assert.equal(980, (await basisToken.balanceOf(optionFactoryCreator)).toFixed())
+    assert.equal(980, (await basisToken.balanceOf(optionFactoryCreator)).toNumber())
   })
 })
 
@@ -307,11 +307,11 @@ contract ("Write Options Via OptionFactory", async() => {
     await optFactory.writeOptions(optionPair.address, 10, {from: writer1});
     let tokOptionAddress = await optionPair.tokenOption.call()
     const tokenOption = await TokenOption.at(tokOptionAddress)
-    assert.equal(10, (await tokenOption.balanceOf(writer1)).toFixed())
+    assert.equal(10, (await tokenOption.balanceOf(writer1)).toNumber())
     const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
-    assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toFixed())
+    assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toNumber())
     assert.equal(20, (await basisToken.balanceOf(optionFactoryCreator)).toNumber()) //fee is taken by token owner
-    assert.equal(980, (await basisToken.balanceOf(writer1)).toFixed())
+    assert.equal(980, (await basisToken.balanceOf(writer1)).toNumber())
   })
 })
 
@@ -331,7 +331,7 @@ contract ("Options DAI/WETH", async () => {
       dai = await DAI.deployed()
       optionsToWrite = 3 * DECIMAL_FACTOR
       var trans = await weth.deposit({from: writer1, value: 50 * DECIMAL_FACTOR})
-      assert.equal(50 * DECIMAL_FACTOR, (await weth.balanceOf(writer1)).toFixed())
+      assert.equal(50 * DECIMAL_FACTOR, (await weth.balanceOf(writer1)).toNumber())
       //console.log(trans)
       optFactory = await OptionFactoryWeth.deployed()
 
@@ -348,15 +348,15 @@ contract ("Options DAI/WETH", async () => {
       assert.equal(optFactory.address, await optionPair.owner())
       await weth.approve(optFactory.address, 1000 * DECIMAL_FACTOR, {from: writer1})
 
-      assert.equal(0, (await weth.balanceOf(optFactory.address)).toFixed())
+      assert.equal(0, (await weth.balanceOf(optFactory.address)).toNumber())
 
       await optFactory.writeOptions(optionPair.address, optionsToWrite , {from: writer1});
 
       assert.equal(optFactory.address, await optionPair.owner())
       tokenOption = await TokenOption.at(await optionPair.tokenOption.call() )
-      assert.equal(optionsToWrite, (await tokenOption.balanceOf(writer1)).toFixed())
+      assert.equal(optionsToWrite, (await tokenOption.balanceOf(writer1)).toNumber())
       tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
-      assert.equal(optionsToWrite, (await tokenAntiOption.balanceOf(writer1)).toFixed())
+      assert.equal(optionsToWrite, (await tokenAntiOption.balanceOf(writer1)).toNumber())
       //check fee taking 3 is numerator, 10000 is denominator, s. 4_options_factory.js in migrations
       assert.equal(optionsToWrite * 3 / 10000, (await weth.balanceOf(optionFactoryCreator)).toNumber()) //fee goes to token owner
   })
@@ -377,19 +377,19 @@ contract ("Options DAI/WETH", async () => {
     const optionsToExercise = optionsToWrite / 4
     assert.ok(optionsToExercise > 0, "optionsToExercise should be than 0")
     await tokenOption.transfer(buyer1, optionsToWrite , {from: writer1})
-    assert.equal( optionsToWrite, (await  tokenOption.balanceOf(buyer1)).toFixed())
-    assert.ok(optionsToExercise * strike <= (await dai.balanceOf(buyer1)).toFixed(),
+    assert.equal( optionsToWrite, (await  tokenOption.balanceOf(buyer1)).toNumber())
+    assert.ok(optionsToExercise * strike <= (await dai.balanceOf(buyer1)).toNumber(),
      "should have enough basis tokens for execution")
 
     await tokenOption.approve(optionPair.address,  optionsToWrite, {from: buyer1})
     await dai.approve(optFactory.address, strike * optionsToWrite, {from: buyer1})
-    assert.ok((await dai.allowance(buyer1, optFactory.address)).toFixed() >= strike * optionsToExercise)
-    assert.equal(0, (await weth.balanceOf(buyer1)).toFixed())
+    assert.ok((await dai.allowance(buyer1, optFactory.address)).toNumber() >= strike * optionsToExercise)
+    assert.equal(0, (await weth.balanceOf(buyer1)).toNumber())
 
     await optFactory.exerciseOptions(optionPair.address, optionsToExercise, {from: buyer1})
 
-    assert.equal(optionsToWrite - optionsToExercise, (await tokenOption.balanceOf(buyer1)).toFixed())
-    assert.equal(underlyingQty * optionsToExercise, (await weth.balanceOf(buyer1)).toFixed())
+    assert.equal(optionsToWrite - optionsToExercise, (await tokenOption.balanceOf(buyer1)).toNumber())
+    assert.equal(underlyingQty * optionsToExercise, (await weth.balanceOf(buyer1)).toNumber())
 
 
   })
