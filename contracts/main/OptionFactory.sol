@@ -28,7 +28,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
    uint _strike, uint _underlyingQty, uint _expireTime) {
      uint tokenId = optionSerieOwnerToken.getTokenId(_underlying, _basisToken,
      _strike, _underlyingQty, _expireTime);
-     require(!solvedToken[tokenId]);
+     require(!isSolved(tokenId));
      address tokenOwner = optionSerieOwnerToken.ownerOf(tokenId);
      require(tokenOwner == msg.sender);
      _;
@@ -133,6 +133,14 @@ contract OptionFactory is Ownable, ReentrancyGuard {
     uint basisAmount = optionPairObj.strike().mul(_qty);
     _proxyTransfer(basisToken, _optionPair, basisAmount);
     optionPairObj.executeFor(msg.sender, _qty);
+  }
+
+  function isSolved(uint tokenId)
+  public
+  view
+  returns(bool)
+  {
+    return solvedToken[tokenId];
   }
 
 }
