@@ -1,6 +1,6 @@
 # Option contracts as ERC20-compatible tokens
 
-## *UPDATE*
+## *** UPDATE ***
 
 You can try the [DAPP](https://en.wikipedia.org/wiki/Decentralized_application) on the [http://www.erc20-options.com](http://www.erc20-options.com)
 
