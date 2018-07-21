@@ -11,6 +11,17 @@ contract OptionSerieToken is ERC721Token, Ownable {
     _mint(_to, _tokenId);
   }
 
+  function mintExt(address _to, address _underlying, address _basisToken,
+   uint _strike, uint _underlyingQty, uint _expireTime)
+    public
+    onlyOwner
+    returns (uint) {
+      uint tokenId = getTokenId(_underlying, _basisToken, _strike,
+        _underlyingQty, _expireTime);
+      mint(_to, tokenId);
+      return tokenId;
+  }
+
   function calcHash(address _underlying, address _basisToken,
    uint _strike, uint _underlyingQty, uint _expireTime)
    public view
