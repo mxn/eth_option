@@ -4,3 +4,4 @@ build/
 .env
 temp_run.js
 contracts/test/Oas*
+.vscode/

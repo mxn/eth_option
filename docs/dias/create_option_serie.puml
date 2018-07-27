@@ -20,7 +20,8 @@ opt_serie -> created_owner: fee goes to token owner
 
 auction -> auction: defines a winner
 auction_winner -> erc721: take ownership of erc721 token
-auction_winner -> created_owner: take already collected fees
+auction_winner -> created_owner: take 50% fees during auction collected fees
+
 
 writer -> opt_serie: write options
 opt_serie -> auction_winner: fee goes to token owner
