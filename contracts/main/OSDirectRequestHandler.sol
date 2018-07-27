@@ -1,6 +1,7 @@
 pragma solidity ^0.4.18;
 
 import './EscrowAccount.sol';
+import './IAuction.sol';
 import './IFeeCalculator.sol';
 import './OptionFactory.sol';
 import './OptionSerieToken.sol';
@@ -11,8 +12,10 @@ import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 contract OSDirectRequestHandler is Ownable {
 
   uint public fee;
-  OptionSerieToken optionSerieToken;
-  OptionFactory optionFactory;
+  OptionSerieToken public optionSerieToken;
+  OptionFactory public optionFactory;
+  IAuction public auction;
+
   mapping (uint => address) optionSerietoken2feeToken;
 
   function OSDirectRequestHandler(uint _price, address _optionSerieToken, address _optionFactory) {
@@ -47,13 +50,10 @@ contract OSDirectRequestHandler is Ownable {
       return (optionPair, tokenId);
     }
 
-    function getWinner(uint token) public view returns (address) {
-      return optionSerieToken.ownerOf(token);
-      //TODO
-    }
-
-    function resolveToken(uint _token) {
-      address winner = getWinner(_token);
+   
+    function resolveToken(uint _token) public {
+      require(auction.isRevealed(_token), "Auction should be revealed");
+      address winner = auction.getWinner(_token);
       address escrowOwner = optionSerieToken.ownerOf(_token);
       optionSerieToken.takeOwnership(_token);
       optionSerieToken.transfer(winner, _token);
