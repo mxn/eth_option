@@ -7,6 +7,7 @@ const TestToken2 = artifacts.require('MockToken2')
 const TokenOption = artifacts.require('TokenOption')
 const TokenAntiOption = artifacts.require('TokenAntiOption')
 const SimpleFeeCalculator = artifacts.require('SimpleFeeCalculator')
+const SimpleFeeCalculatorWethDai = artifacts.require('SimpleFeeCalculatorTest')
 const ERC20 = artifacts.require('ERC20')
 const DAI = artifacts.require('DAI')
 const Weth = artifacts.require('Weth')
@@ -14,6 +15,7 @@ const ExchangeAdapter = artifacts.require('MockExchangeAdapter')
 const ExchangeAdapterOasis = artifacts.require('ExchangeAdapterOasisImpl')
 const MockOasisDirect = artifacts.require('MockOasisDirect')
 const OptionSerieToken = artifacts.require('OptionSerieToken')
+const RequestHandler = artifacts.require('OSDirectRequestHandler')
 
 var BigNumber = require('bignumber.js')
 
@@ -643,6 +645,39 @@ contract ("Option", () =>  {
     // basisToken = 2 (executed) * 8 / 10 (share from all) * 125 (strike price) =
     assert.equal(200, afterBalBasis - beforeBalBasis)
     assert.equal(640, afterBalWriter - beforeBalUnderlying) //available antiOption * qty
+  })
+
+  contract ("Request Option Serie", () => {
+    const strike = 15
+    const underlyingQty = 2
+    const expireTime = new Date()/1000 + 60*60*24*30
+    const requestFee = 0.01 * (10 ** 18)
+    var requestHandler, optionSerieToken, optionFactory, weth, dai, feeCalculator
+
+    it ("should initialized", async () => {
+      optionFactory = await OptionFactoryWeth.deployed()
+      optionSerieToken = await OptionSerieToken.deployed()
+      requestHandler = await RequestHandler.deployed()
+      weth = await Weth.deployed()
+      dai = await DAI.deployed()
+      feeCalculator = await SimpleFeeCalculatorWethDai.deployed()
+    })
+
+    it ("transfer ownership to request handler", async () => {
+      let erc721owner = await optionSerieToken.owner()
+      await optionSerieToken.transferOwnership(requestHandler.address, {from: erc721owner})
+    })
+
+    it ("should be requested", async () => {
+      /* address _underlying, address _basisToken,
+    uint _strike, uint _underlyingQty, uint _expireTime, address _feeCalculator) */
+      assert.equal(feeCalculator.address, await optionFactory.feeCalculator())
+      console.log("optionSerieToken", optionSerieToken.address);
+      await requestHandler.requestTokenPayable(weth.address, dai.address, strike, underlyingQty, expireTime, 
+        feeCalculator.address, {from: optionSerieCreator, value: requestFee})
+    })
+    
+
   })
 
 

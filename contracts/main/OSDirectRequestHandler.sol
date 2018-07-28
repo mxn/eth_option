@@ -18,8 +18,8 @@ contract OSDirectRequestHandler is Ownable {
 
   mapping (uint => address) optionSerietoken2feeToken;
 
-  function OSDirectRequestHandler(uint _price, address _optionSerieToken, address _optionFactory) {
-    fee = fee;
+  function OSDirectRequestHandler(uint _ethFee, address _optionSerieToken, address _optionFactory) {
+    fee = _ethFee;
     optionSerieToken = OptionSerieToken(_optionSerieToken);
     optionFactory = OptionFactory(_optionFactory);
   }
@@ -37,16 +37,21 @@ contract OSDirectRequestHandler is Ownable {
     payable
     returns(address, uint) {
       require(msg.value == fee);
-      require(optionFactory.feeCalculator() == _feeCalculator); //TODO
+      require(address(optionFactory.feeCalculator()) == _feeCalculator); //TODO
+
       uint tokenId = optionSerieToken.mintExt( this, _underlying,  _basisToken, _strike,
         _underlyingQty, _expireTime);
+      
+      assert (optionSerieToken.ownerOf(tokenId) == address(this));
       address optionPair = optionFactory.createOptionPairContract(_underlying,  _basisToken,
          _strike,  _underlyingQty,  _expireTime);
-      
+     
       address feeTokenAddress = IFeeCalculator(_feeCalculator).feeToken();
-      address escrowOwner = address(new EscrowAccount(address(optionSerieToken), tokenId, feeTokenAddress)); 
+      EscrowAccount escrowAccount = new EscrowAccount(feeTokenAddress);
+      optionSerieToken.approve(address(escrowAccount), tokenId); //TODO make auction
+      escrowAccount.takeEscrow721Ownership(address(optionSerieToken), tokenId);
       optionSerietoken2feeToken[tokenId] = feeTokenAddress; 
-      optionSerieToken.transfer(escrowOwner, tokenId); //TODO make via auction
+      
       return (optionPair, tokenId);
     }
 

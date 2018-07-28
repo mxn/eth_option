@@ -10,6 +10,7 @@ var Dai = artifacts.require("DAI")
 var MockOasisDirect = artifacts.require("MockOasisDirect")
 var ExchangeAdapterOasisImpl = artifacts.require("ExchangeAdapterOasisImpl")
 var OptionSerieToken = artifacts.require('OptionSerieToken')
+var RequestHandler = artifacts.require('OSDirectRequestHandler')
 
 
 function getWethAddress(network) {
@@ -47,5 +48,7 @@ module.exports = function(deployer, network) {
       .then(() => deployer.deploy(MockOasisDirect))
       .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
         MockOasisDirect.address))
+      .then(() => deployer.deploy(RequestHandler,
+         0.01 * (10 ** 18), OptionSerieToken.address, MockWethOptionFactory.address))
   }
 }
