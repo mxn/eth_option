@@ -8,7 +8,10 @@ contract  EscrowAccount  {
     function EscrowAccount(address _erc20) {
       ERC20(_erc20).approve(msg.sender, 2 ** 256 - 1);
     }
-
+    
+    /**
+    Cannot make in constructor, as approve needs owner address
+    */
     function takeEscrow721Ownership(address _erc721, uint _erc721tokenId) {
       ERC721(_erc721).takeOwnership(_erc721tokenId);
       ERC721(_erc721).approve(msg.sender, _erc721tokenId);   

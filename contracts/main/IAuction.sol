@@ -5,7 +5,8 @@ pragma solidity ^0.4.18;
 
 contract IAuction {
   function creaateAuction(uint token) public;
-  function isNew(uint token) public view returns(bool);
+  function betForPayable(uint token, address better, bytes32 amountToBet) public payable;
+  function isActivated(uint token) public view returns(bool);
   function isBettingActive(uint token) public view returns(bool);
   function isRevealed(uint token) public view returns(bool);
   function getWinner(uint token) public view returns(address);
