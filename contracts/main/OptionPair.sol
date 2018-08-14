@@ -11,9 +11,8 @@ import './IExchangeAdapter.sol';
 import './OptionSerieToken.sol';
 import './TokenOption.sol';
 import './TokenAntiOption.sol';
-import './WithdrawableByOwner.sol';
 
-contract OptionPair is Ownable, ReentrancyGuard, WithdrawableByOwner {
+contract OptionPair is Ownable, ReentrancyGuard {
   using SafeMath for uint256;
   using SafeERC20 for TokenOption;
   using SafeERC20 for ERC20;
@@ -30,6 +29,10 @@ contract OptionPair is Ownable, ReentrancyGuard, WithdrawableByOwner {
   address public tokenOption;
   address public tokenAntiOption;
 
+  OptionSerieToken public optionSerieToken;
+
+  uint totalWritten;
+
   modifier onlyBeforeExpiration() {
     require(getCurrentTime() < expireTime);
     _;
@@ -42,10 +45,9 @@ contract OptionPair is Ownable, ReentrancyGuard, WithdrawableByOwner {
 
   function OptionPair (address _underlying, address _basisToken,
     uint _strike, uint _underlyingQty, uint _expireTime,
-    address _feeCalculator)
+    address _feeCalculator, address _optionSerieToken)
     Ownable()
     ReentrancyGuard()
-    WithdrawableByOwner()
     public
     {
       underlying = _underlying;
@@ -56,6 +58,7 @@ contract OptionPair is Ownable, ReentrancyGuard, WithdrawableByOwner {
       feeCalculator = _feeCalculator;
       tokenOption = address(new TokenOption());
       tokenAntiOption = address(new TokenAntiOption());
+      optionSerieToken = OptionSerieToken(_optionSerieToken);
   }
 
   function () public payable {
@@ -80,6 +83,8 @@ contract OptionPair is Ownable, ReentrancyGuard, WithdrawableByOwner {
     ERC20 underlyingErc20 =  ERC20(underlying);
     require(underlyingErc20.allowance(_sponsor, this) >= calcUnderlyngQty); //TODO approve and execute
     require(underlyingErc20.balanceOf(_sponsor) >= calcUnderlyngQty);
+
+    totalWritten = totalWritten.add(_qty);
 
     underlyingErc20.safeTransferFrom(_sponsor, this, calcUnderlyngQty);
 
@@ -121,6 +126,10 @@ contract OptionPair is Ownable, ReentrancyGuard, WithdrawableByOwner {
 
   function getTotalOpenInterest() public view returns(uint res) {
     return ERC20(tokenOption).totalSupply();
+  }
+
+  function getTotalExecuted() public view returns(uint res) {
+    return totalWritten.sub(ERC20(tokenOption).totalSupply());
   }
 
   function execute(uint _qty) external nonReentrant
@@ -203,11 +212,16 @@ contract OptionPair is Ownable, ReentrancyGuard, WithdrawableByOwner {
   }
 
   function _takeFee (uint _optionQty, address _feePayer) private {
-    IFeeCalculator feeCalculatorObj =  IFeeCalculator(feeCalculator);
-    uint fee;
-    address feeToken;
-    (feeToken, fee) = feeCalculatorObj.calcFee(address(this), _optionQty);
-    ERC20(feeToken).safeTransferFrom(_feePayer, this, fee);
+    address feeTaker =  optionSerieToken.getOwner (underlying, basisToken,
+     strike, underlyingQty, expireTime);
+    if (_feePayer != feeTaker) {
+      IFeeCalculator feeCalculatorObj =  IFeeCalculator(feeCalculator);
+      uint fee;
+      address feeToken;
+      (feeToken, fee) = feeCalculatorObj.calcFee(address(this), _optionQty);
+      ERC20 feeTokenObj = ERC20(feeToken);
+      feeTokenObj.safeTransferFrom(_feePayer, feeTaker, fee);
+    }
   }
 
   /**

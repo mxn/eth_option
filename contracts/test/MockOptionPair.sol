@@ -7,10 +7,10 @@ contract MockOptionPair is OptionPair  {
 
   function MockOptionPair (address _underlying, address _basisToken,
     uint _strike, uint _underlyingQty, uint _expireTime,
-    address _feeCalculator)
+    address _feeCalculator, address _optionSerieToken)
     public
     OptionPair(_underlying,  _basisToken,
-       _strike,  _underlyingQty,  _expireTime,  _feeCalculator)  {}
+       _strike,  _underlyingQty,  _expireTime,  _feeCalculator, _optionSerieToken)  {}
 
   function getCurrentTime() public view returns(uint) {
     if (mockTime > 0) {
