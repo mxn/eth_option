@@ -8,7 +8,7 @@ contract WithdrawableByOwner is Ownable {
 
   using SafeERC20 for ERC20;
   
-  function withdrawEth(uint _amount) {
+  function withdrawEth(uint _amount) public onlyOwner {
     msg.sender.transfer(_amount);
   }
 

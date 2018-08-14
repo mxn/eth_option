@@ -2,6 +2,7 @@ pragma solidity ^0.4.18;
 
 import './OptionPair.sol';
 import './OptionSerieToken.sol';
+import './WithdrawableByOwner.sol';
 import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
@@ -10,7 +11,7 @@ import 'zeppelin-solidity/contracts/token/ERC20/SafeERC20.sol';
 
 
 
-contract OptionFactory is Ownable, ReentrancyGuard {
+contract OptionFactory is Ownable, ReentrancyGuard, WithdrawableByOwner {
 
   using SafeERC20 for ERC20;
   using SafeMath for uint256;
