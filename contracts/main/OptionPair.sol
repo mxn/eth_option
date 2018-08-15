@@ -8,7 +8,6 @@ import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 
 import './IFeeCalculator.sol';
 import './IExchangeAdapter.sol';
-import './OptionSerieToken.sol';
 import './TokenOption.sol';
 import './TokenAntiOption.sol';
 

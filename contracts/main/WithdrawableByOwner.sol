@@ -7,10 +7,6 @@ import "zeppelin-solidity/contracts/token/ERC20/SafeERC20.sol";
 contract WithdrawableByOwner is Ownable {
 
   using SafeERC20 for ERC20;
-  
-  function withdrawEth(uint _amount) {
-    msg.sender.transfer(_amount);
-  }
 
   function withdraw(address _token, uint _amount) public onlyOwner {
     require(msg.sender == owner);

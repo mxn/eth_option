@@ -53,8 +53,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
    onlyTokenOwner(_underlying, _basisToken,
      _strike, _underlyingQty, _expireTime)
    returns(address) {
-    //address escrowFeeTaker = address(0); //address(new WithdrawableByOwner());
-    address opAddr =  address(new OptionPair (
+     address opAddr =  address(new OptionPair (
         _underlying,
         _basisToken,
         _strike,
@@ -63,7 +62,6 @@ contract OptionFactory is Ownable, ReentrancyGuard {
         feeCalculator,
         address(new WithdrawableByOwner())
         ));
-    //delete escrowFeeTaker;
    OptionTokenCreated(
         opAddr,
         _underlying,
@@ -72,13 +70,6 @@ contract OptionFactory is Ownable, ReentrancyGuard {
         _underlyingQty,
         _expireTime);
     return opAddr;
- }
-
- function withdraw(address _token, uint _amount) public onlyOwner {
-   require(msg.sender == owner);
-   ERC20 tokenErc20 = ERC20 (_token);
-   require(tokenErc20.balanceOf(this) >= _amount);
-   tokenErc20.safeTransfer(owner, _amount);
  }
 
  function _proxyTransfer(address _token, address _target, uint _amount)
