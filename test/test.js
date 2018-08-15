@@ -283,7 +283,18 @@ contract ("Option With Sponsor", async() => {
     assert.equal(980, (await basisToken.balanceOf(optionFactoryCreator)).toNumber())
   })
 
-  it ("fee can be retieved by  token owner", async () => {
+  it ("fee can not be retieved by  not token owner", async () => {
+    try {
+      let feeTaker = await optionPair.feeTaker()
+      assert.equal((await basisToken.balanceOf(feeTaker)).toNumber() > 0, "balance should be non-zero") 
+      await optFactory.withdrawFee(optionPair.address, {from: optionSerieCreator})
+      assert(false, "should not reach")
+    } catch (e) {
+      //NOP
+    }
+  })
+
+  it ("fee can be retieved by token owner", async () => {
     let balanceFeeBefore = await basisToken.balanceOf(optionSerieCreator)
     let feeTaker = await optionPair.feeTaker()
     await optFactory.withdrawFee(optionPair.address, {from: optionSerieCreator})
