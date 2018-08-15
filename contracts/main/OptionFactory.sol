@@ -19,7 +19,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   using SafeMath for uint256;
 
   address public feeCalculator;
-  OptionSerieToken public optionSerieOwnerToken;
+  address public optionSerieOwnerToken;
 
   mapping (uint => bool) solvedToken;
 
@@ -29,10 +29,10 @@ contract OptionFactory is Ownable, ReentrancyGuard {
 
   modifier onlyTokenOwner(address _underlying, address _basisToken,
    uint _strike, uint _underlyingQty, uint _expireTime) {
-     uint tokenId = optionSerieOwnerToken.getTokenId(_underlying, _basisToken,
+     uint tokenId = OptionSerieToken(optionSerieOwnerToken).getTokenId(_underlying, _basisToken,
      _strike, _underlyingQty, _expireTime);
      require(!isSolved(tokenId));
-     address tokenOwner = optionSerieOwnerToken.ownerOf(tokenId);
+     address tokenOwner = OptionSerieToken(optionSerieOwnerToken).ownerOf(tokenId);
      require(tokenOwner == msg.sender);
      _;
   }
@@ -41,8 +41,8 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   Ownable()
   ReentrancyGuard()
   public {
-          feeCalculator = _feeCalculator;
-          optionSerieOwnerToken = OptionSerieToken(_optionSerieOwnerToken);
+          setFeeCalculator(_feeCalculator);
+          optionSerieOwnerToken = _optionSerieOwnerToken;
   }
 
   function () payable {
@@ -139,14 +139,20 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   }
 
   function withdrawFee(address _optionPair) external {
-    uint tokenId = optionSerieOwnerToken.getTokenIdForOptionPair(_optionPair);
-    require(msg.sender == optionSerieOwnerToken.ownerOf(tokenId));
+    uint tokenId = OptionSerieToken(optionSerieOwnerToken).getTokenIdForOptionPair(_optionPair);
+    require(msg.sender == OptionSerieToken(optionSerieOwnerToken).ownerOf(tokenId));
     address feeTaker = OptionPair(_optionPair).feeTaker();
     address feeToken = WithdrawableByOwner(feeTaker).token();
     uint feeAmount = ERC20(feeToken).balanceOf(feeTaker);
     require(feeAmount > 0);
     ERC20(feeToken).safeTransferFrom(feeTaker, this, feeAmount);
     ERC20(feeToken).safeTransfer(msg.sender, feeAmount);
+  }
+
+  function setFeeCalculator(address _feeCalculator)
+  public
+  onlyOwner {
+    feeCalculator = _feeCalculator;
   }
 
 }
