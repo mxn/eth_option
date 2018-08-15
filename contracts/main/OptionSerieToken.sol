@@ -1,5 +1,6 @@
 pragma solidity ^0.4.18;
 
+import './OptionPair.sol';
 import 'zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
@@ -39,6 +40,17 @@ contract OptionSerieToken is ERC721Token, Ownable {
        _expireTime);
      return uint(optionSerieHash);
    }
+
+   function getTokenIdForOptionPair(address _optionPair)
+   public
+   view
+   returns (uint) {
+     OptionPair optionPair = OptionPair(_optionPair);
+     return getTokenId(optionPair.underlying(), optionPair.basisToken(),
+      optionPair.strike(), optionPair.underlyingQty(), optionPair.expireTime());
+   }
+
+   
 
    function getOwner (address _underlying, address _basisToken,
     uint _strike, uint _underlyingQty, uint _expireTime)

@@ -24,7 +24,7 @@ contract MockOptionFactory is OptionFactory {
            _underlyingQty,
            _expireTime,
             feeCalculator,
-            new WithdrawableByOwner()));
+            new WithdrawableByOwner(IFeeCalculator(feeCalculator).feeToken())));
       OptionTokenCreated(
            opAddr,
            _underlying,

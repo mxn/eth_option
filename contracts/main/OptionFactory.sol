@@ -1,8 +1,10 @@
 pragma solidity ^0.4.18;
 
+import './IFeeCalculator.sol';
 import './OptionPair.sol';
 import './OptionSerieToken.sol';
 import './WithdrawableByOwner.sol';
+
 import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
@@ -60,7 +62,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
         _underlyingQty,
         _expireTime,
         feeCalculator,
-        address(new WithdrawableByOwner())
+        address(new WithdrawableByOwner(IFeeCalculator(feeCalculator).feeToken()))
         ));
    OptionTokenCreated(
         opAddr,
@@ -134,6 +136,17 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   returns(bool)
   {
     return solvedToken[tokenId];
+  }
+
+  function withdrawFee(address _optionPair) external {
+    uint tokenId = optionSerieOwnerToken.getTokenIdForOptionPair(_optionPair);
+    require(msg.sender == optionSerieOwnerToken.ownerOf(tokenId));
+    address feeTaker = OptionPair(_optionPair).feeTaker();
+    address feeToken = WithdrawableByOwner(feeTaker).token();
+    uint feeAmount = ERC20(feeToken).balanceOf(feeTaker);
+    require(feeAmount > 0);
+    ERC20(feeToken).safeTransferFrom(feeTaker, this, feeAmount);
+    ERC20(feeToken).safeTransfer(msg.sender, feeAmount);
   }
 
 }

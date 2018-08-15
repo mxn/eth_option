@@ -282,6 +282,15 @@ contract ("Option With Sponsor", async() => {
     assert.equal(20, (await basisToken.balanceOf(feeBeneficiary)).toNumber()) //fee went to optionPair feeTaker
     assert.equal(980, (await basisToken.balanceOf(optionFactoryCreator)).toNumber())
   })
+
+  it ("fee can be retieved by  token owner", async () => {
+    let balanceFeeBefore = await basisToken.balanceOf(optionSerieCreator)
+    let feeTaker = await optionPair.feeTaker()
+    await optFactory.withdrawFee(optionPair.address, {from: optionSerieCreator})
+    let balanceFeeAfter = await basisToken.balanceOf(optionSerieCreator)
+    assert.equal(0, (await basisToken.balanceOf(feeTaker)).toNumber(), "balance of feeTaker should be zeroed")
+    assert.equal(20, (balanceFeeAfter.sub(balanceFeeBefore)).toNumber(), "collected fee should be transfered to token owner")
+  })
 })
 
 contract ("Write Options Via OptionFactory", async() => {
