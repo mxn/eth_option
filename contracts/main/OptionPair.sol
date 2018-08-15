@@ -29,8 +29,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
   address public tokenOption;
   address public tokenAntiOption;
 
-  uint totalWritten;
-
   address public feeTaker;
 
   modifier onlyBeforeExpiration() {
@@ -84,8 +82,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
     require(underlyingErc20.allowance(_sponsor, this) >= calcUnderlyngQty); //TODO approve and execute
     require(underlyingErc20.balanceOf(_sponsor) >= calcUnderlyngQty);
 
-    totalWritten = totalWritten.add(_qty);
-
     underlyingErc20.safeTransferFrom(_sponsor, this, calcUnderlyngQty);
 
     TokenOption(tokenOption).mint(_writer, _qty);
@@ -126,10 +122,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
 
   function getTotalOpenInterest() public view returns(uint res) {
     return ERC20(tokenOption).totalSupply();
-  }
-
-  function getTotalExecuted() public view returns(uint res) {
-    return totalWritten.sub(ERC20(tokenOption).totalSupply());
   }
 
   function execute(uint _qty) external nonReentrant

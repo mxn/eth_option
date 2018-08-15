@@ -586,9 +586,7 @@ contract ("Option", () =>  {
     assert.equal(underTokAfterBals[0] - underTokInitBals[0], 2 * 100) //strikeQty * executedQty
     assert.equal(baseTokInitBals[0] - baseTokAfterBals[0], 2 * 125) //strike *   qty for buyer
     assert.equal(8, await optionPair.getTotalOpenInterest().valueOf())
-    assert.equal(2, await optionPair.getTotalExecuted().valueOf())
-
-  })
+    })
 
   it ('annihilate 2 options should be OK', async () => {
     const balUnderlyingWriter1Before = await underlyingToken.balanceOf(writer1).valueOf()
