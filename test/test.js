@@ -278,7 +278,8 @@ contract ("Option With Sponsor", async() => {
     assert.equal(10, (await tokenOption.balanceOf(writer1)).toNumber())
     const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenOption.call())
     assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toNumber())
-    assert.equal(20, (await basisToken.balanceOf(optionSerieCreator)).toNumber()) //fee went to token Owner
+    let feeBeneficiary = await optionPair.feeTaker()
+    assert.equal(20, (await basisToken.balanceOf(feeBeneficiary)).toNumber()) //fee went to optionPair feeTaker
     assert.equal(980, (await basisToken.balanceOf(optionFactoryCreator)).toNumber())
   })
 })
@@ -312,7 +313,8 @@ contract ("Write Options Via OptionFactory", async() => {
     assert.equal(10, (await tokenOption.balanceOf(writer1)).toNumber())
     const tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
     assert.equal(10, (await tokenAntiOption.balanceOf(writer1)).toNumber())
-    assert.equal(20, (await basisToken.balanceOf(optionFactoryCreator)).toNumber()) //fee is taken by token owner
+    let feeBeneficiary = await optionPair.feeTaker()
+    assert.equal(20, (await basisToken.balanceOf(feeBeneficiary)).toNumber()) //fee is taken by optionPair feeTaker
     assert.equal(980, (await basisToken.balanceOf(writer1)).toNumber())
   })
 })
@@ -360,19 +362,8 @@ contract ("Options DAI/WETH", async () => {
       tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
       assert.equal(optionsToWrite, (await tokenAntiOption.balanceOf(writer1)).toNumber())
       //check fee taking 3 is numerator, 10000 is denominator, s. 4_options_factory.js in migrations
-      assert.equal(optionsToWrite * 3 / 10000, (await weth.balanceOf(optionFactoryCreator)).toNumber()) //fee goes to token owner
-  })
-
-  it ("after transfer option serie token, the fee for writing should be taken by new owner", async () => {
-    await optionSerieToken.approve(optionSerieTokenBuyer, erc721tokenId, {from: optionFactoryCreator})
-    assert.ok(await optionSerieToken.transfer(optionSerieTokenBuyer, erc721tokenId,  {from: optionFactoryCreator}))
-
-    var trans = await weth.deposit({from: writer2, value: 50 * DECIMAL_FACTOR})
-    assert.equal(50 * DECIMAL_FACTOR, (await weth.balanceOf(writer2)).toNumber())
-
-    await weth.approve(optFactory.address, 1000 * DECIMAL_FACTOR, {from: writer2})
-    await optFactory.writeOptions(optionPair.address, optionsToWrite , {from: writer2});
-    assert.equal(optionsToWrite * 3 / 10000, (await weth.balanceOf(optionSerieTokenBuyer)).toNumber())
+      let feeBeneficiary = await optionPair.feeTaker()
+      assert.equal(optionsToWrite * 3 / 10000, (await weth.balanceOf(feeBeneficiary)).toNumber()) //fee goes to optionPair feeTaker
   })
 
   it ("exercise options via OptionFactory should function", async() => {
@@ -544,8 +535,9 @@ contract ("Option", () =>  {
     basisToken.approve(optionPair.address, 1000, {from: writer1})
 
     //basisToken.approve(optFactory.address, 1000, {from: writer1}) // for fees
+    let feeBeneficiary =await  optionPair.feeTaker()
     const balWriterUnderBefore = await underlyingToken.balanceOf(writer1).valueOf()
-    const balFeeTakerBasisBefore = await basisToken.balanceOf(optionTokenCreator).valueOf()
+    const balFeeTakerBasisBefore = await basisToken.balanceOf(feeBeneficiary).valueOf()
     const balOptTokenCreatorBasisBefore = await basisToken.balanceOf(optionTokenCreator).valueOf()
     const balWriterBasisBefore = await basisToken.balanceOf(writer1).valueOf()
 
@@ -556,7 +548,7 @@ contract ("Option", () =>  {
     const balWriterOptionAfter = await tokenOption.balanceOf(writer1).valueOf()
     const balWriterUnderlAfter = await underlyingToken.balanceOf(writer1).valueOf()
     const balWriterBasisAfter = await basisToken.balanceOf(writer1).valueOf()
-    const balFeeTakerBasisAfter = await basisToken.balanceOf(optionTokenCreator).valueOf()
+    const balFeeTakerBasisAfter = await basisToken.balanceOf(feeBeneficiary).valueOf()
     const balOptTokenCreatorBasisAfter = await basisToken.balanceOf(optionTokenCreator).valueOf()
 
     assert.equal(10, balWriterOptionAfter - balWriterOptionBefore)

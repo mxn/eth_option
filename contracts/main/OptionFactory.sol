@@ -2,6 +2,7 @@ pragma solidity ^0.4.18;
 
 import './OptionPair.sol';
 import './OptionSerieToken.sol';
+import './WithdrawableByOwner.sol';
 import 'zeppelin-solidity/contracts/ReentrancyGuard.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
@@ -22,7 +23,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
 
   event OptionTokenCreated(address optionPair,
       address indexed underlying, address indexed basisToken,
-       uint strike, uint underlyingQty, uint expireTime,  address creator);
+       uint strike, uint underlyingQty, uint expireTime);
 
   modifier onlyTokenOwner(address _underlying, address _basisToken,
    uint _strike, uint _underlyingQty, uint _expireTime) {
@@ -52,6 +53,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
    onlyTokenOwner(_underlying, _basisToken,
      _strike, _underlyingQty, _expireTime)
    returns(address) {
+    //address escrowFeeTaker = address(0); //address(new WithdrawableByOwner());
     address opAddr =  address(new OptionPair (
         _underlying,
         _basisToken,
@@ -59,16 +61,16 @@ contract OptionFactory is Ownable, ReentrancyGuard {
         _underlyingQty,
         _expireTime,
         feeCalculator,
-        optionSerieOwnerToken
+        address(new WithdrawableByOwner())
         ));
-    OptionTokenCreated(
+    //delete escrowFeeTaker;
+   OptionTokenCreated(
         opAddr,
         _underlying,
         _basisToken,
         _strike,
         _underlyingQty,
-        _expireTime,
-        msg.sender);
+        _expireTime);
     return opAddr;
  }
 

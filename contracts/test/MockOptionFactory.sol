@@ -24,14 +24,14 @@ contract MockOptionFactory is OptionFactory {
            _underlyingQty,
            _expireTime,
             feeCalculator,
-            optionSerieOwnerToken));
+            new WithdrawableByOwner()));
       OptionTokenCreated(
            opAddr,
            _underlying,
            _basisToken,
            _strike,
            _underlyingQty,
-           _expireTime, msg.sender);
+           _expireTime);
         return opAddr;
     }
 

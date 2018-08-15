@@ -29,9 +29,9 @@ contract OptionPair is Ownable, ReentrancyGuard {
   address public tokenOption;
   address public tokenAntiOption;
 
-  OptionSerieToken public optionSerieToken;
-
   uint totalWritten;
+
+  address public feeTaker;
 
   modifier onlyBeforeExpiration() {
     require(getCurrentTime() < expireTime);
@@ -45,7 +45,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
 
   function OptionPair (address _underlying, address _basisToken,
     uint _strike, uint _underlyingQty, uint _expireTime,
-    address _feeCalculator, address _optionSerieToken)
+    address _feeCalculator, address _feeTaker)
     Ownable()
     ReentrancyGuard()
     public
@@ -58,7 +58,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
       feeCalculator = _feeCalculator;
       tokenOption = address(new TokenOption());
       tokenAntiOption = address(new TokenAntiOption());
-      optionSerieToken = OptionSerieToken(_optionSerieToken);
+      feeTaker = _feeTaker;
   }
 
   function () public payable {
@@ -212,15 +212,15 @@ contract OptionPair is Ownable, ReentrancyGuard {
   }
 
   function _takeFee (uint _optionQty, address _feePayer) private {
-    address feeTaker =  optionSerieToken.getOwner (underlying, basisToken,
-     strike, underlyingQty, expireTime);
     if (_feePayer != feeTaker) {
       IFeeCalculator feeCalculatorObj =  IFeeCalculator(feeCalculator);
       uint fee;
       address feeToken;
       (feeToken, fee) = feeCalculatorObj.calcFee(address(this), _optionQty);
       ERC20 feeTokenObj = ERC20(feeToken);
-      feeTokenObj.safeTransferFrom(_feePayer, feeTaker, fee);
+      if (fee > 0) {
+        feeTokenObj.safeTransferFrom(_feePayer, feeTaker, fee);
+      }     
     }
   }
 
