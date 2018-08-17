@@ -1,9 +1,8 @@
 pragma solidity ^0.4.18;
 
-import './EscrowAccount.sol';
-import './IAuction.sol';
-import './IFeeCalculator.sol';
+import './ITokenReceiver.sol';
 import './OptionFactory.sol';
+import './OptionSerieValidator.sol';
 import './OptionSerieToken.sol';
 
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
@@ -14,27 +13,22 @@ contract OSDirectRequestHandler is Ownable {
   uint public fee;
   OptionSerieToken public optionSerieToken;
   OptionFactory public optionFactory;
-  IAuction public auction;
+  OptionSerieValidator public optionSerieValidator;
+  ITokenReceiver public tokenReceiver;
 
-  mapping (uint => address) optionSerietoken2feeToken;
+  mapping (uint => address) optionSerietoken2optionPair;
 
-  function OSDirectRequestHandler(uint _ethFee, address _optionSerieToken, address _optionFactory) {
-    fee = _ethFee;
+  function OSDirectRequestHandler(address _optionSerieValidator,  address _optionSerieToken, 
+  address _optionFactory, address _tokenReceiver) {
     optionSerieToken = OptionSerieToken(_optionSerieToken);
     optionFactory = OptionFactory(_optionFactory);
+    optionSerieValidator = OptionSerieValidator(_optionSerieValidator);
+    tokenReceiver = ITokenReceiver(_tokenReceiver);
   }
 
   function requestToken(address _underlying, address _basisToken,
     uint _strike, uint _underlyingQty, uint _expireTime, address _feeCalculator)
     public
-    returns(address, uint) {
-      revert("This functionality is not available in the implentation");
-    }
-
-  function requestTokenPayable(address _underlying, address _basisToken,
-    uint _strike, uint _underlyingQty, uint _expireTime, address _feeCalculator)
-    public
-    payable
     returns(address, uint) {
       require(msg.value == fee);
       require(address(optionFactory.feeCalculator()) == _feeCalculator); //TODO
@@ -46,33 +40,9 @@ contract OSDirectRequestHandler is Ownable {
       address optionPair = optionFactory.createOptionPairContract(_underlying,  _basisToken,
          _strike,  _underlyingQty,  _expireTime);
      
-      address feeTokenAddress = IFeeCalculator(_feeCalculator).feeToken();
-      EscrowAccount escrowAccount = new EscrowAccount(feeTokenAddress);
-      optionSerieToken.approve(address(escrowAccount), tokenId); //TODO make auction
-      escrowAccount.takeEscrow721Ownership(address(optionSerieToken), tokenId);
-      optionSerietoken2feeToken[tokenId] = feeTokenAddress; 
-      
+      optionSerietoken2optionPair[tokenId] = optionPair;
+      optionSerieToken.transfer(tokenReceiver, tokenId);
+      tokenReceiver.onReceive(optionSerieToken, tokenId);
       return (optionPair, tokenId);
-    }
-
-   
-    function resolveToken(uint _token) public {
-      require(auction.isRevealed(_token), "Auction should be revealed");
-      address winner = auction.getWinner(_token);
-      address escrowOwner = optionSerieToken.ownerOf(_token);
-      optionSerieToken.takeOwnership(_token);
-      optionSerieToken.transfer(winner, _token);
-      ERC20 feeToken = ERC20(optionSerietoken2feeToken[_token]);
-      uint feeCollected = feeToken.balanceOf(escrowOwner);
-      if (feeCollected == 0) {
-        return;
-      }  
-      uint feeToWinner = feeCollected / 2;
-      feeToken.transferFrom(escrowOwner, this, feeCollected);
-      if (feeToWinner > 0)  {
-        feeToken.transfer(winner, feeToWinner);
-      }
-      address contractOwner = Ownable(this).owner();
-      feeToken.transfer(contractOwner, feeCollected - feeToWinner);
     }
 }
