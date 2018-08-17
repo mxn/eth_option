@@ -11,6 +11,8 @@ var MockOasisDirect = artifacts.require("MockOasisDirect")
 var ExchangeAdapterOasisImpl = artifacts.require("ExchangeAdapterOasisImpl")
 var OptionSerieToken = artifacts.require('OptionSerieToken')
 var RequestHandler = artifacts.require('OSDirectRequestHandler')
+var ERC721ReceiverToOwner = artifacts.require('ERC721ReceiverToOwner')
+var OptionSerieValidator = artifacts.require('OptionSerieValidator')
 
 
 function getWethAddress(network) {
@@ -48,7 +50,9 @@ module.exports = function(deployer, network) {
       .then(() => deployer.deploy(MockOasisDirect))
       .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
         MockOasisDirect.address))
+      .then(() => deployer.deploy(ERC721ReceiverToOwner))
+      .then(() => deployer.deploy(OptionSerieValidator))
       .then(() => deployer.deploy(RequestHandler,
-         0.01 * (10 ** 18), OptionSerieToken.address, MockWethOptionFactory.address))
+         OptionSerieValidator.address, OptionSerieToken.address, MockWethOptionFactory.address, ERC721ReceiverToOwner.address))
   }
 }
