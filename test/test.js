@@ -676,9 +676,11 @@ contract ("Option", () =>  {
     it ("transfer ownership to request handler", async () => {
       let erc721owner = await optionSerieToken.owner()
       await optionSerieToken.transferOwnership(requestHandler.address, {from: erc721owner})
+      let newOwner = await optionSerieToken.owner()
+      assert.equal(newOwner, requestHandler.address)
     })
 
-    it ("option pair can be requested, ERC721 token is transfered to RequestHandler owner", async () => {
+    it ("option pair can be requested, ERC721 token is transferred to RequestHandler owner", async () => {
       assert.equal(feeCalculator.address, await optionFactory.feeCalculator())
       let requestHandlerOwner = await requestHandler.owner()
       assert.notEqual(requestHandlerOwner, optionSerieCreator, "option serie creator is not the same as requestHnaadlerOwner")
@@ -689,5 +691,14 @@ contract ("Option", () =>  {
       let tokenOwner = await optionSerieToken.ownerOf(tokenId) 
       assert.equal(tokenOwner, requestHandlerOwner, "the owners of token should be owner of RequestHandlerContract")
     })
-  })
+
+    it ("should transfer ownership of child contract", async () => {
+      let optionSerieTokenOwner = await optionSerieToken.owner()
+      let requestHandlerOwner = await requestHandler.owner()
+      assert.equal(optionSerieTokenOwner, requestHandler.address, "ERC721 should be owner by request handler")
+      assert.notEqual(requestHandlerOwner, optionSerieTokenOwner)
+      await requestHandler.claimOwnership(optionSerieToken.address, {from: requestHandlerOwner})
+      let newOptionSerieTokenOwner = await optionSerieToken.owner()
+      assert.equal(requestHandlerOwner, newOptionSerieTokenOwner)
+    })})
 })

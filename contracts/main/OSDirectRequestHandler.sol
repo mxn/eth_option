@@ -1,14 +1,14 @@
 pragma solidity ^0.4.18;
 
+import './ClaimableChildOwnership.sol';
 import './ITokenReceiver.sol';
 import './OptionFactory.sol';
 import './OptionSerieValidator.sol';
 import './OptionSerieToken.sol';
 
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 
-contract OSDirectRequestHandler is Ownable {
+contract OSDirectRequestHandler is ClaimableChildOwnership {
 
   uint public fee;
   OptionSerieToken public optionSerieToken;
