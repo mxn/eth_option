@@ -26,13 +26,13 @@ contract OSDirectRequestHandler is Ownable {
     tokenReceiver = ITokenReceiver(_tokenReceiver);
   }
 
-  function requestToken(address _underlying, address _basisToken,
+  function requestOptionSerie(address _underlying, address _basisToken,
     uint _strike, uint _underlyingQty, uint _expireTime, address _feeCalculator)
     public
     returns(address, uint) {
-      require(msg.value == fee);
-      require(address(optionFactory.feeCalculator()) == _feeCalculator); //TODO
-
+      require(optionSerieValidator.isValidRequest( _underlying, _basisToken,
+     _strike, _underlyingQty, _expireTime, _feeCalculator));
+     
       uint tokenId = optionSerieToken.mintExt( this, _underlying,  _basisToken, _strike,
         _underlyingQty, _expireTime);
       

@@ -660,7 +660,7 @@ contract ("Option", () =>  {
   contract ("Request Option Serie", () => {
     const strike = 15
     const underlyingQty = 2
-    const expireTime = new Date()/1000 + 60*60*24*30
+    const expireTime = Math.floor(new Date()/1000) + 60*60*24*30
     const requestFee = 0.01 * (10 ** 18)
     var requestHandler, optionSerieToken, optionFactory, weth, dai, feeCalculator
 
@@ -678,17 +678,16 @@ contract ("Option", () =>  {
       await optionSerieToken.transferOwnership(requestHandler.address, {from: erc721owner})
     })
 
-    it ("should be requested", async () => {
-      /* address _underlying, address _basisToken,
-    uint _strike, uint _underlyingQty, uint _expireTime, address _feeCalculator) */
+    it ("option pair can be requested, ERC721 token is transfered to RequestHandler owner", async () => {
       assert.equal(feeCalculator.address, await optionFactory.feeCalculator())
-      console.log("optionSerieToken", optionSerieToken.address);
-      await requestHandler.requestTokenPayable(weth.address, dai.address, strike, underlyingQty, expireTime, 
-        feeCalculator.address, {from: optionSerieCreator, value: requestFee})
+      let requestHandlerOwner = await requestHandler.owner()
+      assert.notEqual(requestHandlerOwner, optionSerieCreator, "option serie creator is not the same as requestHnaadlerOwner")
+      let optionSerieParams = [weth.address, dai.address, strike, underlyingQty, expireTime]
+      let requestArgs = optionSerieParams.concat(feeCalculator.address)
+      await requestHandler.requestOptionSerie(...requestArgs, {from: optionSerieCreator})
+      let tokenId = await optionSerieToken.getTokenId(weth.address, dai.address, strike, underlyingQty, expireTime)
+      let tokenOwner = await optionSerieToken.ownerOf(tokenId) 
+      assert.equal(tokenOwner, requestHandlerOwner, "the owners of token should be owner of RequestHandlerContract")
     })
-    
-
   })
-
-
 })
