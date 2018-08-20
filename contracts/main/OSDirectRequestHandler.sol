@@ -26,6 +26,20 @@ contract OSDirectRequestHandler is Ownable {
     tokenReceiver = ITokenReceiver(_tokenReceiver);
   }
 
+  function setOptionSerieValidator(address _optionSerieValidator)
+  public
+  onlyOwner
+  {
+    optionSerieValidator = OptionSerieValidator(_optionSerieValidator);
+  }
+
+  function setTokenReceiver(address _tokenReceiver) 
+  public
+  onlyOwner
+  {
+    tokenReceiver = ITokenReceiver(_tokenReceiver);
+  }
+
   function requestOptionSerie(address _underlying, address _basisToken,
     uint _strike, uint _underlyingQty, uint _expireTime, address _feeCalculator)
     public
@@ -42,7 +56,7 @@ contract OSDirectRequestHandler is Ownable {
      
       optionSerietoken2optionPair[tokenId] = optionPair;
       optionSerieToken.transfer(tokenReceiver, tokenId);
-      tokenReceiver.onReceive(optionSerieToken, tokenId);
+      tokenReceiver.onReceive(optionSerieToken, tokenId, msg.sender);
       return (optionPair, tokenId);
     }
 }
