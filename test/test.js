@@ -267,7 +267,6 @@ contract ("Option With Sponsor", async() => {
 
   it ("writeOptionsFor should function", async () => {
     optionPair = await OptionPair.at(optionPairAddress)
-    assert.equal(optFactory.address, await optionPair.owner())
     await basisToken.transfer(optionFactoryCreator, 1000, {from: tokensOwner})
     await underlyingToken.transfer(optionFactoryCreator, 1000, {from: tokensOwner})
     await basisToken.approve(optionPair.address, 100, {from: optionFactoryCreator})
@@ -324,7 +323,6 @@ contract ("Write Options Via OptionFactory", async() => {
         strike, underlyingQty, expireTime, {from: optionFactoryCreator})
     //console.log(trans)
     optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
-    assert.equal(optFactory.address, await optionPair.owner())
     await underlyingToken.approve(optFactory.address, 1000, {from: writer1})
     await basisToken.approve(optFactory.address, 1000, {from: writer1})
     await optFactory.writeOptions(optionPair.address, 10, {from: writer1});
@@ -369,14 +367,12 @@ contract ("Options DAI/WETH", async () => {
         strike, underlyingQty, expireTime,
       {from: optionFactoryCreator})
       optionPair = await OptionPair.at(trans.logs[0].args.optionPair)
-      assert.equal(optFactory.address, await optionPair.owner())
       await weth.approve(optFactory.address, 1000 * DECIMAL_FACTOR, {from: writer1})
 
       assert.equal(0, (await weth.balanceOf(optFactory.address)).toNumber())
 
       await optFactory.writeOptions(optionPair.address, optionsToWrite , {from: writer1});
 
-      assert.equal(optFactory.address, await optionPair.owner())
       tokenOption = await TokenOption.at(await optionPair.tokenOption.call() )
       assert.equal(optionsToWrite, (await tokenOption.balanceOf(writer1)).toNumber())
       tokenAntiOption = await TokenAntiOption.at(await optionPair.tokenAntiOption.call())
@@ -533,7 +529,6 @@ contract ("Option", () =>  {
     tokenOption = await TokenOption.at(await optionPair.tokenOption())
     tokenAntiOption = await TokenAntiOption.at(await  optionPair.tokenAntiOption())
 
-    assert.equal(optFactory.address, await optionPair.owner())
   })
 
   it ('initial balance should be 0', async () => {

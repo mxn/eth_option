@@ -11,7 +11,7 @@ import './IExchangeAdapter.sol';
 import './TokenOption.sol';
 import './TokenAntiOption.sol';
 
-contract OptionPair is Ownable, ReentrancyGuard {
+contract OptionPair is ReentrancyGuard {
   using SafeMath for uint256;
   using SafeERC20 for TokenOption;
   using SafeERC20 for ERC20;
@@ -43,7 +43,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
   function OptionPair (address _underlying, address _basisToken,
     uint _strike, uint _underlyingQty, uint _expireTime,
     address _feeCalculator, address _feeTaker)
-    Ownable()
     ReentrancyGuard()
     public
     {
