@@ -46,7 +46,13 @@ module.exports = function (deployer, network) {
         .then(() => deployer.deploy(RequestHandler,
           OptionSerieValidator.address, OptionSerieToken.address, OptionFactory.address, ERC721ReceiverToOwner.address))
         .then(sleep)
-        .then(requestHandlerInstance => OptionSerieToken.deployed(optionSerieToken => optionSerieToken.transferOwnership(requestHandlerInstance)))
+        .then(requestHandlerInstance => OptionSerieToken.deployed()
+          .then(optionSerieToken => {
+            console.log(optionSerieToken.address)
+            console.log(requestHandlerInstance.address)
+            optionSerieToken.transferOwnership(requestHandlerInstance.address, 
+             {from: "0x5aeda56215b167893e80b4fe645ba6d5bab767de"})
+          }))
       break
     default:
       deployer.deploy(SimpleFeeCalculatorTest, Weth.address, 3, 10000)
