@@ -50,28 +50,45 @@ contract OptionFactory is Ownable, ReentrancyGuard {
   }
 
   function createOptionPairContract(address _underlying, address _basisToken,
-   uint _strike, uint _underlyingQty, uint _expireTime)
+   uint _strike, uint _underlyingQty, uint _expireTime) 
+   public {
+     address[3] memory addresses = [_underlying, _basisToken, feeCalculator];
+     uint[3] memory values = [_strike, _underlyingQty, _expireTime];
+     createOptionPairContractFeeCalc(addresses, values);
+   }
+
+   function genOptionPairArr(address[3] _addresses, uint[3] _values)
+   internal 
+   returns (address) {
+     return new OptionPair (
+        _addresses[0],
+        _addresses[1],
+        _values[0],
+        _values[1],
+        _values[2],
+        _addresses[2],
+        address(new WithdrawableByOwner(IFeeCalculator(_addresses[2]).feeToken()))
+        );
+   }
+
+  function createOptionPairContractFeeCalc(address[3] _addresses, uint[3] _values)
    public
-   onlyTokenOwner(_underlying, _basisToken,
-     _strike, _underlyingQty, _expireTime)
+   onlyTokenOwner(_addresses[0], _addresses[1],
+     _values[0], _values[1], _values[2])
    returns(address) {
-     address opAddr =  address(new OptionPair (
-        _underlying,
-        _basisToken,
-        _strike,
-        _underlyingQty,
-        _expireTime,
-        feeCalculator,
-        address(new WithdrawableByOwner(IFeeCalculator(feeCalculator).feeToken()))
-        ));
+    address optionPair = genOptionPairArr(_addresses, _values); 
+    emitEventArr(optionPair, _addresses, _values);
+    return optionPair;
+ }
+
+ function emitEventArr(address _optionPair, address[3] _addresses, uint[3] _values) private {
    OptionTokenCreated(
-        opAddr,
-        _underlying,
-        _basisToken,
-        _strike,
-        _underlyingQty,
-        _expireTime);
-    return opAddr;
+        _optionPair,
+        _addresses[0],
+        _addresses[1],
+        _values[0],
+        _values[1],
+        _values[2]);
  }
 
  function _proxyTransfer(address _token, address _target, uint _amount)

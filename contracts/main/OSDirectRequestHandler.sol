@@ -51,8 +51,9 @@ contract OSDirectRequestHandler is ClaimableChildOwnership {
         _underlyingQty, _expireTime);
       
       assert (optionSerieToken.ownerOf(tokenId) == address(this));
-      address optionPair = optionFactory.createOptionPairContract(_underlying,  _basisToken,
-         _strike,  _underlyingQty,  _expireTime);
+      address[3] memory paramAddresses = [_underlying,  _basisToken, _feeCalculator];
+      uint[3] memory paramValues = [_strike,  _underlyingQty,  _expireTime];
+      address optionPair = optionFactory.createOptionPairContractFeeCalc(paramAddresses, paramValues);
      
       optionSerietoken2optionPair[tokenId] = optionPair;
       optionSerieToken.transfer(tokenReceiver, tokenId);
