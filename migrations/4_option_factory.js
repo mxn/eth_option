@@ -24,14 +24,27 @@ function getWethAddress(network) {
   }
 }
 
+const sleep = registry => new Promise(resolve => setTimeout(() => resolve(registry), network=="webtest"?1000:60000))
+
 module.exports = function(deployer, network) {
   switch(network) {
     case "ropsten":
     case "kovan":
     case "webtest":
       deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000)
-      .then(registry => new Promise(resolve => setTimeout(() => resolve(registry), network=="webtest"?1000:60000)))
-      .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address))
+      .then(sleep)
+      .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address,  OptionSerieToken.address))
+      .then(() => deployer.deploy(MockExchangeAdapter,
+        Dai.address, Weth.address, 220, 2)) //for unit testing purposes
+     .then(() => deployer.deploy(MockOasisDirect))
+     .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
+       MockOasisDirect.address))
+     .then(() => deployer.deploy(ERC721ReceiverToOwner))
+     .then(() => deployer.deploy(OptionSerieValidator))
+     .then(sleep)
+     .then(() => deployer.deploy(RequestHandler,
+        OptionSerieValidator.address, OptionSerieToken.address, OptionFactory.address, ERC721ReceiverToOwner.address))
+     .then(requestHandlerInstance => OptionSerieToken.deployed(optionSerieToken => optionSerieToken.transferOwnership(requestHandlerInstance)))
       break
     default:
       deployer.deploy(SimpleFeeCalculatorTest, Weth.address, 3, 10000)
