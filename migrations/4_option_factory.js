@@ -38,6 +38,7 @@ module.exports = function (deployer, network) {
         .then(() => deployer.deploy(MockExchangeAdapter,
           Dai.address, Weth.address, 220, 2)) //for unit testing purposes
         .then(() => deployer.deploy(MockOasisDirect))
+        .then(exch => Dai.deployed().then(daiInst => daiInst.transfer(exch.address, 100000*(10**18))))
         .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
           MockOasisDirect.address))
         .then(() => deployer.deploy(ERC721ReceiverToOwner))
