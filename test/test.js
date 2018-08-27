@@ -420,7 +420,11 @@ contract ("Options DAI/WETH", async () => {
     let optionsToExercise = startBalanceToken.div(4)
 
     await tokenOption.approve(optionPair.address, optionsToExercise)
-    let limitDaiAmouunt = 1// lower thaa price
+    let limitAmountPerOneOption = 155
+
+    assert.ok(limitAmountPerOneOption >= strike, "required minimum amount to get per 1 option should be more than strike price")
+    let limitDaiAmouunt = limitAmountPerOneOption * optionsToExercise 
+    
     await optionPair.exerciseWithTrade (optionsToExercise,  limitDaiAmouunt,
       ExchangeAdapter.address)
     let endBalanceDai = await dai.balanceOf(buyer1)

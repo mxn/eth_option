@@ -217,6 +217,10 @@ contract OptionPair is ReentrancyGuard {
   /**
   The function allows for token Owner to exercise and sell underlying
   without needs to have basisToken
+  @param _qty amount of Option token to be exerciced
+  @param _limitAmount minimum amount that seller want to get in 
+  basis ERC20 tokens
+  @param _exchangeAdapter contract implementing interface IExchangeAdapter
   */
   function exerciseWithTrade (uint _qty, uint _limitAmount,
     address _exchangeAdapter)
@@ -224,7 +228,7 @@ contract OptionPair is ReentrancyGuard {
     nonReentrant
     {
     uint basisAmount = strike.mul(_qty);
-    require(_limitAmount <= basisAmount);
+    require(_limitAmount >= basisAmount);
     _prepareExerciseSellerFor(msg.sender, _qty);
 
     IExchangeAdapter exchangeAdapter = IExchangeAdapter(_exchangeAdapter);
@@ -243,6 +247,7 @@ contract OptionPair is ReentrancyGuard {
     uint receivedBasisTokenAmount = basisBalanceAfter.sub(basisBalanceBefore);
     ERC20(underlying).approve(_exchangeAdapter, 0);
     require(receivedBasisTokenAmount >= _limitAmount);
+    require(receivedBasisTokenAmount >= basisAmount);
     uint basisAmountToTransfer = receivedBasisTokenAmount.sub(basisAmount);
     ERC20(basisToken).safeTransfer(msg.sender, basisAmountToTransfer);
   }
