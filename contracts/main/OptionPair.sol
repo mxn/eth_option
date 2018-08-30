@@ -197,10 +197,6 @@ contract OptionPair is ReentrancyGuard {
     return now;
   }
 
-  function updateMockTime(uint /* _mockTime */) public returns (bool) {
-    revert();
-  }
-
   function _takeFee (uint _optionQty, address _feePayer) private {
     if (_feePayer != feeTaker) {
       IFeeCalculator feeCalculatorObj =  IFeeCalculator(feeCalculator);
