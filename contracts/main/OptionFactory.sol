@@ -1,5 +1,6 @@
 pragma solidity ^0.4.18;
 
+import './IEthWrapper.sol';
 import './IFeeCalculator.sol';
 import './OptionPair.sol';
 import './OptionSerieToken.sol';
@@ -20,6 +21,7 @@ contract OptionFactory is Ownable, ReentrancyGuard {
 
   address public feeCalculator;
   address public optionSerieOwnerToken;
+  address public weth;
 
   mapping (uint => bool) solvedToken;
 
@@ -37,12 +39,13 @@ contract OptionFactory is Ownable, ReentrancyGuard {
      _;
   }
 
-  function OptionFactory (address _feeCalculator, address _optionSerieOwnerToken)
+  function OptionFactory (address _feeCalculator, address _optionSerieOwnerToken, address _weth)
   Ownable()
   ReentrancyGuard()
   public {
           setFeeCalculator(_feeCalculator);
           optionSerieOwnerToken = _optionSerieOwnerToken;
+          weth = _weth;
   }
 
   function () payable {
@@ -91,16 +94,39 @@ contract OptionFactory is Ownable, ReentrancyGuard {
         _values[2]);
  }
 
- function _proxyTransfer(address _token, address _target, uint _amount)
+ function _proxyTransfer(address _token, address _target, uint _amount, uint _allowance)
  private {
    ERC20 erc20 =  ERC20(_token);
    erc20.safeTransferFrom(msg.sender, this, _amount);
-   erc20.approve(_target, _amount);
-   require(erc20.allowance(this, _target) == _amount);
+   erc20.approve(_target, _allowance);
+   require(erc20.allowance(this, _target) == _allowance);
+ }
+ 
+ function _proxyTransfer(address _token, address _target, uint _amount)
+ private {
+   _proxyTransfer(_token,  _target,  _amount, _amount);
  }
 
- function writeOptions(address _optionPair, uint _qty)
- external
+
+ function writeOptionsWithEth(address _optionPair, uint _qty) external payable {
+   address feeToken;
+   uint fee;
+   address optionPairFeeCalculator = OptionPair(_optionPair).feeCalculator();
+   (feeToken,  fee) = IFeeCalculator(optionPairFeeCalculator).calcFee(_optionPair, _qty);
+   require(feeToken == weth);
+   require(msg.value == fee);
+   IEthWrapper(weth).deposit.value(msg.value)();
+   require(fee == ERC20(feeToken).balanceOf(this));
+   _writeOptions(_optionPair, _qty, true);
+ }
+
+ function writeOptions(address _optionPair, uint _qty) external {
+   _writeOptions(_optionPair, _qty, false);
+ }
+
+
+ function _writeOptions(address _optionPair, uint _qty, bool _paidWithEth)
+ private
  nonReentrant
  returns (bool) {
    OptionPair optionPairObj = OptionPair(_optionPair);
@@ -114,15 +140,26 @@ contract OptionFactory is Ownable, ReentrancyGuard {
    (feeToken,  fee) = IFeeCalculator(optionPairFeeCalculator)
     .calcFee(_optionPair, _qty);
    if (feeToken == underlying) {
-     _proxyTransfer(underlying, _optionPair, fee.add(underlyingQty));
+     if (_paidWithEth) {
+       _proxyTransfer(underlying, _optionPair, underlyingQty, underlyingQty.add(fee));
+     } else {
+       _proxyTransfer(underlying, _optionPair, fee.add(underlyingQty));
+     }
    } else {
      _proxyTransfer(underlying, _optionPair, underlyingQty);
-      if (fee > 0) {
-        _proxyTransfer(feeToken, _optionPair, fee);
+      if (fee > 0 && !_paidWithEth) {
+        _proxyTransfer(feeToken, _optionPair, fee); 
+      } else {
+        ERC20(feeToken).approve(_optionPair, fee); //if paid with eth the weth already on balance: 
+        //don't need to do anything except approval
       }
    }
 
-   return optionPairObj.writeOptionsFor(_qty, msg.sender, false);
+   bool result = optionPairObj.writeOptionsFor(_qty, msg.sender, false);
+   //clean
+   ERC20(feeToken).approve(_optionPair, 0);
+   ERC20(underlying).approve(_optionPair, 0);
+   return result;
   }
 
   function exerciseOptions(address _optionPair, uint _qty)

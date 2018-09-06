@@ -5,10 +5,10 @@ import "./MockOptionPair.sol";
 
 contract MockOptionFactory is OptionFactory {
 
-  function MockOptionFactory(address _feeCalculator, address _erc721token)
+  function MockOptionFactory(address _feeCalculator, address _erc721token, address _weth)
     public
     onlyOwner
-   OptionFactory (_feeCalculator, _erc721token) {}
+   OptionFactory (_feeCalculator, _erc721token, _weth) {}
 
   function genOptionPairArr(address[3] _addresses, uint[3] _values)
    internal 

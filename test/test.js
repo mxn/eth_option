@@ -16,6 +16,7 @@ const ExchangeAdapterOasis = artifacts.require('ExchangeAdapterOasisImpl')
 const MockOasisDirect = artifacts.require('MockOasisDirect')
 const OptionSerieToken = artifacts.require('OptionSerieToken')
 const RequestHandler = artifacts.require('OSDirectRequestHandler')
+const FeeCalculator = artifacts.require('IFeeCalculator')
 
 var BigNumber = require('bignumber.js')
 
@@ -440,7 +441,7 @@ contract ("Options DAI/WETH", async () => {
     assert.ok(endBalanceWeth.equals(startBalanceWeth), "Underlying balanve should not change")
   })
 
-  it ("should correctly exercise all availabale options", async () => {
+  it ("should correctly exercise all available options", async () => {
     //await dai.approve(optFactory.address, 100000000)
     let startBalanceDai = await dai.balanceOf(buyer1)
     let startBalanceWeth = await weth.balanceOf(buyer1)
@@ -463,7 +464,6 @@ contract ("Options DAI/WETH", async () => {
 
   })
 
-
   it ("annihilate all available options should function", async() => {
     assert.equal(0, (await tokenOption.balanceOf(writer1)).toNumber())
     assert.equal(optionsToWrite, (await tokenAntiOption.balanceOf(writer1)).toNumber())
@@ -480,6 +480,22 @@ contract ("Options DAI/WETH", async () => {
       (await tokenAntiOption.balanceOf(writer1)).toNumber())
 
   })
+
+  it("write options with fee collected via ETH should function", async () => {
+    let feeCalculatorAdresss = await optionPair.feeCalculator()
+    let feeCalculator = await FeeCalculator.at(feeCalculatorAdresss)
+    var feeTokenAddress, feeAmount
+    [feeTokenAddress, feeAmount]  = await feeCalculator.calcFee(optionPair.address, optionsToWrite)
+    assert.equal(weth.address, feeTokenAddress, "fee should be in Weth")
+    let balWethBefore = await weth.balanceOf(writer1)
+    let trans = await optFactory.writeOptionsWithEth(optionPair.address, optionsToWrite, {from: writer1, value: feeAmount.toNumber()})
+    let balWethAfter = await weth.balanceOf(writer1)
+    assert.equal(balWethBefore.sub(balWethAfter).toNumber(), optionsToWrite * underlyingQty)
+  })
+
+
+
+
 })
 
 

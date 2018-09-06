@@ -6,5 +6,5 @@ contract IFeeCalculator {
   * _token OptionPair address
   * _qty number of contracts to be written
   */
-  function calcFee (address _token, uint _qty) public view returns (address, uint);
+  function calcFee (address _optionPair, uint _qty) public view returns (address, uint);
 }

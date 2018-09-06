@@ -34,7 +34,7 @@ module.exports = function (deployer, network) {
     case "webtest":
       deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000)
         .then(sleep)
-        .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address, OptionSerieToken.address))
+        .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address, OptionSerieToken.address, Weth.address))
         .then(() => deployer.deploy(MockExchangeAdapter,
           Dai.address, Weth.address, 220, 2)) //for unit testing purposes
         .then(() => deployer.deploy(MockOasisDirect))
@@ -59,13 +59,13 @@ module.exports = function (deployer, network) {
       deployer.deploy(SimpleFeeCalculatorTest, Weth.address, 3, 10000)
         .then(() => deployer.deploy(SimpleFeeCalculator, MockToken2.address, 2, 1))
         .then(() => deployer.deploy(OptionFactory, SimpleFeeCalculator.address,
-          OptionSerieToken.address,
+          OptionSerieToken.address, Weth.address,
           { from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc' }))
         .then(() => deployer.deploy(MockOptionFactory, SimpleFeeCalculator.address,
-          OptionSerieToken.address,
+          OptionSerieToken.address, Weth.address,
           { from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc' }))
         .then(() => deployer.deploy(MockWethOptionFactory,
-          SimpleFeeCalculatorTest.address, OptionSerieToken.address,
+          SimpleFeeCalculatorTest.address, OptionSerieToken.address, Weth.address,
           { from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc' }))
         .then(() => deployer.deploy(MockExchangeAdapter,
           Dai.address, Weth.address, 220, 2)) //for unit testing purposes
