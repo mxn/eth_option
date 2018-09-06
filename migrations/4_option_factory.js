@@ -73,7 +73,7 @@ module.exports = function (deployer, network) {
         .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
           MockOasisDirect.address))
         .then(() => deployer.deploy(ERC721ReceiverToOwner))
-        .then(() => deployer.deploy(OptionSerieValidator))
+        .then(() => deployer.deploy(OptionSerieValidator,  SimpleFeeCalculatorTest.address))
         .then(() => deployer.deploy(RequestHandler,
           OptionSerieValidator.address, OptionSerieToken.address, MockWethOptionFactory.address, ERC721ReceiverToOwner.address))
   }
