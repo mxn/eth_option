@@ -11,7 +11,7 @@ import './IExchangeAdapter.sol';
 import './TokenOption.sol';
 import './TokenAntiOption.sol';
 
-contract OptionPair is Ownable, ReentrancyGuard {
+contract OptionPair is ReentrancyGuard {
   using SafeMath for uint256;
   using SafeERC20 for TokenOption;
   using SafeERC20 for ERC20;
@@ -28,7 +28,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
   address public tokenOption;
   address public tokenAntiOption;
 
-  uint totalWritten;
+  address public feeTaker;
 
   modifier onlyBeforeExpiration() {
     require(getCurrentTime() < expireTime);
@@ -41,8 +41,8 @@ contract OptionPair is Ownable, ReentrancyGuard {
   }
 
   function OptionPair (address _underlying, address _basisToken,
-    uint _strike, uint _underlyingQty, uint _expireTime,  address _feeCalculator)
-    Ownable()
+    uint _strike, uint _underlyingQty, uint _expireTime,
+    address _feeCalculator, address _feeTaker)
     ReentrancyGuard()
     public
     {
@@ -54,6 +54,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
       feeCalculator = _feeCalculator;
       tokenOption = address(new TokenOption());
       tokenAntiOption = address(new TokenAntiOption());
+      feeTaker = _feeTaker;
   }
 
   function () public payable {
@@ -76,10 +77,8 @@ contract OptionPair is Ownable, ReentrancyGuard {
     require(_qty > 0);
     uint calcUnderlyngQty = _qty.mul(underlyingQty);
     ERC20 underlyingErc20 =  ERC20(underlying);
-    require(underlyingErc20.allowance(_sponsor, this) >= calcUnderlyngQty); //TODO
+    require(underlyingErc20.allowance(_sponsor, this) >= calcUnderlyngQty); //TODO approve and execute
     require(underlyingErc20.balanceOf(_sponsor) >= calcUnderlyngQty);
-
-    totalWritten = totalWritten.add(_qty);
 
     underlyingErc20.safeTransferFrom(_sponsor, this, calcUnderlyngQty);
 
@@ -121,10 +120,6 @@ contract OptionPair is Ownable, ReentrancyGuard {
 
   function getTotalOpenInterest() public view returns(uint res) {
     return ERC20(tokenOption).totalSupply();
-  }
-
-  function getTotalExecuted() public view returns(uint res) {
-    return totalWritten - ERC20(tokenOption).totalSupply();
   }
 
   function execute(uint _qty) external nonReentrant
@@ -202,24 +197,26 @@ contract OptionPair is Ownable, ReentrancyGuard {
     return now;
   }
 
-  function updateMockTime(uint /* _mockTime */) public returns (bool) {
-    revert();
-  }
-
   function _takeFee (uint _optionQty, address _feePayer) private {
-    if (_feePayer != owner) {
+    if (_feePayer != feeTaker) {
       IFeeCalculator feeCalculatorObj =  IFeeCalculator(feeCalculator);
       uint fee;
       address feeToken;
       (feeToken, fee) = feeCalculatorObj.calcFee(address(this), _optionQty);
       ERC20 feeTokenObj = ERC20(feeToken);
-      feeTokenObj.safeTransferFrom(_feePayer, owner, fee);
+      if (fee > 0) {
+        feeTokenObj.safeTransferFrom(_feePayer, feeTaker, fee);
+      }     
     }
   }
 
   /**
   The function allows for token Owner to exercise and sell underlying
   without needs to have basisToken
+  @param _qty amount of Option token to be exerciced
+  @param _limitAmount minimum amount that seller want to get in 
+  basis ERC20 tokens
+  @param _exchangeAdapter contract implementing interface IExchangeAdapter
   */
   function exerciseWithTrade (uint _qty, uint _limitAmount,
     address _exchangeAdapter)
@@ -227,7 +224,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
     nonReentrant
     {
     uint basisAmount = strike.mul(_qty);
-    require(_limitAmount <= basisAmount);
+    require(_limitAmount >= basisAmount);
     _prepareExerciseSellerFor(msg.sender, _qty);
 
     IExchangeAdapter exchangeAdapter = IExchangeAdapter(_exchangeAdapter);
@@ -246,6 +243,7 @@ contract OptionPair is Ownable, ReentrancyGuard {
     uint receivedBasisTokenAmount = basisBalanceAfter.sub(basisBalanceBefore);
     ERC20(underlying).approve(_exchangeAdapter, 0);
     require(receivedBasisTokenAmount >= _limitAmount);
+    require(receivedBasisTokenAmount >= basisAmount);
     uint basisAmountToTransfer = receivedBasisTokenAmount.sub(basisAmount);
     ERC20(basisToken).safeTransfer(msg.sender, basisAmountToTransfer);
   }

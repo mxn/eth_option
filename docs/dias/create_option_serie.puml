@@ -1,0 +1,34 @@
+@startuml
+actor "Option Line Creator" as creator
+actor "Writer" as writer
+actor "Auction Winner" as auction_winner
+participant "Request Handler" as req_handler
+participant "Request Verifier" as req_verifier
+actor "ERC721 receiver (initial owner)" as erc721_receiver
+participant "Auction Contract" as auction
+participant "Option Serie Contract" as opt_serie
+participant "Escrow accoun" as created_owner
+
+
+creator -> req_handler: create request
+req_handler -> req_verifier: verification of request
+req_handler -> erc721_receiver: mint erc721 token to
+
+req_handler -> created_owner: create escrow account, \nfrom where only ERC721 owner can withdraw 
+
+writer -> opt_serie: write options
+opt_serie -> created_owner: fee goes to escrow account
+
+erc721_receiver -> created_owner: can withdraw fee 
+
+erc721_receiver -> auction: can create auction \nby transfering erc721 for auction
+req_handler -> opt_serie: create option serie \nwith the reference to escrow owner
+
+auction -> auction_winner: transfer erc721 token
+auction_winner -> created_owner: can withdraw collected fees
+writer -> opt_serie: write options
+opt_serie -> created_owner: fee goes to escrow account
+auction_winner -> created_owner: erc721 owner can withdraw collected fees
+
+
+@enduml

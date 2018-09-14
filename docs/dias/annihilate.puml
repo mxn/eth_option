@@ -1,4 +1,4 @@
-@startuml
+@startuml Annihialtion
 Actor "Option and Anti-Option Holder" as Holder
 participant "Smart Contract\nAnnihilate: ONLY BEFORE EXPIRATION" as annihilate
 

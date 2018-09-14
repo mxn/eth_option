@@ -1,0 +1,338 @@
+{
+  "contractName": "ITokenReceiver",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "tokenAddress",
+          "type": "address"
+        },
+        {
+          "name": "eitherQtyOrTokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "origin",
+          "type": "address"
+        }
+      ],
+      "name": "onReceive",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.18;\n\ncontract ITokenReceiver {\n  /**\n    suppose that a contract first transfer token(s) and then call this callback method\n    @param tokenAddress ERC721 or ERC20 token address\n    @param eitherQtyOrTokenId in case of ERC20: amount, in case of ERC721: tokenId\n   */\n  function onReceive(address tokenAddress, uint eitherQtyOrTokenId, address origin) public;\n\n}",
+  "sourcePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/ITokenReceiver.sol",
+  "ast": {
+    "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/ITokenReceiver.sol",
+    "exportedSymbols": {
+      "ITokenReceiver": [
+        334
+      ]
+    },
+    "id": 335,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 324,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:9"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 334,
+        "linearizedBaseContracts": [
+          334
+        ],
+        "name": "ITokenReceiver",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "suppose that a contract first transfer token(s) and then call this callback method\n@param tokenAddress ERC721 or ERC20 token address\n@param eitherQtyOrTokenId in case of ERC20: amount, in case of ERC721: tokenId",
+            "id": 333,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "onReceive",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 331,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 326,
+                  "name": "tokenAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 333,
+                  "src": "309:20:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 325,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "309:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 328,
+                  "name": "eitherQtyOrTokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 333,
+                  "src": "331:23:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 327,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "331:4:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 330,
+                  "name": "origin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 333,
+                  "src": "356:14:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 329,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "356:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "308:63:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 332,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "378:0:9"
+            },
+            "scope": 334,
+            "src": "290:89:9",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 335,
+        "src": "26:356:9"
+      }
+    ],
+    "src": "0:382:9"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/ITokenReceiver.sol",
+    "exportedSymbols": {
+      "ITokenReceiver": [
+        334
+      ]
+    },
+    "id": 335,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 324,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:9"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 334,
+        "linearizedBaseContracts": [
+          334
+        ],
+        "name": "ITokenReceiver",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "suppose that a contract first transfer token(s) and then call this callback method\n@param tokenAddress ERC721 or ERC20 token address\n@param eitherQtyOrTokenId in case of ERC20: amount, in case of ERC721: tokenId",
+            "id": 333,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "onReceive",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 331,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 326,
+                  "name": "tokenAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 333,
+                  "src": "309:20:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 325,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "309:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 328,
+                  "name": "eitherQtyOrTokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 333,
+                  "src": "331:23:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 327,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "331:4:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 330,
+                  "name": "origin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 333,
+                  "src": "356:14:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 329,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "356:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "308:63:9"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 332,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "378:0:9"
+            },
+            "scope": 334,
+            "src": "290:89:9",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 335,
+        "src": "26:356:9"
+      }
+    ],
+    "src": "0:382:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-09-14T07:51:36.112Z"
+}

@@ -9,6 +9,10 @@ var MockExchangeAdapter = artifacts.require("MockExchangeAdapter")
 var Dai = artifacts.require("DAI")
 var MockOasisDirect = artifacts.require("MockOasisDirect")
 var ExchangeAdapterOasisImpl = artifacts.require("ExchangeAdapterOasisImpl")
+var OptionSerieToken = artifacts.require('OptionSerieToken')
+var RequestHandler = artifacts.require('OSDirectRequestHandler')
+var ERC721ReceiverToOwner = artifacts.require('ERC721ReceiverToOwner')
+var OptionSerieValidator = artifacts.require('OptionSerieValidator')
 
 
 function getWethAddress(network) {
@@ -20,29 +24,82 @@ function getWethAddress(network) {
   }
 }
 
-module.exports = function(deployer, network) {
-  switch(network) {
+function getDaiAddress(network) {
+  switch (network) {
+    case "kovan": return "0xc4375b7de8af5a38a93548eb8453a498222c4ff2"
+    case "webtest": return Dai.address
+    default: throw new Error("invalid network")
+  }
+}
+
+
+module.exports = function (deployer, network) {
+  const sleep = inst => new Promise(resolve => setTimeout(() => resolve(inst), network == "webtest" ? 1000 : 60000))
+
+  switch (network) {
     case "ropsten":
     case "kovan":
+    deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000)
+    .then(sleep)
+    .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address, OptionSerieToken.address, getWethAddress(network)))
+    .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
+      "0x1d3481d53342280fb1d33f475b222a4ac330af36"))
+    .then(() => deployer.deploy(ERC721ReceiverToOwner))
+    .then(() => deployer.deploy(OptionSerieValidator, SimpleFeeCalculator.address))
+    .then(sleep)
+    .then(() => deployer.deploy(RequestHandler,
+      OptionSerieValidator.address, OptionSerieToken.address, OptionFactory.address, ERC721ReceiverToOwner.address))
+    .then(sleep)
+    .then(requestHandlerInstance => OptionSerieToken.deployed()
+      .then(optionSerieToken => {
+        optionSerieToken.transferOwnership(requestHandlerInstance.address)
+      }))
+  break
+
     case "webtest":
       deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000)
-      .then(registry => new Promise(resolve => setTimeout(() => resolve(registry), network=="webtest"?1000:60000)))
-      .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address))
+        .then(sleep)
+        .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address, OptionSerieToken.address, Weth.address))
+        .then(() => deployer.deploy(MockExchangeAdapter,
+          Dai.address, Weth.address, 220, 2)) //for unit testing purposes
+        .then(() => deployer.deploy(MockOasisDirect))
+        .then(exch => Dai.deployed().then(daiInst => daiInst.transfer(exch.address, 100000*(10**18))))
+        .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
+          MockOasisDirect.address))
+        .then(() => deployer.deploy(ERC721ReceiverToOwner))
+        .then(() => deployer.deploy(OptionSerieValidator, SimpleFeeCalculator.address))
+        .then(sleep)
+        .then(() => deployer.deploy(RequestHandler,
+          OptionSerieValidator.address, OptionSerieToken.address, OptionFactory.address, ERC721ReceiverToOwner.address))
+        .then(sleep)
+        .then(requestHandlerInstance => OptionSerieToken.deployed()
+          .then(optionSerieToken => {
+            console.log(optionSerieToken.address)
+            console.log(requestHandlerInstance.address)
+            optionSerieToken.transferOwnership(requestHandlerInstance.address, 
+             {from: "0x5aeda56215b167893e80b4fe645ba6d5bab767de"})
+          }))
       break
     default:
       deployer.deploy(SimpleFeeCalculatorTest, Weth.address, 3, 10000)
-      .then(() => deployer.deploy(SimpleFeeCalculator, MockToken2.address, 2, 1))
-      .then(() => deployer.deploy(OptionFactory, SimpleFeeCalculator.address,
-         {from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc'}))
-      .then(() => deployer.deploy(MockOptionFactory, SimpleFeeCalculator.address,
-         {from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc'}))
-      .then(() => deployer.deploy(MockWethOptionFactory,
-         SimpleFeeCalculatorTest.address,
-         {from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc'}))
-       .then(() => deployer.deploy(MockExchangeAdapter,
-         Dai.address, Weth.address, 220, 2)) //for unit testing purposes
-      .then(() => deployer.deploy(MockOasisDirect))
-      .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
-        MockOasisDirect.address))
+        .then(() => deployer.deploy(SimpleFeeCalculator, MockToken2.address, 2, 1))
+        .then(() => deployer.deploy(OptionFactory, SimpleFeeCalculator.address,
+          OptionSerieToken.address, Weth.address,
+          { from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc' }))
+        .then(() => deployer.deploy(MockOptionFactory, SimpleFeeCalculator.address,
+          OptionSerieToken.address, Weth.address,
+          { from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc' }))
+        .then(() => deployer.deploy(MockWethOptionFactory,
+          SimpleFeeCalculatorTest.address, OptionSerieToken.address, Weth.address,
+          { from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc' }))
+        .then(() => deployer.deploy(MockExchangeAdapter,
+          Dai.address, Weth.address, 220, 2)) //for unit testing purposes
+        .then(() => deployer.deploy(MockOasisDirect))
+        .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
+          MockOasisDirect.address))
+        .then(() => deployer.deploy(ERC721ReceiverToOwner))
+        .then(() => deployer.deploy(OptionSerieValidator,  SimpleFeeCalculatorTest.address))
+        .then(() => deployer.deploy(RequestHandler,
+          OptionSerieValidator.address, OptionSerieToken.address, MockWethOptionFactory.address, ERC721ReceiverToOwner.address))
   }
 }

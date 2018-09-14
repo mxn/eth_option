@@ -19,7 +19,7 @@
       "constant": true,
       "inputs": [
         {
-          "name": "_token",
+          "name": "_optionPair",
           "type": "address"
         },
         {
@@ -47,20 +47,20 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.18;\n\ncontract IFeeCalculator {\n  function feeToken () public view returns (address);\n  /**\n  * _token OptionPair address\n  * _qty number of contracts to be written\n  */\n  function calcFee (address _token, uint _qty) public view returns (address, uint);\n}\n",
+  "source": "pragma solidity ^0.4.18;\n\ncontract IFeeCalculator {\n  function feeToken () public view returns (address);\n  /**\n  * _token OptionPair address\n  * _qty number of contracts to be written\n  */\n  function calcFee (address _optionPair, uint _qty) public view returns (address, uint);\n}\n",
   "sourcePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IFeeCalculator.sol",
   "ast": {
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IFeeCalculator.sol",
     "exportedSymbols": {
       "IFeeCalculator": [
-        46
+        295
       ]
     },
-    "id": 47,
+    "id": 296,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 29,
+        "id": 278,
         "literals": [
           "solidity",
           "^",
@@ -68,7 +68,7 @@
           ".18"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:1"
+        "src": "0:24:7"
       },
       {
         "baseContracts": [],
@@ -76,9 +76,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 46,
+        "id": 295,
         "linearizedBaseContracts": [
-          46
+          295
         ],
         "name": "IFeeCalculator",
         "nodeType": "ContractDefinition",
@@ -86,7 +86,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 34,
+            "id": 283,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -94,23 +94,23 @@
             "name": "feeToken",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 30,
+              "id": 279,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "72:2:1"
+              "src": "72:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 33,
+              "id": 282,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 32,
+                  "id": 281,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34,
-                  "src": "96:7:1",
+                  "scope": 283,
+                  "src": "96:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -118,10 +118,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 31,
+                    "id": 280,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "96:7:1",
+                    "src": "96:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -131,10 +131,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "95:9:1"
+              "src": "95:9:7"
             },
-            "scope": 46,
-            "src": "54:51:1",
+            "scope": 295,
+            "src": "54:51:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -142,7 +142,7 @@
           {
             "body": null,
             "documentation": "_token OptionPair address\n_qty number of contracts to be written",
-            "id": 45,
+            "id": 294,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -150,16 +150,16 @@
             "name": "calcFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 39,
+              "id": 288,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 36,
-                  "name": "_token",
+                  "id": 285,
+                  "name": "_optionPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 45,
-                  "src": "210:14:1",
+                  "scope": 294,
+                  "src": "210:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -167,10 +167,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 35,
+                    "id": 284,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "210:7:1",
+                    "src": "210:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -181,11 +181,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 38,
+                  "id": 287,
                   "name": "_qty",
                   "nodeType": "VariableDeclaration",
-                  "scope": 45,
-                  "src": "226:9:1",
+                  "scope": 294,
+                  "src": "231:9:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -193,10 +193,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 37,
+                    "id": 286,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "226:4:1",
+                    "src": "231:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -206,20 +206,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "209:27:1"
+              "src": "209:32:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 44,
+              "id": 293,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 41,
+                  "id": 290,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 45,
-                  "src": "258:7:1",
+                  "scope": 294,
+                  "src": "263:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -227,10 +227,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 40,
+                    "id": 289,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "258:7:1",
+                    "src": "263:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -241,11 +241,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 43,
+                  "id": 292,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 45,
-                  "src": "267:4:1",
+                  "scope": 294,
+                  "src": "272:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -253,10 +253,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 42,
+                    "id": 291,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "267:4:1",
+                    "src": "272:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -266,33 +266,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "257:15:1"
+              "src": "262:15:7"
             },
-            "scope": 46,
-            "src": "192:81:1",
+            "scope": 295,
+            "src": "192:86:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 47,
-        "src": "26:249:1"
+        "scope": 296,
+        "src": "26:254:7"
       }
     ],
-    "src": "0:276:1"
+    "src": "0:281:7"
   },
   "legacyAST": {
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IFeeCalculator.sol",
     "exportedSymbols": {
       "IFeeCalculator": [
-        46
+        295
       ]
     },
-    "id": 47,
+    "id": 296,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 29,
+        "id": 278,
         "literals": [
           "solidity",
           "^",
@@ -300,7 +300,7 @@
           ".18"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:1"
+        "src": "0:24:7"
       },
       {
         "baseContracts": [],
@@ -308,9 +308,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 46,
+        "id": 295,
         "linearizedBaseContracts": [
-          46
+          295
         ],
         "name": "IFeeCalculator",
         "nodeType": "ContractDefinition",
@@ -318,7 +318,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 34,
+            "id": 283,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -326,23 +326,23 @@
             "name": "feeToken",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 30,
+              "id": 279,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "72:2:1"
+              "src": "72:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 33,
+              "id": 282,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 32,
+                  "id": 281,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34,
-                  "src": "96:7:1",
+                  "scope": 283,
+                  "src": "96:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -350,10 +350,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 31,
+                    "id": 280,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "96:7:1",
+                    "src": "96:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -363,10 +363,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "95:9:1"
+              "src": "95:9:7"
             },
-            "scope": 46,
-            "src": "54:51:1",
+            "scope": 295,
+            "src": "54:51:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -374,7 +374,7 @@
           {
             "body": null,
             "documentation": "_token OptionPair address\n_qty number of contracts to be written",
-            "id": 45,
+            "id": 294,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -382,16 +382,16 @@
             "name": "calcFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 39,
+              "id": 288,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 36,
-                  "name": "_token",
+                  "id": 285,
+                  "name": "_optionPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 45,
-                  "src": "210:14:1",
+                  "scope": 294,
+                  "src": "210:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -399,10 +399,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 35,
+                    "id": 284,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "210:7:1",
+                    "src": "210:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -413,11 +413,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 38,
+                  "id": 287,
                   "name": "_qty",
                   "nodeType": "VariableDeclaration",
-                  "scope": 45,
-                  "src": "226:9:1",
+                  "scope": 294,
+                  "src": "231:9:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -425,10 +425,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 37,
+                    "id": 286,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "226:4:1",
+                    "src": "231:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -438,20 +438,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "209:27:1"
+              "src": "209:32:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 44,
+              "id": 293,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 41,
+                  "id": 290,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 45,
-                  "src": "258:7:1",
+                  "scope": 294,
+                  "src": "263:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -459,10 +459,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 40,
+                    "id": 289,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "258:7:1",
+                    "src": "263:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -473,11 +473,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 43,
+                  "id": 292,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 45,
-                  "src": "267:4:1",
+                  "scope": 294,
+                  "src": "272:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -485,10 +485,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 42,
+                    "id": 291,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "267:4:1",
+                    "src": "272:4:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -498,20 +498,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "257:15:1"
+              "src": "262:15:7"
             },
-            "scope": 46,
-            "src": "192:81:1",
+            "scope": 295,
+            "src": "192:86:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 47,
-        "src": "26:249:1"
+        "scope": 296,
+        "src": "26:254:7"
       }
     ],
-    "src": "0:276:1"
+    "src": "0:281:7"
   },
   "compiler": {
     "name": "solc",
@@ -519,5 +519,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-06-06T06:49:50.537Z"
+  "updatedAt": "2018-09-14T07:51:36.112Z"
 }

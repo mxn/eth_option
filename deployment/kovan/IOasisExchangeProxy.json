@@ -1,0 +1,750 @@
+{
+  "contractName": "IOasisExchangeProxy",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "pay_gem",
+          "type": "address"
+        },
+        {
+          "name": "pay_amt",
+          "type": "uint256"
+        },
+        {
+          "name": "buy_gem",
+          "type": "address"
+        },
+        {
+          "name": "min_fill_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "sellAllAmount",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "buy_gem",
+          "type": "address"
+        },
+        {
+          "name": "pay_gem",
+          "type": "address"
+        },
+        {
+          "name": "pay_amt",
+          "type": "uint256"
+        }
+      ],
+      "name": "getBuyAmount",
+      "outputs": [
+        {
+          "name": "fill_amt",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.18;\n\n\n/**\n* make corresponding signatures from\n*/\ncontract IOasisExchangeProxy {\n  function sellAllAmount(address pay_gem, uint pay_amt, address buy_gem,\n    uint min_fill_amount)\n    public\n    returns (uint);\n  function getBuyAmount(address buy_gem, address pay_gem, uint pay_amt)\n    public\n    constant\n    returns (uint fill_amt);\n}\n",
+  "sourcePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IOasisExchangeProxy.sol",
+  "ast": {
+    "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IOasisExchangeProxy.sol",
+    "exportedSymbols": {
+      "IOasisExchangeProxy": [
+        322
+      ]
+    },
+    "id": 323,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 297,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:8"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "make corresponding signatures from",
+        "fullyImplemented": false,
+        "id": 322,
+        "linearizedBaseContracts": [
+          322
+        ],
+        "name": "IOasisExchangeProxy",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 310,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "sellAllAmount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 306,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 299,
+                  "name": "pay_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "127:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 298,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "127:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 301,
+                  "name": "pay_amt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "144:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 300,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "144:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 303,
+                  "name": "buy_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "158:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 302,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "158:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 305,
+                  "name": "min_fill_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "179:20:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 304,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "179:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "126:74:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 309,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 308,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "225:4:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 307,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "225:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "224:6:8"
+            },
+            "scope": 322,
+            "src": "104:127:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 321,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getBuyAmount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 317,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 312,
+                  "name": "buy_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 321,
+                  "src": "256:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 311,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "256:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 314,
+                  "name": "pay_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 321,
+                  "src": "273:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 313,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 316,
+                  "name": "pay_amt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 321,
+                  "src": "290:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 315,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "290:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "255:48:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 320,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 319,
+                  "name": "fill_amt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 321,
+                  "src": "341:13:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 318,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "341:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "340:15:8"
+            },
+            "scope": 322,
+            "src": "234:122:8",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 323,
+        "src": "71:287:8"
+      }
+    ],
+    "src": "0:359:8"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IOasisExchangeProxy.sol",
+    "exportedSymbols": {
+      "IOasisExchangeProxy": [
+        322
+      ]
+    },
+    "id": 323,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 297,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:8"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "make corresponding signatures from",
+        "fullyImplemented": false,
+        "id": 322,
+        "linearizedBaseContracts": [
+          322
+        ],
+        "name": "IOasisExchangeProxy",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 310,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "sellAllAmount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 306,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 299,
+                  "name": "pay_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "127:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 298,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "127:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 301,
+                  "name": "pay_amt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "144:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 300,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "144:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 303,
+                  "name": "buy_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "158:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 302,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "158:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 305,
+                  "name": "min_fill_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "179:20:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 304,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "179:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "126:74:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 309,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 308,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 310,
+                  "src": "225:4:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 307,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "225:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "224:6:8"
+            },
+            "scope": 322,
+            "src": "104:127:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 321,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getBuyAmount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 317,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 312,
+                  "name": "buy_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 321,
+                  "src": "256:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 311,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "256:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 314,
+                  "name": "pay_gem",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 321,
+                  "src": "273:15:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 313,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 316,
+                  "name": "pay_amt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 321,
+                  "src": "290:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 315,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "290:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "255:48:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 320,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 319,
+                  "name": "fill_amt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 321,
+                  "src": "341:13:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 318,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "341:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "340:15:8"
+            },
+            "scope": 322,
+            "src": "234:122:8",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 323,
+        "src": "71:287:8"
+      }
+    ],
+    "src": "0:359:8"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-09-14T07:51:36.112Z"
+}

@@ -1,0 +1,853 @@
+{
+  "contractName": "IExchangeAdapter",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "tokenToSell",
+          "type": "address"
+        },
+        {
+          "name": "sellAmount",
+          "type": "uint256"
+        },
+        {
+          "name": "tokenToGet",
+          "type": "address"
+        },
+        {
+          "name": "minLimitAmountTokenToBuy",
+          "type": "uint256"
+        },
+        {
+          "name": "feeSponsor",
+          "type": "address"
+        }
+      ],
+      "name": "sell",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "tokenToSell",
+          "type": "address"
+        },
+        {
+          "name": "sellAmount",
+          "type": "uint256"
+        },
+        {
+          "name": "tokenToGet",
+          "type": "address"
+        }
+      ],
+      "name": "getAmountToGet",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.18;\n\nimport 'zeppelin-solidity/contracts/ReentrancyGuard.sol';\n\ncontract IExchangeAdapter is ReentrancyGuard{\n  function sell(address tokenToSell, uint sellAmount, address tokenToGet,\n      uint minLimitAmountTokenToBuy, address feeSponsor)\n      external\n      nonReentrant;\n  function getAmountToGet(address tokenToSell, uint sellAmount, address tokenToGet)\n    public\n    view\n    returns(uint);\n}\n",
+  "sourcePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IExchangeAdapter.sol",
+  "ast": {
+    "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IExchangeAdapter.sol",
+    "exportedSymbols": {
+      "IExchangeAdapter": [
+        276
+      ]
+    },
+    "id": 277,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 246,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:6"
+      },
+      {
+        "absolutePath": "zeppelin-solidity/contracts/ReentrancyGuard.sol",
+        "file": "zeppelin-solidity/contracts/ReentrancyGuard.sol",
+        "id": 247,
+        "nodeType": "ImportDirective",
+        "scope": 277,
+        "sourceUnit": 3529,
+        "src": "26:57:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 248,
+              "name": "ReentrancyGuard",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3528,
+              "src": "114:15:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReentrancyGuard_$3528",
+                "typeString": "contract ReentrancyGuard"
+              }
+            },
+            "id": 249,
+            "nodeType": "InheritanceSpecifier",
+            "src": "114:15:6"
+          }
+        ],
+        "contractDependencies": [
+          3528
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 276,
+        "linearizedBaseContracts": [
+          276,
+          3528
+        ],
+        "name": "IExchangeAdapter",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 264,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 262,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 261,
+                  "name": "nonReentrant",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3527,
+                  "src": "283:12:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "283:12:6"
+              }
+            ],
+            "name": "sell",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 260,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 251,
+                  "name": "tokenToSell",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "147:19:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 250,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "147:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 253,
+                  "name": "sellAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "168:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 252,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "168:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 255,
+                  "name": "tokenToGet",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "185:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 254,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "185:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 257,
+                  "name": "minLimitAmountTokenToBuy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "211:29:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 256,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "211:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 259,
+                  "name": "feeSponsor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "242:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 258,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "242:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "146:115:6"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 263,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "295:0:6"
+            },
+            "scope": 276,
+            "src": "133:163:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 275,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getAmountToGet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 271,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 266,
+                  "name": "tokenToSell",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "323:19:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 265,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "323:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 268,
+                  "name": "sellAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "344:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 267,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "344:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 270,
+                  "name": "tokenToGet",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "361:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 269,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "361:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "322:58:6"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 274,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 273,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "413:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 272,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "412:6:6"
+            },
+            "scope": 276,
+            "src": "299:120:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 277,
+        "src": "85:336:6"
+      }
+    ],
+    "src": "0:422:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IExchangeAdapter.sol",
+    "exportedSymbols": {
+      "IExchangeAdapter": [
+        276
+      ]
+    },
+    "id": 277,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 246,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".18"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:6"
+      },
+      {
+        "absolutePath": "zeppelin-solidity/contracts/ReentrancyGuard.sol",
+        "file": "zeppelin-solidity/contracts/ReentrancyGuard.sol",
+        "id": 247,
+        "nodeType": "ImportDirective",
+        "scope": 277,
+        "sourceUnit": 3529,
+        "src": "26:57:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 248,
+              "name": "ReentrancyGuard",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3528,
+              "src": "114:15:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReentrancyGuard_$3528",
+                "typeString": "contract ReentrancyGuard"
+              }
+            },
+            "id": 249,
+            "nodeType": "InheritanceSpecifier",
+            "src": "114:15:6"
+          }
+        ],
+        "contractDependencies": [
+          3528
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 276,
+        "linearizedBaseContracts": [
+          276,
+          3528
+        ],
+        "name": "IExchangeAdapter",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 264,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 262,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 261,
+                  "name": "nonReentrant",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 3527,
+                  "src": "283:12:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "283:12:6"
+              }
+            ],
+            "name": "sell",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 260,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 251,
+                  "name": "tokenToSell",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "147:19:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 250,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "147:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 253,
+                  "name": "sellAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "168:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 252,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "168:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 255,
+                  "name": "tokenToGet",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "185:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 254,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "185:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 257,
+                  "name": "minLimitAmountTokenToBuy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "211:29:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 256,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "211:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 259,
+                  "name": "feeSponsor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 264,
+                  "src": "242:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 258,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "242:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "146:115:6"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 263,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "295:0:6"
+            },
+            "scope": 276,
+            "src": "133:163:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 275,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getAmountToGet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 271,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 266,
+                  "name": "tokenToSell",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "323:19:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 265,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "323:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 268,
+                  "name": "sellAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "344:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 267,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "344:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 270,
+                  "name": "tokenToGet",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "361:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 269,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "361:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "322:58:6"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 274,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 273,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 275,
+                  "src": "413:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 272,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "412:6:6"
+            },
+            "scope": 276,
+            "src": "299:120:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 277,
+        "src": "85:336:6"
+      }
+    ],
+    "src": "0:422:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-09-14T07:51:36.112Z"
+}

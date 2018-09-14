@@ -5,31 +5,22 @@ import "./MockOptionPair.sol";
 
 contract MockOptionFactory is OptionFactory {
 
-  function MockOptionFactory(address _feeCalculator)
+  function MockOptionFactory(address _feeCalculator, address _erc721token, address _weth)
     public
     onlyOwner
-   OptionFactory (_feeCalculator) {}
-     /*
-     Need to copy logic from parent class as refactoring brings problem with the gas
-     */
-     function createOptionPairContract( address _underlying, address _basisToken,
-      uint _strike, uint _underlyingQty, uint _expireTime) public
-      returns(address) {
-        address opAddr =  address(new MockOptionPair(
-           _underlying,
-           _basisToken,
-           _strike,
-           _underlyingQty,
-           _expireTime,
-            feeCalculator));
-      OptionTokenCreated(
-           opAddr,
-           _underlying,
-           _basisToken,
-           _strike,
-           _underlyingQty,
-           _expireTime, msg.sender);
-        return opAddr;
-    }
+   OptionFactory (_feeCalculator, _erc721token, _weth) {}
 
+  function genOptionPairArr(address[3] _addresses, uint[3] _values)
+   internal 
+   returns (address) {
+     return new MockOptionPair (
+        _addresses[0],
+        _addresses[1],
+        _values[0],
+        _values[1],
+        _values[2],
+        _addresses[2],
+        address(new WithdrawableByOwner(IFeeCalculator(_addresses[2]).feeToken()))
+        );
+   }
 }

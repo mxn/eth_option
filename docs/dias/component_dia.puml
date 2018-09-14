@@ -1,0 +1,24 @@
+@startuml
+[OptionPair] 
+[OptionFactory]
+[RequestVerificator]
+
+actor  "Option Serie Requestor" as requestor
+actor  "Option Serie Token Owner (auction winner)" as tokenOwner
+
+[ERC721]
+
+requestor -down-> OptionFactory : requests Option Line Creation
+tokenOwner -> OptionFactory : with token claim ownership for Option Pair fees
+tokenOwner ..> ERC721 : owns after auction
+OptionFactory -> RequestVerificator : verify requests (tokens, expire time)
+OptionFactory ..> ERC721 : initially owns
+
+note left of OptionPair
+collect fee. 
+Fee withdrawal only by owner
+end note
+
+OptionFactory ..> OptionPair : owner
+OptionFactory -> OptionPair : create only by owner
+@enduml
