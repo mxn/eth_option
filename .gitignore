@@ -1,7 +1,7 @@
 node_modules/
 build/
 .DS_Store
-.env
+.env*
 temp_run.js
 contracts/test/Oas*
 .vscode/
