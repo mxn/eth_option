@@ -5,10 +5,7 @@ var Weth = artifacts.require("Weth")
 var OptionFactory = artifacts.require("OptionFactory")
 var SimpleFeeCalculator = artifacts.require("SimpleFeeCalculator")
 var SimpleFeeCalculatorTest = artifacts.require("SimpleFeeCalculatorTest")
-var MockExchangeAdapter = artifacts.require("MockExchangeAdapter")
 var Dai = artifacts.require("DAI")
-var MockOasisDirect = artifacts.require("MockOasisDirect")
-var ExchangeAdapterOasisImpl = artifacts.require("ExchangeAdapterOasisImpl")
 var OptionSerieToken = artifacts.require('OptionSerieToken')
 var RequestHandler = artifacts.require('OSDirectRequestHandler')
 var ERC721ReceiverToOwner = artifacts.require('ERC721ReceiverToOwner')
@@ -42,8 +39,6 @@ module.exports = function (deployer, network) {
     deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000)
     .then(sleep)
     .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address, OptionSerieToken.address, getWethAddress(network)))
-    .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
-      "0x1d3481d53342280fb1d33f475b222a4ac330af36"))
     .then(() => deployer.deploy(ERC721ReceiverToOwner))
     .then(() => deployer.deploy(OptionSerieValidator, SimpleFeeCalculator.address))
     .then(sleep)
@@ -59,13 +54,7 @@ module.exports = function (deployer, network) {
     case "webtest":
       deployer.deploy(SimpleFeeCalculator, getWethAddress(network), 3, 10000)
         .then(sleep)
-        .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address, OptionSerieToken.address, Weth.address))
-        .then(() => deployer.deploy(MockExchangeAdapter,
-          Dai.address, Weth.address, 220, 2)) //for unit testing purposes
-        .then(() => deployer.deploy(MockOasisDirect))
-        .then(exch => Dai.deployed().then(daiInst => daiInst.transfer(exch.address, 100000*(10**18))))
-        .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
-          MockOasisDirect.address))
+        .then(feeCalc => deployer.deploy(OptionFactory, feeCalc.address, OptionSerieToken.address, Weth.address)) 
         .then(() => deployer.deploy(ERC721ReceiverToOwner))
         .then(() => deployer.deploy(OptionSerieValidator, SimpleFeeCalculator.address))
         .then(sleep)
@@ -92,11 +81,6 @@ module.exports = function (deployer, network) {
         .then(() => deployer.deploy(MockWethOptionFactory,
           SimpleFeeCalculatorTest.address, OptionSerieToken.address, Weth.address,
           { from: '0x6330a553fc93768f612722bb8c2ec78ac90b3bbc' }))
-        .then(() => deployer.deploy(MockExchangeAdapter,
-          Dai.address, Weth.address, 220, 2)) //for unit testing purposes
-        .then(() => deployer.deploy(MockOasisDirect))
-        .then(() => deployer.deploy(ExchangeAdapterOasisImpl,
-          MockOasisDirect.address))
         .then(() => deployer.deploy(ERC721ReceiverToOwner))
         .then(() => deployer.deploy(OptionSerieValidator,  SimpleFeeCalculatorTest.address))
         .then(() => deployer.deploy(RequestHandler,
