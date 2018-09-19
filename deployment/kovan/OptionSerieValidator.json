@@ -135,14 +135,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/OptionSerieValidator.sol",
     "exportedSymbols": {
       "OptionSerieValidator": [
-        2647
+        2606
       ]
     },
-    "id": 2648,
+    "id": 2607,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2572,
+        "id": 2531,
         "literals": [
           "solidity",
           "^",
@@ -155,10 +155,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
         "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-        "id": 2573,
+        "id": 2532,
         "nodeType": "ImportDirective",
-        "scope": 2648,
-        "sourceUnit": 3748,
+        "scope": 2607,
+        "sourceUnit": 3707,
         "src": "26:59:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -169,41 +169,41 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2574,
+              "id": 2533,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3747,
+              "referencedDeclaration": 3706,
               "src": "120:7:15",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$3747",
+                "typeIdentifier": "t_contract$_Ownable_$3706",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 2575,
+            "id": 2534,
             "nodeType": "InheritanceSpecifier",
             "src": "120:7:15"
           }
         ],
         "contractDependencies": [
-          3747
+          3706
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2647,
+        "id": 2606,
         "linearizedBaseContracts": [
-          2647,
-          3747
+          2606,
+          3706
         ],
         "name": "OptionSerieValidator",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2577,
+            "id": 2536,
             "name": "feeCalculator",
             "nodeType": "VariableDeclaration",
-            "scope": 2647,
+            "scope": 2606,
             "src": "132:21:15",
             "stateVariable": true,
             "storageLocation": "default",
@@ -212,7 +212,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2576,
+              "id": 2535,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "132:7:15",
@@ -226,10 +226,10 @@
           },
           {
             "constant": false,
-            "id": 2579,
+            "id": 2538,
             "name": "maxTimeSpan",
             "nodeType": "VariableDeclaration",
-            "scope": 2647,
+            "scope": 2606,
             "src": "157:16:15",
             "stateVariable": true,
             "storageLocation": "default",
@@ -238,7 +238,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2578,
+              "id": 2537,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "157:4:15",
@@ -252,7 +252,7 @@
           },
           {
             "body": {
-              "id": 2592,
+              "id": 2551,
               "nodeType": "Block",
               "src": "235:73:15",
               "statements": [
@@ -262,11 +262,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2585,
+                        "id": 2544,
                         "name": "_feeCalculator",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2581,
+                        "referencedDeclaration": 2540,
                         "src": "258:14:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -281,18 +281,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 2584,
+                      "id": 2543,
                       "name": "setFeeCalculator",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2605,
+                      "referencedDeclaration": 2564,
                       "src": "241:16:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 2586,
+                    "id": 2545,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -306,7 +306,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2587,
+                  "id": 2546,
                   "nodeType": "ExpressionStatement",
                   "src": "241:32:15"
                 },
@@ -317,7 +317,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "313830",
-                        "id": 2589,
+                        "id": 2548,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -340,18 +340,18 @@
                           "typeString": "int_const 15552000"
                         }
                       ],
-                      "id": 2588,
+                      "id": 2547,
                       "name": "setMaxTimeSpan",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2617,
+                      "referencedDeclaration": 2576,
                       "src": "279:14:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
                         "typeString": "function (uint256)"
                       }
                     },
-                    "id": 2590,
+                    "id": 2549,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -365,14 +365,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2591,
+                  "id": 2550,
                   "nodeType": "ExpressionStatement",
                   "src": "279:24:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2593,
+            "id": 2552,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -380,15 +380,15 @@
             "name": "OptionSerieValidator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2582,
+              "id": 2541,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2581,
+                  "id": 2540,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2593,
+                  "scope": 2552,
                   "src": "211:22:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -397,7 +397,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2580,
+                    "id": 2539,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "211:7:15",
@@ -414,12 +414,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2583,
+              "id": 2542,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "235:0:15"
             },
-            "scope": 2647,
+            "scope": 2606,
             "src": "180:128:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -427,25 +427,25 @@
           },
           {
             "body": {
-              "id": 2604,
+              "id": 2563,
               "nodeType": "Block",
               "src": "379:41:15",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2602,
+                    "id": 2561,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2600,
+                      "id": 2559,
                       "name": "feeCalculator",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2577,
+                      "referencedDeclaration": 2536,
                       "src": "385:13:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -456,11 +456,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2601,
+                      "id": 2560,
                       "name": "_feeCalculator",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2595,
+                      "referencedDeclaration": 2554,
                       "src": "401:14:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -473,28 +473,28 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 2603,
+                  "id": 2562,
                   "nodeType": "ExpressionStatement",
                   "src": "385:30:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2605,
+            "id": 2564,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 2598,
+                "id": 2557,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2597,
+                  "id": 2556,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3721,
+                  "referencedDeclaration": 3680,
                   "src": "369:9:15",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -508,15 +508,15 @@
             "name": "setFeeCalculator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2596,
+              "id": 2555,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2595,
+                  "id": 2554,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2605,
+                  "scope": 2564,
                   "src": "338:22:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -525,7 +525,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2594,
+                    "id": 2553,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "338:7:15",
@@ -542,12 +542,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2599,
+              "id": 2558,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "379:0:15"
             },
-            "scope": 2647,
+            "scope": 2606,
             "src": "312:108:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -555,25 +555,25 @@
           },
           {
             "body": {
-              "id": 2616,
+              "id": 2575,
               "nodeType": "Block",
               "src": "485:37:15",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2614,
+                    "id": 2573,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2612,
+                      "id": 2571,
                       "name": "maxTimeSpan",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2579,
+                      "referencedDeclaration": 2538,
                       "src": "491:11:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -584,11 +584,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2613,
+                      "id": 2572,
                       "name": "_maxTimeSpan",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2607,
+                      "referencedDeclaration": 2566,
                       "src": "505:12:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -601,28 +601,28 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2615,
+                  "id": 2574,
                   "nodeType": "ExpressionStatement",
                   "src": "491:26:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2617,
+            "id": 2576,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 2610,
+                "id": 2569,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2609,
+                  "id": 2568,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3721,
+                  "referencedDeclaration": 3680,
                   "src": "475:9:15",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -636,15 +636,15 @@
             "name": "setMaxTimeSpan",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2608,
+              "id": 2567,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2607,
+                  "id": 2566,
                   "name": "_maxTimeSpan",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2617,
+                  "scope": 2576,
                   "src": "449:17:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -653,7 +653,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2606,
+                    "id": 2565,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "449:4:15",
@@ -670,12 +670,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2611,
+              "id": 2570,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "485:0:15"
             },
-            "scope": 2647,
+            "scope": 2606,
             "src": "424:98:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -683,7 +683,7 @@
           },
           {
             "body": {
-              "id": 2645,
+              "id": 2604,
               "nodeType": "Block",
               "src": "707:89:15",
               "statements": [
@@ -694,7 +694,7 @@
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     },
-                    "id": 2643,
+                    "id": 2602,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -705,18 +705,18 @@
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       },
-                      "id": 2636,
+                      "id": 2595,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
                         "argumentTypes": null,
-                        "id": 2634,
+                        "id": 2593,
                         "name": "_feeCalculator",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2629,
+                        "referencedDeclaration": 2588,
                         "src": "721:14:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -727,11 +727,11 @@
                       "operator": "==",
                       "rightExpression": {
                         "argumentTypes": null,
-                        "id": 2635,
+                        "id": 2594,
                         "name": "feeCalculator",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2577,
+                        "referencedDeclaration": 2536,
                         "src": "739:13:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -755,7 +755,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 2641,
+                          "id": 2600,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -766,18 +766,18 @@
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             },
-                            "id": 2639,
+                            "id": 2598,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
                               "argumentTypes": null,
-                              "id": 2637,
+                              "id": 2596,
                               "name": "now",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 4943,
+                              "referencedDeclaration": 4902,
                               "src": "758:3:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -788,11 +788,11 @@
                             "operator": "+",
                             "rightExpression": {
                               "argumentTypes": null,
-                              "id": 2638,
+                              "id": 2597,
                               "name": "maxTimeSpan",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2579,
+                              "referencedDeclaration": 2538,
                               "src": "764:11:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -809,11 +809,11 @@
                           "operator": ">",
                           "rightExpression": {
                             "argumentTypes": null,
-                            "id": 2640,
+                            "id": 2599,
                             "name": "_expireTime",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2627,
+                            "referencedDeclaration": 2586,
                             "src": "778:11:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -827,7 +827,7 @@
                           }
                         }
                       ],
-                      "id": 2642,
+                      "id": 2601,
                       "isConstant": false,
                       "isInlineArray": false,
                       "isLValue": false,
@@ -846,15 +846,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2633,
-                  "id": 2644,
+                  "functionReturnParameters": 2592,
+                  "id": 2603,
                   "nodeType": "Return",
                   "src": "714:76:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2646,
+            "id": 2605,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -862,15 +862,15 @@
             "name": "isValidRequest",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2630,
+              "id": 2589,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2619,
+                  "id": 2578,
                   "name": "_underlying",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "550:19:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -879,7 +879,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2618,
+                    "id": 2577,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "550:7:15",
@@ -893,10 +893,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2621,
+                  "id": 2580,
                   "name": "_basisToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "571:19:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -905,7 +905,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2620,
+                    "id": 2579,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "571:7:15",
@@ -919,10 +919,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2623,
+                  "id": 2582,
                   "name": "_strike",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "595:12:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -931,7 +931,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2622,
+                    "id": 2581,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "595:4:15",
@@ -945,10 +945,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2625,
+                  "id": 2584,
                   "name": "_underlyingQty",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "609:19:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -957,7 +957,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2624,
+                    "id": 2583,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "609:4:15",
@@ -971,10 +971,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2627,
+                  "id": 2586,
                   "name": "_expireTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "630:16:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -983,7 +983,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2626,
+                    "id": 2585,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "630:4:15",
@@ -997,10 +997,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2629,
+                  "id": 2588,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "648:22:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1009,7 +1009,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2628,
+                    "id": 2587,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "648:7:15",
@@ -1026,15 +1026,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2633,
+              "id": 2592,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2632,
+                  "id": 2591,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "701:4:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1043,7 +1043,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2631,
+                    "id": 2590,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "701:4:15",
@@ -1058,14 +1058,14 @@
               ],
               "src": "700:6:15"
             },
-            "scope": 2647,
+            "scope": 2606,
             "src": "526:270:15",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2648,
+        "scope": 2607,
         "src": "87:715:15"
       }
     ],
@@ -1075,14 +1075,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/OptionSerieValidator.sol",
     "exportedSymbols": {
       "OptionSerieValidator": [
-        2647
+        2606
       ]
     },
-    "id": 2648,
+    "id": 2607,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2572,
+        "id": 2531,
         "literals": [
           "solidity",
           "^",
@@ -1095,10 +1095,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
         "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-        "id": 2573,
+        "id": 2532,
         "nodeType": "ImportDirective",
-        "scope": 2648,
-        "sourceUnit": 3748,
+        "scope": 2607,
+        "sourceUnit": 3707,
         "src": "26:59:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1109,41 +1109,41 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2574,
+              "id": 2533,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3747,
+              "referencedDeclaration": 3706,
               "src": "120:7:15",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$3747",
+                "typeIdentifier": "t_contract$_Ownable_$3706",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 2575,
+            "id": 2534,
             "nodeType": "InheritanceSpecifier",
             "src": "120:7:15"
           }
         ],
         "contractDependencies": [
-          3747
+          3706
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2647,
+        "id": 2606,
         "linearizedBaseContracts": [
-          2647,
-          3747
+          2606,
+          3706
         ],
         "name": "OptionSerieValidator",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2577,
+            "id": 2536,
             "name": "feeCalculator",
             "nodeType": "VariableDeclaration",
-            "scope": 2647,
+            "scope": 2606,
             "src": "132:21:15",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1152,7 +1152,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2576,
+              "id": 2535,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "132:7:15",
@@ -1166,10 +1166,10 @@
           },
           {
             "constant": false,
-            "id": 2579,
+            "id": 2538,
             "name": "maxTimeSpan",
             "nodeType": "VariableDeclaration",
-            "scope": 2647,
+            "scope": 2606,
             "src": "157:16:15",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1178,7 +1178,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2578,
+              "id": 2537,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "157:4:15",
@@ -1192,7 +1192,7 @@
           },
           {
             "body": {
-              "id": 2592,
+              "id": 2551,
               "nodeType": "Block",
               "src": "235:73:15",
               "statements": [
@@ -1202,11 +1202,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2585,
+                        "id": 2544,
                         "name": "_feeCalculator",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2581,
+                        "referencedDeclaration": 2540,
                         "src": "258:14:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1221,18 +1221,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 2584,
+                      "id": 2543,
                       "name": "setFeeCalculator",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2605,
+                      "referencedDeclaration": 2564,
                       "src": "241:16:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 2586,
+                    "id": 2545,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1246,7 +1246,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2587,
+                  "id": 2546,
                   "nodeType": "ExpressionStatement",
                   "src": "241:32:15"
                 },
@@ -1257,7 +1257,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "313830",
-                        "id": 2589,
+                        "id": 2548,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1280,18 +1280,18 @@
                           "typeString": "int_const 15552000"
                         }
                       ],
-                      "id": 2588,
+                      "id": 2547,
                       "name": "setMaxTimeSpan",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2617,
+                      "referencedDeclaration": 2576,
                       "src": "279:14:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
                         "typeString": "function (uint256)"
                       }
                     },
-                    "id": 2590,
+                    "id": 2549,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1305,14 +1305,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2591,
+                  "id": 2550,
                   "nodeType": "ExpressionStatement",
                   "src": "279:24:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2593,
+            "id": 2552,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1320,15 +1320,15 @@
             "name": "OptionSerieValidator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2582,
+              "id": 2541,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2581,
+                  "id": 2540,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2593,
+                  "scope": 2552,
                   "src": "211:22:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1337,7 +1337,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2580,
+                    "id": 2539,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "211:7:15",
@@ -1354,12 +1354,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2583,
+              "id": 2542,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "235:0:15"
             },
-            "scope": 2647,
+            "scope": 2606,
             "src": "180:128:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1367,25 +1367,25 @@
           },
           {
             "body": {
-              "id": 2604,
+              "id": 2563,
               "nodeType": "Block",
               "src": "379:41:15",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2602,
+                    "id": 2561,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2600,
+                      "id": 2559,
                       "name": "feeCalculator",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2577,
+                      "referencedDeclaration": 2536,
                       "src": "385:13:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1396,11 +1396,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2601,
+                      "id": 2560,
                       "name": "_feeCalculator",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2595,
+                      "referencedDeclaration": 2554,
                       "src": "401:14:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1413,28 +1413,28 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 2603,
+                  "id": 2562,
                   "nodeType": "ExpressionStatement",
                   "src": "385:30:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2605,
+            "id": 2564,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 2598,
+                "id": 2557,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2597,
+                  "id": 2556,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3721,
+                  "referencedDeclaration": 3680,
                   "src": "369:9:15",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1448,15 +1448,15 @@
             "name": "setFeeCalculator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2596,
+              "id": 2555,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2595,
+                  "id": 2554,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2605,
+                  "scope": 2564,
                   "src": "338:22:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1465,7 +1465,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2594,
+                    "id": 2553,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "338:7:15",
@@ -1482,12 +1482,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2599,
+              "id": 2558,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "379:0:15"
             },
-            "scope": 2647,
+            "scope": 2606,
             "src": "312:108:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1495,25 +1495,25 @@
           },
           {
             "body": {
-              "id": 2616,
+              "id": 2575,
               "nodeType": "Block",
               "src": "485:37:15",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2614,
+                    "id": 2573,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2612,
+                      "id": 2571,
                       "name": "maxTimeSpan",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2579,
+                      "referencedDeclaration": 2538,
                       "src": "491:11:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1524,11 +1524,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2613,
+                      "id": 2572,
                       "name": "_maxTimeSpan",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2607,
+                      "referencedDeclaration": 2566,
                       "src": "505:12:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1541,28 +1541,28 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2615,
+                  "id": 2574,
                   "nodeType": "ExpressionStatement",
                   "src": "491:26:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2617,
+            "id": 2576,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 2610,
+                "id": 2569,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 2609,
+                  "id": 2568,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3721,
+                  "referencedDeclaration": 3680,
                   "src": "475:9:15",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1576,15 +1576,15 @@
             "name": "setMaxTimeSpan",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2608,
+              "id": 2567,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2607,
+                  "id": 2566,
                   "name": "_maxTimeSpan",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2617,
+                  "scope": 2576,
                   "src": "449:17:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1593,7 +1593,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2606,
+                    "id": 2565,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "449:4:15",
@@ -1610,12 +1610,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2611,
+              "id": 2570,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "485:0:15"
             },
-            "scope": 2647,
+            "scope": 2606,
             "src": "424:98:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1623,7 +1623,7 @@
           },
           {
             "body": {
-              "id": 2645,
+              "id": 2604,
               "nodeType": "Block",
               "src": "707:89:15",
               "statements": [
@@ -1634,7 +1634,7 @@
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     },
-                    "id": 2643,
+                    "id": 2602,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1645,18 +1645,18 @@
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       },
-                      "id": 2636,
+                      "id": 2595,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
                         "argumentTypes": null,
-                        "id": 2634,
+                        "id": 2593,
                         "name": "_feeCalculator",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2629,
+                        "referencedDeclaration": 2588,
                         "src": "721:14:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1667,11 +1667,11 @@
                       "operator": "==",
                       "rightExpression": {
                         "argumentTypes": null,
-                        "id": 2635,
+                        "id": 2594,
                         "name": "feeCalculator",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2577,
+                        "referencedDeclaration": 2536,
                         "src": "739:13:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1695,7 +1695,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 2641,
+                          "id": 2600,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1706,18 +1706,18 @@
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             },
-                            "id": 2639,
+                            "id": 2598,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
                               "argumentTypes": null,
-                              "id": 2637,
+                              "id": 2596,
                               "name": "now",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 4943,
+                              "referencedDeclaration": 4902,
                               "src": "758:3:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -1728,11 +1728,11 @@
                             "operator": "+",
                             "rightExpression": {
                               "argumentTypes": null,
-                              "id": 2638,
+                              "id": 2597,
                               "name": "maxTimeSpan",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2579,
+                              "referencedDeclaration": 2538,
                               "src": "764:11:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -1749,11 +1749,11 @@
                           "operator": ">",
                           "rightExpression": {
                             "argumentTypes": null,
-                            "id": 2640,
+                            "id": 2599,
                             "name": "_expireTime",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2627,
+                            "referencedDeclaration": 2586,
                             "src": "778:11:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1767,7 +1767,7 @@
                           }
                         }
                       ],
-                      "id": 2642,
+                      "id": 2601,
                       "isConstant": false,
                       "isInlineArray": false,
                       "isLValue": false,
@@ -1786,15 +1786,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2633,
-                  "id": 2644,
+                  "functionReturnParameters": 2592,
+                  "id": 2603,
                   "nodeType": "Return",
                   "src": "714:76:15"
                 }
               ]
             },
             "documentation": null,
-            "id": 2646,
+            "id": 2605,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1802,15 +1802,15 @@
             "name": "isValidRequest",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2630,
+              "id": 2589,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2619,
+                  "id": 2578,
                   "name": "_underlying",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "550:19:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1819,7 +1819,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2618,
+                    "id": 2577,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "550:7:15",
@@ -1833,10 +1833,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2621,
+                  "id": 2580,
                   "name": "_basisToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "571:19:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1845,7 +1845,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2620,
+                    "id": 2579,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "571:7:15",
@@ -1859,10 +1859,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2623,
+                  "id": 2582,
                   "name": "_strike",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "595:12:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1871,7 +1871,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2622,
+                    "id": 2581,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "595:4:15",
@@ -1885,10 +1885,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2625,
+                  "id": 2584,
                   "name": "_underlyingQty",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "609:19:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1897,7 +1897,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2624,
+                    "id": 2583,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "609:4:15",
@@ -1911,10 +1911,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2627,
+                  "id": 2586,
                   "name": "_expireTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "630:16:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1923,7 +1923,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2626,
+                    "id": 2585,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "630:4:15",
@@ -1937,10 +1937,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2629,
+                  "id": 2588,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "648:22:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1949,7 +1949,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2628,
+                    "id": 2587,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "648:7:15",
@@ -1966,15 +1966,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2633,
+              "id": 2592,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2632,
+                  "id": 2591,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2646,
+                  "scope": 2605,
                   "src": "701:4:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1983,7 +1983,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2631,
+                    "id": 2590,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "701:4:15",
@@ -1998,14 +1998,14 @@
               ],
               "src": "700:6:15"
             },
-            "scope": 2647,
+            "scope": 2606,
             "src": "526:270:15",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2648,
+        "scope": 2607,
         "src": "87:715:15"
       }
     ],
@@ -2017,5 +2017,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-19T09:59:31.562Z"
+  "updatedAt": "2018-09-14T07:51:36.126Z"
 }

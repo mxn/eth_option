@@ -328,14 +328,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockWethOptionFactory.sol",
     "exportedSymbols": {
       "MockWethOptionFactory": [
-        3438
+        3397
       ]
     },
-    "id": 3439,
+    "id": 3398,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3419,
+        "id": 3378,
         "literals": [
           "solidity",
           "^",
@@ -348,10 +348,10 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockOptionFactory.sol",
         "file": "./MockOptionFactory.sol",
-        "id": 3420,
+        "id": 3379,
         "nodeType": "ImportDirective",
-        "scope": 3439,
-        "sourceUnit": 3325,
+        "scope": 3398,
+        "sourceUnit": 3284,
         "src": "26:33:29",
         "symbolAliases": [],
         "unitAlias": ""
@@ -362,50 +362,50 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3421,
+              "id": 3380,
               "name": "MockOptionFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3324,
+              "referencedDeclaration": 3283,
               "src": "95:17:29",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MockOptionFactory_$3324",
+                "typeIdentifier": "t_contract$_MockOptionFactory_$3283",
                 "typeString": "contract MockOptionFactory"
               }
             },
-            "id": 3422,
+            "id": 3381,
             "nodeType": "InheritanceSpecifier",
             "src": "95:17:29"
           }
         ],
         "contractDependencies": [
-          1409,
-          3324,
-          3569,
-          3747
+          1368,
+          3283,
+          3528,
+          3706
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3438,
+        "id": 3397,
         "linearizedBaseContracts": [
-          3438,
-          3324,
-          1409,
-          3569,
-          3747
+          3397,
+          3283,
+          1368,
+          3528,
+          3706
         ],
         "name": "MockWethOptionFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 3436,
+              "id": 3395,
               "nodeType": "Block",
               "src": "258:7:29",
               "statements": []
             },
             "documentation": null,
-            "id": 3437,
+            "id": 3396,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -414,11 +414,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 3431,
+                    "id": 3390,
                     "name": "_feeCalculator",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3424,
+                    "referencedDeclaration": 3383,
                     "src": "226:14:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -427,11 +427,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3432,
+                    "id": 3391,
                     "name": "_erc721",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3426,
+                    "referencedDeclaration": 3385,
                     "src": "242:7:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -440,11 +440,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3433,
+                    "id": 3392,
                     "name": "_weth",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3428,
+                    "referencedDeclaration": 3387,
                     "src": "251:5:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -452,17 +452,17 @@
                     }
                   }
                 ],
-                "id": 3434,
+                "id": 3393,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 3430,
+                  "id": 3389,
                   "name": "MockOptionFactory",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3324,
+                  "referencedDeclaration": 3283,
                   "src": "208:17:29",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_MockOptionFactory_$3324_$",
+                    "typeIdentifier": "t_type$_t_contract$_MockOptionFactory_$3283_$",
                     "typeString": "type(contract MockOptionFactory)"
                   }
                 },
@@ -473,15 +473,15 @@
             "name": "MockWethOptionFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3429,
+              "id": 3388,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3424,
+                  "id": 3383,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3437,
+                  "scope": 3396,
                   "src": "148:22:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -490,7 +490,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3423,
+                    "id": 3382,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "148:7:29",
@@ -504,10 +504,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3426,
+                  "id": 3385,
                   "name": "_erc721",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3437,
+                  "scope": 3396,
                   "src": "172:15:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -516,7 +516,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3425,
+                    "id": 3384,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "172:7:29",
@@ -530,10 +530,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3428,
+                  "id": 3387,
                   "name": "_weth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3437,
+                  "scope": 3396,
                   "src": "189:13:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -542,7 +542,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3427,
+                    "id": 3386,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "189:7:29",
@@ -559,19 +559,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3435,
+              "id": 3394,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "258:0:29"
             },
-            "scope": 3438,
+            "scope": 3397,
             "src": "117:148:29",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3439,
+        "scope": 3398,
         "src": "61:206:29"
       }
     ],
@@ -581,14 +581,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockWethOptionFactory.sol",
     "exportedSymbols": {
       "MockWethOptionFactory": [
-        3438
+        3397
       ]
     },
-    "id": 3439,
+    "id": 3398,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3419,
+        "id": 3378,
         "literals": [
           "solidity",
           "^",
@@ -601,10 +601,10 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockOptionFactory.sol",
         "file": "./MockOptionFactory.sol",
-        "id": 3420,
+        "id": 3379,
         "nodeType": "ImportDirective",
-        "scope": 3439,
-        "sourceUnit": 3325,
+        "scope": 3398,
+        "sourceUnit": 3284,
         "src": "26:33:29",
         "symbolAliases": [],
         "unitAlias": ""
@@ -615,50 +615,50 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3421,
+              "id": 3380,
               "name": "MockOptionFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3324,
+              "referencedDeclaration": 3283,
               "src": "95:17:29",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MockOptionFactory_$3324",
+                "typeIdentifier": "t_contract$_MockOptionFactory_$3283",
                 "typeString": "contract MockOptionFactory"
               }
             },
-            "id": 3422,
+            "id": 3381,
             "nodeType": "InheritanceSpecifier",
             "src": "95:17:29"
           }
         ],
         "contractDependencies": [
-          1409,
-          3324,
-          3569,
-          3747
+          1368,
+          3283,
+          3528,
+          3706
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3438,
+        "id": 3397,
         "linearizedBaseContracts": [
-          3438,
-          3324,
-          1409,
-          3569,
-          3747
+          3397,
+          3283,
+          1368,
+          3528,
+          3706
         ],
         "name": "MockWethOptionFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 3436,
+              "id": 3395,
               "nodeType": "Block",
               "src": "258:7:29",
               "statements": []
             },
             "documentation": null,
-            "id": 3437,
+            "id": 3396,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -667,11 +667,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 3431,
+                    "id": 3390,
                     "name": "_feeCalculator",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3424,
+                    "referencedDeclaration": 3383,
                     "src": "226:14:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -680,11 +680,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3432,
+                    "id": 3391,
                     "name": "_erc721",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3426,
+                    "referencedDeclaration": 3385,
                     "src": "242:7:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -693,11 +693,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3433,
+                    "id": 3392,
                     "name": "_weth",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3428,
+                    "referencedDeclaration": 3387,
                     "src": "251:5:29",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -705,17 +705,17 @@
                     }
                   }
                 ],
-                "id": 3434,
+                "id": 3393,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 3430,
+                  "id": 3389,
                   "name": "MockOptionFactory",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3324,
+                  "referencedDeclaration": 3283,
                   "src": "208:17:29",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_MockOptionFactory_$3324_$",
+                    "typeIdentifier": "t_type$_t_contract$_MockOptionFactory_$3283_$",
                     "typeString": "type(contract MockOptionFactory)"
                   }
                 },
@@ -726,15 +726,15 @@
             "name": "MockWethOptionFactory",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3429,
+              "id": 3388,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3424,
+                  "id": 3383,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3437,
+                  "scope": 3396,
                   "src": "148:22:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -743,7 +743,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3423,
+                    "id": 3382,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "148:7:29",
@@ -757,10 +757,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3426,
+                  "id": 3385,
                   "name": "_erc721",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3437,
+                  "scope": 3396,
                   "src": "172:15:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -769,7 +769,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3425,
+                    "id": 3384,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "172:7:29",
@@ -783,10 +783,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3428,
+                  "id": 3387,
                   "name": "_weth",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3437,
+                  "scope": 3396,
                   "src": "189:13:29",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -795,7 +795,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3427,
+                    "id": 3386,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "189:7:29",
@@ -812,19 +812,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3435,
+              "id": 3394,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "258:0:29"
             },
-            "scope": 3438,
+            "scope": 3397,
             "src": "117:148:29",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3439,
+        "scope": 3398,
         "src": "61:206:29"
       }
     ],
@@ -836,5 +836,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-19T09:59:31.567Z"
+  "updatedAt": "2018-09-14T07:51:36.133Z"
 }

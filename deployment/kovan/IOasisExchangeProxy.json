@@ -70,14 +70,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IOasisExchangeProxy.sol",
     "exportedSymbols": {
       "IOasisExchangeProxy": [
-        363
+        322
       ]
     },
-    "id": 364,
+    "id": 323,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 338,
+        "id": 297,
         "literals": [
           "solidity",
           "^",
@@ -93,9 +93,9 @@
         "contractKind": "contract",
         "documentation": "make corresponding signatures from",
         "fullyImplemented": false,
-        "id": 363,
+        "id": 322,
         "linearizedBaseContracts": [
-          363
+          322
         ],
         "name": "IOasisExchangeProxy",
         "nodeType": "ContractDefinition",
@@ -103,7 +103,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 351,
+            "id": 310,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -111,15 +111,15 @@
             "name": "sellAllAmount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 347,
+              "id": 306,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 340,
+                  "id": 299,
                   "name": "pay_gem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "127:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -128,7 +128,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 339,
+                    "id": 298,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "127:7:8",
@@ -142,10 +142,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 342,
+                  "id": 301,
                   "name": "pay_amt",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "144:12:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -154,7 +154,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 341,
+                    "id": 300,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "144:4:8",
@@ -168,10 +168,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 344,
+                  "id": 303,
                   "name": "buy_gem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "158:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -180,7 +180,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 343,
+                    "id": 302,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "158:7:8",
@@ -194,10 +194,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 346,
+                  "id": 305,
                   "name": "min_fill_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "179:20:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -206,7 +206,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 345,
+                    "id": 304,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "179:4:8",
@@ -223,15 +223,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 350,
+              "id": 309,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 349,
+                  "id": 308,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "225:4:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -240,7 +240,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 348,
+                    "id": 307,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "225:4:8",
@@ -255,7 +255,7 @@
               ],
               "src": "224:6:8"
             },
-            "scope": 363,
+            "scope": 322,
             "src": "104:127:8",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -264,7 +264,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 362,
+            "id": 321,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -272,15 +272,15 @@
             "name": "getBuyAmount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 358,
+              "id": 317,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 353,
+                  "id": 312,
                   "name": "buy_gem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 362,
+                  "scope": 321,
                   "src": "256:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -289,7 +289,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 352,
+                    "id": 311,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "256:7:8",
@@ -303,10 +303,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 355,
+                  "id": 314,
                   "name": "pay_gem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 362,
+                  "scope": 321,
                   "src": "273:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -315,7 +315,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 354,
+                    "id": 313,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "273:7:8",
@@ -329,10 +329,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 357,
+                  "id": 316,
                   "name": "pay_amt",
                   "nodeType": "VariableDeclaration",
-                  "scope": 362,
+                  "scope": 321,
                   "src": "290:12:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -341,7 +341,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 356,
+                    "id": 315,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "290:4:8",
@@ -358,15 +358,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 361,
+              "id": 320,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 360,
+                  "id": 319,
                   "name": "fill_amt",
                   "nodeType": "VariableDeclaration",
-                  "scope": 362,
+                  "scope": 321,
                   "src": "341:13:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -375,7 +375,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 359,
+                    "id": 318,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "341:4:8",
@@ -390,14 +390,14 @@
               ],
               "src": "340:15:8"
             },
-            "scope": 363,
+            "scope": 322,
             "src": "234:122:8",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 364,
+        "scope": 323,
         "src": "71:287:8"
       }
     ],
@@ -407,14 +407,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IOasisExchangeProxy.sol",
     "exportedSymbols": {
       "IOasisExchangeProxy": [
-        363
+        322
       ]
     },
-    "id": 364,
+    "id": 323,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 338,
+        "id": 297,
         "literals": [
           "solidity",
           "^",
@@ -430,9 +430,9 @@
         "contractKind": "contract",
         "documentation": "make corresponding signatures from",
         "fullyImplemented": false,
-        "id": 363,
+        "id": 322,
         "linearizedBaseContracts": [
-          363
+          322
         ],
         "name": "IOasisExchangeProxy",
         "nodeType": "ContractDefinition",
@@ -440,7 +440,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 351,
+            "id": 310,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -448,15 +448,15 @@
             "name": "sellAllAmount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 347,
+              "id": 306,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 340,
+                  "id": 299,
                   "name": "pay_gem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "127:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -465,7 +465,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 339,
+                    "id": 298,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "127:7:8",
@@ -479,10 +479,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 342,
+                  "id": 301,
                   "name": "pay_amt",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "144:12:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -491,7 +491,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 341,
+                    "id": 300,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "144:4:8",
@@ -505,10 +505,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 344,
+                  "id": 303,
                   "name": "buy_gem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "158:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -517,7 +517,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 343,
+                    "id": 302,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "158:7:8",
@@ -531,10 +531,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 346,
+                  "id": 305,
                   "name": "min_fill_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "179:20:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -543,7 +543,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 345,
+                    "id": 304,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "179:4:8",
@@ -560,15 +560,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 350,
+              "id": 309,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 349,
+                  "id": 308,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 351,
+                  "scope": 310,
                   "src": "225:4:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -577,7 +577,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 348,
+                    "id": 307,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "225:4:8",
@@ -592,7 +592,7 @@
               ],
               "src": "224:6:8"
             },
-            "scope": 363,
+            "scope": 322,
             "src": "104:127:8",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -601,7 +601,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 362,
+            "id": 321,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -609,15 +609,15 @@
             "name": "getBuyAmount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 358,
+              "id": 317,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 353,
+                  "id": 312,
                   "name": "buy_gem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 362,
+                  "scope": 321,
                   "src": "256:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -626,7 +626,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 352,
+                    "id": 311,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "256:7:8",
@@ -640,10 +640,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 355,
+                  "id": 314,
                   "name": "pay_gem",
                   "nodeType": "VariableDeclaration",
-                  "scope": 362,
+                  "scope": 321,
                   "src": "273:15:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -652,7 +652,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 354,
+                    "id": 313,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "273:7:8",
@@ -666,10 +666,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 357,
+                  "id": 316,
                   "name": "pay_amt",
                   "nodeType": "VariableDeclaration",
-                  "scope": 362,
+                  "scope": 321,
                   "src": "290:12:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -678,7 +678,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 356,
+                    "id": 315,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "290:4:8",
@@ -695,15 +695,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 361,
+              "id": 320,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 360,
+                  "id": 319,
                   "name": "fill_amt",
                   "nodeType": "VariableDeclaration",
-                  "scope": 362,
+                  "scope": 321,
                   "src": "341:13:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -712,7 +712,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 359,
+                    "id": 318,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "341:4:8",
@@ -727,14 +727,14 @@
               ],
               "src": "340:15:8"
             },
-            "scope": 363,
+            "scope": 322,
             "src": "234:122:8",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 364,
+        "scope": 323,
         "src": "71:287:8"
       }
     ],
@@ -746,5 +746,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-19T09:59:31.551Z"
+  "updatedAt": "2018-09-14T07:51:36.112Z"
 }

@@ -167,14 +167,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockAuction.sol",
     "exportedSymbols": {
       "MockAuction": [
-        3019
+        2978
       ]
     },
-    "id": 3020,
+    "id": 2979,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2914,
+        "id": 2873,
         "literals": [
           "solidity",
           "^",
@@ -187,10 +187,10 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IAuction.sol",
         "file": "../main/IAuction.sol",
-        "id": 2915,
+        "id": 2874,
         "nodeType": "ImportDirective",
-        "scope": 3020,
-        "sourceUnit": 280,
+        "scope": 2979,
+        "sourceUnit": 239,
         "src": "26:30:22",
         "symbolAliases": [],
         "unitAlias": ""
@@ -201,41 +201,41 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2916,
+              "id": 2875,
               "name": "IAuction",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 279,
+              "referencedDeclaration": 238,
               "src": "82:8:22",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IAuction_$279",
+                "typeIdentifier": "t_contract$_IAuction_$238",
                 "typeString": "contract IAuction"
               }
             },
-            "id": 2917,
+            "id": 2876,
             "nodeType": "InheritanceSpecifier",
             "src": "82:8:22"
           }
         ],
         "contractDependencies": [
-          279
+          238
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 3019,
+        "id": 2978,
         "linearizedBaseContracts": [
-          3019,
-          279
+          2978,
+          238
         ],
         "name": "MockAuction",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2919,
+            "id": 2878,
             "name": "auctionTime",
             "nodeType": "VariableDeclaration",
-            "scope": 3019,
+            "scope": 2978,
             "src": "98:25:22",
             "stateVariable": true,
             "storageLocation": "default",
@@ -244,7 +244,7 @@
               "typeString": "uint32"
             },
             "typeName": {
-              "id": 2918,
+              "id": 2877,
               "name": "uint32",
               "nodeType": "ElementaryTypeName",
               "src": "98:6:22",
@@ -258,10 +258,10 @@
           },
           {
             "constant": false,
-            "id": 2921,
+            "id": 2880,
             "name": "revealTime",
             "nodeType": "VariableDeclaration",
-            "scope": 3019,
+            "scope": 2978,
             "src": "127:24:22",
             "stateVariable": true,
             "storageLocation": "default",
@@ -270,7 +270,7 @@
               "typeString": "uint32"
             },
             "typeName": {
-              "id": 2920,
+              "id": 2879,
               "name": "uint32",
               "nodeType": "ElementaryTypeName",
               "src": "127:6:22",
@@ -284,10 +284,10 @@
           },
           {
             "constant": false,
-            "id": 2925,
+            "id": 2884,
             "name": "token2startTime",
             "nodeType": "VariableDeclaration",
-            "scope": 3019,
+            "scope": 2978,
             "src": "155:38:22",
             "stateVariable": true,
             "storageLocation": "default",
@@ -296,9 +296,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2924,
+              "id": 2883,
               "keyType": {
-                "id": 2922,
+                "id": 2881,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "164:4:22",
@@ -314,7 +314,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2923,
+                "id": 2882,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "172:4:22",
@@ -329,25 +329,25 @@
           },
           {
             "body": {
-              "id": 2940,
+              "id": 2899,
               "nodeType": "Block",
               "src": "260:67:22",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2934,
+                    "id": 2893,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2932,
+                      "id": 2891,
                       "name": "auctionTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2919,
+                      "referencedDeclaration": 2878,
                       "src": "266:11:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -358,11 +358,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2933,
+                      "id": 2892,
                       "name": "_auctionTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2927,
+                      "referencedDeclaration": 2886,
                       "src": "280:12:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -375,25 +375,25 @@
                       "typeString": "uint32"
                     }
                   },
-                  "id": 2935,
+                  "id": 2894,
                   "nodeType": "ExpressionStatement",
                   "src": "266:26:22"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2938,
+                    "id": 2897,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2936,
+                      "id": 2895,
                       "name": "revealTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2921,
+                      "referencedDeclaration": 2880,
                       "src": "298:10:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -404,11 +404,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2937,
+                      "id": 2896,
                       "name": "_revealTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2929,
+                      "referencedDeclaration": 2888,
                       "src": "311:11:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -421,14 +421,14 @@
                       "typeString": "uint32"
                     }
                   },
-                  "id": 2939,
+                  "id": 2898,
                   "nodeType": "ExpressionStatement",
                   "src": "298:24:22"
                 }
               ]
             },
             "documentation": null,
-            "id": 2941,
+            "id": 2900,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -436,15 +436,15 @@
             "name": "MockAuction",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2930,
+              "id": 2889,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2927,
+                  "id": 2886,
                   "name": "_auctionTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2941,
+                  "scope": 2900,
                   "src": "219:19:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -453,7 +453,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 2926,
+                    "id": 2885,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "219:6:22",
@@ -467,10 +467,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2929,
+                  "id": 2888,
                   "name": "_revealTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2941,
+                  "scope": 2900,
                   "src": "240:18:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -479,7 +479,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 2928,
+                    "id": 2887,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "240:6:22",
@@ -496,12 +496,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2931,
+              "id": 2890,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "260:0:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "198:129:22",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -509,7 +509,7 @@
           },
           {
             "body": {
-              "id": 2960,
+              "id": 2919,
               "nodeType": "Block",
               "src": "374:81:22",
               "statements": [
@@ -523,7 +523,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2951,
+                        "id": 2910,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -532,25 +532,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 2947,
+                            "id": 2906,
                             "name": "token2startTime",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2925,
+                            "referencedDeclaration": 2884,
                             "src": "388:15:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                               "typeString": "mapping(uint256 => uint256)"
                             }
                           },
-                          "id": 2949,
+                          "id": 2908,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 2948,
+                            "id": 2907,
                             "name": "token",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2943,
+                            "referencedDeclaration": 2902,
                             "src": "404:5:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -573,7 +573,7 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "30",
-                          "id": 2950,
+                          "id": 2909,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -602,21 +602,21 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 2946,
+                      "id": 2905,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4944,
-                        4945
+                        4903,
+                        4904
                       ],
-                      "referencedDeclaration": 4944,
+                      "referencedDeclaration": 4903,
                       "src": "380:7:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 2952,
+                    "id": 2911,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -630,14 +630,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2953,
+                  "id": 2912,
                   "nodeType": "ExpressionStatement",
                   "src": "380:36:22"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2958,
+                    "id": 2917,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -646,25 +646,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 2954,
+                        "id": 2913,
                         "name": "token2startTime",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2925,
+                        "referencedDeclaration": 2884,
                         "src": "422:15:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                           "typeString": "mapping(uint256 => uint256)"
                         }
                       },
-                      "id": 2956,
+                      "id": 2915,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2955,
+                        "id": 2914,
                         "name": "token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2943,
+                        "referencedDeclaration": 2902,
                         "src": "438:5:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -686,11 +686,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2957,
+                      "id": 2916,
                       "name": "now",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 4943,
+                      "referencedDeclaration": 4902,
                       "src": "447:3:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -703,14 +703,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2959,
+                  "id": 2918,
                   "nodeType": "ExpressionStatement",
                   "src": "422:28:22"
                 }
               ]
             },
             "documentation": null,
-            "id": 2961,
+            "id": 2920,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -718,15 +718,15 @@
             "name": "creaateAuction",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2944,
+              "id": 2903,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2943,
+                  "id": 2902,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2961,
+                  "scope": 2920,
                   "src": "355:10:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -735,7 +735,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2942,
+                    "id": 2901,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "355:4:22",
@@ -752,20 +752,20 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2945,
+              "id": 2904,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "374:0:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "331:124:22",
             "stateMutability": "nonpayable",
-            "superFunction": 241,
+            "superFunction": 200,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 2974,
+              "id": 2933,
               "nodeType": "Block",
               "src": "519:45:22",
               "statements": [
@@ -776,7 +776,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 2972,
+                    "id": 2931,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -785,25 +785,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 2968,
+                        "id": 2927,
                         "name": "token2startTime",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2925,
+                        "referencedDeclaration": 2884,
                         "src": "532:15:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                           "typeString": "mapping(uint256 => uint256)"
                         }
                       },
-                      "id": 2970,
+                      "id": 2929,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2969,
+                        "id": 2928,
                         "name": "_token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2963,
+                        "referencedDeclaration": 2922,
                         "src": "548:6:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -826,7 +826,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "30",
-                      "id": 2971,
+                      "id": 2930,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -847,15 +847,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2967,
-                  "id": 2973,
+                  "functionReturnParameters": 2926,
+                  "id": 2932,
                   "nodeType": "Return",
                   "src": "525:34:22"
                 }
               ]
             },
             "documentation": null,
-            "id": 2975,
+            "id": 2934,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -863,15 +863,15 @@
             "name": "isActivated",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2964,
+              "id": 2923,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2963,
+                  "id": 2922,
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2975,
+                  "scope": 2934,
                   "src": "480:11:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -880,7 +880,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2962,
+                    "id": 2921,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "480:4:22",
@@ -897,15 +897,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2967,
+              "id": 2926,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2966,
+                  "id": 2925,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2975,
+                  "scope": 2934,
                   "src": "513:4:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -914,7 +914,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2965,
+                    "id": 2924,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "513:4:22",
@@ -929,29 +929,29 @@
               ],
               "src": "512:6:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "459:105:22",
             "stateMutability": "view",
-            "superFunction": 257,
+            "superFunction": 216,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 3002,
+              "id": 2961,
               "nodeType": "Block",
               "src": "631:144:22",
               "statements": [
                 {
                   "assignments": [
-                    2983
+                    2942
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2983,
+                      "id": 2942,
                       "name": "startTime",
                       "nodeType": "VariableDeclaration",
-                      "scope": 3003,
+                      "scope": 2962,
                       "src": "637:14:22",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -960,7 +960,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 2982,
+                        "id": 2941,
                         "name": "uint",
                         "nodeType": "ElementaryTypeName",
                         "src": "637:4:22",
@@ -973,30 +973,30 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2987,
+                  "id": 2946,
                   "initialValue": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
-                      "id": 2984,
+                      "id": 2943,
                       "name": "token2startTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2925,
+                      "referencedDeclaration": 2884,
                       "src": "654:15:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                         "typeString": "mapping(uint256 => uint256)"
                       }
                     },
-                    "id": 2986,
+                    "id": 2945,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2985,
+                      "id": 2944,
                       "name": "token",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2977,
+                      "referencedDeclaration": 2936,
                       "src": "670:5:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1024,7 +1024,7 @@
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     },
-                    "id": 3000,
+                    "id": 2959,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1035,7 +1035,7 @@
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
-                      "id": 2994,
+                      "id": 2953,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1046,18 +1046,18 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2990,
+                        "id": 2949,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 2988,
+                          "id": 2947,
                           "name": "startTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2983,
+                          "referencedDeclaration": 2942,
                           "src": "690:9:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1069,7 +1069,7 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "30",
-                          "id": 2989,
+                          "id": 2948,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -1098,18 +1098,18 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2993,
+                        "id": 2952,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 2991,
+                          "id": 2950,
                           "name": "now",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4943,
+                          "referencedDeclaration": 4902,
                           "src": "714:3:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1120,11 +1120,11 @@
                         "operator": ">=",
                         "rightExpression": {
                           "argumentTypes": null,
-                          "id": 2992,
+                          "id": 2951,
                           "name": "startTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2983,
+                          "referencedDeclaration": 2942,
                           "src": "721:9:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1151,18 +1151,18 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 2999,
+                      "id": 2958,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
                         "argumentTypes": null,
-                        "id": 2995,
+                        "id": 2954,
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 4943,
+                        "referencedDeclaration": 4902,
                         "src": "741:3:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1177,18 +1177,18 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2998,
+                        "id": 2957,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 2996,
+                          "id": 2955,
                           "name": "startTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2983,
+                          "referencedDeclaration": 2942,
                           "src": "747:9:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1199,11 +1199,11 @@
                         "operator": "+",
                         "rightExpression": {
                           "argumentTypes": null,
-                          "id": 2997,
+                          "id": 2956,
                           "name": "auctionTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2919,
+                          "referencedDeclaration": 2878,
                           "src": "759:11:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint32",
@@ -1228,15 +1228,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2981,
-                  "id": 3001,
+                  "functionReturnParameters": 2940,
+                  "id": 2960,
                   "nodeType": "Return",
                   "src": "682:88:22"
                 }
               ]
             },
             "documentation": null,
-            "id": 3003,
+            "id": 2962,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1244,15 +1244,15 @@
             "name": "isBettingActive",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2978,
+              "id": 2937,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2977,
+                  "id": 2936,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3003,
+                  "scope": 2962,
                   "src": "593:10:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1261,7 +1261,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2976,
+                    "id": 2935,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "593:4:22",
@@ -1278,15 +1278,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2981,
+              "id": 2940,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2980,
+                  "id": 2939,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3003,
+                  "scope": 2962,
                   "src": "625:4:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1295,7 +1295,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2979,
+                    "id": 2938,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "625:4:22",
@@ -1310,21 +1310,21 @@
               ],
               "src": "624:6:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "568:207:22",
             "stateMutability": "view",
-            "superFunction": 264,
+            "superFunction": 223,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 3010,
+              "id": 2969,
               "nodeType": "Block",
               "src": "839:10:22",
               "statements": []
             },
             "documentation": null,
-            "id": 3011,
+            "id": 2970,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1332,15 +1332,15 @@
             "name": "isRevealed",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3006,
+              "id": 2965,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3005,
+                  "id": 2964,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3011,
+                  "scope": 2970,
                   "src": "801:10:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1349,7 +1349,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3004,
+                    "id": 2963,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "801:4:22",
@@ -1366,15 +1366,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3009,
+              "id": 2968,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3008,
+                  "id": 2967,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3011,
+                  "scope": 2970,
                   "src": "833:4:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1383,7 +1383,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3007,
+                    "id": 2966,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "833:4:22",
@@ -1398,16 +1398,16 @@
               ],
               "src": "832:6:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "781:68:22",
             "stateMutability": "view",
-            "superFunction": 271,
+            "superFunction": 230,
             "visibility": "public"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 3018,
+            "id": 2977,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1415,15 +1415,15 @@
             "name": "getWinner",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3014,
+              "id": 2973,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3013,
+                  "id": 2972,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3018,
+                  "scope": 2977,
                   "src": "871:10:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1432,7 +1432,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3012,
+                    "id": 2971,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "871:4:22",
@@ -1449,15 +1449,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3017,
+              "id": 2976,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3016,
+                  "id": 2975,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3018,
+                  "scope": 2977,
                   "src": "903:7:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1466,7 +1466,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3015,
+                    "id": 2974,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "903:7:22",
@@ -1481,14 +1481,14 @@
               ],
               "src": "902:9:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "852:60:22",
             "stateMutability": "view",
-            "superFunction": 278,
+            "superFunction": 237,
             "visibility": "public"
           }
         ],
-        "scope": 3020,
+        "scope": 2979,
         "src": "58:856:22"
       }
     ],
@@ -1498,14 +1498,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockAuction.sol",
     "exportedSymbols": {
       "MockAuction": [
-        3019
+        2978
       ]
     },
-    "id": 3020,
+    "id": 2979,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2914,
+        "id": 2873,
         "literals": [
           "solidity",
           "^",
@@ -1518,10 +1518,10 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IAuction.sol",
         "file": "../main/IAuction.sol",
-        "id": 2915,
+        "id": 2874,
         "nodeType": "ImportDirective",
-        "scope": 3020,
-        "sourceUnit": 280,
+        "scope": 2979,
+        "sourceUnit": 239,
         "src": "26:30:22",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1532,41 +1532,41 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2916,
+              "id": 2875,
               "name": "IAuction",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 279,
+              "referencedDeclaration": 238,
               "src": "82:8:22",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IAuction_$279",
+                "typeIdentifier": "t_contract$_IAuction_$238",
                 "typeString": "contract IAuction"
               }
             },
-            "id": 2917,
+            "id": 2876,
             "nodeType": "InheritanceSpecifier",
             "src": "82:8:22"
           }
         ],
         "contractDependencies": [
-          279
+          238
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 3019,
+        "id": 2978,
         "linearizedBaseContracts": [
-          3019,
-          279
+          2978,
+          238
         ],
         "name": "MockAuction",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2919,
+            "id": 2878,
             "name": "auctionTime",
             "nodeType": "VariableDeclaration",
-            "scope": 3019,
+            "scope": 2978,
             "src": "98:25:22",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1575,7 +1575,7 @@
               "typeString": "uint32"
             },
             "typeName": {
-              "id": 2918,
+              "id": 2877,
               "name": "uint32",
               "nodeType": "ElementaryTypeName",
               "src": "98:6:22",
@@ -1589,10 +1589,10 @@
           },
           {
             "constant": false,
-            "id": 2921,
+            "id": 2880,
             "name": "revealTime",
             "nodeType": "VariableDeclaration",
-            "scope": 3019,
+            "scope": 2978,
             "src": "127:24:22",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1601,7 +1601,7 @@
               "typeString": "uint32"
             },
             "typeName": {
-              "id": 2920,
+              "id": 2879,
               "name": "uint32",
               "nodeType": "ElementaryTypeName",
               "src": "127:6:22",
@@ -1615,10 +1615,10 @@
           },
           {
             "constant": false,
-            "id": 2925,
+            "id": 2884,
             "name": "token2startTime",
             "nodeType": "VariableDeclaration",
-            "scope": 3019,
+            "scope": 2978,
             "src": "155:38:22",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1627,9 +1627,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2924,
+              "id": 2883,
               "keyType": {
-                "id": 2922,
+                "id": 2881,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "164:4:22",
@@ -1645,7 +1645,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2923,
+                "id": 2882,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "172:4:22",
@@ -1660,25 +1660,25 @@
           },
           {
             "body": {
-              "id": 2940,
+              "id": 2899,
               "nodeType": "Block",
               "src": "260:67:22",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2934,
+                    "id": 2893,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2932,
+                      "id": 2891,
                       "name": "auctionTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2919,
+                      "referencedDeclaration": 2878,
                       "src": "266:11:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -1689,11 +1689,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2933,
+                      "id": 2892,
                       "name": "_auctionTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2927,
+                      "referencedDeclaration": 2886,
                       "src": "280:12:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -1706,25 +1706,25 @@
                       "typeString": "uint32"
                     }
                   },
-                  "id": 2935,
+                  "id": 2894,
                   "nodeType": "ExpressionStatement",
                   "src": "266:26:22"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2938,
+                    "id": 2897,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2936,
+                      "id": 2895,
                       "name": "revealTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2921,
+                      "referencedDeclaration": 2880,
                       "src": "298:10:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -1735,11 +1735,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2937,
+                      "id": 2896,
                       "name": "_revealTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2929,
+                      "referencedDeclaration": 2888,
                       "src": "311:11:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -1752,14 +1752,14 @@
                       "typeString": "uint32"
                     }
                   },
-                  "id": 2939,
+                  "id": 2898,
                   "nodeType": "ExpressionStatement",
                   "src": "298:24:22"
                 }
               ]
             },
             "documentation": null,
-            "id": 2941,
+            "id": 2900,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1767,15 +1767,15 @@
             "name": "MockAuction",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2930,
+              "id": 2889,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2927,
+                  "id": 2886,
                   "name": "_auctionTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2941,
+                  "scope": 2900,
                   "src": "219:19:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1784,7 +1784,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 2926,
+                    "id": 2885,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "219:6:22",
@@ -1798,10 +1798,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2929,
+                  "id": 2888,
                   "name": "_revealTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2941,
+                  "scope": 2900,
                   "src": "240:18:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1810,7 +1810,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 2928,
+                    "id": 2887,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "240:6:22",
@@ -1827,12 +1827,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2931,
+              "id": 2890,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "260:0:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "198:129:22",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1840,7 +1840,7 @@
           },
           {
             "body": {
-              "id": 2960,
+              "id": 2919,
               "nodeType": "Block",
               "src": "374:81:22",
               "statements": [
@@ -1854,7 +1854,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2951,
+                        "id": 2910,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1863,25 +1863,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 2947,
+                            "id": 2906,
                             "name": "token2startTime",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2925,
+                            "referencedDeclaration": 2884,
                             "src": "388:15:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                               "typeString": "mapping(uint256 => uint256)"
                             }
                           },
-                          "id": 2949,
+                          "id": 2908,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 2948,
+                            "id": 2907,
                             "name": "token",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2943,
+                            "referencedDeclaration": 2902,
                             "src": "404:5:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1904,7 +1904,7 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "30",
-                          "id": 2950,
+                          "id": 2909,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -1933,21 +1933,21 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 2946,
+                      "id": 2905,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4944,
-                        4945
+                        4903,
+                        4904
                       ],
-                      "referencedDeclaration": 4944,
+                      "referencedDeclaration": 4903,
                       "src": "380:7:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 2952,
+                    "id": 2911,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1961,14 +1961,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2953,
+                  "id": 2912,
                   "nodeType": "ExpressionStatement",
                   "src": "380:36:22"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2958,
+                    "id": 2917,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1977,25 +1977,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 2954,
+                        "id": 2913,
                         "name": "token2startTime",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2925,
+                        "referencedDeclaration": 2884,
                         "src": "422:15:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                           "typeString": "mapping(uint256 => uint256)"
                         }
                       },
-                      "id": 2956,
+                      "id": 2915,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2955,
+                        "id": 2914,
                         "name": "token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2943,
+                        "referencedDeclaration": 2902,
                         "src": "438:5:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -2017,11 +2017,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2957,
+                      "id": 2916,
                       "name": "now",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 4943,
+                      "referencedDeclaration": 4902,
                       "src": "447:3:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -2034,14 +2034,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2959,
+                  "id": 2918,
                   "nodeType": "ExpressionStatement",
                   "src": "422:28:22"
                 }
               ]
             },
             "documentation": null,
-            "id": 2961,
+            "id": 2920,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2049,15 +2049,15 @@
             "name": "creaateAuction",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2944,
+              "id": 2903,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2943,
+                  "id": 2902,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2961,
+                  "scope": 2920,
                   "src": "355:10:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2066,7 +2066,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2942,
+                    "id": 2901,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "355:4:22",
@@ -2083,20 +2083,20 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2945,
+              "id": 2904,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "374:0:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "331:124:22",
             "stateMutability": "nonpayable",
-            "superFunction": 241,
+            "superFunction": 200,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 2974,
+              "id": 2933,
               "nodeType": "Block",
               "src": "519:45:22",
               "statements": [
@@ -2107,7 +2107,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 2972,
+                    "id": 2931,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2116,25 +2116,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 2968,
+                        "id": 2927,
                         "name": "token2startTime",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2925,
+                        "referencedDeclaration": 2884,
                         "src": "532:15:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                           "typeString": "mapping(uint256 => uint256)"
                         }
                       },
-                      "id": 2970,
+                      "id": 2929,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2969,
+                        "id": 2928,
                         "name": "_token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2963,
+                        "referencedDeclaration": 2922,
                         "src": "548:6:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -2157,7 +2157,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "30",
-                      "id": 2971,
+                      "id": 2930,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2178,15 +2178,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2967,
-                  "id": 2973,
+                  "functionReturnParameters": 2926,
+                  "id": 2932,
                   "nodeType": "Return",
                   "src": "525:34:22"
                 }
               ]
             },
             "documentation": null,
-            "id": 2975,
+            "id": 2934,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -2194,15 +2194,15 @@
             "name": "isActivated",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2964,
+              "id": 2923,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2963,
+                  "id": 2922,
                   "name": "_token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2975,
+                  "scope": 2934,
                   "src": "480:11:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2211,7 +2211,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2962,
+                    "id": 2921,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "480:4:22",
@@ -2228,15 +2228,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2967,
+              "id": 2926,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2966,
+                  "id": 2925,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2975,
+                  "scope": 2934,
                   "src": "513:4:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2245,7 +2245,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2965,
+                    "id": 2924,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "513:4:22",
@@ -2260,29 +2260,29 @@
               ],
               "src": "512:6:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "459:105:22",
             "stateMutability": "view",
-            "superFunction": 257,
+            "superFunction": 216,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 3002,
+              "id": 2961,
               "nodeType": "Block",
               "src": "631:144:22",
               "statements": [
                 {
                   "assignments": [
-                    2983
+                    2942
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2983,
+                      "id": 2942,
                       "name": "startTime",
                       "nodeType": "VariableDeclaration",
-                      "scope": 3003,
+                      "scope": 2962,
                       "src": "637:14:22",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -2291,7 +2291,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 2982,
+                        "id": 2941,
                         "name": "uint",
                         "nodeType": "ElementaryTypeName",
                         "src": "637:4:22",
@@ -2304,30 +2304,30 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2987,
+                  "id": 2946,
                   "initialValue": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
-                      "id": 2984,
+                      "id": 2943,
                       "name": "token2startTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2925,
+                      "referencedDeclaration": 2884,
                       "src": "654:15:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                         "typeString": "mapping(uint256 => uint256)"
                       }
                     },
-                    "id": 2986,
+                    "id": 2945,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2985,
+                      "id": 2944,
                       "name": "token",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2977,
+                      "referencedDeclaration": 2936,
                       "src": "670:5:22",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -2355,7 +2355,7 @@
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     },
-                    "id": 3000,
+                    "id": 2959,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2366,7 +2366,7 @@
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
-                      "id": 2994,
+                      "id": 2953,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2377,18 +2377,18 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2990,
+                        "id": 2949,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 2988,
+                          "id": 2947,
                           "name": "startTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2983,
+                          "referencedDeclaration": 2942,
                           "src": "690:9:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2400,7 +2400,7 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "30",
-                          "id": 2989,
+                          "id": 2948,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -2429,18 +2429,18 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2993,
+                        "id": 2952,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 2991,
+                          "id": 2950,
                           "name": "now",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4943,
+                          "referencedDeclaration": 4902,
                           "src": "714:3:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2451,11 +2451,11 @@
                         "operator": ">=",
                         "rightExpression": {
                           "argumentTypes": null,
-                          "id": 2992,
+                          "id": 2951,
                           "name": "startTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2983,
+                          "referencedDeclaration": 2942,
                           "src": "721:9:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2482,18 +2482,18 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 2999,
+                      "id": 2958,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
                         "argumentTypes": null,
-                        "id": 2995,
+                        "id": 2954,
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 4943,
+                        "referencedDeclaration": 4902,
                         "src": "741:3:22",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -2508,18 +2508,18 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 2998,
+                        "id": 2957,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 2996,
+                          "id": 2955,
                           "name": "startTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2983,
+                          "referencedDeclaration": 2942,
                           "src": "747:9:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2530,11 +2530,11 @@
                         "operator": "+",
                         "rightExpression": {
                           "argumentTypes": null,
-                          "id": 2997,
+                          "id": 2956,
                           "name": "auctionTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2919,
+                          "referencedDeclaration": 2878,
                           "src": "759:11:22",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint32",
@@ -2559,15 +2559,15 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2981,
-                  "id": 3001,
+                  "functionReturnParameters": 2940,
+                  "id": 2960,
                   "nodeType": "Return",
                   "src": "682:88:22"
                 }
               ]
             },
             "documentation": null,
-            "id": 3003,
+            "id": 2962,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -2575,15 +2575,15 @@
             "name": "isBettingActive",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2978,
+              "id": 2937,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2977,
+                  "id": 2936,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3003,
+                  "scope": 2962,
                   "src": "593:10:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2592,7 +2592,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2976,
+                    "id": 2935,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "593:4:22",
@@ -2609,15 +2609,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2981,
+              "id": 2940,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2980,
+                  "id": 2939,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3003,
+                  "scope": 2962,
                   "src": "625:4:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2626,7 +2626,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2979,
+                    "id": 2938,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "625:4:22",
@@ -2641,21 +2641,21 @@
               ],
               "src": "624:6:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "568:207:22",
             "stateMutability": "view",
-            "superFunction": 264,
+            "superFunction": 223,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 3010,
+              "id": 2969,
               "nodeType": "Block",
               "src": "839:10:22",
               "statements": []
             },
             "documentation": null,
-            "id": 3011,
+            "id": 2970,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -2663,15 +2663,15 @@
             "name": "isRevealed",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3006,
+              "id": 2965,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3005,
+                  "id": 2964,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3011,
+                  "scope": 2970,
                   "src": "801:10:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2680,7 +2680,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3004,
+                    "id": 2963,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "801:4:22",
@@ -2697,15 +2697,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3009,
+              "id": 2968,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3008,
+                  "id": 2967,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3011,
+                  "scope": 2970,
                   "src": "833:4:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2714,7 +2714,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3007,
+                    "id": 2966,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "833:4:22",
@@ -2729,16 +2729,16 @@
               ],
               "src": "832:6:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "781:68:22",
             "stateMutability": "view",
-            "superFunction": 271,
+            "superFunction": 230,
             "visibility": "public"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 3018,
+            "id": 2977,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -2746,15 +2746,15 @@
             "name": "getWinner",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3014,
+              "id": 2973,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3013,
+                  "id": 2972,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3018,
+                  "scope": 2977,
                   "src": "871:10:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2763,7 +2763,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3012,
+                    "id": 2971,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "871:4:22",
@@ -2780,15 +2780,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3017,
+              "id": 2976,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3016,
+                  "id": 2975,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3018,
+                  "scope": 2977,
                   "src": "903:7:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2797,7 +2797,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3015,
+                    "id": 2974,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "903:7:22",
@@ -2812,14 +2812,14 @@
               ],
               "src": "902:9:22"
             },
-            "scope": 3019,
+            "scope": 2978,
             "src": "852:60:22",
             "stateMutability": "view",
-            "superFunction": 278,
+            "superFunction": 237,
             "visibility": "public"
           }
         ],
-        "scope": 3020,
+        "scope": 2979,
         "src": "58:856:22"
       }
     ],
@@ -2831,5 +2831,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-19T09:59:31.564Z"
+  "updatedAt": "2018-09-14T07:51:36.129Z"
 }

@@ -446,7 +446,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 28,
-        "sourceUnit": 4069,
+        "sourceUnit": 4028,
         "src": "26:67:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -457,7 +457,7 @@
         "id": 3,
         "nodeType": "ImportDirective",
         "scope": 28,
-        "sourceUnit": 3899,
+        "sourceUnit": 3858,
         "src": "94:67:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -468,7 +468,7 @@
         "id": 4,
         "nodeType": "ImportDirective",
         "scope": 28,
-        "sourceUnit": 4377,
+        "sourceUnit": 4336,
         "src": "162:67:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -482,10 +482,10 @@
               "id": 5,
               "name": "StandardToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4376,
+              "referencedDeclaration": 4335,
               "src": "259:13:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StandardToken_$4376",
+                "typeIdentifier": "t_contract$_StandardToken_$4335",
                 "typeString": "contract StandardToken"
               }
             },
@@ -500,10 +500,10 @@
               "id": 7,
               "name": "BurnableToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3898,
+              "referencedDeclaration": 3857,
               "src": "274:13:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_BurnableToken_$3898",
+                "typeIdentifier": "t_contract$_BurnableToken_$3857",
                 "typeString": "contract BurnableToken"
               }
             },
@@ -518,10 +518,10 @@
               "id": 9,
               "name": "MintableToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4068,
+              "referencedDeclaration": 4027,
               "src": "289:13:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MintableToken_$4068",
+                "typeIdentifier": "t_contract$_MintableToken_$4027",
                 "typeString": "contract MintableToken"
               }
             },
@@ -531,13 +531,13 @@
           }
         ],
         "contractDependencies": [
-          3747,
-          3843,
-          3898,
-          3941,
-          3973,
-          4068,
-          4376
+          3706,
+          3802,
+          3857,
+          3900,
+          3932,
+          4027,
+          4335
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -545,13 +545,13 @@
         "id": 27,
         "linearizedBaseContracts": [
           27,
-          4068,
-          3747,
-          3898,
-          4376,
-          3843,
-          3941,
-          3973
+          4027,
+          3706,
+          3857,
+          4335,
+          3802,
+          3900,
+          3932
         ],
         "name": "BaseTokenOption",
         "nodeType": "ContractDefinition",
@@ -612,7 +612,7 @@
                     "name": "owner",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3695,
+                    "referencedDeclaration": 3654,
                     "src": "416:5:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -770,7 +770,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 28,
-        "sourceUnit": 4069,
+        "sourceUnit": 4028,
         "src": "26:67:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -781,7 +781,7 @@
         "id": 3,
         "nodeType": "ImportDirective",
         "scope": 28,
-        "sourceUnit": 3899,
+        "sourceUnit": 3858,
         "src": "94:67:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -792,7 +792,7 @@
         "id": 4,
         "nodeType": "ImportDirective",
         "scope": 28,
-        "sourceUnit": 4377,
+        "sourceUnit": 4336,
         "src": "162:67:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -806,10 +806,10 @@
               "id": 5,
               "name": "StandardToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4376,
+              "referencedDeclaration": 4335,
               "src": "259:13:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StandardToken_$4376",
+                "typeIdentifier": "t_contract$_StandardToken_$4335",
                 "typeString": "contract StandardToken"
               }
             },
@@ -824,10 +824,10 @@
               "id": 7,
               "name": "BurnableToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3898,
+              "referencedDeclaration": 3857,
               "src": "274:13:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_BurnableToken_$3898",
+                "typeIdentifier": "t_contract$_BurnableToken_$3857",
                 "typeString": "contract BurnableToken"
               }
             },
@@ -842,10 +842,10 @@
               "id": 9,
               "name": "MintableToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4068,
+              "referencedDeclaration": 4027,
               "src": "289:13:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MintableToken_$4068",
+                "typeIdentifier": "t_contract$_MintableToken_$4027",
                 "typeString": "contract MintableToken"
               }
             },
@@ -855,13 +855,13 @@
           }
         ],
         "contractDependencies": [
-          3747,
-          3843,
-          3898,
-          3941,
-          3973,
-          4068,
-          4376
+          3706,
+          3802,
+          3857,
+          3900,
+          3932,
+          4027,
+          4335
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -869,13 +869,13 @@
         "id": 27,
         "linearizedBaseContracts": [
           27,
-          4068,
-          3747,
-          3898,
-          4376,
-          3843,
-          3941,
-          3973
+          4027,
+          3706,
+          3857,
+          4335,
+          3802,
+          3900,
+          3932
         ],
         "name": "BaseTokenOption",
         "nodeType": "ContractDefinition",
@@ -936,7 +936,7 @@
                     "name": "owner",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3695,
+                    "referencedDeclaration": 3654,
                     "src": "416:5:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1073,5 +1073,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-19T09:59:31.549Z"
+  "updatedAt": "2018-09-14T07:51:36.110Z"
 }

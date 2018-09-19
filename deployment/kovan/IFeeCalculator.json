@@ -53,14 +53,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IFeeCalculator.sol",
     "exportedSymbols": {
       "IFeeCalculator": [
-        336
+        295
       ]
     },
-    "id": 337,
+    "id": 296,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 319,
+        "id": 278,
         "literals": [
           "solidity",
           "^",
@@ -76,9 +76,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 336,
+        "id": 295,
         "linearizedBaseContracts": [
-          336
+          295
         ],
         "name": "IFeeCalculator",
         "nodeType": "ContractDefinition",
@@ -86,7 +86,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 324,
+            "id": 283,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -94,22 +94,22 @@
             "name": "feeToken",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 320,
+              "id": 279,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "72:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 323,
+              "id": 282,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 322,
+                  "id": 281,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 324,
+                  "scope": 283,
                   "src": "96:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -118,7 +118,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 321,
+                    "id": 280,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "96:7:7",
@@ -133,7 +133,7 @@
               ],
               "src": "95:9:7"
             },
-            "scope": 336,
+            "scope": 295,
             "src": "54:51:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -142,7 +142,7 @@
           {
             "body": null,
             "documentation": "_token OptionPair address\n_qty number of contracts to be written",
-            "id": 335,
+            "id": 294,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -150,15 +150,15 @@
             "name": "calcFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 329,
+              "id": 288,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 326,
+                  "id": 285,
                   "name": "_optionPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 335,
+                  "scope": 294,
                   "src": "210:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -167,7 +167,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 325,
+                    "id": 284,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "210:7:7",
@@ -181,10 +181,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 328,
+                  "id": 287,
                   "name": "_qty",
                   "nodeType": "VariableDeclaration",
-                  "scope": 335,
+                  "scope": 294,
                   "src": "231:9:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -193,7 +193,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 327,
+                    "id": 286,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "231:4:7",
@@ -210,15 +210,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 334,
+              "id": 293,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 331,
+                  "id": 290,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 335,
+                  "scope": 294,
                   "src": "263:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -227,7 +227,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 330,
+                    "id": 289,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "263:7:7",
@@ -241,10 +241,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 333,
+                  "id": 292,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 335,
+                  "scope": 294,
                   "src": "272:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -253,7 +253,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 332,
+                    "id": 291,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "272:4:7",
@@ -268,14 +268,14 @@
               ],
               "src": "262:15:7"
             },
-            "scope": 336,
+            "scope": 295,
             "src": "192:86:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 337,
+        "scope": 296,
         "src": "26:254:7"
       }
     ],
@@ -285,14 +285,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IFeeCalculator.sol",
     "exportedSymbols": {
       "IFeeCalculator": [
-        336
+        295
       ]
     },
-    "id": 337,
+    "id": 296,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 319,
+        "id": 278,
         "literals": [
           "solidity",
           "^",
@@ -308,9 +308,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 336,
+        "id": 295,
         "linearizedBaseContracts": [
-          336
+          295
         ],
         "name": "IFeeCalculator",
         "nodeType": "ContractDefinition",
@@ -318,7 +318,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 324,
+            "id": 283,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -326,22 +326,22 @@
             "name": "feeToken",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 320,
+              "id": 279,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "72:2:7"
             },
             "payable": false,
             "returnParameters": {
-              "id": 323,
+              "id": 282,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 322,
+                  "id": 281,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 324,
+                  "scope": 283,
                   "src": "96:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -350,7 +350,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 321,
+                    "id": 280,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "96:7:7",
@@ -365,7 +365,7 @@
               ],
               "src": "95:9:7"
             },
-            "scope": 336,
+            "scope": 295,
             "src": "54:51:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -374,7 +374,7 @@
           {
             "body": null,
             "documentation": "_token OptionPair address\n_qty number of contracts to be written",
-            "id": 335,
+            "id": 294,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -382,15 +382,15 @@
             "name": "calcFee",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 329,
+              "id": 288,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 326,
+                  "id": 285,
                   "name": "_optionPair",
                   "nodeType": "VariableDeclaration",
-                  "scope": 335,
+                  "scope": 294,
                   "src": "210:19:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -399,7 +399,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 325,
+                    "id": 284,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "210:7:7",
@@ -413,10 +413,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 328,
+                  "id": 287,
                   "name": "_qty",
                   "nodeType": "VariableDeclaration",
-                  "scope": 335,
+                  "scope": 294,
                   "src": "231:9:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -425,7 +425,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 327,
+                    "id": 286,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "231:4:7",
@@ -442,15 +442,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 334,
+              "id": 293,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 331,
+                  "id": 290,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 335,
+                  "scope": 294,
                   "src": "263:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -459,7 +459,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 330,
+                    "id": 289,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "263:7:7",
@@ -473,10 +473,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 333,
+                  "id": 292,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 335,
+                  "scope": 294,
                   "src": "272:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -485,7 +485,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 332,
+                    "id": 291,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "272:4:7",
@@ -500,14 +500,14 @@
               ],
               "src": "262:15:7"
             },
-            "scope": 336,
+            "scope": 295,
             "src": "192:86:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 337,
+        "scope": 296,
         "src": "26:254:7"
       }
     ],
@@ -519,5 +519,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-19T09:59:31.550Z"
+  "updatedAt": "2018-09-14T07:51:36.112Z"
 }

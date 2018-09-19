@@ -102,7 +102,7 @@
         "id": 68,
         "nodeType": "ImportDirective",
         "scope": 94,
-        "sourceUnit": 376,
+        "sourceUnit": 335,
         "src": "26:30:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -113,7 +113,7 @@
         "id": 69,
         "nodeType": "ImportDirective",
         "scope": 94,
-        "sourceUnit": 4429,
+        "sourceUnit": 4388,
         "src": "58:61:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -124,7 +124,7 @@
         "id": 70,
         "nodeType": "ImportDirective",
         "scope": 94,
-        "sourceUnit": 3748,
+        "sourceUnit": 3707,
         "src": "121:59:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -138,10 +138,10 @@
               "id": 71,
               "name": "ITokenReceiver",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 375,
+              "referencedDeclaration": 334,
               "src": "216:14:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITokenReceiver_$375",
+                "typeIdentifier": "t_contract$_ITokenReceiver_$334",
                 "typeString": "contract ITokenReceiver"
               }
             },
@@ -156,10 +156,10 @@
               "id": 73,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3747,
+              "referencedDeclaration": 3706,
               "src": "232:7:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$3747",
+                "typeIdentifier": "t_contract$_Ownable_$3706",
                 "typeString": "contract Ownable"
               }
             },
@@ -169,8 +169,8 @@
           }
         ],
         "contractDependencies": [
-          375,
-          3747
+          334,
+          3706
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -178,8 +178,8 @@
         "id": 93,
         "linearizedBaseContracts": [
           93,
-          3747,
-          375
+          3706,
+          334
         ],
         "name": "ERC721ReceiverToOwner",
         "nodeType": "ContractDefinition",
@@ -200,7 +200,7 @@
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3695,
+                        "referencedDeclaration": 3654,
                         "src": "372:5:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -260,10 +260,10 @@
                           "name": "ERC721",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4428,
+                          "referencedDeclaration": 4387,
                           "src": "342:6:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ERC721_$4428_$",
+                            "typeIdentifier": "t_type$_t_contract$_ERC721_$4387_$",
                             "typeString": "type(contract ERC721)"
                           }
                         },
@@ -277,7 +277,7 @@
                         "nodeType": "FunctionCall",
                         "src": "342:20:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ERC721_$4428",
+                          "typeIdentifier": "t_contract$_ERC721_$4387",
                           "typeString": "contract ERC721"
                         }
                       },
@@ -288,7 +288,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4415,
+                      "referencedDeclaration": 4374,
                       "src": "342:29:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -418,7 +418,7 @@
             "scope": 93,
             "src": "244:159:2",
             "stateMutability": "nonpayable",
-            "superFunction": 374,
+            "superFunction": 333,
             "visibility": "public"
           }
         ],
@@ -455,7 +455,7 @@
         "id": 68,
         "nodeType": "ImportDirective",
         "scope": 94,
-        "sourceUnit": 376,
+        "sourceUnit": 335,
         "src": "26:30:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -466,7 +466,7 @@
         "id": 69,
         "nodeType": "ImportDirective",
         "scope": 94,
-        "sourceUnit": 4429,
+        "sourceUnit": 4388,
         "src": "58:61:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -477,7 +477,7 @@
         "id": 70,
         "nodeType": "ImportDirective",
         "scope": 94,
-        "sourceUnit": 3748,
+        "sourceUnit": 3707,
         "src": "121:59:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -491,10 +491,10 @@
               "id": 71,
               "name": "ITokenReceiver",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 375,
+              "referencedDeclaration": 334,
               "src": "216:14:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITokenReceiver_$375",
+                "typeIdentifier": "t_contract$_ITokenReceiver_$334",
                 "typeString": "contract ITokenReceiver"
               }
             },
@@ -509,10 +509,10 @@
               "id": 73,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3747,
+              "referencedDeclaration": 3706,
               "src": "232:7:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$3747",
+                "typeIdentifier": "t_contract$_Ownable_$3706",
                 "typeString": "contract Ownable"
               }
             },
@@ -522,8 +522,8 @@
           }
         ],
         "contractDependencies": [
-          375,
-          3747
+          334,
+          3706
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -531,8 +531,8 @@
         "id": 93,
         "linearizedBaseContracts": [
           93,
-          3747,
-          375
+          3706,
+          334
         ],
         "name": "ERC721ReceiverToOwner",
         "nodeType": "ContractDefinition",
@@ -553,7 +553,7 @@
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3695,
+                        "referencedDeclaration": 3654,
                         "src": "372:5:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -613,10 +613,10 @@
                           "name": "ERC721",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4428,
+                          "referencedDeclaration": 4387,
                           "src": "342:6:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ERC721_$4428_$",
+                            "typeIdentifier": "t_type$_t_contract$_ERC721_$4387_$",
                             "typeString": "type(contract ERC721)"
                           }
                         },
@@ -630,7 +630,7 @@
                         "nodeType": "FunctionCall",
                         "src": "342:20:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_ERC721_$4428",
+                          "typeIdentifier": "t_contract$_ERC721_$4387",
                           "typeString": "contract ERC721"
                         }
                       },
@@ -641,7 +641,7 @@
                       "lValueRequested": false,
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 4415,
+                      "referencedDeclaration": 4374,
                       "src": "342:29:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -771,7 +771,7 @@
             "scope": 93,
             "src": "244:159:2",
             "stateMutability": "nonpayable",
-            "superFunction": 374,
+            "superFunction": 333,
             "visibility": "public"
           }
         ],
@@ -787,5 +787,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-19T09:59:31.549Z"
+  "updatedAt": "2018-09-14T07:51:36.111Z"
 }
