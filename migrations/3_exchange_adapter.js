@@ -10,7 +10,7 @@ module.exports = function(deployer, network) {
     case "ropsten":
     case "kovan":
       deployer.deploy(ExchangeAdapterOasisImpl,
-        "0xee419971e63734fed782cfe49110b1544ae8a773")
+        "0x8cf1cab422a0b6b554077a361f8419cdf122a9f9")
       break
   default:
     deployer.deploy(MockExchangeAdapter,
