@@ -451,14 +451,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/TokenAntiOption.sol",
     "exportedSymbols": {
       "TokenAntiOption": [
-        2696
+        2737
       ]
     },
-    "id": 2697,
+    "id": 2738,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2678,
+        "id": 2719,
         "literals": [
           "solidity",
           "^",
@@ -471,9 +471,9 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/BaseTokenOption.sol",
         "file": "./BaseTokenOption.sol",
-        "id": 2679,
+        "id": 2720,
         "nodeType": "ImportDirective",
-        "scope": 2697,
+        "scope": 2738,
         "sourceUnit": 28,
         "src": "26:31:17",
         "symbolAliases": [],
@@ -485,7 +485,7 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2680,
+              "id": 2721,
               "name": "BaseTokenOption",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 27,
@@ -495,45 +495,45 @@
                 "typeString": "contract BaseTokenOption"
               }
             },
-            "id": 2681,
+            "id": 2722,
             "nodeType": "InheritanceSpecifier",
             "src": "87:15:17"
           }
         ],
         "contractDependencies": [
           27,
-          3706,
-          3802,
-          3857,
-          3900,
-          3932,
-          4027,
-          4335
+          3747,
+          3843,
+          3898,
+          3941,
+          3973,
+          4068,
+          4376
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2696,
+        "id": 2737,
         "linearizedBaseContracts": [
-          2696,
+          2737,
           27,
-          4027,
-          3706,
-          3857,
-          4335,
-          3802,
-          3900,
-          3932
+          4068,
+          3747,
+          3898,
+          4376,
+          3843,
+          3941,
+          3973
         ],
         "name": "TokenAntiOption",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 2684,
+            "id": 2725,
             "name": "name",
             "nodeType": "VariableDeclaration",
-            "scope": 2696,
+            "scope": 2737,
             "src": "107:49:17",
             "stateVariable": true,
             "storageLocation": "default",
@@ -542,7 +542,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2682,
+              "id": 2723,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "107:6:17",
@@ -554,7 +554,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "455243323020416e74692d4f7074696f6e",
-              "id": 2683,
+              "id": 2724,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -573,10 +573,10 @@
           },
           {
             "constant": true,
-            "id": 2687,
+            "id": 2728,
             "name": "symbol",
             "nodeType": "VariableDeclaration",
-            "scope": 2696,
+            "scope": 2737,
             "src": "160:38:17",
             "stateVariable": true,
             "storageLocation": "default",
@@ -585,7 +585,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2685,
+              "id": 2726,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "160:6:17",
@@ -597,7 +597,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "414f5054",
-              "id": 2686,
+              "id": 2727,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -616,7 +616,7 @@
           },
           {
             "body": {
-              "id": 2694,
+              "id": 2735,
               "nodeType": "Block",
               "src": "253:22:17",
               "statements": [
@@ -624,7 +624,7 @@
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 2692,
+                    "id": 2733,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -639,15 +639,15 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 2691,
-                  "id": 2693,
+                  "functionReturnParameters": 2732,
+                  "id": 2734,
                   "nodeType": "Return",
                   "src": "259:11:17"
                 }
               ]
             },
             "documentation": null,
-            "id": 2695,
+            "id": 2736,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -655,22 +655,22 @@
             "name": "isAntiOption",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2688,
+              "id": 2729,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "224:2:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2691,
+              "id": 2732,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2690,
+                  "id": 2731,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2695,
+                  "scope": 2736,
                   "src": "247:4:17",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -679,7 +679,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2689,
+                    "id": 2730,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "247:4:17",
@@ -694,14 +694,14 @@
               ],
               "src": "246:6:17"
             },
-            "scope": 2696,
+            "scope": 2737,
             "src": "203:72:17",
             "stateMutability": "view",
             "superFunction": 26,
             "visibility": "public"
           }
         ],
-        "scope": 2697,
+        "scope": 2738,
         "src": "59:218:17"
       }
     ],
@@ -711,14 +711,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/TokenAntiOption.sol",
     "exportedSymbols": {
       "TokenAntiOption": [
-        2696
+        2737
       ]
     },
-    "id": 2697,
+    "id": 2738,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2678,
+        "id": 2719,
         "literals": [
           "solidity",
           "^",
@@ -731,9 +731,9 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/BaseTokenOption.sol",
         "file": "./BaseTokenOption.sol",
-        "id": 2679,
+        "id": 2720,
         "nodeType": "ImportDirective",
-        "scope": 2697,
+        "scope": 2738,
         "sourceUnit": 28,
         "src": "26:31:17",
         "symbolAliases": [],
@@ -745,7 +745,7 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2680,
+              "id": 2721,
               "name": "BaseTokenOption",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 27,
@@ -755,45 +755,45 @@
                 "typeString": "contract BaseTokenOption"
               }
             },
-            "id": 2681,
+            "id": 2722,
             "nodeType": "InheritanceSpecifier",
             "src": "87:15:17"
           }
         ],
         "contractDependencies": [
           27,
-          3706,
-          3802,
-          3857,
-          3900,
-          3932,
-          4027,
-          4335
+          3747,
+          3843,
+          3898,
+          3941,
+          3973,
+          4068,
+          4376
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2696,
+        "id": 2737,
         "linearizedBaseContracts": [
-          2696,
+          2737,
           27,
-          4027,
-          3706,
-          3857,
-          4335,
-          3802,
-          3900,
-          3932
+          4068,
+          3747,
+          3898,
+          4376,
+          3843,
+          3941,
+          3973
         ],
         "name": "TokenAntiOption",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 2684,
+            "id": 2725,
             "name": "name",
             "nodeType": "VariableDeclaration",
-            "scope": 2696,
+            "scope": 2737,
             "src": "107:49:17",
             "stateVariable": true,
             "storageLocation": "default",
@@ -802,7 +802,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2682,
+              "id": 2723,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "107:6:17",
@@ -814,7 +814,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "455243323020416e74692d4f7074696f6e",
-              "id": 2683,
+              "id": 2724,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -833,10 +833,10 @@
           },
           {
             "constant": true,
-            "id": 2687,
+            "id": 2728,
             "name": "symbol",
             "nodeType": "VariableDeclaration",
-            "scope": 2696,
+            "scope": 2737,
             "src": "160:38:17",
             "stateVariable": true,
             "storageLocation": "default",
@@ -845,7 +845,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 2685,
+              "id": 2726,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "160:6:17",
@@ -857,7 +857,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "414f5054",
-              "id": 2686,
+              "id": 2727,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -876,7 +876,7 @@
           },
           {
             "body": {
-              "id": 2694,
+              "id": 2735,
               "nodeType": "Block",
               "src": "253:22:17",
               "statements": [
@@ -884,7 +884,7 @@
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 2692,
+                    "id": 2733,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -899,15 +899,15 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 2691,
-                  "id": 2693,
+                  "functionReturnParameters": 2732,
+                  "id": 2734,
                   "nodeType": "Return",
                   "src": "259:11:17"
                 }
               ]
             },
             "documentation": null,
-            "id": 2695,
+            "id": 2736,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -915,22 +915,22 @@
             "name": "isAntiOption",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2688,
+              "id": 2729,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "224:2:17"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2691,
+              "id": 2732,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2690,
+                  "id": 2731,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2695,
+                  "scope": 2736,
                   "src": "247:4:17",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -939,7 +939,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2689,
+                    "id": 2730,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "247:4:17",
@@ -954,14 +954,14 @@
               ],
               "src": "246:6:17"
             },
-            "scope": 2696,
+            "scope": 2737,
             "src": "203:72:17",
             "stateMutability": "view",
             "superFunction": 26,
             "visibility": "public"
           }
         ],
-        "scope": 2697,
+        "scope": 2738,
         "src": "59:218:17"
       }
     ],
@@ -973,5 +973,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-14T07:52:25.016Z"
+  "updatedAt": "2018-09-19T09:59:31.563Z"
 }

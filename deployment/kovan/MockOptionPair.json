@@ -420,14 +420,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockOptionPair.sol",
     "exportedSymbols": {
       "MockOptionPair": [
-        3348
+        3389
       ]
     },
-    "id": 3349,
+    "id": 3390,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3285,
+        "id": 3326,
         "literals": [
           "solidity",
           "^",
@@ -440,10 +440,10 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/OptionPair.sol",
         "file": "../main/OptionPair.sol",
-        "id": 3286,
+        "id": 3327,
         "nodeType": "ImportDirective",
-        "scope": 3349,
-        "sourceUnit": 2352,
+        "scope": 3390,
+        "sourceUnit": 2393,
         "src": "26:32:26",
         "symbolAliases": [],
         "unitAlias": ""
@@ -454,43 +454,43 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3287,
+              "id": 3328,
               "name": "OptionPair",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2351,
+              "referencedDeclaration": 2392,
               "src": "87:10:26",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OptionPair_$2351",
+                "typeIdentifier": "t_contract$_OptionPair_$2392",
                 "typeString": "contract OptionPair"
               }
             },
-            "id": 3288,
+            "id": 3329,
             "nodeType": "InheritanceSpecifier",
             "src": "87:10:26"
           }
         ],
         "contractDependencies": [
-          2351,
-          3528
+          2392,
+          3569
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3348,
+        "id": 3389,
         "linearizedBaseContracts": [
-          3348,
-          2351,
-          3528
+          3389,
+          2392,
+          3569
         ],
         "name": "MockOptionPair",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 3291,
+            "id": 3332,
             "name": "mockTime",
             "nodeType": "VariableDeclaration",
-            "scope": 3348,
+            "scope": 3389,
             "src": "103:18:26",
             "stateVariable": true,
             "storageLocation": "default",
@@ -499,7 +499,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3289,
+              "id": 3330,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "103:4:26",
@@ -511,7 +511,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "30",
-              "id": 3290,
+              "id": 3331,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -530,13 +530,13 @@
           },
           {
             "body": {
-              "id": 3317,
+              "id": 3358,
               "nodeType": "Block",
               "src": "426:2:26",
               "statements": []
             },
             "documentation": null,
-            "id": 3318,
+            "id": 3359,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -545,11 +545,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 3308,
+                    "id": 3349,
                     "name": "_underlying",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3293,
+                    "referencedDeclaration": 3334,
                     "src": "323:11:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -558,11 +558,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3309,
+                    "id": 3350,
                     "name": "_basisToken",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3295,
+                    "referencedDeclaration": 3336,
                     "src": "337:11:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -571,11 +571,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3310,
+                    "id": 3351,
                     "name": "_strike",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3297,
+                    "referencedDeclaration": 3338,
                     "src": "357:7:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -584,11 +584,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3311,
+                    "id": 3352,
                     "name": "_underlyingQty",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3299,
+                    "referencedDeclaration": 3340,
                     "src": "367:14:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -597,11 +597,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3312,
+                    "id": 3353,
                     "name": "_expireTime",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3301,
+                    "referencedDeclaration": 3342,
                     "src": "384:11:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -610,11 +610,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3313,
+                    "id": 3354,
                     "name": "_feeCalculator",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3303,
+                    "referencedDeclaration": 3344,
                     "src": "398:14:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -623,11 +623,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3314,
+                    "id": 3355,
                     "name": "_feeTaker",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3305,
+                    "referencedDeclaration": 3346,
                     "src": "414:9:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -635,17 +635,17 @@
                     }
                   }
                 ],
-                "id": 3315,
+                "id": 3356,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 3307,
+                  "id": 3348,
                   "name": "OptionPair",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2351,
+                  "referencedDeclaration": 2392,
                   "src": "312:10:26",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_OptionPair_$2351_$",
+                    "typeIdentifier": "t_type$_t_contract$_OptionPair_$2392_$",
                     "typeString": "type(contract OptionPair)"
                   }
                 },
@@ -656,15 +656,15 @@
             "name": "MockOptionPair",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3306,
+              "id": 3347,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3293,
+                  "id": 3334,
                   "name": "_underlying",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "151:19:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -673,7 +673,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3292,
+                    "id": 3333,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "151:7:26",
@@ -687,10 +687,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3295,
+                  "id": 3336,
                   "name": "_basisToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "172:19:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -699,7 +699,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3294,
+                    "id": 3335,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "172:7:26",
@@ -713,10 +713,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3297,
+                  "id": 3338,
                   "name": "_strike",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "197:12:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -725,7 +725,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3296,
+                    "id": 3337,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "197:4:26",
@@ -739,10 +739,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3299,
+                  "id": 3340,
                   "name": "_underlyingQty",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "211:19:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -751,7 +751,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3298,
+                    "id": 3339,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "211:4:26",
@@ -765,10 +765,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3301,
+                  "id": 3342,
                   "name": "_expireTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "232:16:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -777,7 +777,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3300,
+                    "id": 3341,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "232:4:26",
@@ -791,10 +791,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3303,
+                  "id": 3344,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "254:22:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -803,7 +803,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3302,
+                    "id": 3343,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "254:7:26",
@@ -817,10 +817,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3305,
+                  "id": 3346,
                   "name": "_feeTaker",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "278:17:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -829,7 +829,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3304,
+                    "id": 3345,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "278:7:26",
@@ -846,12 +846,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3316,
+              "id": 3357,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "426:0:26"
             },
-            "scope": 3348,
+            "scope": 3389,
             "src": "126:302:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -859,7 +859,7 @@
           },
           {
             "body": {
-              "id": 3332,
+              "id": 3373,
               "nodeType": "Block",
               "src": "484:74:26",
               "statements": [
@@ -870,18 +870,18 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 3325,
+                    "id": 3366,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 3323,
+                      "id": 3364,
                       "name": "mockTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3291,
+                      "referencedDeclaration": 3332,
                       "src": "494:8:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -893,7 +893,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "30",
-                      "id": 3324,
+                      "id": 3365,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -915,30 +915,30 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 3329,
+                  "id": 3370,
                   "nodeType": "IfStatement",
                   "src": "490:48:26",
                   "trueBody": {
-                    "id": 3328,
+                    "id": 3369,
                     "nodeType": "Block",
                     "src": "508:30:26",
                     "statements": [
                       {
                         "expression": {
                           "argumentTypes": null,
-                          "id": 3326,
+                          "id": 3367,
                           "name": "mockTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3291,
+                          "referencedDeclaration": 3332,
                           "src": "523:8:26",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "functionReturnParameters": 3322,
-                        "id": 3327,
+                        "functionReturnParameters": 3363,
+                        "id": 3368,
                         "nodeType": "Return",
                         "src": "516:15:26"
                       }
@@ -948,26 +948,26 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3330,
+                    "id": 3371,
                     "name": "now",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 4902,
+                    "referencedDeclaration": 4943,
                     "src": "550:3:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 3322,
-                  "id": 3331,
+                  "functionReturnParameters": 3363,
+                  "id": 3372,
                   "nodeType": "Return",
                   "src": "543:10:26"
                 }
               ]
             },
             "documentation": null,
-            "id": 3333,
+            "id": 3374,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -975,22 +975,22 @@
             "name": "getCurrentTime",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3319,
+              "id": 3360,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "455:2:26"
             },
             "payable": false,
             "returnParameters": {
-              "id": 3322,
+              "id": 3363,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3321,
+                  "id": 3362,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3333,
+                  "scope": 3374,
                   "src": "478:4:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -999,7 +999,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3320,
+                    "id": 3361,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "478:4:26",
@@ -1014,33 +1014,33 @@
               ],
               "src": "477:6:26"
             },
-            "scope": 3348,
+            "scope": 3389,
             "src": "432:126:26",
             "stateMutability": "view",
-            "superFunction": 2137,
+            "superFunction": 2178,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 3346,
+              "id": 3387,
               "nodeType": "Block",
               "src": "623:48:26",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3342,
+                    "id": 3383,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 3340,
+                      "id": 3381,
                       "name": "mockTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3291,
+                      "referencedDeclaration": 3332,
                       "src": "629:8:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1051,11 +1051,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 3341,
+                      "id": 3382,
                       "name": "_mockTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3335,
+                      "referencedDeclaration": 3376,
                       "src": "640:9:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1068,7 +1068,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 3343,
+                  "id": 3384,
                   "nodeType": "ExpressionStatement",
                   "src": "629:20:26"
                 },
@@ -1076,7 +1076,7 @@
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 3344,
+                    "id": 3385,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -1091,15 +1091,15 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 3339,
-                  "id": 3345,
+                  "functionReturnParameters": 3380,
+                  "id": 3386,
                   "nodeType": "Return",
                   "src": "655:11:26"
                 }
               ]
             },
             "documentation": null,
-            "id": 3347,
+            "id": 3388,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1107,15 +1107,15 @@
             "name": "updateMockTime",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3336,
+              "id": 3377,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3335,
+                  "id": 3376,
                   "name": "_mockTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3347,
+                  "scope": 3388,
                   "src": "586:14:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1124,7 +1124,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3334,
+                    "id": 3375,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "586:4:26",
@@ -1141,15 +1141,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3339,
+              "id": 3380,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3338,
+                  "id": 3379,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3347,
+                  "scope": 3388,
                   "src": "617:4:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1158,7 +1158,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3337,
+                    "id": 3378,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "617:4:26",
@@ -1173,14 +1173,14 @@
               ],
               "src": "616:6:26"
             },
-            "scope": 3348,
+            "scope": 3389,
             "src": "562:109:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3349,
+        "scope": 3390,
         "src": "60:614:26"
       }
     ],
@@ -1190,14 +1190,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockOptionPair.sol",
     "exportedSymbols": {
       "MockOptionPair": [
-        3348
+        3389
       ]
     },
-    "id": 3349,
+    "id": 3390,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3285,
+        "id": 3326,
         "literals": [
           "solidity",
           "^",
@@ -1210,10 +1210,10 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/OptionPair.sol",
         "file": "../main/OptionPair.sol",
-        "id": 3286,
+        "id": 3327,
         "nodeType": "ImportDirective",
-        "scope": 3349,
-        "sourceUnit": 2352,
+        "scope": 3390,
+        "sourceUnit": 2393,
         "src": "26:32:26",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1224,43 +1224,43 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3287,
+              "id": 3328,
               "name": "OptionPair",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2351,
+              "referencedDeclaration": 2392,
               "src": "87:10:26",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OptionPair_$2351",
+                "typeIdentifier": "t_contract$_OptionPair_$2392",
                 "typeString": "contract OptionPair"
               }
             },
-            "id": 3288,
+            "id": 3329,
             "nodeType": "InheritanceSpecifier",
             "src": "87:10:26"
           }
         ],
         "contractDependencies": [
-          2351,
-          3528
+          2392,
+          3569
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3348,
+        "id": 3389,
         "linearizedBaseContracts": [
-          3348,
-          2351,
-          3528
+          3389,
+          2392,
+          3569
         ],
         "name": "MockOptionPair",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 3291,
+            "id": 3332,
             "name": "mockTime",
             "nodeType": "VariableDeclaration",
-            "scope": 3348,
+            "scope": 3389,
             "src": "103:18:26",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1269,7 +1269,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3289,
+              "id": 3330,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "103:4:26",
@@ -1281,7 +1281,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "30",
-              "id": 3290,
+              "id": 3331,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -1300,13 +1300,13 @@
           },
           {
             "body": {
-              "id": 3317,
+              "id": 3358,
               "nodeType": "Block",
               "src": "426:2:26",
               "statements": []
             },
             "documentation": null,
-            "id": 3318,
+            "id": 3359,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1315,11 +1315,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 3308,
+                    "id": 3349,
                     "name": "_underlying",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3293,
+                    "referencedDeclaration": 3334,
                     "src": "323:11:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1328,11 +1328,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3309,
+                    "id": 3350,
                     "name": "_basisToken",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3295,
+                    "referencedDeclaration": 3336,
                     "src": "337:11:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1341,11 +1341,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3310,
+                    "id": 3351,
                     "name": "_strike",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3297,
+                    "referencedDeclaration": 3338,
                     "src": "357:7:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -1354,11 +1354,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3311,
+                    "id": 3352,
                     "name": "_underlyingQty",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3299,
+                    "referencedDeclaration": 3340,
                     "src": "367:14:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -1367,11 +1367,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3312,
+                    "id": 3353,
                     "name": "_expireTime",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3301,
+                    "referencedDeclaration": 3342,
                     "src": "384:11:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -1380,11 +1380,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3313,
+                    "id": 3354,
                     "name": "_feeCalculator",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3303,
+                    "referencedDeclaration": 3344,
                     "src": "398:14:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1393,11 +1393,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3314,
+                    "id": 3355,
                     "name": "_feeTaker",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3305,
+                    "referencedDeclaration": 3346,
                     "src": "414:9:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1405,17 +1405,17 @@
                     }
                   }
                 ],
-                "id": 3315,
+                "id": 3356,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 3307,
+                  "id": 3348,
                   "name": "OptionPair",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2351,
+                  "referencedDeclaration": 2392,
                   "src": "312:10:26",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_OptionPair_$2351_$",
+                    "typeIdentifier": "t_type$_t_contract$_OptionPair_$2392_$",
                     "typeString": "type(contract OptionPair)"
                   }
                 },
@@ -1426,15 +1426,15 @@
             "name": "MockOptionPair",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3306,
+              "id": 3347,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3293,
+                  "id": 3334,
                   "name": "_underlying",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "151:19:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1443,7 +1443,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3292,
+                    "id": 3333,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "151:7:26",
@@ -1457,10 +1457,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3295,
+                  "id": 3336,
                   "name": "_basisToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "172:19:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1469,7 +1469,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3294,
+                    "id": 3335,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "172:7:26",
@@ -1483,10 +1483,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3297,
+                  "id": 3338,
                   "name": "_strike",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "197:12:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1495,7 +1495,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3296,
+                    "id": 3337,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "197:4:26",
@@ -1509,10 +1509,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3299,
+                  "id": 3340,
                   "name": "_underlyingQty",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "211:19:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1521,7 +1521,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3298,
+                    "id": 3339,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "211:4:26",
@@ -1535,10 +1535,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3301,
+                  "id": 3342,
                   "name": "_expireTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "232:16:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1547,7 +1547,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3300,
+                    "id": 3341,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "232:4:26",
@@ -1561,10 +1561,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3303,
+                  "id": 3344,
                   "name": "_feeCalculator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "254:22:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1573,7 +1573,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3302,
+                    "id": 3343,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "254:7:26",
@@ -1587,10 +1587,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3305,
+                  "id": 3346,
                   "name": "_feeTaker",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3318,
+                  "scope": 3359,
                   "src": "278:17:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1599,7 +1599,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3304,
+                    "id": 3345,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "278:7:26",
@@ -1616,12 +1616,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3316,
+              "id": 3357,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "426:0:26"
             },
-            "scope": 3348,
+            "scope": 3389,
             "src": "126:302:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1629,7 +1629,7 @@
           },
           {
             "body": {
-              "id": 3332,
+              "id": 3373,
               "nodeType": "Block",
               "src": "484:74:26",
               "statements": [
@@ -1640,18 +1640,18 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 3325,
+                    "id": 3366,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 3323,
+                      "id": 3364,
                       "name": "mockTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3291,
+                      "referencedDeclaration": 3332,
                       "src": "494:8:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1663,7 +1663,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "30",
-                      "id": 3324,
+                      "id": 3365,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1685,30 +1685,30 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 3329,
+                  "id": 3370,
                   "nodeType": "IfStatement",
                   "src": "490:48:26",
                   "trueBody": {
-                    "id": 3328,
+                    "id": 3369,
                     "nodeType": "Block",
                     "src": "508:30:26",
                     "statements": [
                       {
                         "expression": {
                           "argumentTypes": null,
-                          "id": 3326,
+                          "id": 3367,
                           "name": "mockTime",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3291,
+                          "referencedDeclaration": 3332,
                           "src": "523:8:26",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "functionReturnParameters": 3322,
-                        "id": 3327,
+                        "functionReturnParameters": 3363,
+                        "id": 3368,
                         "nodeType": "Return",
                         "src": "516:15:26"
                       }
@@ -1718,26 +1718,26 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3330,
+                    "id": 3371,
                     "name": "now",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 4902,
+                    "referencedDeclaration": 4943,
                     "src": "550:3:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 3322,
-                  "id": 3331,
+                  "functionReturnParameters": 3363,
+                  "id": 3372,
                   "nodeType": "Return",
                   "src": "543:10:26"
                 }
               ]
             },
             "documentation": null,
-            "id": 3333,
+            "id": 3374,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1745,22 +1745,22 @@
             "name": "getCurrentTime",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3319,
+              "id": 3360,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "455:2:26"
             },
             "payable": false,
             "returnParameters": {
-              "id": 3322,
+              "id": 3363,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3321,
+                  "id": 3362,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3333,
+                  "scope": 3374,
                   "src": "478:4:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1769,7 +1769,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3320,
+                    "id": 3361,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "478:4:26",
@@ -1784,33 +1784,33 @@
               ],
               "src": "477:6:26"
             },
-            "scope": 3348,
+            "scope": 3389,
             "src": "432:126:26",
             "stateMutability": "view",
-            "superFunction": 2137,
+            "superFunction": 2178,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 3346,
+              "id": 3387,
               "nodeType": "Block",
               "src": "623:48:26",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3342,
+                    "id": 3383,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 3340,
+                      "id": 3381,
                       "name": "mockTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3291,
+                      "referencedDeclaration": 3332,
                       "src": "629:8:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1821,11 +1821,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 3341,
+                      "id": 3382,
                       "name": "_mockTime",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3335,
+                      "referencedDeclaration": 3376,
                       "src": "640:9:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1838,7 +1838,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 3343,
+                  "id": 3384,
                   "nodeType": "ExpressionStatement",
                   "src": "629:20:26"
                 },
@@ -1846,7 +1846,7 @@
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 3344,
+                    "id": 3385,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -1861,15 +1861,15 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 3339,
-                  "id": 3345,
+                  "functionReturnParameters": 3380,
+                  "id": 3386,
                   "nodeType": "Return",
                   "src": "655:11:26"
                 }
               ]
             },
             "documentation": null,
-            "id": 3347,
+            "id": 3388,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1877,15 +1877,15 @@
             "name": "updateMockTime",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3336,
+              "id": 3377,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3335,
+                  "id": 3376,
                   "name": "_mockTime",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3347,
+                  "scope": 3388,
                   "src": "586:14:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1894,7 +1894,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3334,
+                    "id": 3375,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "586:4:26",
@@ -1911,15 +1911,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3339,
+              "id": 3380,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3338,
+                  "id": 3379,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3347,
+                  "scope": 3388,
                   "src": "617:4:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1928,7 +1928,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3337,
+                    "id": 3378,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "617:4:26",
@@ -1943,14 +1943,14 @@
               ],
               "src": "616:6:26"
             },
-            "scope": 3348,
+            "scope": 3389,
             "src": "562:109:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3349,
+        "scope": 3390,
         "src": "60:614:26"
       }
     ],
@@ -1962,5 +1962,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-14T07:51:36.132Z"
+  "updatedAt": "2018-09-19T09:59:31.566Z"
 }

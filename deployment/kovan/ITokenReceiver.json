@@ -34,14 +34,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/ITokenReceiver.sol",
     "exportedSymbols": {
       "ITokenReceiver": [
-        334
+        375
       ]
     },
-    "id": 335,
+    "id": 376,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 324,
+        "id": 365,
         "literals": [
           "solidity",
           "^",
@@ -57,9 +57,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 334,
+        "id": 375,
         "linearizedBaseContracts": [
-          334
+          375
         ],
         "name": "ITokenReceiver",
         "nodeType": "ContractDefinition",
@@ -67,7 +67,7 @@
           {
             "body": null,
             "documentation": "suppose that a contract first transfer token(s) and then call this callback method\n@param tokenAddress ERC721 or ERC20 token address\n@param eitherQtyOrTokenId in case of ERC20: amount, in case of ERC721: tokenId",
-            "id": 333,
+            "id": 374,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -75,15 +75,15 @@
             "name": "onReceive",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 331,
+              "id": 372,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 326,
+                  "id": 367,
                   "name": "tokenAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 333,
+                  "scope": 374,
                   "src": "309:20:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -92,7 +92,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 325,
+                    "id": 366,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "309:7:9",
@@ -106,10 +106,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 328,
+                  "id": 369,
                   "name": "eitherQtyOrTokenId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 333,
+                  "scope": 374,
                   "src": "331:23:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -118,7 +118,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 327,
+                    "id": 368,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "331:4:9",
@@ -132,10 +132,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 330,
+                  "id": 371,
                   "name": "origin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 333,
+                  "scope": 374,
                   "src": "356:14:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -144,7 +144,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 329,
+                    "id": 370,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "356:7:9",
@@ -161,19 +161,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 332,
+              "id": 373,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "378:0:9"
             },
-            "scope": 334,
+            "scope": 375,
             "src": "290:89:9",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 335,
+        "scope": 376,
         "src": "26:356:9"
       }
     ],
@@ -183,14 +183,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/ITokenReceiver.sol",
     "exportedSymbols": {
       "ITokenReceiver": [
-        334
+        375
       ]
     },
-    "id": 335,
+    "id": 376,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 324,
+        "id": 365,
         "literals": [
           "solidity",
           "^",
@@ -206,9 +206,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 334,
+        "id": 375,
         "linearizedBaseContracts": [
-          334
+          375
         ],
         "name": "ITokenReceiver",
         "nodeType": "ContractDefinition",
@@ -216,7 +216,7 @@
           {
             "body": null,
             "documentation": "suppose that a contract first transfer token(s) and then call this callback method\n@param tokenAddress ERC721 or ERC20 token address\n@param eitherQtyOrTokenId in case of ERC20: amount, in case of ERC721: tokenId",
-            "id": 333,
+            "id": 374,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -224,15 +224,15 @@
             "name": "onReceive",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 331,
+              "id": 372,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 326,
+                  "id": 367,
                   "name": "tokenAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 333,
+                  "scope": 374,
                   "src": "309:20:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -241,7 +241,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 325,
+                    "id": 366,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "309:7:9",
@@ -255,10 +255,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 328,
+                  "id": 369,
                   "name": "eitherQtyOrTokenId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 333,
+                  "scope": 374,
                   "src": "331:23:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -267,7 +267,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 327,
+                    "id": 368,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "331:4:9",
@@ -281,10 +281,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 330,
+                  "id": 371,
                   "name": "origin",
                   "nodeType": "VariableDeclaration",
-                  "scope": 333,
+                  "scope": 374,
                   "src": "356:14:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -293,7 +293,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 329,
+                    "id": 370,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "356:7:9",
@@ -310,19 +310,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 332,
+              "id": 373,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "378:0:9"
             },
-            "scope": 334,
+            "scope": 375,
             "src": "290:89:9",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 335,
+        "scope": 376,
         "src": "26:356:9"
       }
     ],
@@ -334,5 +334,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-14T07:51:36.112Z"
+  "updatedAt": "2018-09-19T09:59:31.551Z"
 }

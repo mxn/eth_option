@@ -114,14 +114,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/SimpleFeeCalculatorTest.sol",
     "exportedSymbols": {
       "SimpleFeeCalculatorTest": [
-        3418
+        3459
       ]
     },
-    "id": 3419,
+    "id": 3460,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3399,
+        "id": 3440,
         "literals": [
           "solidity",
           "^",
@@ -134,10 +134,10 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/SimpleFeeCalculator.sol",
         "file": "../main/SimpleFeeCalculator.sol",
-        "id": 3400,
+        "id": 3441,
         "nodeType": "ImportDirective",
-        "scope": 3419,
-        "sourceUnit": 2677,
+        "scope": 3460,
+        "sourceUnit": 2718,
         "src": "26:41:30",
         "symbolAliases": [],
         "unitAlias": ""
@@ -148,46 +148,46 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3401,
+              "id": 3442,
               "name": "SimpleFeeCalculator",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2676,
+              "referencedDeclaration": 2717,
               "src": "105:19:30",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SimpleFeeCalculator_$2676",
+                "typeIdentifier": "t_contract$_SimpleFeeCalculator_$2717",
                 "typeString": "contract SimpleFeeCalculator"
               }
             },
-            "id": 3402,
+            "id": 3443,
             "nodeType": "InheritanceSpecifier",
             "src": "105:19:30"
           }
         ],
         "contractDependencies": [
-          295,
-          2676
+          336,
+          2717
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3418,
+        "id": 3459,
         "linearizedBaseContracts": [
-          3418,
-          2676,
-          295
+          3459,
+          2717,
+          336
         ],
         "name": "SimpleFeeCalculatorTest",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 3416,
+              "id": 3457,
               "nodeType": "Block",
               "src": "289:2:30",
               "statements": []
             },
             "documentation": null,
-            "id": 3417,
+            "id": 3458,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -196,11 +196,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 3411,
+                    "id": 3452,
                     "name": "_feeToken",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3404,
+                    "referencedDeclaration": 3445,
                     "src": "243:9:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -209,11 +209,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3412,
+                    "id": 3453,
                     "name": "_numerator",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3406,
+                    "referencedDeclaration": 3447,
                     "src": "254:10:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -222,11 +222,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3413,
+                    "id": 3454,
                     "name": "_denominator",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3408,
+                    "referencedDeclaration": 3449,
                     "src": "266:12:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -234,17 +234,17 @@
                     }
                   }
                 ],
-                "id": 3414,
+                "id": 3455,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 3410,
+                  "id": 3451,
                   "name": "SimpleFeeCalculator",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2676,
+                  "referencedDeclaration": 2717,
                   "src": "223:19:30",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_SimpleFeeCalculator_$2676_$",
+                    "typeIdentifier": "t_type$_t_contract$_SimpleFeeCalculator_$2717_$",
                     "typeString": "type(contract SimpleFeeCalculator)"
                   }
                 },
@@ -255,15 +255,15 @@
             "name": "SimpleFeeCalculatorTest",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3409,
+              "id": 3450,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3404,
+                  "id": 3445,
                   "name": "_feeToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3417,
+                  "scope": 3458,
                   "src": "162:17:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -272,7 +272,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3403,
+                    "id": 3444,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "162:7:30",
@@ -286,10 +286,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3406,
+                  "id": 3447,
                   "name": "_numerator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3417,
+                  "scope": 3458,
                   "src": "181:15:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -298,7 +298,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3405,
+                    "id": 3446,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "181:4:30",
@@ -312,10 +312,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3408,
+                  "id": 3449,
                   "name": "_denominator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3417,
+                  "scope": 3458,
                   "src": "202:17:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -324,7 +324,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3407,
+                    "id": 3448,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "202:4:30",
@@ -341,19 +341,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3415,
+              "id": 3456,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "289:0:30"
             },
-            "scope": 3418,
+            "scope": 3459,
             "src": "129:162:30",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3419,
+        "scope": 3460,
         "src": "69:224:30"
       }
     ],
@@ -363,14 +363,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/SimpleFeeCalculatorTest.sol",
     "exportedSymbols": {
       "SimpleFeeCalculatorTest": [
-        3418
+        3459
       ]
     },
-    "id": 3419,
+    "id": 3460,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3399,
+        "id": 3440,
         "literals": [
           "solidity",
           "^",
@@ -383,10 +383,10 @@
       {
         "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/SimpleFeeCalculator.sol",
         "file": "../main/SimpleFeeCalculator.sol",
-        "id": 3400,
+        "id": 3441,
         "nodeType": "ImportDirective",
-        "scope": 3419,
-        "sourceUnit": 2677,
+        "scope": 3460,
+        "sourceUnit": 2718,
         "src": "26:41:30",
         "symbolAliases": [],
         "unitAlias": ""
@@ -397,46 +397,46 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3401,
+              "id": 3442,
               "name": "SimpleFeeCalculator",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2676,
+              "referencedDeclaration": 2717,
               "src": "105:19:30",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SimpleFeeCalculator_$2676",
+                "typeIdentifier": "t_contract$_SimpleFeeCalculator_$2717",
                 "typeString": "contract SimpleFeeCalculator"
               }
             },
-            "id": 3402,
+            "id": 3443,
             "nodeType": "InheritanceSpecifier",
             "src": "105:19:30"
           }
         ],
         "contractDependencies": [
-          295,
-          2676
+          336,
+          2717
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3418,
+        "id": 3459,
         "linearizedBaseContracts": [
-          3418,
-          2676,
-          295
+          3459,
+          2717,
+          336
         ],
         "name": "SimpleFeeCalculatorTest",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 3416,
+              "id": 3457,
               "nodeType": "Block",
               "src": "289:2:30",
               "statements": []
             },
             "documentation": null,
-            "id": 3417,
+            "id": 3458,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -445,11 +445,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 3411,
+                    "id": 3452,
                     "name": "_feeToken",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3404,
+                    "referencedDeclaration": 3445,
                     "src": "243:9:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -458,11 +458,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3412,
+                    "id": 3453,
                     "name": "_numerator",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3406,
+                    "referencedDeclaration": 3447,
                     "src": "254:10:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -471,11 +471,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 3413,
+                    "id": 3454,
                     "name": "_denominator",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3408,
+                    "referencedDeclaration": 3449,
                     "src": "266:12:30",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -483,17 +483,17 @@
                     }
                   }
                 ],
-                "id": 3414,
+                "id": 3455,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 3410,
+                  "id": 3451,
                   "name": "SimpleFeeCalculator",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 2676,
+                  "referencedDeclaration": 2717,
                   "src": "223:19:30",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_SimpleFeeCalculator_$2676_$",
+                    "typeIdentifier": "t_type$_t_contract$_SimpleFeeCalculator_$2717_$",
                     "typeString": "type(contract SimpleFeeCalculator)"
                   }
                 },
@@ -504,15 +504,15 @@
             "name": "SimpleFeeCalculatorTest",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3409,
+              "id": 3450,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3404,
+                  "id": 3445,
                   "name": "_feeToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3417,
+                  "scope": 3458,
                   "src": "162:17:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -521,7 +521,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3403,
+                    "id": 3444,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "162:7:30",
@@ -535,10 +535,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3406,
+                  "id": 3447,
                   "name": "_numerator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3417,
+                  "scope": 3458,
                   "src": "181:15:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -547,7 +547,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3405,
+                    "id": 3446,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "181:4:30",
@@ -561,10 +561,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3408,
+                  "id": 3449,
                   "name": "_denominator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3417,
+                  "scope": 3458,
                   "src": "202:17:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -573,7 +573,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3407,
+                    "id": 3448,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "202:4:30",
@@ -590,19 +590,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3415,
+              "id": 3456,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "289:0:30"
             },
-            "scope": 3418,
+            "scope": 3459,
             "src": "129:162:30",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3419,
+        "scope": 3460,
         "src": "69:224:30"
       }
     ],
@@ -614,5 +614,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-14T07:51:36.133Z"
+  "updatedAt": "2018-09-19T09:59:31.567Z"
 }

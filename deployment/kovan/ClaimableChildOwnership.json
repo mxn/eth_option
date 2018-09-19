@@ -94,7 +94,7 @@
         "id": 30,
         "nodeType": "ImportDirective",
         "scope": 66,
-        "sourceUnit": 3707,
+        "sourceUnit": 3748,
         "src": "26:59:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -108,10 +108,10 @@
               "id": 31,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3706,
+              "referencedDeclaration": 3747,
               "src": "123:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$3706",
+                "typeIdentifier": "t_contract$_Ownable_$3747",
                 "typeString": "contract Ownable"
               }
             },
@@ -121,7 +121,7 @@
           }
         ],
         "contractDependencies": [
-          3706
+          3747
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -129,7 +129,7 @@
         "id": 65,
         "linearizedBaseContracts": [
           65,
-          3706
+          3747
         ],
         "name": "ClaimableChildOwnership",
         "nodeType": "ContractDefinition",
@@ -155,7 +155,7 @@
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_Ownable_$3706",
+                        "typeIdentifier": "t_contract$_Ownable_$3747",
                         "typeString": "contract Ownable"
                       },
                       "typeName": {
@@ -163,10 +163,10 @@
                         "id": 39,
                         "name": "Ownable",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 3706,
+                        "referencedDeclaration": 3747,
                         "src": "212:7:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Ownable_$3706",
+                          "typeIdentifier": "t_contract$_Ownable_$3747",
                           "typeString": "contract Ownable"
                         }
                       },
@@ -203,10 +203,10 @@
                       "name": "Ownable",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3706,
+                      "referencedDeclaration": 3747,
                       "src": "228:7:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_contract$_Ownable_$3706_$",
+                        "typeIdentifier": "t_type$_t_contract$_Ownable_$3747_$",
                         "typeString": "type(contract Ownable)"
                       }
                     },
@@ -220,7 +220,7 @@
                     "nodeType": "FunctionCall",
                     "src": "228:23:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_Ownable_$3706",
+                      "typeIdentifier": "t_contract$_Ownable_$3747",
                       "typeString": "contract Ownable"
                     }
                   },
@@ -256,7 +256,7 @@
                               "referencedDeclaration": 40,
                               "src": "265:5:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_Ownable_$3706",
+                                "typeIdentifier": "t_contract$_Ownable_$3747",
                                 "typeString": "contract Ownable"
                               }
                             },
@@ -267,7 +267,7 @@
                             "lValueRequested": false,
                             "memberName": "owner",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 3654,
+                            "referencedDeclaration": 3695,
                             "src": "265:11:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
@@ -299,7 +299,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 4931,
+                              "referencedDeclaration": 4972,
                               "src": "290:4:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_ClaimableChildOwnership_$65",
@@ -359,10 +359,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4903,
-                        4904
+                        4944,
+                        4945
                       ],
-                      "referencedDeclaration": 4903,
+                      "referencedDeclaration": 4944,
                       "src": "257:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -399,7 +399,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4900,
+                          "referencedDeclaration": 4941,
                           "src": "344:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -456,10 +456,10 @@
                           "name": "Ownable",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3706,
+                          "referencedDeclaration": 3747,
                           "src": "302:7:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_Ownable_$3706_$",
+                            "typeIdentifier": "t_type$_t_contract$_Ownable_$3747_$",
                             "typeString": "type(contract Ownable)"
                           }
                         },
@@ -473,7 +473,7 @@
                         "nodeType": "FunctionCall",
                         "src": "302:23:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Ownable_$3706",
+                          "typeIdentifier": "t_contract$_Ownable_$3747",
                           "typeString": "contract Ownable"
                         }
                       },
@@ -484,7 +484,7 @@
                       "lValueRequested": false,
                       "memberName": "transferOwnership",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3705,
+                      "referencedDeclaration": 3746,
                       "src": "302:41:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
@@ -526,7 +526,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3680,
+                  "referencedDeclaration": 3721,
                   "src": "196:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -619,7 +619,7 @@
         "id": 30,
         "nodeType": "ImportDirective",
         "scope": 66,
-        "sourceUnit": 3707,
+        "sourceUnit": 3748,
         "src": "26:59:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -633,10 +633,10 @@
               "id": 31,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3706,
+              "referencedDeclaration": 3747,
               "src": "123:7:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$3706",
+                "typeIdentifier": "t_contract$_Ownable_$3747",
                 "typeString": "contract Ownable"
               }
             },
@@ -646,7 +646,7 @@
           }
         ],
         "contractDependencies": [
-          3706
+          3747
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -654,7 +654,7 @@
         "id": 65,
         "linearizedBaseContracts": [
           65,
-          3706
+          3747
         ],
         "name": "ClaimableChildOwnership",
         "nodeType": "ContractDefinition",
@@ -680,7 +680,7 @@
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_Ownable_$3706",
+                        "typeIdentifier": "t_contract$_Ownable_$3747",
                         "typeString": "contract Ownable"
                       },
                       "typeName": {
@@ -688,10 +688,10 @@
                         "id": 39,
                         "name": "Ownable",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 3706,
+                        "referencedDeclaration": 3747,
                         "src": "212:7:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Ownable_$3706",
+                          "typeIdentifier": "t_contract$_Ownable_$3747",
                           "typeString": "contract Ownable"
                         }
                       },
@@ -728,10 +728,10 @@
                       "name": "Ownable",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3706,
+                      "referencedDeclaration": 3747,
                       "src": "228:7:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_contract$_Ownable_$3706_$",
+                        "typeIdentifier": "t_type$_t_contract$_Ownable_$3747_$",
                         "typeString": "type(contract Ownable)"
                       }
                     },
@@ -745,7 +745,7 @@
                     "nodeType": "FunctionCall",
                     "src": "228:23:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_Ownable_$3706",
+                      "typeIdentifier": "t_contract$_Ownable_$3747",
                       "typeString": "contract Ownable"
                     }
                   },
@@ -781,7 +781,7 @@
                               "referencedDeclaration": 40,
                               "src": "265:5:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_Ownable_$3706",
+                                "typeIdentifier": "t_contract$_Ownable_$3747",
                                 "typeString": "contract Ownable"
                               }
                             },
@@ -792,7 +792,7 @@
                             "lValueRequested": false,
                             "memberName": "owner",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 3654,
+                            "referencedDeclaration": 3695,
                             "src": "265:11:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
@@ -824,7 +824,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 4931,
+                              "referencedDeclaration": 4972,
                               "src": "290:4:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_ClaimableChildOwnership_$65",
@@ -884,10 +884,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4903,
-                        4904
+                        4944,
+                        4945
                       ],
-                      "referencedDeclaration": 4903,
+                      "referencedDeclaration": 4944,
                       "src": "257:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -924,7 +924,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4900,
+                          "referencedDeclaration": 4941,
                           "src": "344:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -981,10 +981,10 @@
                           "name": "Ownable",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3706,
+                          "referencedDeclaration": 3747,
                           "src": "302:7:1",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_Ownable_$3706_$",
+                            "typeIdentifier": "t_type$_t_contract$_Ownable_$3747_$",
                             "typeString": "type(contract Ownable)"
                           }
                         },
@@ -998,7 +998,7 @@
                         "nodeType": "FunctionCall",
                         "src": "302:23:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Ownable_$3706",
+                          "typeIdentifier": "t_contract$_Ownable_$3747",
                           "typeString": "contract Ownable"
                         }
                       },
@@ -1009,7 +1009,7 @@
                       "lValueRequested": false,
                       "memberName": "transferOwnership",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3705,
+                      "referencedDeclaration": 3746,
                       "src": "302:41:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
@@ -1051,7 +1051,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3680,
+                  "referencedDeclaration": 3721,
                   "src": "196:9:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1123,5 +1123,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-14T07:51:36.111Z"
+  "updatedAt": "2018-09-19T09:59:31.549Z"
 }

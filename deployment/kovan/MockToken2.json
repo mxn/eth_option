@@ -237,14 +237,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockToken2.sol",
     "exportedSymbols": {
       "MockToken2": [
-        3376
+        3417
       ]
     },
-    "id": 3377,
+    "id": 3418,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3364,
+        "id": 3405,
         "literals": [
           "solidity",
           "^",
@@ -257,10 +257,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/mocks/StandardTokenMock.sol",
         "file": "zeppelin-solidity/contracts/mocks/StandardTokenMock.sol",
-        "id": 3365,
+        "id": 3406,
         "nodeType": "ImportDirective",
-        "scope": 3377,
-        "sourceUnit": 3651,
+        "scope": 3418,
+        "sourceUnit": 3692,
         "src": "26:65:28",
         "symbolAliases": [],
         "unitAlias": ""
@@ -271,52 +271,52 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3366,
+              "id": 3407,
               "name": "StandardTokenMock",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3650,
+              "referencedDeclaration": 3691,
               "src": "116:17:28",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StandardTokenMock_$3650",
+                "typeIdentifier": "t_contract$_StandardTokenMock_$3691",
                 "typeString": "contract StandardTokenMock"
               }
             },
-            "id": 3367,
+            "id": 3408,
             "nodeType": "InheritanceSpecifier",
             "src": "116:17:28"
           }
         ],
         "contractDependencies": [
-          3650,
-          3802,
-          3900,
-          3932,
-          4335
+          3691,
+          3843,
+          3941,
+          3973,
+          4376
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3376,
+        "id": 3417,
         "linearizedBaseContracts": [
-          3376,
-          3650,
-          4335,
-          3802,
-          3900,
-          3932
+          3417,
+          3691,
+          4376,
+          3843,
+          3941,
+          3973
         ],
         "name": "MockToken2",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 3374,
+              "id": 3415,
               "nodeType": "Block",
               "src": "239:2:28",
               "statements": []
             },
             "documentation": null,
-            "id": 3375,
+            "id": 3416,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -326,7 +326,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "307835616564613536323135623136373839336538306234666536343562613664356261623736376465",
-                    "id": 3370,
+                    "id": 3411,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -344,7 +344,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "313030303030",
-                    "id": 3371,
+                    "id": 3412,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -360,17 +360,17 @@
                     "value": "100000"
                   }
                 ],
-                "id": 3372,
+                "id": 3413,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 3369,
+                  "id": 3410,
                   "name": "StandardTokenMock",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3650,
+                  "referencedDeclaration": 3691,
                   "src": "169:17:28",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_StandardTokenMock_$3650_$",
+                    "typeIdentifier": "t_type$_t_contract$_StandardTokenMock_$3691_$",
                     "typeString": "type(contract StandardTokenMock)"
                   }
                 },
@@ -381,26 +381,26 @@
             "name": "MockToken2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3368,
+              "id": 3409,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "157:2:28"
             },
             "payable": false,
             "returnParameters": {
-              "id": 3373,
+              "id": 3414,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "239:0:28"
             },
-            "scope": 3376,
+            "scope": 3417,
             "src": "138:103:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3377,
+        "scope": 3418,
         "src": "93:150:28"
       }
     ],
@@ -410,14 +410,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/test/MockToken2.sol",
     "exportedSymbols": {
       "MockToken2": [
-        3376
+        3417
       ]
     },
-    "id": 3377,
+    "id": 3418,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3364,
+        "id": 3405,
         "literals": [
           "solidity",
           "^",
@@ -430,10 +430,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/mocks/StandardTokenMock.sol",
         "file": "zeppelin-solidity/contracts/mocks/StandardTokenMock.sol",
-        "id": 3365,
+        "id": 3406,
         "nodeType": "ImportDirective",
-        "scope": 3377,
-        "sourceUnit": 3651,
+        "scope": 3418,
+        "sourceUnit": 3692,
         "src": "26:65:28",
         "symbolAliases": [],
         "unitAlias": ""
@@ -444,52 +444,52 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3366,
+              "id": 3407,
               "name": "StandardTokenMock",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3650,
+              "referencedDeclaration": 3691,
               "src": "116:17:28",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StandardTokenMock_$3650",
+                "typeIdentifier": "t_contract$_StandardTokenMock_$3691",
                 "typeString": "contract StandardTokenMock"
               }
             },
-            "id": 3367,
+            "id": 3408,
             "nodeType": "InheritanceSpecifier",
             "src": "116:17:28"
           }
         ],
         "contractDependencies": [
-          3650,
-          3802,
-          3900,
-          3932,
-          4335
+          3691,
+          3843,
+          3941,
+          3973,
+          4376
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3376,
+        "id": 3417,
         "linearizedBaseContracts": [
-          3376,
-          3650,
-          4335,
-          3802,
-          3900,
-          3932
+          3417,
+          3691,
+          4376,
+          3843,
+          3941,
+          3973
         ],
         "name": "MockToken2",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 3374,
+              "id": 3415,
               "nodeType": "Block",
               "src": "239:2:28",
               "statements": []
             },
             "documentation": null,
-            "id": 3375,
+            "id": 3416,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -499,7 +499,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "307835616564613536323135623136373839336538306234666536343562613664356261623736376465",
-                    "id": 3370,
+                    "id": 3411,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -517,7 +517,7 @@
                   {
                     "argumentTypes": null,
                     "hexValue": "313030303030",
-                    "id": 3371,
+                    "id": 3412,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -533,17 +533,17 @@
                     "value": "100000"
                   }
                 ],
-                "id": 3372,
+                "id": 3413,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 3369,
+                  "id": 3410,
                   "name": "StandardTokenMock",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 3650,
+                  "referencedDeclaration": 3691,
                   "src": "169:17:28",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_StandardTokenMock_$3650_$",
+                    "typeIdentifier": "t_type$_t_contract$_StandardTokenMock_$3691_$",
                     "typeString": "type(contract StandardTokenMock)"
                   }
                 },
@@ -554,26 +554,26 @@
             "name": "MockToken2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3368,
+              "id": 3409,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "157:2:28"
             },
             "payable": false,
             "returnParameters": {
-              "id": 3373,
+              "id": 3414,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "239:0:28"
             },
-            "scope": 3376,
+            "scope": 3417,
             "src": "138:103:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3377,
+        "scope": 3418,
         "src": "93:150:28"
       }
     ],
@@ -585,5 +585,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-14T07:52:25.015Z"
+  "updatedAt": "2018-09-19T09:59:31.567Z"
 }

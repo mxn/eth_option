@@ -21,14 +21,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IEthWrapper.sol",
     "exportedSymbols": {
       "IEthWrapper": [
-        244
+        285
       ]
     },
-    "id": 245,
+    "id": 286,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 240,
+        "id": 281,
         "literals": [
           "solidity",
           "^",
@@ -44,9 +44,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 244,
+        "id": 285,
         "linearizedBaseContracts": [
-          244
+          285
         ],
         "name": "IEthWrapper",
         "nodeType": "ContractDefinition",
@@ -54,7 +54,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 243,
+            "id": 284,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -62,26 +62,26 @@
             "name": "deposit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 241,
+              "id": 282,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "75:2:5"
             },
             "payable": true,
             "returnParameters": {
-              "id": 242,
+              "id": 283,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "92:0:5"
             },
-            "scope": 244,
+            "scope": 285,
             "src": "59:34:5",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 245,
+        "scope": 286,
         "src": "27:68:5"
       }
     ],
@@ -91,14 +91,14 @@
     "absolutePath": "/Users/novosma/Documents/swprojects/github.com/eth_option/contracts/main/IEthWrapper.sol",
     "exportedSymbols": {
       "IEthWrapper": [
-        244
+        285
       ]
     },
-    "id": 245,
+    "id": 286,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 240,
+        "id": 281,
         "literals": [
           "solidity",
           "^",
@@ -114,9 +114,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 244,
+        "id": 285,
         "linearizedBaseContracts": [
-          244
+          285
         ],
         "name": "IEthWrapper",
         "nodeType": "ContractDefinition",
@@ -124,7 +124,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 243,
+            "id": 284,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -132,26 +132,26 @@
             "name": "deposit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 241,
+              "id": 282,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "75:2:5"
             },
             "payable": true,
             "returnParameters": {
-              "id": 242,
+              "id": 283,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "92:0:5"
             },
-            "scope": 244,
+            "scope": 285,
             "src": "59:34:5",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 245,
+        "scope": 286,
         "src": "27:68:5"
       }
     ],
@@ -163,5 +163,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-14T07:51:36.112Z"
+  "updatedAt": "2018-09-19T09:59:31.550Z"
 }

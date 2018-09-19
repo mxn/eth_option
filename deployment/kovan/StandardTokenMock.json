@@ -246,14 +246,14 @@
     "absolutePath": "zeppelin-solidity/contracts/mocks/StandardTokenMock.sol",
     "exportedSymbols": {
       "StandardTokenMock": [
-        3650
+        3691
       ]
     },
-    "id": 3651,
+    "id": 3692,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3628,
+        "id": 3669,
         "literals": [
           "solidity",
           "^",
@@ -266,10 +266,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/token/ERC20/StandardToken.sol",
         "file": "../token/ERC20/StandardToken.sol",
-        "id": 3629,
+        "id": 3670,
         "nodeType": "ImportDirective",
-        "scope": 3651,
-        "sourceUnit": 4336,
+        "scope": 3692,
+        "sourceUnit": 4377,
         "src": "26:42:34",
         "symbolAliases": [],
         "unitAlias": ""
@@ -280,51 +280,51 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3630,
+              "id": 3671,
               "name": "StandardToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4335,
+              "referencedDeclaration": 4376,
               "src": "134:13:34",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StandardToken_$4335",
+                "typeIdentifier": "t_contract$_StandardToken_$4376",
                 "typeString": "contract StandardToken"
               }
             },
-            "id": 3631,
+            "id": 3672,
             "nodeType": "InheritanceSpecifier",
             "src": "134:13:34"
           }
         ],
         "contractDependencies": [
-          3802,
-          3900,
-          3932,
-          4335
+          3843,
+          3941,
+          3973,
+          4376
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3650,
+        "id": 3691,
         "linearizedBaseContracts": [
-          3650,
-          4335,
-          3802,
-          3900,
-          3932
+          3691,
+          4376,
+          3843,
+          3941,
+          3973
         ],
         "name": "StandardTokenMock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 3648,
+              "id": 3689,
               "nodeType": "Block",
               "src": "235:87:34",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3642,
+                    "id": 3683,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -333,25 +333,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 3638,
+                        "id": 3679,
                         "name": "balances",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3719,
+                        "referencedDeclaration": 3760,
                         "src": "241:8:34",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 3640,
+                      "id": 3681,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 3639,
+                        "id": 3680,
                         "name": "initialAccount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3633,
+                        "referencedDeclaration": 3674,
                         "src": "250:14:34",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -373,11 +373,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 3641,
+                      "id": 3682,
                       "name": "initialBalance",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3635,
+                      "referencedDeclaration": 3676,
                       "src": "268:14:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -390,25 +390,25 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 3643,
+                  "id": 3684,
                   "nodeType": "ExpressionStatement",
                   "src": "241:41:34"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3646,
+                    "id": 3687,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 3644,
+                      "id": 3685,
                       "name": "totalSupply_",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3721,
+                      "referencedDeclaration": 3762,
                       "src": "288:12:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -419,11 +419,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 3645,
+                      "id": 3686,
                       "name": "initialBalance",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3635,
+                      "referencedDeclaration": 3676,
                       "src": "303:14:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -436,14 +436,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 3647,
+                  "id": 3688,
                   "nodeType": "ExpressionStatement",
                   "src": "288:29:34"
                 }
               ]
             },
             "documentation": null,
-            "id": 3649,
+            "id": 3690,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -451,15 +451,15 @@
             "name": "StandardTokenMock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3636,
+              "id": 3677,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3633,
+                  "id": 3674,
                   "name": "initialAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3649,
+                  "scope": 3690,
                   "src": "180:22:34",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -468,7 +468,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3632,
+                    "id": 3673,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "180:7:34",
@@ -482,10 +482,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3635,
+                  "id": 3676,
                   "name": "initialBalance",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3649,
+                  "scope": 3690,
                   "src": "204:22:34",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -494,7 +494,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3634,
+                    "id": 3675,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "204:7:34",
@@ -511,19 +511,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3637,
+              "id": 3678,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "235:0:34"
             },
-            "scope": 3650,
+            "scope": 3691,
             "src": "153:169:34",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3651,
+        "scope": 3692,
         "src": "104:221:34"
       }
     ],
@@ -533,14 +533,14 @@
     "absolutePath": "zeppelin-solidity/contracts/mocks/StandardTokenMock.sol",
     "exportedSymbols": {
       "StandardTokenMock": [
-        3650
+        3691
       ]
     },
-    "id": 3651,
+    "id": 3692,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3628,
+        "id": 3669,
         "literals": [
           "solidity",
           "^",
@@ -553,10 +553,10 @@
       {
         "absolutePath": "zeppelin-solidity/contracts/token/ERC20/StandardToken.sol",
         "file": "../token/ERC20/StandardToken.sol",
-        "id": 3629,
+        "id": 3670,
         "nodeType": "ImportDirective",
-        "scope": 3651,
-        "sourceUnit": 4336,
+        "scope": 3692,
+        "sourceUnit": 4377,
         "src": "26:42:34",
         "symbolAliases": [],
         "unitAlias": ""
@@ -567,51 +567,51 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 3630,
+              "id": 3671,
               "name": "StandardToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4335,
+              "referencedDeclaration": 4376,
               "src": "134:13:34",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StandardToken_$4335",
+                "typeIdentifier": "t_contract$_StandardToken_$4376",
                 "typeString": "contract StandardToken"
               }
             },
-            "id": 3631,
+            "id": 3672,
             "nodeType": "InheritanceSpecifier",
             "src": "134:13:34"
           }
         ],
         "contractDependencies": [
-          3802,
-          3900,
-          3932,
-          4335
+          3843,
+          3941,
+          3973,
+          4376
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3650,
+        "id": 3691,
         "linearizedBaseContracts": [
-          3650,
-          4335,
-          3802,
-          3900,
-          3932
+          3691,
+          4376,
+          3843,
+          3941,
+          3973
         ],
         "name": "StandardTokenMock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 3648,
+              "id": 3689,
               "nodeType": "Block",
               "src": "235:87:34",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3642,
+                    "id": 3683,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -620,25 +620,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 3638,
+                        "id": 3679,
                         "name": "balances",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3719,
+                        "referencedDeclaration": 3760,
                         "src": "241:8:34",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 3640,
+                      "id": 3681,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 3639,
+                        "id": 3680,
                         "name": "initialAccount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3633,
+                        "referencedDeclaration": 3674,
                         "src": "250:14:34",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -660,11 +660,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 3641,
+                      "id": 3682,
                       "name": "initialBalance",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3635,
+                      "referencedDeclaration": 3676,
                       "src": "268:14:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -677,25 +677,25 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 3643,
+                  "id": 3684,
                   "nodeType": "ExpressionStatement",
                   "src": "241:41:34"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3646,
+                    "id": 3687,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 3644,
+                      "id": 3685,
                       "name": "totalSupply_",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3721,
+                      "referencedDeclaration": 3762,
                       "src": "288:12:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -706,11 +706,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 3645,
+                      "id": 3686,
                       "name": "initialBalance",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3635,
+                      "referencedDeclaration": 3676,
                       "src": "303:14:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -723,14 +723,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 3647,
+                  "id": 3688,
                   "nodeType": "ExpressionStatement",
                   "src": "288:29:34"
                 }
               ]
             },
             "documentation": null,
-            "id": 3649,
+            "id": 3690,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -738,15 +738,15 @@
             "name": "StandardTokenMock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3636,
+              "id": 3677,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3633,
+                  "id": 3674,
                   "name": "initialAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3649,
+                  "scope": 3690,
                   "src": "180:22:34",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -755,7 +755,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3632,
+                    "id": 3673,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "180:7:34",
@@ -769,10 +769,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 3635,
+                  "id": 3676,
                   "name": "initialBalance",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3649,
+                  "scope": 3690,
                   "src": "204:22:34",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -781,7 +781,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3634,
+                    "id": 3675,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "204:7:34",
@@ -798,19 +798,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 3637,
+              "id": 3678,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "235:0:34"
             },
-            "scope": 3650,
+            "scope": 3691,
             "src": "153:169:34",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3651,
+        "scope": 3692,
         "src": "104:221:34"
       }
     ],
@@ -822,5 +822,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-09-14T07:51:36.135Z"
+  "updatedAt": "2018-09-19T09:59:31.568Z"
 }
