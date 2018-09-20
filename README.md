@@ -158,7 +158,9 @@ At 01.09.2018 Bob will get back some WETH. He "annihilates" the remaining 3 OPT_
 </table>
 
 
-The price of Ethereum went up and per 2018-11-01 the price reaches 4000 DAI per WETH. Clair decides to exercise 5 of her options. So she borrows and transfers 5 * 3000 (strike price) to meta-option contract and get back 5 WETH. These 5 WETH she sells on exchange at 4000 to make 5000 (5 * (4000 - 3000) ) DAI. Two option contracts she would like to hold for further growth.
+The price of Ethereum went up and per 2018-11-01 the price reaches 4000 DAI per WETH. Clair decides to exercise 5 of her options. So she borrows and transfers 5 * 3000 (strike price) to meta-option contract and get back 5 WETH. These 5 WETH she sells on exchange at 4000 to make 5000 (5 * (4000 - 3000) ) DAI. 
+Another possibility is to exercise option with exchange. In this case Clair does not need basis token at all. The corresponding amount of underlying is exchanged by the smart contract. As a result she gets DAI (exceed amount above corresponding "strike" amount) directly.
+Two option contracts she would like to hold for further growth.
 
 <table>
 <tr>
@@ -259,7 +261,12 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
   </tr>
 </table>
 
+## Monetisation: Option Series Creation and Fees
+The main idea of monetisation is collection the fees during option writing. The right to withdraw fees belongs to a ERC721 "option serie" token owner. 
+An user can create option serie and write options just after that. During the creation a ERC721 token is minting to a specific account. Besides this specific "fee collector" contract is created. From this contract the collected fees can be withdrawn only by a corresponding ERC721 token owner. The ERC721 token can be directly transferred to an auction for sale  (currently it goes to the owner of the corresponding contract)
 
+
+![Option Serie Creation](docs/dias/create_option_serie.png)
 
 ## Others
 
