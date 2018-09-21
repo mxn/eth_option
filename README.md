@@ -261,8 +261,20 @@ Suddenly the price drops for 2000 DAI (below strike) per WETH and remains below 
   </tr>
 </table>
 
+## Exercise with exchange
+The operations are displayed on the sequence diagram.
+
+![Option Exercise  With Exchange](docs/dias/exercise_with_exchange.png)
+
+As it can be seen it allows for option holders exercise options without holding basis tokens at all. The smart contract exchange the requested amount of options and transfer excess amount above strike of basis token to option seller.
+
+E.g. Clair has 10 Option contracts for WETH as underlying at strike 300 DAI per 1 WETH. Current price of WETH at exchange is 350 DAI. By selling 10 contracts with exchange, the smart contract sells 10 WETH and gets 3500 DAI. From this amount 500 DAI goes to Clair, the 3000 DAI (strike * 10 contracts) remain at the smart contract for further withdraw by "anti-option" holders
+ 
+
+
 ## Monetisation: Option Series Creation and Fees
 The main idea of monetisation is collection the fees during option writing. The right to withdraw fees belongs to a ERC721 "option serie" token owner. 
+
 An user can create option serie and write options just after that. During the creation a ERC721 token is minting to a specific account. Besides this specific "fee collector" contract is created. From this contract the collected fees can be withdrawn only by a corresponding ERC721 token owner. The ERC721 token can be directly transferred to an auction for sale  (currently it goes to the owner of the corresponding contract)
 
 

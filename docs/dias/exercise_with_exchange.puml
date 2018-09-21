@@ -1,0 +1,17 @@
+@startuml
+actor "Option Holder" as opt_owner
+participant "Option Serie Smart Contract\nExercise: ONLY BEFORE EXPIRATION " as opt_pair
+participant "Exchange Adapter Contract" as exchange_adapter
+participant "Exchange (e.g. Oasis.Direct)" as exchange
+
+
+opt_owner -> opt_pair: initiate operation,\nthe option tokens are transferred to the smart contract
+opt_pair -> exchange_adapter: initiate trade via common interface, check whether price is more than strike,\n transfer corresponding amount of underlying tokens
+exchange_adapter -> exchange: put underlying
+exchange -> exchange_adapter: get basis token
+exchange_adapter -> exchange_adapter: check whether got amount is OK
+exchange_adapter -> opt_owner: transfer amount above strike to option holder, the rest remains for later withdraw by anti-option holders
+
+
+hide footbox
+@enduml
